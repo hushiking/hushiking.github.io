@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hello, everyone, I love you!~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="化简为凡的小站">
+<meta property="og:url" content="http://hushiking.github.io/page/2/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="hello, everyone, I love you!~">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="化简为凡的小站">
+<meta name="twitter:description" content="hello, everyone, I love you!~">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-HTML/浏览器缓存机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/29/HTML/浏览器缓存机制/" class="article-date">
+  <time datetime="2018-09-29T04:47:34.000Z" itemprop="datePublished">2018-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/29/HTML/浏览器缓存机制/">浏览器缓存机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>浏览器缓存分为强缓存和协商缓存。</p>
+<ol>
+<li>浏览器在加载资源时，先根据这个资源的一些http header判断它是否命中强缓存，强缓存如果命中，浏览器直接从自己的缓存中读取资源，不会发请求到服务器。比如某个css文件，如果浏览器在加载它所在的网页时，这个css文件的缓存配置命中了强缓存，浏览器就直接从缓存中加载这个css，连请求都不会发送到网页所在服务器。</li>
+<li>当强缓存没有命中的时候，浏览器一定会发送一个请求到服务器，通过服务器端依据资源的另外一些http header验证这个资源是否命中协商缓存，如果协商缓存命中，服务器会将这个请求返回，并且返回304，但是不会返回这个资源的数据，而是告诉客户端可以直接从缓存中加载这个资源，于是浏览器就又会从自己的缓存中去加载这个资源。</li>
+<li>强缓存与协商缓存的共同点是：如果命中，都是从客户端缓存中加载资源，而不是从服务器加载资源数据；区别是：强缓存不发请求到服务器，协商缓存会发请求到服务器。</li>
+<li>当协商缓存也没有命中的时候，浏览器直接从服务器加载资源数据，并且返回200。如果服务器上没有这个资源，则返回404。</li>
+</ol>
+<h2 id="强缓存-本地缓存"><a href="#强缓存-本地缓存" class="headerlink" title="强缓存(本地缓存)"></a>强缓存(本地缓存)</h2><p>强缓存是利用 Response Header 里面的 Cache-Control 和 Expires 这两个属性实现的，当两个都存在时，Cache-Control 优先级较高。</p>
+<p>Expires 的缓存原理是(绝对时间)：</p>
+<ol>
+<li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Expires的header</li>
+<li>浏览器在接收到这个资源后，会把这个资源连同所有response header一起缓存下来（所以缓存命中的请求返回的header并不是来自服务器，而是来自之前缓存的header）</li>
+<li>浏览器再请求这个资源时，先从缓存中寻找，找到这个资源后，拿出它的Expires跟当前的请求时间比较，如果请求时间在Expires指定的时间之前，就能命中缓存，否则就不行</li>
+<li>如果缓存没有命中，浏览器直接从服务器加载资源时，Expires Header在重新加载的时候会被更新。</li>
+</ol>
+<p>Cache-Control 的缓存原理是(public、private、no-cache、max-age等等):</p>
+<ol>
+<li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Cache-Control的header</li>
+<li>浏览器在接收到这个资源后，会把这个资源连同所有response header一起缓存下来</li>
+<li>浏览器再请求这个资源时，先从缓存中寻找，找到这个资源后，根据它第一次的请求时间和Cache-Control设定的有效期，计算出一个资源过期时间，再拿这个过期时间跟当前的请求时间比较，如果请求时间在过期时间之前，就能命中缓存，否则就不行</li>
+<li>如果缓存没有命中，浏览器直接从服务器加载资源时，Cache-Control Header在重新加载的时候会被更新。</li>
+</ol>
+<h2 id="协商缓存-对比缓存"><a href="#协商缓存-对比缓存" class="headerlink" title="协商缓存(对比缓存)"></a>协商缓存(对比缓存)</h2><p>当浏览器对某个资源的请求没有命中强缓存，就会发一个请求到服务器，验证协商缓存是否命中，如果协商缓存命中，请求响应返回的http状态为304并且会显示一个Not Modified的字符串，比如你打开京东的首页，按f12打开开发者工具，再按f5刷新页面，查看network，可以看到有不少请求就是命中了协商缓存的。协商缓存是利用的是【Last-Modified，If-Modified-Since】和【ETag、If-None-Match】这两对Header来管理的。</p>
+<p>【Last-Modified，If-Modified-Since】的控制缓存的原理是：</p>
+<ol>
+<li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Last-Modified的header，这个header表示这个资源在服务器上的最后修改时间</li>
+<li>浏览器再次跟服务器请求这个资源时，在request的header上加上If-Modified-Since的header，这个header的值就是上一次请求时返回的Last-Modified的值</li>
+<li>服务器再次收到资源请求时，根据浏览器传过来If-Modified-Since和资源在服务器上的最后修改时间判断资源是否有变化，如果没有变化则返回304 Not Modified，但是不会返回资源内容；如果有变化，就正常返回资源内容。当服务器返回304 Not Modified的响应时，response header中不会再添加Last-Modified的header，因为既然资源没有变化，那么Last-Modified也就不会改变，这是服务器返回304时的response header</li>
+<li>浏览器收到304的响应后，就会从缓存中加载资源</li>
+<li>如果协商缓存没有命中，浏览器直接从服务器加载资源时，Last-Modified Header在重新加载的时候会被更新，下次请求时，If-Modified-Since会启用上次返回的Last-Modified值。</li>
+</ol>
+<p>ETag、If-None-Match】的缓存管理的方式是：</p>
+<ol>
+<li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上ETag的header，这个header是服务器根据当前请求的资源生成的一个唯一标识，这个唯一标识是一个字符串，只要资源有变化这个串就不同，跟最后修改时间没有关系，所以能很好的补充Last-Modified的问题</li>
+<li>浏览器再次跟服务器请求这个资源时，在request的header上加上If-None-Match的header，这个header的值就是上一次请求时返回的ETag的值</li>
+<li>服务器再次收到资源请求时，根据浏览器传过来If-None-Match和然后再根据资源生成一个新的ETag，如果这两个值相同就说明资源没有变化，否则就是有变化；如果没有变化则返回304 Not Modified，但是不会返回资源内容；如果有变化，就正常返回资源内容。与Last-Modified不一样的是，当服务器返回304 Not Modified的响应时，由于ETag重新生成过，response header中还会把这个ETag返回，即使这个ETag跟之前的没有变化</li>
+<li>浏览器收到304的响应后，就会从缓存中加载资源。</li>
+</ol>
+<h2 id="浏览器行为对缓存的影响"><a href="#浏览器行为对缓存的影响" class="headerlink" title="浏览器行为对缓存的影响"></a>浏览器行为对缓存的影响</h2><ol>
+<li>当ctrl+f5强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存</li>
+<li>当f5刷新网页时，跳过强缓存，但是会检查协商缓存</li>
+</ol>
+<p><a href="https://www.cnblogs.com/lyzg/p/5125934.html" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/09/29/HTML/浏览器缓存机制/" data-id="cjvlw5bk90027xfq3hnlzrand" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/Meta标签常用设置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/HTML/Meta标签常用设置/" class="article-date">
+  <time datetime="2018-09-19T08:27:13.000Z" itemprop="datePublished">2018-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/19/HTML/Meta标签常用设置/">Meta 标签常用设置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><ol>
+<li>meta 标签主要是用来描述一个 html 网页文档的属性的，例如作者、日期、时间、页面刷新</li>
+<li>用于 seo 的搜索优化</li>
+</ol>
+<h2 id="设置浏览器不缓存"><a href="#设置浏览器不缓存" class="headerlink" title="设置浏览器不缓存"></a>设置浏览器不缓存</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 避免HTML页面缓存 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"pragma"</span> <span class="attr">content</span>=<span class="string">"no-cache"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"cache-control"</span> <span class="attr">content</span>=<span class="string">"no-cache"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"expires"</span> <span class="attr">content</span>=<span class="string">"0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="name-属性"><a href="#name-属性" class="headerlink" title="name 属性"></a>name 属性</h2><p>meta是用来在HTML文档中模拟HTTP协议的响应头报文。meta 标签用于网页的 <code>&lt;head&gt;&lt;/head&gt;</code> 中，meta 标签的用处很多。meta 的属性有两种：name和http-equiv。name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。这其中最重要的是description（站点在搜索引擎上的描述）和keywords（分类关键词），所以应该给每页加一个meta值。比较常用的有以下几个：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 语言格式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 关键字 和 描述 html 主体内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"关于meta标签,网页"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"HTML中&lt;meta&gt;标签如何正确使用"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 作者信息 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"author-name"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 便于 seo 搜索 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robot"</span> <span class="attr">content</span>=<span class="string">"none"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>robot 属性有 all、none、index、noindex、follow 和 nofollow。默认为 all。</p>
+<ol>
+<li>设定为all：文件将被检索，且页面上的链接可以被查询；</li>
+<li>设定为none：文件将不被检索，且页面上的链接不可以被查询；</li>
+<li>设定为index：文件将被检索；</li>
+<li>设定为follow：页面上的链接可以被查询；</li>
+<li>设定为noindex：文件将不被检索，但页面上的链接可以被查询；</li>
+<li>设定为nofollow：文件将不被检索，页面上的链接可以被查询。</li>
+</ol>
+<h2 id="http-equiv"><a href="#http-equiv" class="headerlink" title="http-equiv"></a>http-equiv</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 文档类型 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 定义网页的缓存过期时间 必须是 GMT 格式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"expires"</span> <span class="attr">content</span>=<span class="string">"Wed, 02 Jan 2019 07:31:31 GMT"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 由于这是一个过去的日期，所以这个网页只要一打开，就会直接到网站服务器重新下载页面内容，而不是从cache调用。这是一种防止网页被cache缓存的措施。 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 设定是否从缓存中访问网页内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"pragma"</span> <span class="attr">content</span>=<span class="string">"no-cache"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 等待一定时间自动刷新或跳转 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"1; url=https://www.baidu.com"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他常用设置"><a href="#其他常用设置" class="headerlink" title="其他常用设置"></a>其他常用设置</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 根据浏览器的屏幕大小自适应的展现合适的效果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"applicable-device"</span> <span class="attr">content</span>=<span class="string">"pc,mobile"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 移动端 浏览器中页面将以原始大小显示，不允许缩放 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 优先使用 IE 最新版本和 Chrome --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 它必须显示在网页中除 title 元素和其他 meta 元素以外的所有其他元素之前。如果不是的话，它不起作用 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- iphone会把一串数字识别为电话号码，点击的时候会提示是否呼叫，屏蔽这功能则把telephone设置为no;禁止自动识别邮箱 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"telephone=no,email=no"</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- iphone的私有标签，默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"black"</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-status-bar-style"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- iphone设备的是有标签 允许全屏模式浏览，隐藏浏览器导航栏 开启网站对web app程序的支持 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"yes"</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 全屏显示 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"yes"</span> <span class="attr">name</span>=<span class="string">"apple-touch-fullscreen"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- UC强制全屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"full-screen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- QQ强制全屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-fullscreen"</span> <span class="attr">content</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 屏蔽百度转码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Cache-Control"</span> <span class="attr">content</span>=<span class="string">"no-transform"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Cache-Control"</span> <span class="attr">content</span>=<span class="string">"no-siteapp"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="条件注释"><a href="#条件注释" class="headerlink" title="条件注释"></a>条件注释</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt; </span></span><br><span class="line"><span class="comment">&lt;script src="lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">&lt;script src="lib/respond/respond.min.js"&gt;&lt;/script&gt; </span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>html5shiv让浏览器可以识别html5的新标签</li>
+<li>respond让低版本浏览器可以使用CSS3的媒体查询</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/09/19/HTML/Meta标签常用设置/" data-id="cjvlw5bk2001sxfq3z4j68l6k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux/SSI技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/10/Linux/SSI技术/" class="article-date">
+  <time datetime="2018-09-10T14:16:49.000Z" itemprop="datePublished">2018-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/Linux/SSI技术/">SSI 技术</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是-SSI-？"><a href="#什么是-SSI-？" class="headerlink" title="什么是 SSI ？"></a>什么是 SSI ？</h2><p>SSI (Server Side Includes) 是HTML页面中的指令，在页面被提供时由服务器进行运算，以对现有HTML页面增加动态生成的内容，而无须通过CGI程序提供其整个页面，或者使用其他动态技术。</p>
+<p>SSI技术的好处在于可以用静态页面来实现动态页面的效果，首先对于SEO肯定是有好处的，另一方面，它可以用服务器来处理程序，速度方面应该比程序语言要快。</p>
+<p>对于什么时候使用SSI，而什么时候用某些程序生成整个页面的权衡，取决于页面中有多少内容是静态，有多少内容需要在每次页面被提供时重新计算。SSI是一种增加小段信息的好方法，诸如当前时间。如果你的页面大部分是在被提供时生成的，那就要另找方案了。</p>
+<p>通常用于多个页面引用公共的内容模块，将此模块分离出来，使用SSI引入即可。</p>
+<p><code>&lt;!--#include virtual=&quot;/inc/header.html&quot;--&gt;</code></p>
+<p>上述以上代码便能在服务端完成header.html的动态引入，非常简单。</p>
+<h2 id="配置服务器以允许-SSI"><a href="#配置服务器以允许-SSI" class="headerlink" title="配置服务器以允许 SSI"></a>配置服务器以允许 SSI</h2><p>使用SSI之前需要服务端进行简单的配置，开启SSI功能。SSI是针对HTML增加动态内容的技术，所以只对HTML类型文件（.html,.shtml），使用SSI功能的文件建议使用.shtml后缀，便于维护。如果使用.shtml后缀需在服务端作一些配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType text/html .shtml</span><br><span class="line">AddOutputFilter INCLUDES .shtml</span><br></pre></td></tr></table></figure>
+<p>第一行命名配置将.shtml作为html文件返回</p>
+<p>第二行命令用于在返回请求内容前执行页面中的SSI命令，如果你在.html文件中使用SSI，那么将.shtml改为.html即可。</p>
+<h2 id="nginx-配置-SSI"><a href="#nginx-配置-SSI" class="headerlink" title="nginx 配置 SSI"></a>nginx 配置 SSI</h2><p>需要的选项主要是以下三个：</p>
+<p><strong>ssi</strong>: 默认值off，启用ssi时将其设为on<br><strong>ssi_silent_errors</strong>: 默认值off，开启后在处理SSI文件出错时不输出错误提示”[an error occurred while processing the directive]”。<br><strong>ssi_types</strong>: 默认是text/html，所以如果需支持html，则不需要设置这句，如果需要支持shtml则需要设置：ssi_types text/shtml<br>三个参数可以放在http, server或location作用域下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen  10.3.9.27:80;</span><br><span class="line">    server_name  www.ball.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        ssi on;</span><br><span class="line">        ssi_silent_errors on;</span><br><span class="line">        ssi_types text/shtml;</span><br><span class="line">        index index.shtml;</span><br><span class="line">        root /usr/<span class="built_in">local</span>/web/wwwroot;</span><br><span class="line">        expires 30d;</span><br><span class="line">        access_log      /data/logs/www.ball.com-access_log main;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SSI-命令"><a href="#SSI-命令" class="headerlink" title="SSI 命令"></a>SSI 命令</h2><p>SSI的语法有点像HTML注释，所以如果SSI不能识别，那么将被视作HTML注释处理。SSI的语法功能主要包括：变量的设置/获取，文件的引用，可执行命令，条件表达式等。</p>
+<blockquote>
+<p>基本语法 <code>&lt;!--#command param=&quot;value&quot;--&gt;</code></p>
+</blockquote>
+<p>SSI 语法需注意以下几点:</p>
+<ol>
+<li>&lt;!–与#之间无空格</li>
+<li>SSI 对大小写敏感</li>
+<li>所有 value 均要写在引号中</li>
+</ol>
+<p><a href="http://ju.outofmemory.cn/entry/16773" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/09/10/Linux/SSI技术/" data-id="cjvlw5bl8004oxfq3kaeydilj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSI/">SSI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Docker/Docker安装MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/Docker/Docker安装MongoDB/" class="article-date">
+  <time datetime="2018-08-13T11:56:31.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/13/Docker/Docker安装MongoDB/">Docker 安装 MongoDB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本文一方面为了学习 Docker 的操作和使用，另一方面是方便以后 MongoDB 的移植。</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol>
+<li>查找 docker 中的 mongo<br> <code>docker search mongo</code></li>
+<li>拉取镜像<br> <code>docker pull mongo:3.6</code> 或者 <code>docker pull mongo</code> 默认拉取 latest</li>
+<li><p>在本地主机创建文件夹作为 mongo 数据存储目录</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir mongo</span><br><span class="line"><span class="built_in">cd</span> mongo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行 mongo 镜像<br> <code>docker run -p 27017:27017 -v $PWD/db:/data/db -d mongo:3.6</code></p>
+<ul>
+<li>-p 27017:27017 :将容器的 27017 端口映射到主机的 27917 端口（端口可以自己定义）</li>
+<li>-v \$PWD/db:/data/db :将主机中当前目录下的 db 挂载到容器的/data/db，作为 mongo 数据存储目录(<code>$PWD</code>必须要大写)</li>
+<li>–name 设置该容器的名称</li>
+<li>-d 设置容器以守护进程方式运行</li>
+</ul>
+</li>
+<li><p>重命名容器对象<br> <code>docker rename reverent_mestorf hu_mongo</code></p>
+</li>
+<li><p>进入 admin 数据库</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it hu_mongo bash</span><br><span class="line">mongo admin</span><br></pre></td></tr></table></figure>
+<p> 也可简写为 <code>docker exec -it hu_mongo mongo admin</code></p>
+</li>
+<li><p>创建数据库账户</p>
+<ol>
+<li><p>创建管理员账户(拥有所有权限)，如果出现加密错误的问题，需要在创建用户命令中加一个参数换一种加密方式：mechanisms: [“SCRAM-SHA-1”]</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user: 'admin',</span><br><span class="line">    pwd: '123456',</span><br><span class="line">    roles: [&#123;role: "userAdminAnyDatabase", db: "admin"&#125;],</span><br><span class="line">    mechanisms : ["SCRAM-SHA-1"]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启验证<br> <code>db.auth(&quot;admin&quot;,&quot;123456&quot;);</code> 1 代表授权验证成功</p>
+</li>
+<li>创建目标数据库（实际上切换即可）<br> <code>use test</code></li>
+<li><p>创建目标数据库管理用户</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user: 'test',</span><br><span class="line">    pwd: 'test',</span><br><span class="line">    roles: [&#123;role: "readWrite", db: "test"&#125;],</span><br><span class="line">    mechanisms : ["SCRAM-SHA-1"]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启验证<br> <code>db.auth(&quot;test&quot;,&quot;test&quot;);</code> 1 代表授权验证成功<br>注意:</p>
+</li>
+</ol>
+<ul>
+<li>admin 的作用是管理用户,MongoDB 下的每个数据库，用户都被它管理，除此外，它基本没什么更多权限做其他事情</li>
+<li>MongoDB 没有通常意义的超级用户的概念,test 库的授权用户只能被 admin 创建，而 admin 只能登陆 admin 数据库</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/08/13/Docker/Docker安装MongoDB/" data-id="cjvlw5bjd0009xfq3mb6o5grb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Docker/Docker命令说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/26/Docker/Docker命令说明/" class="article-date">
+  <time datetime="2018-07-26T03:37:07.000Z" itemprop="datePublished">2018-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/26/Docker/Docker命令说明/">Docker 命令说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>好记性不如烂笔头，Docker 命令实在太多了，为了方便查询，防止遗忘，在此详细记录一下。</p>
+<h2 id="容器-Container"><a href="#容器-Container" class="headerlink" title="容器(Container)"></a>容器(Container)</h2><p>容器 (Container) 之于虚拟机 (Virtual Machine) 就好比线程之于进程。</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li>docker create 创建容器但不启动它。</li>
+<li>docker rename 用于重命名容器。</li>
+<li>docker run 一键创建并同时启动该容器。</li>
+<li>docker rm 删除容器。</li>
+<li>docker update 调整容器的资源限制</li>
+</ul>
+<h3 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h3><ul>
+<li>docker start 启动已存在的容器。</li>
+<li>docker stop 停止运行中的容器。</li>
+<li>docker restart 重启容器。</li>
+<li>docker pause 暂停运行中的容器，将其「冻结」在当前状态。</li>
+<li>docker unpause 结束容器暂停状态。</li>
+<li>docker wait 阻塞地等待某个运行中的容器直到停止。</li>
+<li>docker kill 向运行中的容器发送 SIGKILL 指令。</li>
+<li>docker attach 连接到运行中的容器。</li>
+</ul>
+<h3 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h3><ul>
+<li>docker ps 查看运行中的所有容器。</li>
+<li>docker logs 从容器中读取日志。（你也可以使用自定义日志驱动，不过在 1.10 中，它只支持 json-file 和 journald）。</li>
+<li>docker inspect 查看某个容器的所有信息（包括 IP 地址）。</li>
+<li>docker events 从容器中获取事件 (events)。</li>
+<li>docker port 查看容器的公开端口。</li>
+<li>docker top 查看容器中活动进程。</li>
+<li>docker stats 查看容器的资源使用量统计信息。</li>
+<li>docker diff 查看容器文件系统中存在改动的文件。</li>
+</ul>
+<p><code>docker ps -a</code> 将显示所有容器，包括运行中和已停止的。</p>
+<p><code>docker stats --all</code> 同样将显示所有容器，默认仅显示运行中的容器。</p>
+<h3 id="导入-导出"><a href="#导入-导出" class="headerlink" title="导入/导出"></a>导入/导出</h3><ul>
+<li>docker cp 在容器和本地文件系统之间复制文件或目录。</li>
+<li>docker export 将容器的文件系统打包为归档文件流 (tarball archive stream) 并输出至标准输出 (STDOUT)。</li>
+</ul>
+<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><ul>
+<li>docker exec 在容器内执行命令。</li>
+</ul>
+<p>例如，进入正在运行的 foo 容器，并连接 (attach) 到一个新的 Shell 进程：<code>docker exec -it foo /bin/bash</code>。</p>
+<h2 id="镜像-Images"><a href="#镜像-Images" class="headerlink" title="镜像(Images)"></a>镜像(Images)</h2><p>镜像是 Docker 容器的模板。</p>
+<h3 id="镜像生命周期"><a href="#镜像生命周期" class="headerlink" title="镜像生命周期"></a>镜像生命周期</h3><ul>
+<li>docker images 查看所有镜像。</li>
+<li>docker import 从归档文件创建镜像。</li>
+<li>docker build 从 Dockerfile 创建镜像。</li>
+<li>docker commit 为容器创建镜像，如果容器正在运行则会临时暂停。</li>
+<li>docker rmi 删除镜像。</li>
+<li>docker load 从标准输入 (STDIN) 加载归档包 (tar archive) 作为镜像，包括镜像本身和标签 (tags, 0.7 起)。</li>
+<li>docker save 将镜像打包为归档包，并输出至标准输出 (STDOUT)，包括所有的父层、标签和版本 (parent layers, tags, versions, 0.7 起)。</li>
+</ul>
+<h3 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息"></a>其他信息</h3><ul>
+<li>docker history 查看镜像的历史记录。</li>
+<li>docker tag 给镜像打标签命名（本地或者仓库均可）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/07/26/Docker/Docker命令说明/" data-id="cjvlw5bjb0007xfq30cj1hh1v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux/判断linux系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/02/Linux/判断linux系统/" class="article-date">
+  <time datetime="2018-07-02T01:08:00.000Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/02/Linux/判断linux系统/">判断 linux 系统类别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>今天部署项目的时候需要在服务器安装 nodeJS，因为不知道服务器 linux 系统的具体类型，所以不知道采用哪种方式安装最简便。然后就有了下面这篇 blog (￣▽￣)~*</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><code># lsb_release -a</code></p>
+<p>该命令适用于所有遵守 LSB 规范的 linux，包括Redhat、SuSE、Debian、Ubuntu、Centos等发行版。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:    :core-4.1-amd64:core-4.1-noarch</span><br><span class="line">Distributor ID: CentOS</span><br><span class="line">Description:    CentOS Linux release 7.4.1708 (Core)</span><br><span class="line">Release:        7.4.1708</span><br><span class="line">Codename:       Core</span><br></pre></td></tr></table></figure>
+<p>接下来的命令虽然不能查看当前系统名和版本，但是可以显示系统核心信息.</p>
+<p><code># uname</code>       linux<br><code># uname -r</code>    3.10.0-693.2.2.el7.x86_64<br><code># uname -a</code>    Linux iz2zeehaoxba5ca8lcw79yz 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:13 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>适用于 Redhat CentOS</p>
+<p><code># cat /etc/redhat-release</code> CentOS Linux release 7.4.1708 (Core)</p>
+<p>登录到 linux 执行</p>
+<p><code># rpm -q redhat-release</code>   package redhat-release is not installed (当前系统是 CentOS)</p>
+<p>登录到 CentOS 执行</p>
+<p><code># rpm -q centos-release</code>   centos-release-7-4.1708.el7.centos.x86_64</p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>当前 CentOS 版本与 Redhat 对应的版本的命令，这个命令在 CentOS 下并不准确，显示的系统和版本也是Redhat</p>
+<p><code># cat /proc/version</code>   Linux version 3.10.0-693.2.2.el7.x86_64 (<a href="mailto:builder@kbuilder.dev.centos.org" target="_blank" rel="noopener">builder@kbuilder.dev.centos.org</a>) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC) ) #1 SMP Tue Sep 12 22:26:13 UTC 2017</p>
+<p>在 Ubuntu 上使用能看出是 Ubuntu 系统，但看不出版本</p>
+<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><p><code>#cat /etc/issue</code></p>
+<p>在 CentOS 下执行显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\S</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+<p>在 Ubuntu 下执行显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu 11.04 \n \l</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/07/02/Linux/判断linux系统/" data-id="cjvlw5bl9004qxfq30p7ab42s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue/Vue添加全局函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/Vue/Vue添加全局函数/" class="article-date">
+  <time datetime="2018-06-08T06:31:45.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/Vue/Vue添加全局函数/">Vue 添加全局函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用-Vue-use"><a href="#使用-Vue-use" class="headerlink" title="使用 Vue.use()"></a>使用 Vue.use()</h1><p>在 <code>main.js</code> 中引入并全局注册</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueCookie <span class="keyword">from</span> <span class="string">'vue-cookie'</span></span><br><span class="line">Vue.use(VueCookie)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; checkToken &#125; <span class="keyword">from</span> <span class="string">'./util'</span></span><br><span class="line">Vue.use(checkToken)</span><br></pre></td></tr></table></figure>
+<h2 id="util-js"><a href="#util-js" class="headerlink" title="util.js"></a>util.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> checkToken = &#123;</span><br><span class="line">    install(Vue, options) &#123;</span><br><span class="line">        Vue.prototype.checkToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 此处在main.js注册checkToken之前全局注册了vue-cookie</span></span><br><span class="line">            <span class="keyword">const</span> token = <span class="keyword">new</span> Vue().$cookie.get(<span class="string">'token'</span>);</span><br><span class="line">            <span class="keyword">if</span> (!token) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">return</span> token;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    checkToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在其他组件中使用:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.checkToken()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/06/08/Vue/Vue添加全局函数/" data-id="cjvlw5blt005sxfq31rrc0uxs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/JS循环删除数组中的元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/JavaScript/JS循环删除数组中的元素/" class="article-date">
+  <time datetime="2018-05-20T08:09:11.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/JavaScript/JS循环删除数组中的元素/">JS循环删除数组中指定的元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一般for循环"><a href="#一般for循环" class="headerlink" title="一般for循环"></a>一般for循环</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="comment">//打印数组中的情况，便于跟踪数组中数据的变化</span></span><br><span class="line">        <span class="built_in">console</span>.log(i + <span class="string">"="</span> + arr[i]);</span><br><span class="line">        <span class="comment">//删除掉所有为2的元素</span></span><br><span class="line">        <span class="keyword">if</span> (arr[i] === <span class="number">2</span>) &#123;</span><br><span class="line">            arr.splice(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>=<span class="number">1</span></span><br><span class="line"><span class="number">1</span>=<span class="number">2</span></span><br><span class="line"><span class="number">2</span>=<span class="number">3</span></span><br><span class="line"><span class="number">3</span>=<span class="number">4</span></span><br><span class="line"><span class="number">4</span>=<span class="number">5</span></span><br><span class="line"><span class="number">5</span>=<span class="literal">undefined</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>从结果来看实际上只删除掉了其中一个匹配的2元素，而另外一个元素还存在。</p>
+<p>原因在于当删除掉了一个元素后，数组的索引发生的变化，造成了程序的异常。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>删除元素的同时调整遍历索引</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="comment">//打印数组中的情况，便于跟踪数组中数据的变化</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(i + <span class="string">"="</span> + arr[i]);</span><br><span class="line">        <span class="comment">//删除掉所有为2的元素</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (arr[i] == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="comment">//注意对比这行代码：删除元素后调整i的值</span></span><br><span class="line"></span><br><span class="line">            arr.splice(i--, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反向遍历删除元素</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//start from the top</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = len; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i + <span class="string">"="</span> + arr[i]);</span><br><span class="line">        <span class="keyword">if</span> (arr[i] == <span class="number">2</span>) &#123;</span><br><span class="line">            arr.splice(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用while循环</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">var</span> i = arr.length;</span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i + <span class="string">"="</span> + arr[i]);</span><br><span class="line">        <span class="keyword">if</span> (arr[i] == <span class="number">2</span>) &#123;</span><br><span class="line">            arr.splice(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环过程中设立flag标志，并在后面的 i++ 位置判断，flag为true则加，为false则不变。<em>特别注意，for循环里面的 if 要先判断一下 arr[i] 的存在与否</em>。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length,</span><br><span class="line">        i = <span class="number">0</span>,</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; len; flag ? i++ : i) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i + <span class="string">"="</span> + arr[i]);</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &amp;&amp; arr[i] == <span class="number">2</span>) &#123;</span><br><span class="line">            arr.splice(i, <span class="number">1</span>);</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/05/20/JavaScript/JS循环删除数组中的元素/" data-id="cjvlw5bkh002txfq3v5w98nkv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux/vi 常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/Linux/vi 常用命令/" class="article-date">
+  <time datetime="2018-05-01T01:12:47.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/Linux/vi 常用命令/">vi 常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>vi命令是UNIX操作系统和类UNIX操作系统中最通用的全屏幕纯文本编辑器。Linux中的vi编辑器叫vim，它是vi的增强版（vi Improved），与vi编辑器完全兼容，而且实现了很多增强功能。</p>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><ol>
+<li>命令模式</li>
+</ol>
+<p>默认情况下，打开vi编辑器后自动进入命令模式。<strong>从编辑模式切换到命令模式使用“esc”键，从命令模式切换到编辑模式使用“A”、“a”、“O”、“o”、“I”、“i”键。</strong></p>
+<ul>
+<li>:.,$d：一回车清空全部文件内容，这个需要光标在第一行才可以。</li>
+<li>gg：命令将光标移动到文档开头</li>
+<li>G：命令将光标移动到文档末尾</li>
+<li>0：vim 跳到行首</li>
+<li>$：vim 跳到行尾（shift+4）</li>
+<li>x或X：删除一个字符，x删除光标后的，而X删除光标前的；</li>
+<li>D：删除从当前光标到光标所在行尾的全部字符；</li>
+<li>dd：删除光标行正行内容；</li>
+<li>ndd：删除当前行及其后n-1行；</li>
+<li>nyy：将当前行及其下n行的内容保存到寄存器？中，其中？为一个字母，n为一个数字；</li>
+<li>p：粘贴文本操作，用于将缓存区的内容粘贴到当前光标所在位置的下方；</li>
+<li>P：粘贴文本操作，用于将缓存区的内容粘贴到当前光标所在位置的上方；</li>
+<li>/字符串：文本查找操作，用于从当前光标所在位置开始向文件尾部查找指定字符串的内容，查找的字符串会被加亮显示；</li>
+<li>？name：文本查找操作，用于从当前光标所在位置开始向文件头部查找指定字符串的内容，查找的字符串会被加亮显示；</li>
+<li>a,bs/F/T：替换文本操作，用于在第a行到第b行之间，将F字符串换成T字符串。其中，“s/”表示进行替换操作；</li>
+<li>a：在当前字符后添加文本；</li>
+<li>A：在行末添加文本；</li>
+<li>i：在当前字符前插入文本；</li>
+<li>I：在行首插入文本；</li>
+<li>o：在当前行后面插入一空行；</li>
+<li>O：在当前行前面插入一空行；</li>
+<li>ZZ：命令模式下保存当前文件所做的修改后退出vi；</li>
+</ul>
+<hr>
+<ul>
+<li>Ctrl+u：向文件首翻半屏；</li>
+<li>Ctrl+d：向文件尾翻半屏；</li>
+<li>Ctrl+f：向文件尾翻一屏；</li>
+<li>Ctrl+b：向文件首翻一屏；</li>
+<li>Esc：从编辑模式切换到命令模式；</li>
+<li>:行号：光标跳转到指定行的行首；</li>
+<li>:$：光标跳转到最后一行的行首；</li>
+<li>:wq：在命令模式下，执行存盘退出操作；</li>
+<li>:w：在命令模式下，执行存盘操作；</li>
+<li>:w！：在命令模式下，执行强制存盘操作；</li>
+<li>:q：在命令模式下，执行退出vi操作；</li>
+<li>:q！：在命令模式下，执行强制退出vi操作；</li>
+<li>:e文件名：在命令模式下，打开并编辑指定名称的文件；</li>
+<li>:n：在命令模式下，如果同时打开多个文件，则继续编辑下一个文件；</li>
+<li>:f：在命令模式下，用于显示当前的文件名、光标所在行的行号以及显示比例；</li>
+<li>:set number：在命令模式下，用于在最左端显示行号；</li>
+<li>:set nonumber：在命令模式下，用于在最左端不显示行号；</li>
+<li>:e!：文件重新载入；</li>
+</ul>
+<hr>
+<blockquote>
+<p>vi加密：进入vi，输入”:”  + “X” 之后就提示你输入两次密码。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/05/01/Linux/vi 常用命令/" data-id="cjvlw5blb004txfq3rbqef66y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/函数与闭包/经典闭包循环与 Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/11/JavaScript/函数与闭包/经典闭包循环与 Promise/" class="article-date">
+  <time datetime="2018-04-11T15:31:01.000Z" itemprop="datePublished">2018-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/11/JavaScript/函数与闭包/经典闭包循环与 Promise/">经典闭包循环与 Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="经典闭包循环"><a href="#经典闭包循环" class="headerlink" title="经典闭包循环"></a>经典闭包循环</h1><ul>
+<li><p>初始题目</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>  上面的代码等同于：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(foo, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>  解析：setTimeout 里面传入的第一个匿名函数，等价于在 setTimeout 语句外面定义的一个函数。所以它的闭包范围是变量 i 所在的作用域，所以可以访问到 i。由于 i 是外面的变量，所有的 setTimeout 里面的函数都会指向同一个 i。</p>
+</li>
+<li><p>闭包改造</p>
+<ol>
+<li><p>普通闭包</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123; <span class="comment">/* j = i */</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, j);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p> 解析：每次把新的变量 i 传进一个匿名的立即执行函数，每次 j 都能得到不同的 i ，因为 j 在匿名函数的作用域内，函数的执行作用域每执行一次都会重新生成，所以每次的 j 都不是同一个。</p>
+</li>
+<li><p>传参法（其实是把闭包匿名的立即执行函数单独拿出来，然后在 for 循环的时候，向这个函数传递参数）</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(foo, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    wrapper(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p> 注意：<strong>这里有一个容易犯错的点，setTimeout 的第一个参数要求的是一个函数的引用，而不是执行一个函数，所以只能传入函数名 foo 的形式，而不能传入 foo(a,b)，这也意味着不能在 foo 上直接传参。</strong>所以，要传参的话，在 setTimeout 外面再包裹一层函数，然后定制编写 foo 函数。</p>
+<p> 再补充一个重要知识点，<strong>如果一定要在 foo 中传参，又不想用闭包，可以使用 setTimeout 的第3个参数，从第3个参数往后的参数，都会传入 foo 里作为形参使用。</strong></p>
+<p> 所以，上面的代码也可以写成：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, j); <span class="comment">/* 可以立即输出01234 */</span></span><br><span class="line">    &#125;, <span class="number">1000</span> ,i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p> 如果硬是在 setTimeout() 中传入的 foo() 的形式，那么只会以正常任务的方式立即执行 foo()，而不会放入任务队列里去，也就是定时器失效。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>上述循环用 ES6 和 Promise 实现如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tasks=[];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(), j);</span><br><span class="line">    resolve(j);</span><br><span class="line">    <span class="comment">// console.log("这是一个小补充哟"+j);</span></span><br><span class="line">    &#125;,<span class="number">1000</span> * i);</span><br><span class="line">    &#125;);</span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// console.log("这是then里的一点小补充哟"+j);</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> promise;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">    tasks.push(output(i)); <span class="comment">//执行顺序:首先在这里将定时器设置好，</span></span><br><span class="line"><span class="comment">// 也就是循环设置定时器，由于执行时间很快，每次循环的间隔可以忽略不计，</span></span><br><span class="line"><span class="comment">// 所以可以认为是设置了5个时间分别为0~4s的定时器，已经开始计时。</span></span><br><span class="line"><span class="comment">// 计时后返回promise对象，放在tasks数组中</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最后，在这里相当于是一个总的监听器，当前面4个任务都resolve以后，执行最后一个设置定时器任务，</span></span><br><span class="line"><span class="comment">// 到时间以后，执行输出5</span></span><br><span class="line"><span class="comment">// 关于执行顺序，前4个task是靠定时器的时间差别来决定先后输出顺序的，最后一个5的task，是依靠异步回调来执行的。</span></span><br><span class="line"><span class="built_in">Promise</span>.all(tasks).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(), i);</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>解析：关于任务队列：</p>
+<ol>
+<li>首先第一趟主任务队列走下来，执行了设置定时任务，将promise对象放入tasks数组，并设置好then回调的工作。</li>
+<li>然后第二趟，执行定时任务队列，运行consolo.log语句，</li>
+<li>然后遇到resolve，需要调用相应的then里面的回调语句（如果有的话）。</li>
+<li>但是注意，这里调用then的时机，是在本次任务的主代码执行完毕后，也就是说，如果setTimeout语句中的resolve()后面还有执行语句，要先执行那些语句，最后才执行resolve对应的then回调。</li>
+<li>要确定resolve相应的回调语句的执行顺序，可以执行以下上述代码（将代码里的两句console.log去掉注释即可）：</li>
+</ol>
+<p>最后强调一遍，<strong>resolve的回调函数是在本轮“事件循环”结束时执行，setTimeout(fn, 0)在下一轮“事件循环”开始时执行。</strong></p>
+<p>举例说明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'three'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'two'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'one'</span>);</span><br><span class="line"><span class="comment">// one</span></span><br><span class="line"><span class="comment">// two</span></span><br><span class="line"><span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>作者：栗子酥小小</li>
+<li>链接：<a href="https://www.jianshu.com/p/f5ec536c2c92/" target="_blank" rel="noopener">原文地址</a></li>
+<li>來源：简书</li>
+<li>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/04/11/JavaScript/函数与闭包/经典闭包循环与 Promise/" data-id="cjvlw5bnk00b7xfq3uo2oh8u7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

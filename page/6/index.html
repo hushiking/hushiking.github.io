@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hello, everyone, I love you!~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="化简为凡的小站">
+<meta property="og:url" content="http://hushiking.github.io/page/6/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="hello, everyone, I love you!~">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="化简为凡的小站">
+<meta name="twitter:description" content="hello, everyone, I love you!~">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JavaScript/JS可枚举与不可枚举" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/13/JavaScript/JS可枚举与不可枚举/" class="article-date">
+  <time datetime="2016-05-13T10:46:43.000Z" itemprop="datePublished">2016-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/13/JavaScript/JS可枚举与不可枚举/">JS 可枚举与不可枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript-可枚举与不可枚举属性"><a href="#JavaScript-可枚举与不可枚举属性" class="headerlink" title="JavaScript 可枚举与不可枚举属性"></a>JavaScript 可枚举与不可枚举属性</h1><p>在 JavaScript 中，对象的属性分为可枚举和不可枚举之分，它们是由属性的 enumerable 值决定的。可枚举性决定了这个属性能否被 for…in 查找遍历到。</p>
+<h2 id="怎么判断属性是否可枚举"><a href="#怎么判断属性是否可枚举" class="headerlink" title="怎么判断属性是否可枚举"></a>怎么判断属性是否可枚举</h2><p>js中基本包装类型的原型属性是不可枚举的，如 Object, Array, Number 等，如果你写出这样的代码遍历其中的属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> num) &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"num."</span> + pro + <span class="string">" = "</span> + num[pro]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它的输出结果会是空。这是因为 Number 中内置的属性是不可枚举的，所以不能被 for…in 访问到。</p>
+<p>Object 对象的 propertyIsEnumerable() 方法可以判断此对象是否包含某个属性，并且这个属性是否可枚举。</p>
+<p><strong>需要注意的是</strong>：如果判断的属性存在于 Object 对象的 <em>原型</em> 内，不管它是否可枚举都会返回 false。</p>
+<h2 id="枚举性的作用"><a href="#枚举性的作用" class="headerlink" title="枚举性的作用"></a>枚举性的作用</h2><p>属性的枚举性会影响以下三个函数的结果：</p>
+<p>for…in</p>
+<p>Object.keys()</p>
+<p>JSON.stringify</p>
+<p>先看一个例子，按如下方法创建kxy对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"KXY"</span>;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    job: "student",</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var kxy = new Person();</span><br><span class="line">Object.defineProperty(kxy, "sex", &#123;</span><br><span class="line">    value: <span class="string">"female"</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其中用 defineProperty 为对象定义了一个名为 “sex” 的不可枚举属性</p>
+<p>接下来做以下验证：</p>
+<ul>
+<li>遍历结果如下:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> kxy) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"kxy."</span> + pro + <span class="string">" = "</span> + kxy[pro]);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/JavaScript可枚举1.png" alt="枚举遍历结果" title="枚举属性"></p>
+<p>可以看到除了 “sex” 之外的属性都遍历到了。</p>
+<ul>
+<li>结果:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(kxy));</span><br></pre></td></tr></table></figure>
+<p><img src="/img/JavaScript可枚举2.png" alt="枚举遍历结果" title="枚举属性"></p>
+<p>只包含 “name” 属性，说明该方法只能返回对象本身具有的可枚举属性。</p>
+<ul>
+<li>结果:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(kxy));</span><br></pre></td></tr></table></figure>
+<p><img src="/img/JavaScript可枚举3.png" alt="枚举遍历结果" title="枚举属性"></p>
+<p>此方法也只能读取对象本身的可枚举属性，并序列化为 JSON 对象。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/05/13/JavaScript/JS可枚举与不可枚举/" data-id="cjvlw5bkg002qxfq3nhd1q3s1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/枚举/">枚举</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/form表单的name属性与submit()默认事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/10/JavaScript/form表单的name属性与submit()默认事件/" class="article-date">
+  <time datetime="2016-04-10T13:57:33.000Z" itemprop="datePublished">2016-04-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/10/JavaScript/form表单的name属性与submit()默认事件/">form 表单 name 属性与 submit() 默认事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="表单form-表单-name-属性和-submit-默认事件"><a href="#表单form-表单-name-属性和-submit-默认事件" class="headerlink" title="表单form 表单 name 属性和 submit() 默认事件"></a>表单form 表单 name 属性和 submit() 默认事件</h1><h2 id="name-属性用途"><a href="#name-属性用途" class="headerlink" title="name 属性用途"></a>name 属性用途</h2><ol>
+<li>作为可与服务器交互数据的 HTML 元素的服务器端标识，比如 input、select、textarea和 button 等。我们可以在服务器端根据其 Name 通过 Request.Params 取得元素提交的值。</li>
+<li>HTML 元素 Input type=’radio’ 分组，我们知道 radio button 控件在同一个分组类，check 操作是mutex(互斥) 的，同一时间只能选中一个 radio，这个分组就是根据相同的 Name 属性来实现的。</li>
+<li>建立页面中的锚点，我们知道 <code>&lt;a href=&quot;URL&quot;&gt;link&lt;/a&gt;</code> 是获得一个页面超级链接，如果不用href属性，而改用Name，如：<code>&lt;a name=&quot;PageBottom&quot;&gt;&lt;/a&gt;</code>，我们就获得了一个页面锚点。</li>
+</ol>
+<h2 id="name-属性与-id-属性的区别"><a href="#name-属性与-id-属性的区别" class="headerlink" title="name 属性与 id 属性的区别"></a>name 属性与 id 属性的区别</h2><ol>
+<li>names属性：下面代码中 <strong>必须name相同才能成为一组单选按钮</strong>，而id属性没有这个功能</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"1 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"2 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"3 "</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>id属性：下面代码中 <strong>for属性必须指向一个id</strong>，否则没效果</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">id</span>= <span class="string">"xx "</span>   <span class="attr">name</span>= <span class="string">"yy "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>   <span class="attr">for</span>= <span class="string">"xx "</span>&gt;</span> Label <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="submit-默认事件"><a href="#submit-默认事件" class="headerlink" title="submit()默认事件"></a>submit()默认事件</h2><ul>
+<li>var collection = document.forms;<ul>
+<li>该属性返回一个 (HTMLCollection) 数组集合，包含了文档中的所有 form 元素</li>
+<li>因此 document.forms[“myForm”] 代表选择 name 属性为 myForm 的表单</li>
+<li>单个表单的选择也可以使用 document.forms[0] 等等</li>
+<li>类似还有直接使用 document.myForm 也是选择对应 name 属性的表单</li>
+<li>由此发现，包含 name 属性的元素可以使用 document.name.name 一级一级地找寻到，如果 name 相同会返回数组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> thisForm = <span class="built_in">document</span>.forms[<span class="string">'form1'</span>]; <span class="comment">//获取name为form1的form表单</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//或者</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//var thisForm = document.forms[0]; //获取第一个form表单</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.username.value); <span class="comment">//输出表单name属性值为form1的 username 的值</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.address.value);</span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.forms[<span class="number">0</span>].submit(); <span class="comment">//表单提交</span></span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 以下为三个简单的form表单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form1"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"zhangsan"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">value</span>=<span class="string">"beijing"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form2"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form3"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>submit()<ul>
+<li>默认表单提交事件,早于 <code>Input type=&#39;submit&#39;</code> 按钮</li>
+<li>该事件发生在提交之前,可以用来进行表单验证</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">submitFun</span>(<span class="params">obj</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(obj.category.value==<span class="string">''</span>)&#123;</span></span><br><span class="line"><span class="javascript">          alert(<span class="string">"请输入"</span>);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">"return submitFun(this);"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"category"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>当”提交”按钮被点击时，依然会执行submitFun()函数，在submitFun()函数中，我们对表单输入框进行了空验证，如果为空，提示输入并 return false,这样表单就不会提交（上面已经说到：当该事件触发的函数中返回 false 时，表单就不会被提交）。</li>
+<li>同时，这里要注意 onsubmit=”return submitFun(this);”，不能掉了 return，否则表单永远会提交。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/04/10/JavaScript/form表单的name属性与submit()默认事件/" data-id="cjvlw5bkx003yxfq3eh4iniq0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form表单/">form表单</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Essay/程序员学习方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/22/Essay/程序员学习方法/" class="article-date">
+  <time datetime="2016-03-22T12:28:51.000Z" itemprop="datePublished">2016-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/自由随笔/">自由随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/22/Essay/程序员学习方法/">程序员学习方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h1><p>如今的时代，知识大爆炸，终身学习对人愈来愈重要，简要谈一谈我自己在实际工作中自学的方法。</p>
+<h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><ol>
+<li>先把官方文档过一遍，不是为了明白，是为了熟悉全局</li>
+<li>不要纠结一句话的不理解，也许后面三段都是解释这一句话</li>
+<li>上手写 demo，一定要亲手敲打每一个 api</li>
+<li>遇到 bug 再过一遍官方文档，寻找解决方法</li>
+<li>解决不了就去查找第三方资源: github，大牛博客，书，Stack Overflow ，Google</li>
+<li>然后理解总结别人为什么会这么写代码，配合再去看一遍官方文档，深入理解</li>
+<li>一定要总结自己学过的知识(画脑图，写博客-开源精神)</li>
+<li>先 what 然后 how 最后 why</li>
+</ol>
+<h2 id="一些不错的网站和公众号介绍"><a href="#一些不错的网站和公众号介绍" class="headerlink" title="一些不错的网站和公众号介绍"></a>一些不错的网站和公众号介绍</h2><ul>
+<li>开源中国<ul>
+<li>码云</li>
+<li>看最新的技术信息</li>
+</ul>
+</li>
+<li>推酷</li>
+<li>Stack Overflow</li>
+<li>CNode 社区</li>
+<li>公众号<ul>
+<li>前端大全</li>
+<li>前端那些事儿</li>
+<li>前端早读课</li>
+</ul>
+</li>
+</ul>
+<h2 id="简历如何写"><a href="#简历如何写" class="headerlink" title="简历如何写"></a>简历如何写</h2><ul>
+<li>移动WebAPP 项目<ul>
+<li>Zepto.js，视口，rem</li>
+</ul>
+</li>
+<li>PC 项目<ul>
+<li>一堆jquery插件，媒体查询，Bootstrap</li>
+</ul>
+</li>
+<li>Angular</li>
+<li>React</li>
+<li>Vue</li>
+<li>Node.js 项目<ul>
+<li>富文本，验证码，md5，模板引擎，截取图片</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/03/22/Essay/程序员学习方法/" data-id="cjvlw5bjm000pxfq3rm7zi9t8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/JS语句结束标志分号的使用时机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/01/JavaScript/JS语句结束标志分号的使用时机/" class="article-date">
+  <time datetime="2016-03-01T04:59:41.000Z" itemprop="datePublished">2016-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/01/JavaScript/JS语句结束标志分号的使用时机/">JS 语句结束标志分号的使用时机</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在js里面什么时候需要用-来作结束标志？"><a href="#在js里面什么时候需要用-来作结束标志？" class="headerlink" title="在js里面什么时候需要用 ; 来作结束标志？"></a>在js里面什么时候需要用 <code>;</code> 来作结束标志？</h1><ul>
+<li>有人坚持认为 js 不应该用分号作为结束标志，换行即可，多写一个分号会觉得多余</li>
+<li>也有人坚持一定要习惯用 <code>;</code> 来表示结束，即便多写一两个分号其实也没什么错</li>
+<li>其实怎么使用是个人风格问题，但我们要了解什么情况下，不用 <code>;</code> 会存在风险<ul>
+<li>其实也很简单，在换行之后碰到以下的5种操作符号作为语句的开始时就会存在风险</li>
+<li>而且有些风险是显性的，而有些则是隐性的：<code>+ - [ ( /</code></li>
+<li>也就是这几个符号组合起来的表达式，存在跨行运算进而导致程序异常</li>
+<li>我简单总结了一下，它们都有两个共同点：<ol>
+<li>这些符号在 js 中都存在二义性或多义性；</li>
+<li>优先级不同，优先级高的表义会覆盖优先级低的。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="先看圆括号"><a href="#先看圆括号" class="headerlink" title="先看圆括号 ("></a>先看圆括号 (</h2><blockquote>
+<p>在js里面圆括号是优先级最高的运算符，因此在它之前存在另外一个表达式，就要用分号隔开，否则就会出现异常，而且它的异常存在隐式的错误，也就是不报错，但运行结果不是预期的，导致问题很难定位。</p>
+</blockquote>
+<h3 id="圆括号的二义性："><a href="#圆括号的二义性：" class="headerlink" title="圆括号的二义性："></a>圆括号的二义性：</h3><ol>
+<li>表示一个独立表达式（例如：<code>1 + 2 * 3 = 7 , (1 + 2) * 3 = 9</code> ），优先级 19</li>
+<li>表示函数运行表达式（例如：a() ），优先级 17<ul>
+<li><strong>注意：js 运算符的优先级有19级，19~0递减，数值越大，越优先</strong></li>
+<li>参考:<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" title="运算符优先级" target="_blank" rel="noopener">运算符优先级</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="加号-和减号"><a href="#加号-和减号" class="headerlink" title="加号 + 和减号 -"></a>加号 + 和减号 -</h2><ul>
+<li>表现和 <code>(</code> 类似，不过 <code>+-</code> 还存在隐式的类型转换</li>
+<li>很多 bug 都是这玩意导致的，而且也比较难定位。</li>
+</ul>
+<h3 id="二义性"><a href="#二义性" class="headerlink" title="二义性"></a>二义性</h3><ol>
+<li>一元 加法/减法 ，优先级15</li>
+<li>加法/减法 运算 ，优先级13</li>
+</ol>
+<h2 id="方括号"><a href="#方括号" class="headerlink" title="方括号 ["></a>方括号 [</h2><ul>
+<li><code>[]</code> 是成员访问表达式（Property accessors）</li>
+<li>在所有运算操作符中，优先级仅仅次于圆括号 <code>()</code>，而高于 <code>+-</code></li>
+<li>另外成员访问表达式还有点符号（<code>.</code>）</li>
+<li>两者的优先级是一致的。在什么情况下会出现异常呢？</li>
+</ul>
+<h3 id="方括号的三义性"><a href="#方括号的三义性" class="headerlink" title="方括号的三义性"></a>方括号的三义性</h3><ol>
+<li>数组/对象的成员访问符 ，优先级18</li>
+<li>数组字面量，快速定义数组，优先级 无</li>
+<li>ES2015以后，数组解构表达式，用于批量赋值</li>
+</ol>
+<h2 id="除号"><a href="#除号" class="headerlink" title="除号 /"></a>除号 /</h2><blockquote>
+<p>这个 (<code>/</code>) 符号有一点点特殊，不过也是会出现类似以上几种操作的异常表现的符号之一。其实它除了表示除号外，同时还是正则表达式字面量的开始，一般会碰到正则时会出现异常。</p>
+</blockquote>
+<h3 id="除号的二义性"><a href="#除号的二义性" class="headerlink" title="除号的二义性"></a>除号的二义性</h3><ol>
+<li>除法运算，优先级14</li>
+<li>正则表达式字面量的开始，优先级 无</li>
+</ol>
+<h2 id="补充：-花括符"><a href="#补充：-花括符" class="headerlink" title="补充：{} 花括符"></a>补充：{} 花括符</h2><blockquote>
+<p>当使用 function，if，switch，while 等书写的语句时，跟着以上几种表达并不会出现异常表现，而用来定义对象时却会，其实是因为 <code>{}</code> 存在多种意义，在 ES5 里面是二义性，而到了ES2015则有多意性：</p>
+</blockquote>
+<ol>
+<li>代码块，function，if，switch，while等跟着的就是这种；</li>
+<li>对象字面量，用来快速定义一个对象；</li>
+<li>在ES2015，<code>{}</code> 还作为表示一个块级作用域，用法可以参考<a href="http://es6.ruanyifeng.com/#docs/let#块级作用域" target="_blank" rel="noopener">块级作用域</a></li>
+<li>ES2015以后，对象解构表达式</li>
+<li>ES2015，长文本内变量标志符</li>
+</ol>
+<h2 id="对于分号的处理，我的观点"><a href="#对于分号的处理，我的观点" class="headerlink" title="对于分号的处理，我的观点"></a>对于分号的处理，我的观点</h2><p>我觉得还是坚持合理书写分号吧，反正最后发布都是要压缩优化的，多写一两个分号也不是什么大事。</p>
+<p>当然，大牛们觉得不需要写分号，那是人家明白什么情况下会出现异常，如果你觉得自己都明白了，那也可以尝试无分号的代码风格，这可能比较吊吧~~</p>
+<p>不过，在绝大多数项目中，我们书写的代码其实是为了给别人看的，“别人”就有可能不知道什么时候该加分号。所以团队合作的项目，我个人认为，书写分号是必须的，无分号的代码风格更适合个人项目，或个个都是大牛的项目。</p>
+<p>如何避免由于遗漏分号而导致一些难以定位的问题，其实可以借助代码检测工具来避免，比如：ES5 推荐 jshint，ES2015则推荐 eslint。</p>
+<ul>
+<li>作者：igetit</li>
+<li>链接：<a href="https://www.zhihu.com/question/39420977/answer/98613227" target="_blank" rel="noopener">原文地址</a></li>
+<li>来源：知乎</li>
+<li>著作权归作者所有，转载请联系作者获得授权。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/03/01/JavaScript/JS语句结束标志分号的使用时机/" data-id="cjvlw5bkq003gxfq3a5klbnok" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git/git diff详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/05/Git/git diff详解/" class="article-date">
+  <time datetime="2016-02-05T15:00:46.000Z" itemprop="datePublished">2016-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/05/Git/git diff详解/">git diff 详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-diff-命令"><a href="#git-diff-命令" class="headerlink" title="git diff 命令"></a>git diff 命令</h1><p><code>git diff</code> 命令是用来比较显示 <code>git</code> 各版本之间文件不同的命令。</p>
+<h2 id="git-diff-（不带参数）"><a href="#git-diff-（不带参数）" class="headerlink" title="git diff （不带参数）"></a>git diff （不带参数）</h2><p><code>git diff</code> 比较显示暂存区 (staging area) 与工作区 (working area) 文件的不同</p>
+<h2 id="git-diff-master"><a href="#git-diff-master" class="headerlink" title="git diff master"></a>git diff master</h2><p>比较显示 <code>master</code> 分支与工作区文件的不同</p>
+<h2 id="git-diff-HEAD"><a href="#git-diff-HEAD" class="headerlink" title="git diff HEAD"></a>git diff HEAD</h2><p>比较显示 <code>HEAD</code> 指向的内容与工作区文件的不同</p>
+<h2 id="git-diff-refs-remotes-origin-master"><a href="#git-diff-refs-remotes-origin-master" class="headerlink" title="git diff refs/remotes/origin/master"></a>git diff refs/remotes/origin/master</h2><p>比较显示 <code>master</code> 分支与当前工作区文件的不同</p>
+<h2 id="比较-master-分支的历史提交版本与工作区"><a href="#比较-master-分支的历史提交版本与工作区" class="headerlink" title="比较 master 分支的历史提交版本与工作区"></a>比较 master 分支的历史提交版本与工作区</h2><p><code>git diff 0c5ee16a6a4c849d0ae0448caa8ff174399c7c3c ./header.html</code></p>
+<p>上面的命令中， <code>diff</code> 后面的参数指的是 <code>commit id</code> ， <code>./header.html</code> 是要比较的文件路径。</p>
+<h2 id="git-diff-命令输出格式"><a href="#git-diff-命令输出格式" class="headerlink" title="git diff 命令输出格式"></a>git diff 命令输出格式</h2><ol>
+<li><code>---</code> 代表源文件</li>
+<li><code>+++</code> 代表目标文件</li>
+</ol>
+<p>通常工作区的文件都被当作目标文件看待。</p>
+<ul>
+<li><code>-</code> 开头的行，是只出现在源文件中的行</li>
+<li><code>+</code> 开头的行，是只出现在目标文件中的行</li>
+<li><strong>空格</strong>开头的行，是源文件和目标文件中都出现的行</li>
+<li>差异按照差异小结进行组织，每个差异小结的第一行都是定位语句，由@@开头，@@结尾。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/webpack.production.js b/webpack.production.js</span><br><span class="line">index eb5e967..ffba89b 100644</span><br><span class="line">--- a/webpack.production.js</span><br><span class="line">+++ b/webpack.production.js</span><br><span class="line">@@ -85,7 +85,7 @@ module.exports = &#123;</span><br><span class="line">   &#125;,</span><br><span class="line">   plugins: [</span><br><span class="line">     // webpack 内置的 banner-plugin</span><br><span class="line">-    new webpack.BannerPlugin(<span class="string">"Copyright by 2015-2016."</span>),</span><br><span class="line">+    new webpack.BannerPlugin(<span class="string">"Copyright by hushiking@github.com."</span>),</span><br><span class="line"></span><br><span class="line">     // html 模板插件</span><br><span class="line">     new HtmlWebpackPlugin(&#123;</span><br></pre></td></tr></table></figure>
+<p>上面的 <code>git diff</code> 结果说明：</p>
+<ol>
+<li>文件之前的某个提交是源文件，当前工作区的该文件是目标文件</li>
+<li>在源文件第85行开始的7行和目标文件第85行开始的7行构成一个差异小结</li>
+<li>这个差异小结中，目标文件添加了一行 <code>new webpack.BannerPlugin(&quot;Copyright by hushiking@github.com.&quot;),</code></li>
+<li>其他空格开头的行表明没有差异</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/02/05/Git/git diff详解/" data-id="cjvlw5bjq0012xfq3o2ch5b77" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHP/PHP常用API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/25/PHP/PHP常用API/" class="article-date">
+  <time datetime="2016-01-25T14:27:18.000Z" itemprop="datePublished">2016-01-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/25/PHP/PHP常用API/">PHP 常用 API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PHP-相关-API"><a href="#PHP-相关-API" class="headerlink" title="PHP 相关 API"></a>PHP 相关 API</h1><p>本文介绍了 PHP 一些常用的 API ，详情访问请下载官方文档解读。</p>
+<h2 id="php数组与json互转"><a href="#php数组与json互转" class="headerlink" title="php数组与json互转"></a>php数组与json互转</h2><ul>
+<li><code>json_encode()</code>: 用于将php数组和对象转换为json格式，json只接受utf-8编码的字符，json_encode()的参数必须是utf-8编码，否则会得到空字符或者null</li>
+<li><code>json_decode()</code>: 用于将json文本转换为相应的php数据结构<ul>
+<li>参数1: 要转换的json字符串</li>
+<li>参数2: 可选，默认转化为php对象;若为true，将json字符串转化为php数组</li>
+</ul>
+</li>
+</ul>
+<h2 id="php基本用法与方法"><a href="#php基本用法与方法" class="headerlink" title="php基本用法与方法"></a>php基本用法与方法</h2><ul>
+<li>字符串拼接: 使用<code>.</code></li>
+<li>输出普通的基本类型数据: <code>echo</code></li>
+<li>打印数组: <code>print_r()</code></li>
+<li>输出布尔值: <code>var_dump()</code> <strong>该函数会返回数据类型和值</strong></li>
+<li>返回数组中一个或多个随机的键<ul>
+<li><code>array_rand(array， number)</code></li>
+<li>参数1: 对应数组</li>
+<li>参数2: 要返回多少键名</li>
+</ul>
+</li>
+<li>返回数组中元素的数目: <code>count(array)</code></li>
+<li>遍历关系型数组: <code>$food = array(&#39;name&#39;=&gt;&#39;西兰花炒蛋&#39;,&#39;material1&#39;=&gt;&#39;西兰花&#39;,&#39;material2&#39;=&gt;&#39;鸡蛋&#39;,&#39;color&#39;=&gt;&#39;yellowgreen&#39;)</code><ul>
+<li>使用foreach: <code>foreach($food as $key =&gt; $value) { }</code></li>
+<li>参数1: 要遍历的关系型数组</li>
+<li>参数2: 关系型数组的key键</li>
+<li>参数3: key对应的value值</li>
+</ul>
+</li>
+<li>获取数据<ul>
+<li><code>$_GET[&#39;name&#39;]</code> 或者 <code>$_POST[&#39;name&#39;]</code></li>
+</ul>
+</li>
+<li>判断用户名是否在数组中存在<ul>
+<li><code>in_array($search， $array)</code></li>
+<li>参数1: 要查询的值</li>
+<li>参数2: 要查询的数组</li>
+</ul>
+</li>
+</ul>
+<h2 id="php文件读写"><a href="#php文件读写" class="headerlink" title="php文件读写"></a>php文件读写</h2><ul>
+<li>写入文件<ul>
+<li><code>file_put_contents(path， data， type)</code></li>
+<li>参数1: 要写入文件的路径</li>
+<li>参数2: 要写入的数据</li>
+<li>参数3: 可选，默认直接覆盖原有数据(追加: <code>File_APPEND</code>)</li>
+</ul>
+</li>
+<li>把文件读入一个字符串<ul>
+<li><code>file_get_contents(path)</code></li>
+<li>path可以为普通文件路径，也可以为url路径</li>
+</ul>
+</li>
+</ul>
+<h2 id="php注意点"><a href="#php注意点" class="headerlink" title="php注意点"></a>php注意点</h2><ul>
+<li><strong>注意事项</strong><ul>
+<li>如果php双引号中使用的字符串刚好跟一个变量的名字一样，那么会将变量的值替换进去，推荐使用单引号定义字符串，防止出错</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/01/25/PHP/PHP常用API/" data-id="cjvlw5blh0055xfq38993dqca" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux/Linux 常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/30/Linux/Linux 常用命令/" class="article-date">
+  <time datetime="2015-12-29T22:28:15.000Z" itemprop="datePublished">2015-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/30/Linux/Linux 常用命令/">Linux 常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-命令"><a href="#Linux-命令" class="headerlink" title="Linux 命令"></a>Linux 命令</h1><p>一些常用的 <code>Linux</code> 命令，不定时更新……</p>
+<h2 id="Linux文件和目录"><a href="#Linux文件和目录" class="headerlink" title="Linux文件和目录"></a>Linux文件和目录</h2><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><code>/</code>: linux根目录<ul>
+<li><code>/bin</code>: 可执行的二进制文件目录,如常用的命令ls/tar/mv/cat等</li>
+<li><code>/sbin</code>: 放置系统管理员使用的可执行命令</li>
+<li><code>/usr</code>: 用户相关</li>
+<li><code>/lib</code>: 系统使用的函数库的目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><ul>
+<li><code>.和..</code>: 每个目录下都有.和..<ul>
+<li>. 表示当前目录</li>
+<li>.. 表示上一级目录,即父目录</li>
+<li>根目录下的. 和 .. 都表示当前目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux简单命令"><a href="#Linux简单命令" class="headerlink" title="Linux简单命令"></a>Linux简单命令</h2><h3 id="sudo-s-获取管理员权限-Ubuntu"><a href="#sudo-s-获取管理员权限-Ubuntu" class="headerlink" title="sudo -s: 获取管理员权限(Ubuntu)"></a>sudo -s: 获取管理员权限(Ubuntu)</h3><h3 id="man-手册帮助-manual"><a href="#man-手册帮助-manual" class="headerlink" title="man: 手册帮助(manual)"></a>man: 手册帮助(manual)</h3><p>man是linux提供的一个手册,分成很多章节(section),使用时可以指定不同章节来浏览</p>
+<p><code>man ls</code>或者<code>man 2 printf</code></p>
+<p><strong><em>q可退出man手册,h可查看man手册如何操作</em></strong></p>
+<h3 id="grep-文本搜索"><a href="#grep-文本搜索" class="headerlink" title="grep: 文本搜索"></a>grep: 文本搜索</h3><p>一般格式: <code>grep [-选项] &#39;搜索内容串&#39; 文件名</code></p>
+<ul>
+<li><code>grep -v &#39;abc&#39; abc.py</code>: 显示不包含abc的所有行<ul>
+<li>v 表示不包含匹配文本的所有行(相当于求反)</li>
+<li>n 表示显示匹配行及行号</li>
+<li>i 表示忽略大小写</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>搜索内容串可采用正则表达式</em></strong></p>
+<h3 id="history-查看输入过的历史命令"><a href="#history-查看输入过的历史命令" class="headerlink" title="history: 查看输入过的历史命令"></a>history: 查看输入过的历史命令</h3><p><code>history &gt; history.txt</code>: 将历史记录到处到 TXT 文件中<br><code>cp ~/.bash_history myHistory.txt</code>: 将历史记录复制到任意命名的文件中</p>
+<h3 id="cat-查看或者合并文件内容-重定向"><a href="#cat-查看或者合并文件内容-重定向" class="headerlink" title="cat: 查看或者合并文件内容,重定向"></a>cat: 查看或者合并文件内容,重定向</h3><p><code>cat 1.py &gt; 2.py</code>: 将1文件的内容写入到2文件,如果没有2文件则新建2文件</p>
+<p><code>cat 1.py 2.py &gt; 3.py</code>: 将1文件和2文件的内容追加写入到3文件</p>
+<p><code>&gt;&gt;</code>: 追加重定向</p>
+<h3 id="more-分屏显示"><a href="#more-分屏显示" class="headerlink" title="more: 分屏显示"></a>more: 分屏显示</h3><p><code>more index.html</code>: 当一个屏幕显示不全可使用more命令分屏显示,每次只显示一页,<strong>按下空格键显示下一页,按下q键退出,按下h键获取帮助</strong></p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 <code>|</code></h3><blockquote>
+<p>管道: 一个命令的输出可以通过管道作为另一个命令的输入,例如:</p>
+</blockquote>
+<p><code>ls -alh | more</code></p>
+<h3 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find: 查找文件"></a>find: 查找文件</h3><p><code>find / -name aa.py</code>: 从根目录开始查找aa.py文件(文件名可以使用正则表达式)</p>
+<p><code>find / -size +2M</code>: 从根目录开始查找文件大小大于2M的文件</p>
+<p><code>find / -size -2M</code>: 从根目录开始查找文件大小小于2M的文件</p>
+<h3 id="cp-拷贝文件"><a href="#cp-拷贝文件" class="headerlink" title="cp: 拷贝文件"></a>cp: 拷贝文件</h3><ul>
+<li><p><code>cp aa.py python/</code>: 拷贝aa.py文件到当前的python目录下</p>
+</li>
+<li><p><code>cp python python2/ -r</code>: 拷贝python文件夹到当前的python2文件夹中</p>
+</li>
+<li><p><code>cp bb.py python/ -avi</code>:</p>
+<ul>
+<li>v表示显示拷贝进度;</li>
+<li>a表示复制目录时保留链接、文件属性,并递归地复制目录,即保持文件原有属性</li>
+<li>i表示交互式复制,在覆盖目标文件之前提示用户;</li>
+<li>r表示递归复制目录下的所有子目录和文件;</li>
+<li>f表示强制执行,已经存在的目标文件不提示</li>
+</ul>
+</li>
+</ul>
+<h3 id="ln-硬链接与软链接"><a href="#ln-硬链接与软链接" class="headerlink" title="ln: 硬链接与软链接"></a>ln: 硬链接与软链接</h3><p><code>ln abc.py abclink.py</code>: 硬链接,只能链接普通文件,不能链接目录.相当于一个文件有多个名字,删除一个不影响另一个</p>
+<p><code>ln -s abc.py abclink_s.py</code>: 软链接,不占用磁盘空间,删除源文件则链接失效,相当于windows的快捷方式</p>
+<h3 id="mv-移动文件-可用于重命名"><a href="#mv-移动文件-可用于重命名" class="headerlink" title="mv: 移动文件,可用于重命名"></a>mv: 移动文件,可用于重命名</h3><p><code>mv cc.py python/</code>: 移动cc.py文件到python文件夹</p>
+<p><code>mv python python2</code>: 移动python文件夹到python2文件夹</p>
+<p><code>mv cc.py dd.py</code>: 相当于将cc.py重命名为dd.py</p>
+<h3 id="tar-打包与-gzip-zip-压缩文件"><a href="#tar-打包与-gzip-zip-压缩文件" class="headerlink" title="tar: 打包与 gzip/zip: 压缩文件"></a>tar: 打包与 gzip/zip: 压缩文件</h3><p><code>tar -cvf test.tar 1.txt 2.txt 3.txt</code>: 打包1 2 3文件到test.tar</p>
+<p><code>tar -xvf test.tar</code>: 解包test.tar</p>
+<p><code>gzip -r test.tar test.tar.gz</code>或者简写为<code>gzip test.tar</code>: 压缩test.tar</p>
+<p><code>gzip -d test.tar.gz</code>: 解压缩test.tar.gz</p>
+<p><code>tar -zcvf test.tar.gz *.py</code>: 打包并压缩所有后缀名为py的文件</p>
+<p><code>tar -zxvf test.tar.gz</code>: 解压并解包</p>
+<p><code>tar -zxvf test.tar.gz -C python/</code>: 解压并解包到指定文件夹</p>
+<p><code>tar -jcvf test.tar.bz2 *.py</code>: 打包并压缩为bz2格式</p>
+<p><code>tar -jxvf test.tar.bz2</code>: 解压缩并解包</p>
+<p><code>zip -r myzip *.*</code>或者简写为<code>zip myzip *.*</code>: 压缩为zip格式</p>
+<p><code>unzip -d test myzip.zip</code>: 解压zip文件到test文件夹中</p>
+<h3 id="which-查看命令"><a href="#which-查看命令" class="headerlink" title="which: 查看命令"></a>which: 查看命令</h3><p><code>which ls</code>: ls命令在哪<br><code>which sudo</code>: sudo命令在哪</p>
+<h3 id="ps-查看进程信息"><a href="#ps-查看进程信息" class="headerlink" title="ps: 查看进程信息"></a>ps: 查看进程信息</h3><p><code>ps -ef|grep nginx</code>: 查看包含nginx的进程<br><code>lsof -i:8989</code>: 查看8989端口是否被占用<br><code>ps -lu hsj</code>: 查看属于用户hsj的进程<br><code>pgrep -l re</code>: 查看进程名中含有re的进程</p>
+<h3 id="top-动态显示进程"><a href="#top-动态显示进程" class="headerlink" title="top: 动态显示进程"></a>top: 动态显示进程</h3><h3 id="kill-杀死进程"><a href="#kill-杀死进程" class="headerlink" title="kill: 杀死进程"></a>kill: 杀死进程</h3><p><code>kill -9 进程pid号</code>: 强制杀死</p>
+<h3 id="reboot-shutdown-init-关机重启"><a href="#reboot-shutdown-init-关机重启" class="headerlink" title="reboot/shutdown/init: 关机重启"></a>reboot/shutdown/init: 关机重启</h3><h3 id="df-检测磁盘空间"><a href="#df-检测磁盘空间" class="headerlink" title="df: 检测磁盘空间"></a>df: 检测磁盘空间</h3><h3 id="ifconfig-查看或配置网卡信息"><a href="#ifconfig-查看或配置网卡信息" class="headerlink" title="ifconfig: 查看或配置网卡信息"></a>ifconfig: 查看或配置网卡信息</h3><h3 id="ping-测试远程主机连通性"><a href="#ping-测试远程主机连通性" class="headerlink" title="ping: 测试远程主机连通性"></a>ping: 测试远程主机连通性</h3><h2 id="Linux用户管理"><a href="#Linux用户管理" class="headerlink" title="Linux用户管理"></a>Linux用户管理</h2><h3 id="查看-添加-删除用户"><a href="#查看-添加-删除用户" class="headerlink" title="查看/添加/删除用户"></a>查看/添加/删除用户</h3><p><code>who</code>: 查看当前登录的信息</p>
+<p><code>whoami</code>: 查看我是谁</p>
+<p><code>ssh 用户名@ip地址</code>: 远程登录某台机器</p>
+<p><code>useradd xxx</code>或者<code>adduser yyy</code>: 添加新用户</p>
+<p><code>useradd laowang -m</code>: 添加新用户并添加家目录</p>
+<p><code>useradd laowang -d /home/xxx</code>: 添加新用户并且自己指定家目录</p>
+<p><code>passwd xxx</code>: 为xxx用户添加密码</p>
+<p><code>userdel -r laowang</code>: 删除用户并删除该用户家目录</p>
+<p><code>su - laowang</code>: 切换账户并把当前目录更换到家目录(Ubuntu)</p>
+<p><code>su laowang</code>: 切换账户(Ubuntu)</p>
+<p><code>su root</code>: 切换到root用户</p>
+<h3 id="Linux修改文件权限"><a href="#Linux修改文件权限" class="headerlink" title="Linux修改文件权限"></a>Linux修改文件权限</h3><ul>
+<li>字母法: <code>chmod u/g/o/a +/-/= rwx 文件名</code><ul>
+<li>u: user表示文件所有者</li>
+<li>g: group表示与该文件的所有者属于同一组(group)者,即用户组</li>
+<li>o: other表示其他人</li>
+<li>a: all表示这三者都是</li>
+<li>+: 增加权限</li>
+<li>-: 撤销权限</li>
+<li>=: 设定权限</li>
+</ul>
+</li>
+<li>数字法: <code>chmod 751 文件名</code><ul>
+<li>r: 读取权限,数字代号4</li>
+<li>w: 写入权限,数字代号2</li>
+<li>x: 执行权限,数字代号1</li>
+<li>-: 不具任何权限,数字代号0</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linux修改文件所有者"><a href="#Linux修改文件所有者" class="headerlink" title="Linux修改文件所有者"></a>Linux修改文件所有者</h3><p><code>chown 用户名 文件或目录名</code></p>
+<h3 id="Linux修改文件所属组"><a href="#Linux修改文件所属组" class="headerlink" title="Linux修改文件所属组"></a>Linux修改文件所属组</h3><p><code>chgrp 用户组名 文件或目录名</code></p>
+<h3 id="Linux-复制粘贴"><a href="#Linux-复制粘贴" class="headerlink" title="Linux 复制粘贴"></a>Linux 复制粘贴</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat README.TXT | xsel</span><br><span class="line">cat README.TXT | xsel -b <span class="comment"># 如有问题可以试试-b选项</span></span><br><span class="line">xsel &lt; README.TXT</span><br><span class="line"><span class="comment"># 将readme.txt的文本放入剪贴板</span></span><br><span class="line"></span><br><span class="line">xsel -c</span><br><span class="line"><span class="comment"># 清空剪贴板</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2015/12/30/Linux/Linux 常用命令/" data-id="cjvlw5bl7004lxfq3dcokwnuy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/JS表达式与语句区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/16/JavaScript/JS表达式与语句区别/" class="article-date">
+  <time datetime="2015-12-16T15:01:06.000Z" itemprop="datePublished">2015-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/16/JavaScript/JS表达式与语句区别/">JS 语法中表达式与语句的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript-表达式与语句区别"><a href="#JavaScript-表达式与语句区别" class="headerlink" title="JavaScript 表达式与语句区别"></a>JavaScript 表达式与语句区别</h1><p><strong>Javascript 语言精粹</strong>：</p>
+<ol>
+<li><p>表达式是由运算符构成，并运算产生结果的语法结构。</p>
+</li>
+<li><p>程序是由语句构成，语句则是由“;（分号）”分隔的句子或命令。</p>
+</li>
+<li><p>如果在表达式后面加上一个“;”分隔符，这就被称为“表达式语句”。它表明“只有表达式，而没有其他语法元素的语句”</p>
+</li>
+</ol>
+<p>JavaScript 一个表达式会产生一个值，它可以放在任何需要一个值的地方。比如，作为一个函数调用的参数。下面的每行代码都是一个表达式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myBook</span><br><span class="line"><span class="number">5</span> - x</span><br><span class="line">myFunc(<span class="string">'a'</span>, <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+<p>语句可以理解成一个行为。循环语句和 if 语句就是典型的语句。一个程序是由一系列语句组成的。JavaScript 中某些需要语句的地方，你可以使用一个表达式来代替。这样的语句称之为表达式语句。但反过来不可以：你不能在一个需要表达式的地方放一个语句。比如，一个if语句不能作为一个函数的参数。</p>
+<h2 id="json-与-eval-用法区别"><a href="#json-与-eval-用法区别" class="headerlink" title="json 与 eval 用法区别"></a>json 与 eval 用法区别</h2><ul>
+<li>json字符串的解析方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonData = <span class="string">'&#123;"data1":"Hello,", "data2":"world!&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> evalJson=<span class="built_in">eval</span>(<span class="string">'('</span>+jsonData+<span class="string">')'</span>);</span><br><span class="line"><span class="keyword">var</span> jsonParseJson=<span class="built_in">JSON</span>.parse(jsonData);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> jsonstr = <span class="string">'&#123;"data1":"hello","data2":++value&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> data1 = <span class="built_in">eval</span>(<span class="string">'('</span>+jsonstr+<span class="string">')'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(data1);<span class="comment">//这时value值为2</span></span><br><span class="line"><span class="keyword">var</span> data2=<span class="built_in">JSON</span>.parse(jsonstr);</span><br><span class="line"><span class="built_in">console</span>.log(data2);<span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/json字符串解析报错.png" alt="Alt json字符串解析报错" title="json字符串解析报错"></p>
+<ul>
+<li><p>结果分析</p>
+<ul>
+<li>从控制输出台的结果可以看出，第一个 eval() 顺利执行，第二个报错了。</li>
+<li><strong>从上例就可以明显地看出，eval 在解析字符串时，会执行该字符串中的代码(这样的后果是相当恶劣的)</strong></li>
+<li>如上例中，由于用 eval 解析一个 json 字符串而造成原先的 value 的值改变。</li>
+<li>在<strong>《高性能JavaScript》</strong>一书中指出，使用 eval 乱来解析 JSON 字符串是很危险的，容易将一些置于字符串中的危险代码一并执行。</li>
+<li>所以我们应该尽量使用 <code>JSON.parse()</code> 方法来解析 JSON 字符串。</li>
+</ul>
+</li>
+<li><p>补充理解</p>
+<ul>
+<li>另外，在一个 <strong><em>字符串</em></strong> 中如果我们想输出“\”字符，我们必须使用 <strong>转义字符</strong></li>
+<li>所以最终形式是：<code>console.log(&quot;\\&quot;)</code>;</li>
+<li>但是由于 <code>JSON.parse</code> 解析的是字符串的真实含义</li>
+<li>所以每一个<code>&quot;\&quot;</code>又都要使用<code>&quot;\&quot;</code>来进行转义</li>
+<li>所以最终形式为：<code>console.log(JSON.parse(&#39;{&quot;a&quot;:&quot;\\\\&quot;}&#39;))</code>;</li>
+<li>要注意理解其中意思。</li>
+</ul>
+</li>
+<li><p>为什么 eval() 解析的时候要加上括号？</p>
+<ul>
+<li>因为 <strong>eval() 相当于一个执行环境</strong></li>
+<li>当你不加括号的时候，jsonData 会被认为是一条复合语句。运行的时候就会逐个字符的解析。</li>
+<li>但是加上括号的时候，jsonData 就当做一个表达式去运算。从括号开始就被当做了对象进行识别。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="js表达式与语句"><a href="#js表达式与语句" class="headerlink" title="js表达式与语句"></a>js表达式与语句</h2><blockquote>
+<p>基本含义</p>
+</blockquote>
+<ul>
+<li>在 javascript 中所有表达式都有返回值（如果没有返回值就是 undefined），这个返回值就可以继续作为表达式的一部分。</li>
+<li>大多数语言表达式的定义基本分为（忽略优先级）：<ul>
+<li>运算符 表达式 <strong>(一元，比如 !true)</strong></li>
+<li>表达式 运算符 表达式 <strong>(二元，比如 1+2)</strong></li>
+<li>表达式1 ？ 表达式2 ： 表达式3 <strong>(三元，a&gt;b?a:b)</strong></li>
+<li>左括号 表达式 右括号 <strong>(括号 (1+2))</strong></li>
+<li>表达式(参数列表) <strong>(函数调用)</strong></li>
+</ul>
+</li>
+<li>可见这是一种递归的定义，所以又规定 <strong>字面量(就是1,2,3,“abc”)，this等是表达式</strong></li>
+<li>“语句”的意思是指不是表达式的语句。<ul>
+<li>在 javascript 里面满足这个条件的就函数声明、变量声明(var a=10是声明和赋值)、for语句、if语句、while语句、switch语句、return、try catch。</li>
+<li>javascript 还有一种函数表达式，它的形式跟函数声明一模一样。如果写 <code>function fn() { return 0;}</code> 是函数声明而写 <code>var a = function fn(){ return 0;}</code> 等号后面的就是函数表达式。</li>
+</ul>
+</li>
+<li><strong>最简单的区别</strong><ul>
+<li>表达式可以嵌套在别的表达式中，但语句不行。语句只能独立出现。</li>
+<li>另外，语句没有返回值。</li>
+<li>表达式计算出一个值，但语句用来执行以使某件事发生。《JavaScript 权威指南》（第6版）</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>举例说明</p>
+</blockquote>
+<ul>
+<li>在程序设计语言中，语句指的是执行单元，通常以行作为单位。</li>
+<li>表达式指的是可用于计算的式子，即可能产生一个值的式子。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+aa;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+aa();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params">var aa</span>)</span>&#123;alert aa+<span class="number">1</span>;&#125;</span><br><span class="line">bb=<span class="number">2</span>;</span><br><span class="line">aa(bb+<span class="number">56</span>);</span><br><span class="line"></span><br><span class="line">aa++;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>语句可以包含有表达式，表达式也可以单独形成一个语句，如上所示<ul>
+<li>其中<code>1+aa()</code>和<code>bb+56</code>就是表达式</li>
+<li>最后一句<code>aa++</code>就是一个由单个表达式构成的语句</li>
+</ul>
+</li>
+<li>如果你听到或看到有人说 if 语句、for 语句，其实大多数情况指的都是 if 分支结构，for 循环结构。</li>
+</ul>
+<h2 id="看似语句的表达式"><a href="#看似语句的表达式" class="headerlink" title="看似语句的表达式"></a>看似语句的表达式</h2><ol>
+<li><p>下面是一个对象字面量,也就是一个可以生成一个对象值的表达式</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    foo: bar(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不过同时，它也是一个完全合法的语句，这个语句的组成部分有：</p>
+<ol>
+<li>一个代码块：一个由大括号包围的语句序列</li>
+<li>一个标签：你可以在任何语句前面放置一个标签，这里的 foo 就是一个标签</li>
+<li>一条语句：表达式语句 bar(3, 5)</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>你也许会感到震惊，那就是 JavaScript 居然可以有独立的代码块(常见的代码块是依托于循环或者 if 语句的)。下面的代码演示了这种代码块的作用：你可以给它设置一个标签然后跳出这个代码块.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">printTwo</span>) </span>&#123;</span><br><span class="line">    printing: &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"One"</span>);</span><br><span class="line">        <span class="keyword">if</span> (!printTwo) <span class="keyword">break</span> printing;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Two"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Three"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt; test(<span class="literal">false</span>)</span><br><span class="line">One</span><br><span class="line">Three</span><br><span class="line"></span><br><span class="line">&gt; test(<span class="literal">true</span>)</span><br><span class="line">One</span><br><span class="line">Two</span><br><span class="line">Three</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>简单用一幅图表示表达式与语句直接的关系</p>
+</blockquote>
+<p><img src="/img/表达式与语句.png" alt="Alt 表达式与语句关系图" title="表达式与语句关系图"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2015/12/16/JavaScript/JS表达式与语句区别/" data-id="cjvlw5bkp003dxfq3v5n0bugc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git/git与hexo报错集锦" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/12/Git/git与hexo报错集锦/" class="article-date">
+  <time datetime="2015-11-12T00:26:27.000Z" itemprop="datePublished">2015-11-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/12/Git/git与hexo报错集锦/">Git 与 Hexo 运行错误集锦</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="错误集锦"><a href="#错误集锦" class="headerlink" title="错误集锦"></a>错误集锦</h1><p>工具使用过程中，难免会遇到各种各样的错误，这里总结一下，不定时更新……</p>
+<h2 id="fatal-refusing-to-merge-unrelated-histories"><a href="#fatal-refusing-to-merge-unrelated-histories" class="headerlink" title="fatal: refusing to merge unrelated histories"></a>fatal: refusing to merge unrelated histories</h2><ul>
+<li>参数 <code>--allow-unrelated-histories</code><ul>
+<li>具体操作 <code>git pull origin branchname --allow-unrelated-histories</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="hexo-g-报错"><a href="#hexo-g-报错" class="headerlink" title="hexo g 报错"></a>hexo g 报错</h2><p>错误信息如下：<code>Template render error: (unknown path) [Line 12, Column 38] expected variable</code></p>
+<p>原因：<code>Markdown</code> 语法有问题，此次原因是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style=&#123;&#123;fontSize: 50px, display: block&#125;&#125; 有问题，双大括号写在代码中可能引起 hexo 模板编译失败</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2015/11/12/Git/git与hexo报错集锦/" data-id="cjvlw5bjr0015xfq3b58vjyeh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Node.js/生成URI中的查询字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/23/Node.js/生成URI中的查询字符串/" class="article-date">
+  <time datetime="2015-10-23T13:33:29.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/23/Node.js/生成URI中的查询字符串/">生成 URI 中的查询字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果，有一个object如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: <span class="string">'100'</span>, <span class="attr">b</span>: <span class="string">'200'</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(makeParamsString(obj, <span class="literal">true</span>) === <span class="string">'a=100&amp;b=200'</span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>想要生成 URI 中的查询字符串一般会这么写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> makeParamsString = <span class="function"><span class="keyword">function</span>(<span class="params">obj, addAsk</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">''</span></span><br><span class="line">    <span class="keyword">if</span> (addAsk)&#123;</span><br><span class="line">        result += <span class="string">'?'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result += <span class="string">'&amp;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        result += i + <span class="string">'='</span> + obj[i] + <span class="string">'&amp;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    result = result.substr(<span class="number">0</span>, result.length<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上写法稍微有些瑕疵：</p>
+<ol>
+<li><code>substr</code> 仅仅为了去掉最后一个 <code>&amp;</code> ，完全可以避免</li>
+<li>for 循环中的 <code>+=</code> 会占用更多的内存</li>
+<li>addAsk 实现得不够简洁</li>
+</ol>
+<p>可以适当改写为以下版本：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> makeParamsString = <span class="function"><span class="keyword">function</span>(<span class="params">obj, addAsk</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ret = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> d <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        ret.push(<span class="built_in">encodeURIComponent</span>(d) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(obj[d]))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (addAsk ? <span class="string">'?'</span> : <span class="string">''</span>) + ret.join(<span class="string">'&amp;'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果希望更好看一些，也可以使用 <a href="https://github.com/medialize/URI.js" title="查询字符串" target="_blank" rel="noopener">URI.js</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2015/10/23/Node.js/生成URI中的查询字符串/" data-id="cjvlw5blf0051xfq3cngjkaqk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

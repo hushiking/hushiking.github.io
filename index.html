@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hello, everyone, I love you!~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="化简为凡的小站">
+<meta property="og:url" content="http://hushiking.github.io/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="hello, everyone, I love you!~">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="化简为凡的小站">
+<meta name="twitter:description" content="hello, everyone, I love you!~">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-HTML/HTML5 Audio兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/" class="article-date">
+  <time datetime="2019-04-22T04:15:14.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Audio 标签使用过程中遇到了一些问题，我们具体看一下这些问题并解决它。</p>
+<h2 id="音频预加载问题"><a href="#音频预加载问题" class="headerlink" title="音频预加载问题"></a>音频预加载问题</h2><p>表现: <code>preload=&quot;auto&quot;</code> 在 ios 系统的 safari 和微信上不支持</p>
+<p><em>解决方法:</em> <strong>需要用户主动触发事件才能播放</strong>，示例代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btn"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">"#audio"</span>).load()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="音频自动播放问题"><a href="#音频自动播放问题" class="headerlink" title="音频自动播放问题"></a>音频自动播放问题</h2><p>表现: ios 端 safari 或者部分安卓浏览器不支持 <code>autoplay</code> 属性</p>
+<p><em>解决方法</em>: <strong>引导用户手动触发播放操作</strong>，例如绑定 <code>touchstart</code> 事件进行 <code>audio.play()</code> 操作。如果在微信环境下可以调用微信插件<code>(jweixin-1.2.0.js)</code>触发自动播放，示例代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 微信配置信息（即使不正确也没问题)</span></span><br><span class="line">wx.config(&#123;</span><br><span class="line">  debug: <span class="literal">false</span>,</span><br><span class="line">  appId: <span class="string">''</span>,</span><br><span class="line">  timestamp: <span class="number">1</span>,</span><br><span class="line">  nonceStr: <span class="string">''</span>,</span><br><span class="line">  signature: <span class="string">''</span>,</span><br><span class="line">  jsApiList: []</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 在ready时触发相关事件</span></span><br><span class="line">wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 触发一下play事件</span></span><br><span class="line">  audio.play()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="音频初始化延迟问题"><a href="#音频初始化延迟问题" class="headerlink" title="音频初始化延迟问题"></a>音频初始化延迟问题</h2><p>表现: ios safari 浏览器初始化一个新的音频会有几秒延迟</p>
+<p>出现原因: 因为 ios 需要实例化一个新的音频对象，再通过网络请求音频资源，音频资源加载完毕之后才能进行播放</p>
+<p><em>解决方法</em>: <strong>在页面 ready 之后把每个文件都 <code>load</code> 一下，然后再调用 play 方法，这么做可以使音频资源做预加载，提前请求网络，可以具体业务场景来优化使用</strong>，示例代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   $(<span class="string">"#audio1"</span>).load();</span><br><span class="line">   $(<span class="string">"#audio2"</span>).load();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="音频静音问题"><a href="#音频静音问题" class="headerlink" title="音频静音问题"></a>音频静音问题</h2><p>表现: 用户可以在相关页面通过触发事件实现音频的静音操作</p>
+<p><em>解决发放</em>: **可以通过设置 <code>muted</code> 属性来设置 Audio 静音，但是在 iOS8 及其以下或者 IE9 及其以下版本不支持 muted 属性，示例代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#audio"</span>).muted = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/04/22/HTML/HTML5 Audio兼容问题/" data-id="cjvlw5bjw001gxfq3pst0t5fn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/audio/">audio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Webpack/webpack中externals用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/30/Webpack/webpack中externals用法/" class="article-date">
+  <time datetime="2019-03-30T04:12:13.000Z" itemprop="datePublished">2019-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="外部扩展"><a href="#外部扩展" class="headerlink" title="外部扩展"></a>外部扩展</h1><p>防止将某些 <code>import</code> 的包 <code>(package)</code> 打包到 <code>bundle</code> 中，而是在运行时 <strong>(runtime)</strong> 再去从外部获取这些扩展依赖 <code>(external dependencies)</code>。所创建的 <code>bundle</code> 依赖于那些存在于用户环境 <code>(consumer&#39;s environment)</code> 中的依赖。</p>
+<p>比如，从 CDN 引入 Vue，而不把它打包到 bundle 中</p>
+<ul>
+<li><strong>index.html</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/vue/2.5.22/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>webpack.config.js</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: &#123;</span><br><span class="line">    vue: <span class="string">'Vue'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就剥离了那些不需要改动的依赖模块，换句话，下面展示的代码还可以正常运行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueClipboard)</span><br></pre></td></tr></table></figure>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>类似于上面的例子，属性名是 <code>vue</code>，表示排除了 <code>import Vue from &#39;vue&#39;</code> 中的 <code>vue</code> 模块。为了替换这个模块，<code>Vue</code> 的值将被用来检索一个全局的 <code>Vue</code> 变量。</p>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: &#123;</span><br><span class="line">    subtract: [<span class="string">'./math'</span>, <span class="string">'subtract'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>subtract: [&#39;./math&#39;, &#39;subtract&#39;]</code> 转换为父子结构，其中 <code>./math</code> 是父模块，而 <code>bundle</code> 只引用 <code>subtract</code> 变量下的子集。</p>
+<h2 id="object"><a href="#object" class="headerlink" title="object"></a>object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  externals : &#123;</span><br><span class="line">    lodash : &#123;</span><br><span class="line">      commonjs: <span class="string">'lodash'</span>,</span><br><span class="line">      amd: <span class="string">'lodash'</span>,</span><br><span class="line">      root: <span class="string">'_'</span> <span class="comment">// 指向全局变量</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line"></span><br><span class="line">  externals : &#123;</span><br><span class="line">    subtract : &#123;</span><br><span class="line">      root: [<span class="string">'math'</span>, <span class="string">'subtract'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此语法用于描述外部 <code>library</code> 所有可用的访问方式。这里 <code>lodash</code> 这个外部 <code>library</code> 可以在 <code>AMD</code> 和 <code>CommonJS</code> 模块系统中通过 <code>lodash</code> 访问，但在全局变量形式下用 <code>_</code> 访问。<code>subtract</code> 可以通过全局 <code>math</code> 对象下的属性 <code>subtract</code> 访问（例如 <code>window[&#39;math&#39;][&#39;subtract&#39;]</code>）。</p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>参照官网<a href="https://webpack.docschina.org/configuration/externals/#externals" target="_blank" rel="noopener">externals function</a></p>
+<h2 id="regex"><a href="#regex" class="headerlink" title="regex"></a>regex</h2><p>匹配给定正则表达式的每个依赖，都将从输出 bundle 中排除。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: <span class="regexp">/^mint-ui$/i</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个示例中，所有名为 <code>mint-ui</code> 的依赖（忽略大小写）都会被外部化。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/03/30/Webpack/webpack中externals用法/" data-id="cjvlw5blu005vxfq3dsp2wfh3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue/Vue微信网页刷新问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/28/Vue/Vue微信网页刷新问题/" class="article-date">
+  <time datetime="2019-03-28T10:53:18.000Z" itemprop="datePublished">2019-03-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js-刷新页面的方式"><a href="#js-刷新页面的方式" class="headerlink" title="js 刷新页面的方式"></a>js 刷新页面的方式</h1><ol>
+<li><code>location.reload()</code>: 类似于 f5 刷新页面</li>
+<li><code>window.location.replace(&#39;http://www.zhidianzhuli.com&#39;)</code>: 用一个新页面替换当前页面达到刷新目的</li>
+<li><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;5&quot;&gt;</code>: 使用 meta 标签 5 秒后自动刷新</li>
+</ol>
+<h2 id="vue-单页面应用在微信浏览器内刷新"><a href="#vue-单页面应用在微信浏览器内刷新" class="headerlink" title="vue 单页面应用在微信浏览器内刷新"></a>vue 单页面应用在微信浏览器内刷新</h2><p><code>location.reload()</code> 在某些条件下不起作用，例如直接从微信服务号抽屉菜单进入页面后，无法通过 <code>location.reload()</code> 刷新</p>
+<p><code>window.location.replace()</code> 在微信浏览器中使用当前网页的 url 无法刷新</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>vue 的前端路由是由 vue-router 管理并采用 hash 模式，url 类似于 <code>http://www.zhidianzhuli.com/#/cid?id=468</code>，<strong>直接修改 id 或者 在 id 之后添加其他查询信息</strong>对 vue-router 有效，因为 hash 模式下，vue-rouer 只关心 <code>#</code> 后的信息变化。但是浏览器认为 hash 的变化不是 url 变化，所以 <code>window.location.replace()</code> 刷新方式无效</p>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p>在 Ajax 请求成功之后直接修改 <code>window.location.search</code>，做到真正改变查询参数，即 <code>window.location.search = &#39;?v=&#39; + Date.now()</code>。修改后的 url 变成了 <code>http://www.zhidianzhuli.com/?v=1553772570335#/cid?id=468</code>，浏览器页自动进行了刷新</p>
+<h2 id="通过-vue-router-刷新当前-route"><a href="#通过-vue-router-刷新当前-route" class="headerlink" title="通过 vue-router 刷新当前 route"></a>通过 vue-router 刷新当前 route</h2><p>利用 <code>v-if</code> 控制 <code>router-view</code>，在路由容器组件，如 <code>App.vue</code> 中实现一个刷新方法:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"pageBg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">"$route.meta.keepAlive &amp;&amp; isRouterAlive"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">"!$route.meta.keepAlive &amp;&amp; isRouterAlive"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'App'</span>,</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">            isRouterAlive: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 页面重新加载</span></span></span><br><span class="line"><span class="undefined">    reload() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.isRouterAlive = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> (<span class="keyword">this</span>.isRouterAlive = <span class="literal">true</span>))</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后，在其它任何想刷新自己的路由页面中执行 <code>this.$root.reload()</code> 或者 <code>this.$parent.reload()</code></p>
+<p>如果 <code>$root</code> 节点不是路由容器组件，可以使用 <code>provide / inject</code> 来传递 reload</p>
+<p>父组件:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"pageBg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">"isRouterAlive"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'App'</span>,</span></span><br><span class="line"><span class="undefined">    provide() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">            reload: <span class="keyword">this</span>.reload</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">            isRouterAlive: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 页面重新加载</span></span></span><br><span class="line"><span class="undefined">    reload() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.isRouterAlive = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> (<span class="keyword">this</span>.isRouterAlive = <span class="literal">true</span>))</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>子组件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; setItem &#125; <span class="keyword">from</span> <span class="string">'extra/js/api'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    inject: [<span class="string">'reload'</span>],</span><br><span class="line">    name: <span class="string">'voucher'</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        setMark(obj) &#123;</span><br><span class="line">            setItem(&#123;</span><br><span class="line">                type: obj.type,</span><br><span class="line">                ...</span><br><span class="line">                blacklist: obj.blacklist</span><br><span class="line">            &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (res.data.code === <span class="string">'1001'</span>) &#123;</span><br><span class="line">                    Toast(&#123;</span><br><span class="line">                    message: <span class="string">'标记成功'</span>,</span><br><span class="line">                    position: <span class="string">'bottom'</span>,</span><br><span class="line">                    duration: <span class="number">2000</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">this</span>.reload()</span><br><span class="line">                    &#125;, <span class="number">600</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> () &#123;</span><br><span class="line">                    ...</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    ...</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/03/28/Vue/Vue微信网页刷新问题/" data-id="cjvlw5blq005pxfq3h80s6w4f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/JS生成[n,m]随机数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/" class="article-date">
+  <time datetime="2019-03-18T04:48:09.000Z" itemprop="datePublished">2019-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Math-的一些方法"><a href="#Math-的一些方法" class="headerlink" title="Math 的一些方法"></a>Math 的一些方法</h1><ol>
+<li><code>Math.ceil()</code> : 向上取整</li>
+<li><code>Math.floor()</code> : 向下取整</li>
+<li><code>Math.round()</code> : 四舍五入</li>
+<li><code>Math.random()</code> : 0.0 ~ 1.0 之间的一个伪随机数， 包含0但不包含1</li>
+<li><code>Math.ceil(Math.random()*10)</code> 获取从1到10的随机整数， 取0的概率极小</li>
+<li><code>Math.round(Math.random())</code> 可均衡获取0到1的随机整数</li>
+<li><code>Math.floor(Math.random()*10)</code> 可均衡获取0到9的随机整数</li>
+<li><code>Math.round(Math.random()*10)</code> 基本均衡获取0到10的随机整数， 其中获取最小值0和最大值10的几率少一半。 <strong><em>因为结果在 0~0.4 为0， 0.5到1.4为1…8.5到9.4为9， 9.5到9.9为10。 所以头尾的分布区间只有其他数字的一半</em></strong></li>
+</ol>
+<h2 id="生成-n-m-的随机整数"><a href="#生成-n-m-的随机整数" class="headerlink" title="生成 [n, m] 的随机整数"></a>生成 [n, m] 的随机整数</h2><p>多用于 js 生成验证码或者随机选取数组中某一项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成从minNum到maxNum的随机数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomNum</span>(<span class="params">minNum, maxNum</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="built_in">arguments</span>.length) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * minNum + <span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * (maxNum - minNum + <span class="number">1</span>) + minNum, <span class="number">10</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="生成-min-max-的随机数"><a href="#生成-min-max-的随机数" class="headerlink" title="生成 [min, max) 的随机数"></a>生成 [min, max) 的随机数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * (max - min) + min, <span class="number">10</span>)</span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min) + min)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/starof/p/4988516.html" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/03/18/JavaScript/JS生成[n,m]随机数/" data-id="cjvlw5bkn0036xfq33zjbim9l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue/Vue使用中遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/09/Vue/Vue使用中遇到的问题/" class="article-date">
+  <time datetime="2019-02-09T08:38:15.000Z" itemprop="datePublished">2019-02-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue-问题"><a href="#Vue-问题" class="headerlink" title="Vue 问题"></a>Vue 问题</h1><h2 id="watch-监听-route-失效"><a href="#watch-监听-route-失效" class="headerlink" title="watch 监听 $route 失效"></a>watch 监听 <code>$route</code> 失效</h2><p>在 vue 子组件中使用 watch 监听路由变化， 代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    <span class="comment">// 监控路由变化触发微信分享</span></span><br><span class="line">    <span class="string">'$route'</span>(to, <span class="keyword">from</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>) <span class="comment">// 监控路由变化滚动条回到顶部</span></span><br><span class="line">        <span class="keyword">this</span>.getWxShare(to.path)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 监听title属性发生变化触发分享逻辑</span></span><br><span class="line">    <span class="string">'$store.state.nickname'</span>() &#123;</span><br><span class="line">        <span class="keyword">this</span>.getWxShare()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要把 <code>watch</code> 函数写在父组件里， 在父组件中监听内嵌路由， 比如放在 <code>App.vue</code> 里面可以监听整个路由的变化。</p>
+<p>当使用路由参数时， 例如从 <code>/user/foo</code> 导航到 <code>/user/bar</code> ， 原来的组件实例会被复用。 因为两个路由都渲染同个组件， 比起销毁再创建， 复用则显得更加高效。 不过， 这也意味着组件的生命周期钩子不会再被调用。 所以在某个组件中监听路由变化只能监听到该组件路由的子路由。</p>
+<h2 id="dispatch-某个-action-后同步执行另外一个方法"><a href="#dispatch-某个-action-后同步执行另外一个方法" class="headerlink" title="dispatch 某个 action 后同步执行另外一个方法"></a>dispatch 某个 action 后同步执行另外一个方法</h2><p>可以在 <code>action</code> 操作中 <code>return</code> 一个 <code>promise</code> ， 当接口请求完成后 <code>resolve()</code> ， 在组件中执行 dispatch 之后在 <code>.then()</code> 里执行后续操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    getUserInfo(&#123;</span><br><span class="line">        commit</span><br><span class="line">    &#125;) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="keyword">async</span> (resolve, reject) =&gt; &#123;</span><br><span class="line">            <span class="keyword">let</span> result = <span class="literal">null</span></span><br><span class="line">            <span class="comment">// userInfo 是 axios 发起的 ajax 请求</span></span><br><span class="line">            <span class="keyword">await</span> userInfo().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (res.data.code == <span class="string">'1001'</span>) &#123;</span><br><span class="line">                    result = res.data</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.data.code == <span class="string">'1005'</span>) &#123;</span><br><span class="line">                    <span class="built_in">window</span>.location.href = loginUrl</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Toast(&#123;</span><br><span class="line">                        message: res.data.msg,</span><br><span class="line">                        position: <span class="string">'bottom'</span>,</span><br><span class="line">                        duration: <span class="number">2000</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// 触发 mutation</span></span><br><span class="line">            commit(<span class="string">'getUserInfo'</span>, result)</span><br><span class="line">            resolve()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件内使用代码</span></span><br><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'getUserInfo'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.$store.state.isVip == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.getCountdown()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/02/09/Vue/Vue使用中遇到的问题/" data-id="cjvlw5blo005kxfq3c8ruqn8j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Webpack/webpack提取异步组件内部css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/12/Webpack/webpack提取异步组件内部css/" class="article-date">
+  <time datetime="2019-01-12T14:16:31.000Z" itemprop="datePublished">2019-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/12/Webpack/webpack提取异步组件内部css/">webpack 提取异步组件内部 css</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="webpack-抽取-css-原理"><a href="#webpack-抽取-css-原理" class="headerlink" title="webpack 抽取 css 原理"></a>webpack 抽取 css 原理</h1><p>webpack 编译阶段对入口文件使用 extractTextPlugin 提取 css 之后，是（通过 <code>extractTextPlugin</code> 的输出）知道 css 文件的存在，并能通过 <code>HtmlWebpackPlugin</code> 将之插入到 html 文件中的。</p>
+<p>简言之，build 的时候是编译阶段，webpack 知道相关信息并能正确处理，异步组件的加载是运行阶段，这时候运行时的代码已经无从得知相关编译信息了，因此异步加载的组件无法提取 css 内容生成单独的文件。</p>
+<p>建议将相关的 css 写到一个单独的 <code>test.css</code> 文件中，然后使用 <code>&lt;style src=&#39;test.css&#39;&gt;</code> 放到 app.vue 里（<strong>注意不要加 scoped</strong>），这样就会在 <code>app.[hash].css</code> 中包含这部分 css 了。单独写一个 <code>.css</code> 文件便于代码维护。</p>
+<p>为了防止 css 类名冲突，可以在 css 的每个选择子前面加一个 <code>[v-test-component]</code> （含空格）属性选择子前缀，然后将 <code>test.vue</code> 的根元素写成 <code>&lt;div v-test-component&gt;&lt;/div&gt;</code>。使用 less 或者 sass 统一加前缀可能更为简洁。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[v-test-component]</span> &#123;</span><br><span class="line">  .class-a &#123; color: red; &#125;</span><br><span class="line">  <span class="selector-class">.class-b</span> &#123; <span class="attribute">color</span>: green; &#125;</span><br><span class="line">  <span class="comment">/* other styles */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="css-打包进异步加载组件的-js-文件中"><a href="#css-打包进异步加载组件的-js-文件中" class="headerlink" title="css 打包进异步加载组件的 js 文件中"></a>css 打包进异步加载组件的 js 文件中</h2><p><code>production</code> 环境默认是会使用 <code>ExtractTextPlugin</code> 将所有样式都提取到一起并且压缩，但是如果想改为将样式打包进 js 只需更改一下配置即可，vue-cli 生成的项目，在 <code>webpack.prod.config.js</code> 中，<code>ExtractTextPlugin</code> 的 <code>allChunks</code> 设为 <code>false</code>，就会将样式打包进 js，但是这样会增加打包文件的体积，不过能够减少首屏的文件体积，因为这样只需加载首屏页面引用到的样式数据。</p>
+<p><a href="https://segmentfault.com/q/1010000011471979" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2019/01/12/Webpack/webpack提取异步组件内部css/" data-id="cjvlw5blv005zxfq36j8the8q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git/git clean用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/31/Git/git clean用法/" class="article-date">
+  <time datetime="2018-12-31T01:52:23.000Z" itemprop="datePublished">2018-12-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/31/Git/git clean用法/">git clean 用法详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-clean-用途"><a href="#git-clean-用途" class="headerlink" title="git clean 用途"></a>git clean 用途</h1><p><code>git clean</code> 经常和 <code>git reset --hard</code> 一起结合使用。<strong>记住 <code>reset</code> 只影响被 <code>track</code> 过的文件</strong>，所以需要 <code>clean</code> 来删除没有 <code>track</code> 过的文件。结合使用这两个命令能让你的工作目录完全回到一个指定的 <code>&lt;commit&gt;</code> 的状态。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li><code>git clean -n</code></li>
+</ul>
+<p>是一次 clean 的演习，告诉你哪些文件会被删除。记住它不会真正的删除文件，只是一个提醒。</p>
+<ul>
+<li><code>git clean -f</code></li>
+</ul>
+<p>删除当前目录下所有没有 <code>track</code> 过的文件。他不会删除 <code>.gitignore</code> 文件里面指定的文件夹和文件，不管这些文件有没有被 <code>track</code> 过。</p>
+<ul>
+<li><code>git clean -f &lt;path&gt;</code></li>
+</ul>
+<p>删除指定路径下的没有被 <code>track</code> 过的文件。</p>
+<ul>
+<li><code>git clean -df</code></li>
+</ul>
+<p>删除当前目录下没有被 <code>track</code> 过的文件和文件夹。</p>
+<ul>
+<li><code>git clean -xf</code></li>
+</ul>
+<p>删除当前目录下所有没有 <code>track</code> 过的文件. 不管它是否是 <code>.gitignore</code> 文件里面指定的文件夹和文件。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><code>git reset --hard</code> 和 <code>git clean -f</code> 是一对好基友，结合使用他们能让你的工作目录完全回退到最近一次 <code>commit</code> 的时候。</p>
+<p><strong><code>git clean</code> 对于刚编译过的项目也非常有用，它能轻易删除掉编译后生成的 <code>.o</code> 和 <code>.exe</code> 等文件。</strong>这个在打包要发布一个 <code>release</code> 的时候非常有用。</p>
+<h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>下面的例子要删除所有工作目录下面的修改，包括新添加的文件。假设你已经提交了一些快照了，而且做了一些新的开发。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git clean -df</span><br></pre></td></tr></table></figure>
+<p>运行后，工作目录和缓存区回到最近一次 <code>commit</code> 时候一摸一样的状态，<code>git status</code> 会告诉你这是一个干净的工作目录，又是一个新的开始了！</p>
+<p><a href="https://blog.csdn.net/leon1741/article/details/54314565" target="_blank" rel="noopener">参考文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/12/31/Git/git clean用法/" data-id="cjvlw5bjp000xxfq3mxp0m62c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS/使用box-shadow代替border" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/16/CSS/使用box-shadow代替border/" class="article-date">
+  <time datetime="2018-12-16T13:59:11.000Z" itemprop="datePublished">2018-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/CSS/使用box-shadow代替border/">使用 box-shadow 来代替 border</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高亮边框"><a href="#高亮边框" class="headerlink" title="高亮边框"></a>高亮边框</h1><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述做法有个明显的缺点，由于改变了元素的盒子结构，可能会触发一系列的重绘（页面其他部分会有相应的一些小的偏移）。尽管只是一个很小的方面，但是可能会给用户造成页面不稳定的印象。</p>
+<p>我们可以使用 box-shadow 来模拟 border 效果，样式如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> rgba(<span class="number">90</span>, <span class="number">155</span>, <span class="number">255</span>, <span class="number">0.7</span>);</span><br><span class="line">        <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意: 上面加了个 zIndex 属性，是为了便于 box-shadow 全部显示出来</strong>。</p>
+<p>box-shadow 的好处是不会改变元素的盒子结构，避免不必要的重绘导致页面抖动。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/12/16/CSS/使用box-shadow代替border/" data-id="cjvlw5bjj000hxfq3u0784am0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/audio标签方法属性与事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/HTML/audio标签方法属性与事件/" class="article-date">
+  <time datetime="2018-11-22T07:49:25.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/HTML/audio标签方法属性与事件/">audio 标签方法属性与事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>audio 是 H5 音频播放标签，基本写法如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"someaudio.wav"</span> <span class="attr">controls</span>=<span class="string">"controls"</span>&gt;</span></span><br><span class="line">您的浏览器不支持 audio 标签。</span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>=<span class="string">"controls"</span> <span class="attr">autoplay</span>=<span class="string">"autoplay"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span> /&gt;</span></span><br><span class="line">Your browser does not support the audio element.</span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h2><ul>
+<li>autoplay = “autoplay”   自动播放</li>
+<li>controls= “controls”    显示播放控件</li>
+<li>loop=”loop”             循环播放</li>
+<li>muted                   静音</li>
+<li>preload=”auto”          音频在页面加载时进行加载，并预备播放</li>
+<li>src=”xxxurl”            音频URL</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li>addTextTrack()    为音视频加入一个新的文本轨迹</li>
+<li>canPlayType()     检查指定的音视频格式是否得到支持</li>
+<li>load()            重新加载音视频标签</li>
+<li>pause()           暂停播放当前的音视频</li>
+<li>play()            播放音视频</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
+<li>audioTracks           返回可用的音轨列表(MultipleTrackList对象)</li>
+<li>autoplay              媒体加载后自动播放</li>
+<li>buffered              返回缓冲部件的时间范围(TimeRanges对象)</li>
+<li>controller            返回当前的媒体控制器(MediaController对象)</li>
+<li>controls              显示播控控件</li>
+<li>crossOrigin           CORS设置</li>
+<li>currentSrc            返回当前媒体的URL</li>
+<li>currentTime           当前播放的时间，单位秒</li>
+<li>defaultMuted          缺省是否静音</li>
+<li>defaultPlaybackRate   播控的缺省倍速</li>
+<li>duration              返回媒体的播放总时长，单位秒</li>
+<li>ended                 返回当前播放是否结束标志</li>
+<li>error                 返回当前播放的错误状态</li>
+<li>initialTime           返回初始播放的位置</li>
+<li>loop                  是否循环播放</li>
+<li>mediaGroup            当前音视频所属媒体组(用来链接多个音视频标签)</li>
+<li>muted                 是否静音</li>
+<li>networkState          返回当前网络状态</li>
+<li>paused                是否暂停</li>
+<li>playbackRate          播放的倍速</li>
+<li>played                当前播放部件已经播放的时间范围(TimeRanges对象)</li>
+<li>preload               页面加载时是否同时加载音视频</li>
+<li>readyState            返回当前的准备状态</li>
+<li>seekable              返回当前可跳转部件的时间范围(TimeRanges对象)</li>
+<li>seeking               返回用户是否做了跳转操作</li>
+<li>src                   当前音视频源的URL</li>
+<li>startOffsetTime       返回当前的时间偏移(Date对象)</li>
+<li>textTracks            返回可用的文本轨迹(TextTrackList对象)</li>
+<li>videoTracks           返回可用的视频轨迹(VideoTrackList对象)</li>
+<li>volume                音量值</li>
+</ul>
+<h2 id="事件描述"><a href="#事件描述" class="headerlink" title="事件描述"></a>事件描述</h2><ul>
+<li>abort             当音视频加载被异常终止时产生该事件</li>
+<li>canplay           当浏览器可以开始播放该音视频时产生该事件</li>
+<li>canplaythrough    当浏览器可以开始播放该音视频到结束而无需因缓冲而停止时产生该事件</li>
+<li>durationchange    当媒体的总时长改变时产生该事件</li>
+<li>emptied           当前播放列表为空时产生该事件</li>
+<li>ended             当前播放列表结束时产生该事件</li>
+<li>error             当加载媒体发生错误时产生该事件</li>
+<li>loadeddata        当加载媒体数据时产生该事件</li>
+<li>loadedmetadata    当收到总时长，分辨率和字轨等metadata时产生该事件</li>
+<li>loadstart         当开始查找媒体数据时产生该事件</li>
+<li>pause             当媒体暂停时产生该事件</li>
+<li>play              当媒体播放时产生该事件</li>
+<li>playing           当媒体从因缓冲而引起的暂停和停止恢复到播放时产生该事件</li>
+<li>progress          当获取到媒体数据时产生该事件</li>
+<li>ratechange        当播放倍数改变时产生该事件</li>
+<li>seeked            当用户完成跳转时产生该事件</li>
+<li>seeking           当用户正执行跳转时操作的时候产生该事件</li>
+<li>stalled           当试图获取媒体数据，但数据还不可用时产生该事件</li>
+<li>suspend           当获取不到数据时产生该事件</li>
+<li>timeupdate        当前播放位置发生改变时产生该事件</li>
+<li>volumechange      当前音量发生改变时产生该事件</li>
+<li>waiting           当视频因缓冲下一帧而停止时产生该事件</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/11/22/HTML/audio标签方法属性与事件/" data-id="cjvlw5bk0001qxfq36dot4rrl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/audio/">audio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/浏览器缓存url请求" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/HTML/浏览器缓存url请求/" class="article-date">
+  <time datetime="2018-10-17T11:39:03.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web前端/">Web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/HTML/浏览器缓存url请求/">浏览器缓存 url 请求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ajax-请求"><a href="#ajax-请求" class="headerlink" title="ajax 请求"></a>ajax 请求</h1><p>若每次请求的地址是相同的，浏览器会去读取缓存，不去访问服务器，这样对于很多应用来说是非常好的，可以降低服务器的压力或者减少带宽的使用，但是对于ajax应用，很多都是必须保持实时的连接与服务器进行交互，所以需要使用时间戳来使每次的请求地址都不同，从而跳过浏览器的缓存机制实现每次去请求服务器，这样的功能在图片验证码的时候也是比较常用的一种方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理 url</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (url.indexOf(<span class="string">'v='</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> url + (url.indexOf(<span class="string">'?'</span>) &gt; <span class="number">0</span> ? <span class="string">'&amp;v='</span> : <span class="string">'?v='</span>) + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="防止-url-被浏览器缓存"><a href="#防止-url-被浏览器缓存" class="headerlink" title="防止 url 被浏览器缓存"></a>防止 url 被浏览器缓存</h2><p>根据 HTTP 规范，GET 用于信息获取，而且应该是幂等的。也就是说，当使用相同的 URL 重复 GET 请求会返回预期的相同结果时，GET 方法才是适用的。当对一个请求有副作用的时候（例如，提交数据注册新用户时），应该使用 POST 请求而不是 GET。 所以浏览器会对 GET 请求做缓存处理。</p>
+<p><strong><em>解决办法：</em></strong></p>
+<ol>
+<li>GET请求URL后加随机数，让服务器认为不是相同的请求<br>例<code>&quot;http://www.example.com/index.php?class=aitcle&amp;page=5&amp;_t=&quot; + new Date().getTime()</code></li>
+<li>在ajax发送请求前加上<code>xmlHttpRequest.setRequestHeader(&quot;If-Modified-Since&quot;, &quot;0&quot;)</code></li>
+<li>在ajax发送请求前加上<code>xmlHttpRequest.setRequestHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;)</code></li>
+<li>服务端响应请求时加<code>header(&quot;Cache-Control: no-cache, must-revalidate&quot;)</code> (PHP)</li>
+<li>使用 POST 代替 GET，浏览器不会对 POST 做缓存</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/10/17/HTML/浏览器缓存url请求/" data-id="cjvlw5bk80024xfq3nzzl6031" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

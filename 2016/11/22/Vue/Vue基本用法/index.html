@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Vue 基本用法 | 化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端框架 Vue 的基本用法介绍。">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 基本用法">
+<meta property="og:url" content="http://hushiking.github.io/2016/11/22/Vue/Vue基本用法/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="前端框架 Vue 的基本用法介绍。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-22T08:34:20.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue 基本用法">
+<meta name="twitter:description" content="前端框架 Vue 的基本用法介绍。">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Vue/Vue基本用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/22/Vue/Vue基本用法/" class="article-date">
+  <time datetime="2016-11-22T11:45:24.000Z" itemprop="datePublished">2016-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue 基本用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue-基础"><a href="#Vue-基础" class="headerlink" title="Vue 基础"></a>Vue 基础</h1><p>本文介绍了 Vue 一些基本用法，详情访问 <a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">Vue 官方文档</a>。</p>
+<h2 id="创建-vue-实例"><a href="#创建-vue-实例" class="headerlink" title="创建 vue 实例"></a>创建 vue 实例</h2><ul>
+<li>绑定元素<ul>
+<li>data 的属性值绑定在全局变量 app 上，可任意修改</li>
+<li>props 属性与 html 元素的属性名称 绑定</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>，</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'hello vue!'</span>，</span><br><span class="line">    seen: <span class="literal">true</span>，</span><br><span class="line">    todos: [</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'js'</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'vue'</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'css3'</span>&#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>html 内容使用 mustache 语法<ul>
+<li> 语法</li>
+</ul>
+</li>
+<li><strong>html 元素属性应使用 v-bind 指令，<em>默认解析</em>，不采用 mustache 语法</strong></li>
+<li>如果用到组件，<strong>要确保在初始化根实例之前注册了组件</strong></li>
+<li>vue实例的简单方法<ul>
+<li>vm.$el -&gt; 就是元素</li>
+<li>vm.$data -&gt; 就是data</li>
+<li>vm.$mount -&gt; 手动挂载vue实例到指定元素上</li>
+<li>vm.$options -&gt; 获取自定义属性</li>
+<li>vm.$destroy -&gt; 销毁vue实例对象</li>
+<li>vm.$log() -&gt; 查看现在数据的状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><ul>
+<li>指令<ul>
+<li>能接受一些参数，以冒号指明</li>
+<li>最后也可以采用半角句号添加修饰符</li>
+<li>v-bind 缩写<ul>
+<li><code>&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</code>缩写为<code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</code></li>
+<li><code>&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</code>缩写为`</li>
+</ul>
+</li>
+<li>过滤器<ul>
+<li>过滤器设计目的只是用于文本转换，为了在其他指令中实现更复杂的数据变化，需要采用<strong>计算属性</strong></li>
+</ul>
+</li>
+<li>v-for<ul>
+<li>vue1.0的<code>track-by=&quot;id&quot;</code>废弃，变为<code>:key=&quot;id&quot;</code></li>
+<li>例如<code>&lt;li v-for=&quot;(val，index) in list&quot; :key=&quot;index&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="生命周期函数-vue2-0"><a href="#生命周期函数-vue2-0" class="headerlink" title="生命周期函数(vue2.0)"></a>生命周期函数(vue2.0)</h2><ul>
+<li>钩子函数<ul>
+<li>beforeCreate<ul>
+<li>组件实例刚刚被创建(创建一个空实例，没有绑定属性和方法)</li>
+</ul>
+</li>
+<li>created<ul>
+<li>实例已经创建完成(给实例绑定了属性和方法，但是DOM树还未构建)</li>
+</ul>
+</li>
+<li>beforeMount<ul>
+<li>模板编译之前(vue实例还未挂载)</li>
+</ul>
+</li>
+<li>mounted<ul>
+<li>模板编译完成(插值语法编译完成，花括号已经转化为数据)</li>
+</ul>
+</li>
+<li>beforeUpdate<ul>
+<li>数据或组件更新之前</li>
+</ul>
+</li>
+<li>update<ul>
+<li>数据或组件更新完毕</li>
+</ul>
+</li>
+<li>beforeDestroy<ul>
+<li>组件销毁之前</li>
+</ul>
+</li>
+<li>destroyed<ul>
+<li>组件销毁完毕</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用户刷新是看到花括号标记<ul>
+<li><strong><em>v-cloak</em></strong><ul>
+<li>防止闪烁，用于大段落</li>
+</ul>
+</li>
+<li><strong><em>v-text</em></strong>和<strong><em>v-html</em></strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><ul>
+<li><strong>计算属性后面不加小括号</strong>，一经运行立即计算</li>
+<li><p>完整的computed属性形式</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    a: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">computed: &#123;</span><br><span class="line">    b: &#123;</span><br><span class="line">        <span class="keyword">get</span>: function() &#123;</span><br><span class="line">            <span class="keyword">return</span> a + <span class="number">1</span></span><br><span class="line">        &#125;，</span><br><span class="line">        <span class="keyword">set</span>: function(val) &#123;</span><br><span class="line">            <span class="keyword">this</span>.a = val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vm.b = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>computed里面放置一些业务逻辑代码，一定要<strong><em>记得return</em></strong></p>
+</li>
+<li>计算属性是基于它的<strong>依赖缓存</strong>，只有在它的相关依赖发生改变时才会重新取值</li>
+<li><p>例如 Date.now()不是响应式依赖:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    now: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Date</span>.now()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你不希望有缓存，<strong>请使用 method 代替 computed</strong></p>
+</li>
+<li>watch 是监测实例的属性值是否发生变化而执行的，允许执行异步操作</li>
+</ul>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li>组件创建和注册<ol>
+<li>调用<code>Vue.extend()</code>创建的是一个组件构造器</li>
+<li>使用<code>Vue.component()</code>注册组件，需要提供2个参数，第1个参数时组件的标签，第2个参数是组件构造器</li>
+<li>组件应该挂载到某个Vue实例下，否则它不会生效</li>
+</ol>
+</li>
+<li>全局注册和局部注册<ul>
+<li>全局注册<code>Vue.component()</code></li>
+<li>局部注册:选项对象的<code>components</code>属性</li>
+</ul>
+</li>
+<li>父子组件<ul>
+<li>Child组件是在Parent组件中注册的，它只能在Parent组件中使用，确切地说：子组件只能在父组件的<code>template</code>中使用</li>
+</ul>
+</li>
+<li>使用script(需要设置type=”text/template”)或template标签</li>
+<li>传入Vue构造器的多数选项也可以用在 <code>Vue.extend()</code> 或<code>Vue.component()</code>中，不过有两个特例： <strong>data</strong> 和 <strong>el</strong>。<ul>
+<li><em>Vue.js规定：在定义组件的选项时，data和el选项必须使用函数，函数的返回值必须是对象。</em></li>
+</ul>
+</li>
+<li>props<ul>
+<li>数组(属性名称)</li>
+<li>对象(props验证)</li>
+<li>props绑定类型<ul>
+<li>默认单向绑定类型</li>
+<li>双向绑定(.sync)</li>
+<li>单次绑定(.once)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>编译作用域<ul>
+<li>组件的模板是在其作用域内编译的，那么组件选项对象中的数据也应该是在组件模板中使用的</li>
+<li>父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译</li>
+<li>通俗地讲，在子组件中定义的数据，只能用在子组件的模板。在父组件中定义的数据，只能用在父组件的模板。如果父组件的数据要在子组件中使用，则需要子组件定义props</li>
+</ul>
+</li>
+</ul>
+<h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><ul>
+<li>路由实例方法<ul>
+<li><code>router.push({path: &#39;/home&#39;)</code><ul>
+<li>直接添加一个路由，表现为切换路由，本质是向历史记录中添加一条记录，相当于html5的history的api添加路由方法</li>
+</ul>
+</li>
+<li><code>router.replace({path: &#39;/home&#39;)</code><ul>
+<li>替换路由，不会向历史记录中添加，相当于HTML5的history的API替换路由方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2016/11/22/Vue/Vue基本用法/" data-id="cjvlw5blq005nxfq3xftnk8t7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/13/JavaScript/for...in与for...of区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          for...in 与 for...of 遍历的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/13/React/React.Children用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React.Children 用法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

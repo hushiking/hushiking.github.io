@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS 知识点 | 化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己总结了一些 CSS 中易忘的知识点，不定时更新……">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 知识点">
+<meta property="og:url" content="http://hushiking.github.io/2014/12/13/CSS/CSS知识点/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="自己总结了一些 CSS 中易忘的知识点，不定时更新……">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-29T04:13:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 知识点">
+<meta name="twitter:description" content="自己总结了一些 CSS 中易忘的知识点，不定时更新……">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS/CSS知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/13/CSS/CSS知识点/" class="article-date">
+  <time datetime="2014-12-13T01:22:34.000Z" itemprop="datePublished">2014-12-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS 知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSS-知识点"><a href="#CSS-知识点" class="headerlink" title="CSS 知识点"></a>CSS 知识点</h2><p>本文用于记录 <code>CSS</code> 样式中一些容易忘记、遗漏、混淆的知识点，不定时更新……</p>
+<h2 id="三种样式优先级"><a href="#三种样式优先级" class="headerlink" title="三种样式优先级"></a>三种样式优先级</h2><ol>
+<li>内联式：将CSS代码写在现有的标签中</li>
+<li>嵌入式：将CSS代码写在<code>&lt;head&gt;&lt;style&gt;xxx&lt;/style&gt;&lt;/head&gt;</code>之间</li>
+<li>外部式：将CSS代码写在单独的一个文件中，通过<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;base.css&quot;&gt;</code>引入</li>
+</ol>
+<p>优先级：内联式 &gt; 嵌入式 &gt; 外部式，但是嵌入式大于外部式有一个前提是嵌入式CSS样式的位置一定要在外部式的后面。总体来说就是 <strong>–就近原则，离被设置的元素越近优先级越高</strong></p>
+<p>上述所总结的三种样式优先级必须要在<strong>相同权值的情况下</strong></p>
+<h2 id="css-样式书写顺序"><a href="#css-样式书写顺序" class="headerlink" title="css 样式书写顺序"></a>css 样式书写顺序</h2><ol>
+<li>显示属性：display visibility float clear overflow clip zoom</li>
+<li>布局属性: table-layout empty-cells caption-side border-spacing border-collapse list-style list-style-position list-style-type list-style-image</li>
+<li>盒子方向: -webkit-box-orient -webkit-box-direction -webkit-box-decoration-break -webkit-box-pack -webkit-box-align -webkit-box-flex</li>
+<li>定位属性: position top right bottom left z-index</li>
+<li>自身属性：margin box-sizing border border-radius border-image padding width height</li>
+<li>文字样式：font font-family font-size font-weight font-style font-varient font-size-adjust …</li>
+<li>文本属性：line-height text-align vertical-align white-space text-decoration text-emphasis text-indent text-adjust letter-spacing   word-spacing text-outline text-transform text-wrap text-overflow word-wrap</li>
+<li>颜色属性: color background background-color background-image background-repeat background-attachment background-position background-clip background-origin background-size</li>
+<li>边框轮廓/透明度/阴影: outline outline-width outline-style outline-color outline-offset opacity filter box-shadow text-shadow</li>
+<li>过渡/动画属性: transition transform animation</li>
+<li>内容属性: content quotes counter-reset counter-increment resize cursor user-select nav-index nav-up … tab-size hyphens pointer-events</li>
+</ol>
+<p>目的：减少浏览器reflow（回流），提升浏览器渲染dom的性能</p>
+<h2 id="font-属性联写"><a href="#font-属性联写" class="headerlink" title="font 属性联写"></a>font 属性联写</h2><ol>
+<li>联写顺序：font-style|font-variant|font-weight|font-size|line-height|font-family;</li>
+<li>联写格式：<code>font: italic small-caps bold 12px/1.5em arial,verdana;</code></li>
+<li>联写时：<strong>font-size和line-height只能通过斜杠<code>/</code>组成</strong></li>
+<li>font属性联写<code>至少且必须要写font-size和font-family</code>，否则不生效</li>
+</ol>
+<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><p>为标签设置 <code>CSS</code> 属性<code>height</code>和<code>width</code>会覆盖标签本身的html属性<code>rows</code>和<code>cols</code></p>
+<h2 id="自定义浏览器滚动条"><a href="#自定义浏览器滚动条" class="headerlink" title="自定义浏览器滚动条"></a>自定义浏览器滚动条</h2><p><code>::-webkit-scrollbar</code>: body::–webkit-scrollbar</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">6px</span>;  </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">6px</span>;  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#F5F5F5</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/*定义滚动条轨道 内阴影+圆角*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.3);  </span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FFF</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/*定义滑块 内阴影+圆角*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;  </span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,.3);  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#AAA</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="css-标准流"><a href="#css-标准流" class="headerlink" title="css 标准流"></a>css 标准流</h2><p>标准流中，块级元素独占一行，垂直放置。行级元素在水平方向上一个接一个的排列。</p>
+<h3 id="float-浮动"><a href="#float-浮动" class="headerlink" title="float 浮动"></a>float 浮动</h3><p>浮动脱离标准流，它的 margin 值会对其他元素位置造成影响，如果一行宽度不够，会自动将后面的浮动元素挤到下一行，可以使用 <code>margin-left 的负值</code>让该浮动元素与前面的浮动元素位于同一行。</p>
+<p><strong><em>注意一排浮动元素高度不一样的问题，可能会将某个浮动元素挤到某个奇怪的位置</em></strong>。</p>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">    *zoom: 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常见于 ul 标签下的 li 标签整体浮动导致ul没有高度，此时可以设置 ul 也浮动，并添加 <code>clearfix</code> 属性清除浮动。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="position-定位"><a href="#position-定位" class="headerlink" title="position 定位"></a>position 定位</h3><ol>
+<li>static：默认的属性值，该盒子按照标准流（包括浮动方式）进行布局；</li>
+<li><p>relative：相对定位，使用相对定位的盒子的位置常以标准流的排版方式为基础，然后使盒子相对于它在原本的标准位置偏移指定的距离。相对定位的盒子仍在标准流中，它后面的盒子仍以标准流方式对待它。</p>
+<ul>
+<li><strong>相对定位的元素仍然占据原来的空间</strong></li>
+<li><p>相对定位若不设置width，则由于block元素会自动伸展到宽度与父元素相同，如果加上left左偏100px，那么在浏览器中预览时，会出现横向滚动条。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>position<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="comment">/* .relative若不设置width，则由于block元素会自动伸展到宽度与父元素相同，且加上left的100px，则在浏览器中预览时，会出现横向滚动条。 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-class">.relative</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: relative;</span></span><br><span class="line"><span class="undefined">            top: 0px;</span></span><br><span class="line"><span class="undefined">            left: 100px;</span></span><br><span class="line"><span class="css">            <span class="comment">/* width: 500px; */</span></span></span><br><span class="line"><span class="undefined">            background: bisque;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.absolute</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: absolute;</span></span><br><span class="line"><span class="undefined">            top: 50px;</span></span><br><span class="line"><span class="undefined">            left: 50px;</span></span><br><span class="line"><span class="undefined">            background: aquamarine;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"relative"</span>&gt;</span>Position 相对偏移<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"absolute"</span>&gt;</span>Position 绝对定位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>absolute：绝对定位，盒子的位置以它的包含框为基准进行偏移。绝对定位的盒子从标准流中脱离。它对其后的相邻盒子的定位没有影响，其他的盒子就好像这个盒子不存在一样。</p>
+<ul>
+<li>使用absolute定位的盒子以它的“最近”的一个“已经定位”的“祖先元素”为基准进行偏移。如果没有已经定位的祖先元素，则以浏览器窗口为基准进行定位。<ul>
+<li>“已经定位”的含义是 position 属性被设置，并且被设置为<code>不是static</code>的任意一种方式。</li>
+<li>“最近”是指在这个节点的所有祖先节点中，距离该节点的层次最近的祖先节点，以距离最近的祖先节点作为定位基准。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fixed：固定定位，它和绝对定位类似，只是以浏览器窗口为基准进行定位，当拖动浏览器的滚动条时，依然保持对象位置不变。</li>
+</ol>
+<h3 id="opacity-透明度"><a href="#opacity-透明度" class="headerlink" title="opacity 透明度"></a>opacity 透明度</h3><p>块级元素使用了 opacity 属性会使子元素也跟着透明，即使子元素设置不透明。可改用 rgba 来做透明度。</p>
+<h2 id="Chrome-查看-CSS-属性"><a href="#Chrome-查看-CSS-属性" class="headerlink" title="Chrome 查看 CSS 属性"></a>Chrome 查看 CSS 属性</h2><blockquote>
+<p>总体来说，灰色代表该元素不能继承这个属性，划横线代表能继承但没继承或写错了这个属性</p>
+</blockquote>
+<ul>
+<li>灰色：该属性本来就是不可继承的（如 <code>background</code> ），该元素类别决定其不可继承的（如有些属性不允许外联元素继承，如 <code>div</code> 是外联元素，其不能继承其父的 <code>color</code> 属性），差不多就这些。</li>
+<li>划横线：首先是写错了的或是不支持的（有些浏览器前面会带黄色感叹号），可继承的但是由于优先级问题没有继承被抛弃的。</li>
+</ul>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="nth-of-type-与-nth-child"><a href="#nth-of-type-与-nth-child" class="headerlink" title=":nth-of-type() 与 :nth-child()"></a>:nth-of-type() 与 :nth-child()</h3><ol>
+<li><p><code>p:nth-of-type(2)</code></p>
+<ul>
+<li>表示选择包含p元素的某个父元素的所有p子元素中排行为2的每个p元素</li>
+<li><p>即某个父元素的所有p子元素中的第二个p元素(先挑出所有子代 p 元素，然后再确定排行和类型)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="comment">/* 首先确认p元素，然后选择所有p元素中的奇数项 */</span></span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(odd)</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 红色 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>:<span class="selector-id">#ff0000</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(even)</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 蓝色 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>:<span class="selector-id">#0000ff</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 蓝色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第三个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 蓝色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第四个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第五个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>p:nth-child(2)</p>
+<ul>
+<li>表示选择包含p元素的某个父元素的所有子元素中的排行为2的每个p元素</li>
+<li>即某个父元素的第二个子元素为p的元素(先挑出所有子代元素，然后再确定排行与类型)</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol>
+<li>:nth-of-type() 选择器匹配属于父元素的特定类型的第 N 个子元素的每个元素</li>
+<li>:nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，不论元素的类型</li>
+</ol>
+<h2 id="display-inline-block-列表布局"><a href="#display-inline-block-列表布局" class="headerlink" title="display: inline-block; 列表布局"></a>display: inline-block; 列表布局</h2><ol>
+<li>将元素CSS样式设置为<code>display: inline-block;</code>，表示元素可以使用<code>text-align: center;</code>居中，可以使用<code>vertical-align: middle</code>居中。</li>
+<li>另外，元素外面的div盒子可以使用<code>text-align: justify;</code>实现自动等宽水平排列的列表布局，而且是两端对齐的，不需要计算宽度，一切都是浏览器自动对齐的；</li>
+<li><p>也可以使用<code>white-space: nowrap;</code>让列表不换行，可用于列表元素的水平滚动切换。例如：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">            width: 80%;</span></span><br><span class="line"><span class="undefined">            padding: 20px;</span></span><br><span class="line"><span class="undefined">            margin: 20px auto;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background-color</span>: <span class="selector-id">#f0f3f9</span>;</span></span><br><span class="line"><span class="undefined">            text-align: justify;</span></span><br><span class="line"><span class="css">            <span class="comment">/* white-space: nowrap; */</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.list</span> &#123;</span></span><br><span class="line"><span class="undefined">            width: 120px;</span></span><br><span class="line"><span class="undefined">            display: inline-block;</span></span><br><span class="line"><span class="undefined">            padding-bottom: 20px;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            vertical-align: top;</span></span><br><span class="line"><span class="css">            <span class="comment">/* white-space: nowrap; */</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="添加移除样式"><a href="#添加移除样式" class="headerlink" title="添加移除样式"></a>添加移除样式</h2><h3 id="js-元素方法"><a href="#js-元素方法" class="headerlink" title="js 元素方法"></a>js 元素方法</h3><ul>
+<li>添加行内样式：<code>document.getElementById(&#39;pageBody&#39;).style.color = &#39;#ccc&#39;</code></li>
+<li>移除行内样式：设置为空即可</li>
+<li>添加类样式：<code>document.getElementById(&#39;pageBody&#39;).className=&#39;red&#39;</code><ul>
+<li>如果只设置一个类样式会覆盖原有样式</li>
+</ul>
+</li>
+<li>移除类样式：设置为空即可</li>
+</ul>
+<p>还可以通过修改外联样式的 <code>href</code> 值实现网页样式实时切换</p>
+<h3 id="jQuery-中的方法"><a href="#jQuery-中的方法" class="headerlink" title="jQuery 中的方法"></a>jQuery 中的方法</h3><ol>
+<li>直接添加移除行内样式<ul>
+<li>键值对方式：<code>$(&#39;#id&#39;).css({color: &#39;red&#39;, backgroundColor: &#39;black&#39;})</code></li>
+<li>链式连接方式：<code>$(&#39;#id&#39;).css(color, &#39;red&#39;).css(&#39;background-color&#39;, &#39;red&#39;)</code></li>
+</ul>
+</li>
+<li>添加类样式<ul>
+<li>使用空格追加多个样式：<code>$(&#39;#id&#39;).addClass(&#39;one two&#39;)</code></li>
+</ul>
+</li>
+<li>移除类样式<ul>
+<li>如果不带参数表示全部移除：<code>$(&#39;#id&#39;).remove(&#39;one two&#39;)</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="CSS3-中的方法"><a href="#CSS3-中的方法" class="headerlink" title="CSS3 中的方法"></a>CSS3 中的方法</h3><ol>
+<li>添加类样式（追加，只能加一个）<ul>
+<li><code>DOM元素.classList.add(&#39;one&#39;)</code></li>
+</ul>
+</li>
+<li>移除类样式<ul>
+<li><code>DOM元素.classList.remove(&#39;one&#39;)</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="动态-rem-适配移动端"><a href="#动态-rem-适配移动端" class="headerlink" title="动态 rem 适配移动端"></a>动态 rem 适配移动端</h2><p><code>documentElement.clientWidth</code> 表示pc网页可见区域宽度，相当于移动设备浏览器的 <code>layout viewport</code> ，此时，为了防止某些网站因为可视区域太窄而显示错乱，会默认一个较宽的值，比如980px</p>
+<p><code>visual viewport</code> 表示浏览器可视区域大小，通过 <code>window.screen.width</code> 获取屏幕宽度</p>
+<p><code>ideal viewport</code> 适配移动设备。通过设置 meta 属性控制 layout viewport 宽度等于移动设备宽度，那么 layout viewport 将成为 ideal viewport</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">    style.innerHTML = <span class="string">'html&#123;font-size:'</span>+width/<span class="number">10</span>+<span class="string">'px;&#125;'</span>;</span><br><span class="line">    head.appendChild(style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>width/10</code> 是为了保证 <code>10rem</code> 占宽满屏。我们只需要动态加上上面的js代码，就不需要做各种媒体查询来适配各种设备宽度了。</p>
+<h2 id="移动端-safari-active-伪类无效解决方案"><a href="#移动端-safari-active-伪类无效解决方案" class="headerlink" title="移动端 safari :active 伪类无效解决方案"></a>移动端 safari :active 伪类无效解决方案</h2><p><code>active</code> 伪类常用于 <code>a</code> 标签，表示与鼠标交互时不同的链接颜色。如 <code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>。</p>
+<p>排序: L<code>(link)</code>OV<code>(visited)</code>E   H<code>(hover)</code>A<code>(active)</code>TE</p>
+<p>ios :active 不起作用答案:</p>
+<p>首先查看是否设置 <code>-webkit-tap-highlight-color: rgba(0, 0, 0, 0);</code></p>
+<p><code>By default, Safari Mobile does not use the :active state unless there is a touchstart event handler on the relevant element or on the &lt;body&gt;.</code></p>
+<p>所有在 ios 移动设备中，需要在<code>按钮元素</code>或 <code>body/html</code> 上绑定一个 <code>touchstart</code> 事件才能激活 <code>:active</code> 状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;) <span class="comment">//...空函数即可</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/12/13/CSS/CSS知识点/" data-id="cjvlw5bn500adxfq3bpwl4iwa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/27/JavaScript/JS知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript 知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/27/HTML/事件冒泡与事件捕获/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">事件冒泡与事件捕获</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

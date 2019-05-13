@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hello, everyone, I love you!~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="化简为凡的小站">
+<meta property="og:url" content="http://hushiking.github.io/page/9/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="hello, everyone, I love you!~">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="化简为凡的小站">
+<meta name="twitter:description" content="hello, everyone, I love you!~">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JavaScript/JS知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/27/JavaScript/JS知识点/" class="article-date">
+  <time datetime="2014-12-27T10:31:45.000Z" itemprop="datePublished">2014-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/27/JavaScript/JS知识点/">JavaScript 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS-知识点"><a href="#JS-知识点" class="headerlink" title="JS 知识点"></a>JS 知识点</h1><p>本文用于记录 <code>JS</code> 中一些容易忘记、遗漏、混淆的知识点，不定时更新……</p>
+<h2 id="JS-语法"><a href="#JS-语法" class="headerlink" title="JS 语法"></a>JS 语法</h2><ol>
+<li>回调函数：把一个方法A当一个参数值传递到另外一个函数B中，在B执行的过程当中我们随时根据需求让A方法执行；<ul>
+<li>什么是回调 ：它是异步编程基本的方法，需要异步处理的时候一般采用后续传递的方式，将后续逻辑作为起始函数的参数。</li>
+<li><strong><em>PS:</em> 典型的异步方法有：setTimeout,回调函数，ajax，事件</strong></li>
+</ul>
+</li>
+<li><p>for循环</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]</span><br><span class="line"><span class="comment">// 内部表达式排列顺序不能混淆</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js 关键字in的用法</p>
+<ul>
+<li>for…in迭代</li>
+<li>for…in用于数组的循环迭代操作，迭代出来的是<strong>数组的索引</strong></li>
+<li>for…in用于对象的循环迭代操作，迭代出来的是<strong>对象的属性</strong></li>
+<li>判断对象是否为数组/对象的元素/属性：<strong><em>(变量 in 对象)</em></strong><ul>
+<li>当“对象”为数组时，“变量”指的是<strong>数组的“索引”</strong></li>
+<li>当“对象”为对象是，“变量”指的是<strong>对象的“属性”</strong>，<em>无论属性是存在于实例中还是原型中</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>JS 中 <code>==</code> 的用法</p>
+<p> 依据jquery的源码，程序中所有的等于判断都要用<code>===</code></p>
+<p> 除了 <code>obj.c == null</code> 这种情况，需要同时兼顾 obj.c === undefined 和 obj.c === null</p>
+</li>
+<li><p>JS 中 if (变量) 与 if (变量 === true)</p>
+<p> 在 Java 中 if (条件) {} 括号内的条件是一个布尔值，而在 JS 中 if (变量)，这个变量只有满足:</p>
+<p> <strong>变量如果不为 “”，0，null，undefined，false，都会被处理为 false，反之为 true。</strong>只要变量有非0的值或是某个对象，数组，字符串，都会认为 true。</p>
+</li>
+<li><p>js 中 delete 运算符（MDN）</p>
+<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete" target="_blank" rel="noopener">delete object.property</a></p>
+<p> 或者 <code>delete object[&#39;property&#39;]</code>，对于所有情况都是 true ，除非属性是一个自己的不可配置属性，在这种情况下，非严格模式返回 false 。</p>
+<p> 当删除一个数组元素时，被删除的元素已经完全不属于该数组，但数组的 <code>length</code> 属性并不会变小</p>
+</li>
+</ol>
+<h3 id="node-的-CommonJS-规范"><a href="#node-的-CommonJS-规范" class="headerlink" title="node 的 CommonJS 规范"></a>node 的 CommonJS 规范</h3><p>根据这个规范，每个文件就是一个模块，有自己的作用域，文件中的变量、函数、类等都是对其他文件不可见的。</p>
+<p>如果想在多个文件分享变量，必须定义为global对象的属性。（不推荐）</p>
+<h4 id="module-exports-与-exports的区别"><a href="#module-exports-与-exports的区别" class="headerlink" title="module.exports 与 exports的区别"></a>module.exports 与 exports的区别</h4><p>每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>Node.js为了方便地导出功能函数，node.js会自动地实现以下这个语句：</p>
+<p>foo.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exports.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>)</span><br><span class="line">&#125;</span><br><span class="line">exports.a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>test.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="built_in">require</span>(<span class="string">'./foo'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x.a)</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，exports是引用 module.exports的值。module.exports 被改变的时候，exports不会被改变，而模块导出的时候，真正导出的执行是module.exports，而不是exports。总结如下：</p>
+<ol>
+<li>module.exports 初始值为一个空对象 {}</li>
+<li>exports 是指向的 module.exports 的引用</li>
+<li>require() 返回的是 module.exports 而不是 exports</li>
+</ol>
+<blockquote>
+<p>module.parent 指什么</p>
+</blockquote>
+<pre><code>- The module that first required this one.
+- 谁第一个require他 parent就是谁
+</code></pre><h3 id="JS-属性类型"><a href="#JS-属性类型" class="headerlink" title="JS 属性类型"></a>JS 属性类型</h3><ol>
+<li><p>数据属性（有4个描述其行为的特性）</p>
+<ol>
+<li>[[Configurable]]: 表示能否通过 delete 删除属性，能否修改属性的特性，或者能否修改为访问器属性</li>
+<li>[[Enumerable]]: 表示能否通过 for-in 循环返回属性</li>
+<li>[[Writable]]: 表示能否修改属性的值</li>
+<li><p>[[Value]]: 包含这个属性的数据值，这个特性默认值为 undefined</p>
+<p>如果直接在对象上定义属性，前三个特性的默认值为 <code>true</code> 。 在调用 <code>Object.defineProperty(Obj, &#39;name&#39;, {configurable: true, value: &#39;xxx&#39;})</code> 方法时，如果不指定，configurable、enumerable和 writable 特性的默认值均为 false。</p>
+</li>
+</ol>
+</li>
+<li><p>访问器属性：不包含数据值，包含一对儿 <code>getter</code> 和 <code>setter</code> 函数（不过，这两个函数不是必需的）。</p>
+<ol>
+<li>[[Configurable]]: 表示能否通过 delete 删除属性，能否修改属性的特性，或者能否修改为访问器属性</li>
+<li>[[Enumerable]]: 表示能否通过 for-in 循环返回属性</li>
+<li>[[Get]]: 在读取属性时调用的函数。默认值为 undefined</li>
+<li><p>[[Set]]: 在写入属性时调用的函数。默认值为 undefined</p>
+<p>访问器属性不能直接定义，必需使用 <code>Object.defineProperty(book, &#39;year&#39;, {get: function() {return this._year}, set: function(newValue) {this._year = newValue; this.edition += newValue - 2004}})</code> 来定义。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="JS-实例属性搜索原则"><a href="#JS-实例属性搜索原则" class="headerlink" title="JS 实例属性搜索原则"></a>JS 实例属性搜索原则</h3><p>当访问一个实例属性时，首先会在实例中搜索该属性。如果没有找到该属性，则会继续搜索实例的原型（<code>__proto__</code>）。在通过原型链实现继承的情况下，搜索过程得以沿着原型链继续向上，直到原型链的末端。</p>
+<h3 id="监听事件的节流思想"><a href="#监听事件的节流思想" class="headerlink" title="监听事件的节流思想"></a>监听事件的节流思想</h3><p>当页面监听“scroll”、“size”等事件时，如果用到<code>setTimeout</code>、<code>setInterval</code>等定时器，需要在开始是清空定时器，防止多次重复监听事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timeoutId</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> top = div.getBoundingClientRect().top</span><br><span class="line">    <span class="keyword">const</span> windowHeight = <span class="built_in">window</span>.screen.height</span><br><span class="line">    <span class="keyword">if</span> (top &amp;&amp; top &lt; windowHeight) &#123;</span><br><span class="line">        loadMoreFn()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeoutId) &#123;</span><br><span class="line">        clearTimeout(timeoutId)</span><br><span class="line">    &#125;</span><br><span class="line">    timeoutId = setTimeout(callback, <span class="number">50</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="JS-执行过程"><a href="#JS-执行过程" class="headerlink" title="JS 执行过程"></a>JS 执行过程</h2><h3 id="作用域提升"><a href="#作用域提升" class="headerlink" title="作用域提升"></a>作用域提升</h3><ol>
+<li><p>提升</p>
+<blockquote>
+<p>函数声明和变量声明都会被提升。但首先是函数声明被提升，然后才是变量，重复的声明会被忽略。<strong><em>如果变量名与函数名相同，以函数名优先</em></strong></p>
+</blockquote>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo) <span class="comment">// function foo() &#123; console.log(1) &#125;</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo) <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo) <span class="comment">// function () &#123; console.log(2) &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line">a = <span class="number">10</span> <span class="comment">// 报错，只有var声明的变量才能提升</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量重名</p>
+<ol>
+<li><p>形参重名</p>
+<blockquote>
+<p>在函数中形参的初始值是最右边的形参对应的实参值，如果实参不存在则为undefined</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,a,a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>(a);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 输出 3</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 输出 undefined</span></span><br><span class="line">fn(<span class="number">1</span>); <span class="comment">// 输出 undefined</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>函数与形参重名</p>
+<blockquote>
+<p>函数与形参重名时，变量的初始值是函数</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>形参是 <code>arguments</code></p>
+<blockquote>
+<p>此时arguments指的是函数中那个特殊变量arguments，如果一个参数是arguments，那么arguments的初始值对应传过来的实参</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arguments</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>在变量中声明一个 <code>arguments</code></p>
+<blockquote>
+<p>重新声明的arguments无效，arguments的初始值是在JS中定义的那个</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">arguments</span>); <span class="comment">// object</span></span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>上述测试表明，重名时初始值的优先级顺序是：函数声明 &gt; 形参，形参 &gt; arguments，arguments &gt; 变量声明。当然，变量赋值又是另一回事了，它能改变传过来的实参值。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>块语句</p>
+<p> 如 if 和 switch 条件语句或 for 和 while 循环语句，不像函数，它们不会创建一个新的作用域。在块语句中定义的变量将保留在它们已经存在的作用域中。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// 'if' 条件语句块不会创建一个新的作用域</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'Hammad'</span>; <span class="comment">// name 依然在全局作用域中</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// logs 'Hammad'</span></span><br></pre></td></tr></table></figure>
+<p> ECMAScript 6 引入了 let 和 const 关键字。与 var 关键字相反，let 和 const 关键字支持在局部（本地）作用域的块语句中声明。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// 'if' 条件语句块不会创建一个新的作用域</span></span><br><span class="line">    <span class="comment">// name 在全局作用域中，因为通过 'var' 关键字定义</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'Hammad'</span>;</span><br><span class="line">    <span class="comment">// likes 在局部（本地）作用域中，因为通过 'let' 关键字定义</span></span><br><span class="line">    <span class="keyword">let</span> likes = <span class="string">'Coding'</span>;</span><br><span class="line">    <span class="comment">// skills 在局部（本地）作用域中，因为通过 'const' 关键字定义</span></span><br><span class="line">    <span class="keyword">const</span> skills = <span class="string">'JavaScript and PHP'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// logs 'Hammad'</span></span><br><span class="line"><span class="built_in">console</span>.log(likes); <span class="comment">// Uncaught ReferenceError: likes is not defined</span></span><br><span class="line"><span class="built_in">console</span>.log(skills); <span class="comment">// Uncaught ReferenceError: skills is not defined</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="函数执行环境"><a href="#函数执行环境" class="headerlink" title="函数执行环境"></a>函数执行环境</h3><ol>
+<li>执行上下文（Execution Context）<ul>
+<li>当前执行上下文分为变量对象VO，作用域链ScopeChain，以及this</li>
+<li>当调用一个函数时（激活），一个新的执行上下文就会被创建。而一个执行上下文的生命周期可以分为两个阶段。<ol>
+<li>创建阶段：在这个阶段中，执行上下文会分别创建变量对象，建立作用域链，以及确定this的指向</li>
+<li>代码执行阶段：创建完成之后，就会开始执行代码，这个时候，会完成变量赋值，函数引用，以及执行其他代码。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>变量对象（Variable Object）<ul>
+<li>变量对象创建过程<ol>
+<li>建立arguments对象。检查当前上下文中的参数，建立该对象下的属性与属性值。</li>
+<li>先检查当前上下文的函数声明，也就是使用function关键字声明的函数。在变量对象中以函数名建立一个属性，属性值为指向该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</li>
+<li>再检查当前上下文中的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为undefined。如果该变量名的属性已经存在，为了防止同名的函数被修改为undefined，则会直接跳过，原属性值不会被修改。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="当处于执行上下文创建阶段时，这时候还没有执行代码"><a href="#当处于执行上下文创建阶段时，这时候还没有执行代码" class="headerlink" title="当处于执行上下文创建阶段时，这时候还没有执行代码"></a>当处于执行上下文创建阶段时，这时候还没有执行代码</h4><p>变量对象会包括：</p>
+<ol>
+<li>函数的所有形参 (如果是函数上下文)<ul>
+<li>由名称和对应值组成的一个变量对象的属性被创建</li>
+<li>没有实参，属性值设为 undefined</li>
+<li>函数声明</li>
+</ul>
+</li>
+<li>函数声明<ul>
+<li>由名称和对应值（函数对象(function-object)）组成一个变量对象的属性被创建</li>
+<li>如果变量对象已经存在相同名称的属性，则完全替换这个属性</li>
+<li>变量声明</li>
+</ul>
+</li>
+<li>变量声明<ul>
+<li>由名称和对应值（undefined）组成一个变量对象的属性被创建；</li>
+<li>如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性</li>
+</ul>
+</li>
+</ol>
+<p>从上面规则可以看出，function声明会比var声明优先级更高一点。下面举例说明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo01</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(foo());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>在上例中，我们直接从test()的执行上下文开始理解。全局作用域中运行test()时，test()的执行上下文开始创建。为了便于理解，我们用如下的形式来表示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建过程</span></span><br><span class="line">testEC = &#123;</span><br><span class="line">    <span class="comment">// 变量对象</span></span><br><span class="line">    VO: &#123;&#125;,</span><br><span class="line">    scopeChain: &#123;&#125;,</span><br><span class="line">    <span class="keyword">this</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// VO 为 Variable Object的缩写，即变量对象</span></span><br><span class="line">VO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;...&#125;,  <span class="comment">//注：在浏览器的展示中，函数的参数可能并不是放在arguments对象中，这里为了方便理解，我做了这样的处理</span></span><br><span class="line">    foo: <span class="string">'&lt;foo reference&gt;'</span>, <span class="comment">// 表示foo的地址引用</span></span><br><span class="line">    a: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未进入执行阶段之前，变量对象中的属性都不能访问！但是进入执行阶段之后，变量对象转变为了活动对象，里面的属性都能被访问了，然后开始进行执行阶段的操作。</p>
+<blockquote>
+<p>这样，如果再面试的时候被问到变量对象和活动对象有什么区别，就又可以自如的应答了，他们其实都是同一个对象，只是处于执行上下文的不同生命周期。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行阶段</span></span><br><span class="line">VO -&gt;  AO   <span class="comment">// Active Object</span></span><br><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;...&#125;,</span><br><span class="line">    foo: <span class="string">'&lt;foo reference&gt;'</span>,</span><br><span class="line">    a: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，上面的例子demo1，执行顺序就变成了这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(foo());</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>再来一个例子，巩固一下我们的理解。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(foo);</span><br><span class="line">    <span class="built_in">console</span>.log(bar);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> foo = <span class="string">'Hello'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(foo);</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'world'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建阶段</span></span><br><span class="line">VO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;...&#125;,</span><br><span class="line">    foo: <span class="string">'&lt;foo reference&gt;'</span>,</span><br><span class="line">    bar: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这里有一个需要注意的地方，因为var声明的变量当遇到同名的属性时，会跳过而不会覆盖</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行阶段</span></span><br><span class="line">VO -&gt; AO</span><br><span class="line">VO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;...&#125;,</span><br><span class="line">    foo: <span class="string">'Hello'</span>,</span><br><span class="line">    bar: <span class="xml"><span class="tag">&lt;<span class="name">bar</span> <span class="attr">reference</span>&gt;</span></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="函数执行过程"><a href="#函数执行过程" class="headerlink" title="函数执行过程"></a>函数执行过程</h3><ul>
+<li>构造函数的执行过程<ol>
+<li>先创建一个空对象</li>
+<li>将构造函数的作用域交给上述对象，this =&gt; 空对象</li>
+<li>开始执行构造函数内部代码</li>
+<li><code>return this</code> (默认)</li>
+</ol>
+</li>
+</ul>
+<p><strong>注意：</strong> 在构造函数中，如果显示返回一个基本数据类型的数据，会被忽略掉，当然返回对象就不会</p>
+<ul>
+<li>立即执行函数<ol>
+<li>编写一个 js 库通常会通过立即执行函数包裹自己的业务逻辑,主要有以下目的:</li>
+<li><strong>避免全局污染：</strong> 所有库的逻辑以及定义和使用的变量全部被封装到该函数的作用域中</li>
+<li><strong>隐私保护：</strong> 但凡立即执行函数中声明的函数/变量等,除非自己想暴露,否则无法再外部获得</li>
+<li><em>函数对象的length属性,揭示了函数的形参个数</em></li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>) </span>&#123;<span class="keyword">return</span> a+b;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add.length;) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="函数调用时实参和形参之间的值如何传递"><a href="#函数调用时实参和形参之间的值如何传递" class="headerlink" title="函数调用时实参和形参之间的值如何传递"></a>函数调用时实参和形参之间的值如何传递</h4><blockquote>
+<p>通过函数传递的参数是局部变量</p>
+</blockquote>
+<ul>
+<li>按值传递（call by value）<ul>
+<li>函数的形参是被调用时所传实参的副本。修改形参的值并不会影响实参。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>JS的基本类型，是按值传递的。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(a);</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 仍为1, 未受x = 2赋值所影响</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>按引用传递（call by reference）<ul>
+<li>函数的形参接收实参的隐式引用，而不再是副本。这意味着函数形参的值如果被修改，实参也会被修改。同时两者指向相同的值。</li>
+</ul>
+</li>
+<li>按共享传递（call by sharing）<ul>
+<li>JS中的基本类型按值传递，对象类型按共享传递的(call by sharing，也叫按对象传递、按对象共享传递)。</li>
+<li>调用函数传参时，函数接受对象实参引用的副本(既不是按值传递的对象副本，也不是按引用传递的隐式引用)。</li>
+<li>它和按引用传递的不同在于：在共享传递中对函数形参的赋值，不会影响实参的值。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如下面例子中，不可以通过修改形参o的值，来修改obj的值。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">x</span> : <span class="number">1</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    o = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.x); <span class="comment">// 仍然是1, obj并未被修改为100.</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>然而，虽然引用是副本，引用的对象是相同的。它们共享相同的对象，所以修改形参对象的属性值，也会影响到实参的属性值。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">x</span> : <span class="number">1</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    o.x = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.x); <span class="comment">// 3, 被修改了!</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于对象类型，由于对象是可变(mutable)的，修改对象本身会影响到共享这个对象的引用和引用副本。而对于基本类型，由于它们都是不可变的(immutable)，按共享传递与按值传递(call by value)没有任何区别，所以说JS基本类型既符合按值传递，也符合按共享传递。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">// 1是number类型，不可变 var b = a; b = 6;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>据按共享传递的求值策略，a和b是两个不同的引用(b是a的引用副本)，但引用相同的值。由于这里的基本类型数字1不可变，所以这里说按值传递、按共享传递没有任何区别。</p>
+</blockquote>
+<ol>
+<li><p>函数作为参数被引用(<strong>引用函数不能传参</strong>)</p>
+<ol>
+<li><p>我们不能给函数的引用传递参数，就像下面这样</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// works</span></span><br><span class="line">nav.addEventListener(<span class="string">'click'</span>, toggleNav, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// will invoke the function immediately</span></span><br><span class="line">nav.addEventListener(<span class="string">'click'</span>, toggleNav(arg1, arg2), <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们可以解决这个问题,通过在它里面创建一个新的函数:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nav.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    toggleNav(arg1, arg2);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p> 但是这样就改变了作用域,我们又一次创建了一个不需要的函数,这样做需要花费很多,当我们在一个循环中绑定事件监听的时候.</p>
+</li>
+<li>这时候就需要.bind()闪亮登场了,因为我们可以使用他来进行绑定作用域,传递参数,并且函数还不会立即执行: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nav.addEventListener(<span class="string">'click'</span>, toggleNav.bind(scope, arg1, arg2), <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="闭包（closure）"><a href="#闭包（closure）" class="headerlink" title="闭包（closure）"></a>闭包（closure）</h2><blockquote>
+<p>闭包是指有权访问另外一个函数作用域中的变量的函数</p>
+</blockquote>
+<ul>
+<li>闭包创造条件<ol>
+<li>存在内、外两层函数</li>
+<li>内层函数对外层函数的局部变量进行了引用</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>闭包的作用是“保留住”了局部变量，使内层函数调用时，可以重复使用该变量；而不同于全局变量，改变了只能在函数内部被引用。<br>每当你看到一个函数里面存在着另一个函数,那么内部的函数能够访问外部函数的作用域,这就叫做词法作用域或者闭包,也被认为是静态作用域。</p>
+</blockquote>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
+<li>跨域(安全策略,浏览器为了安全单方面限制跨域)<ol>
+<li>纯前端jsonp(postMessage)</li>
+<li>借助服务端<ul>
+<li>通过发送Ajax请求访问自己写的php页面获取数据,php页面请求跨域页面的内容然后返还给Ajax请求,php运行在服务器端不受跨域影响</li>
+<li>服务器端设置请求头CORS</li>
+</ul>
+</li>
+<li>借助服务器软件 apache/nginx(反向代理)</li>
+<li>浏览器插件</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/12/27/JavaScript/JS知识点/" data-id="cjvlw5bnh00b0xfq3ex0huk7f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/作用域/">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS/CSS知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/13/CSS/CSS知识点/" class="article-date">
+  <time datetime="2014-12-13T01:22:34.000Z" itemprop="datePublished">2014-12-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/13/CSS/CSS知识点/">CSS 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSS-知识点"><a href="#CSS-知识点" class="headerlink" title="CSS 知识点"></a>CSS 知识点</h2><p>本文用于记录 <code>CSS</code> 样式中一些容易忘记、遗漏、混淆的知识点，不定时更新……</p>
+<h2 id="三种样式优先级"><a href="#三种样式优先级" class="headerlink" title="三种样式优先级"></a>三种样式优先级</h2><ol>
+<li>内联式：将CSS代码写在现有的标签中</li>
+<li>嵌入式：将CSS代码写在<code>&lt;head&gt;&lt;style&gt;xxx&lt;/style&gt;&lt;/head&gt;</code>之间</li>
+<li>外部式：将CSS代码写在单独的一个文件中，通过<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;base.css&quot;&gt;</code>引入</li>
+</ol>
+<p>优先级：内联式 &gt; 嵌入式 &gt; 外部式，但是嵌入式大于外部式有一个前提是嵌入式CSS样式的位置一定要在外部式的后面。总体来说就是 <strong>–就近原则，离被设置的元素越近优先级越高</strong></p>
+<p>上述所总结的三种样式优先级必须要在<strong>相同权值的情况下</strong></p>
+<h2 id="css-样式书写顺序"><a href="#css-样式书写顺序" class="headerlink" title="css 样式书写顺序"></a>css 样式书写顺序</h2><ol>
+<li>显示属性：display visibility float clear overflow clip zoom</li>
+<li>布局属性: table-layout empty-cells caption-side border-spacing border-collapse list-style list-style-position list-style-type list-style-image</li>
+<li>盒子方向: -webkit-box-orient -webkit-box-direction -webkit-box-decoration-break -webkit-box-pack -webkit-box-align -webkit-box-flex</li>
+<li>定位属性: position top right bottom left z-index</li>
+<li>自身属性：margin box-sizing border border-radius border-image padding width height</li>
+<li>文字样式：font font-family font-size font-weight font-style font-varient font-size-adjust …</li>
+<li>文本属性：line-height text-align vertical-align white-space text-decoration text-emphasis text-indent text-adjust letter-spacing   word-spacing text-outline text-transform text-wrap text-overflow word-wrap</li>
+<li>颜色属性: color background background-color background-image background-repeat background-attachment background-position background-clip background-origin background-size</li>
+<li>边框轮廓/透明度/阴影: outline outline-width outline-style outline-color outline-offset opacity filter box-shadow text-shadow</li>
+<li>过渡/动画属性: transition transform animation</li>
+<li>内容属性: content quotes counter-reset counter-increment resize cursor user-select nav-index nav-up … tab-size hyphens pointer-events</li>
+</ol>
+<p>目的：减少浏览器reflow（回流），提升浏览器渲染dom的性能</p>
+<h2 id="font-属性联写"><a href="#font-属性联写" class="headerlink" title="font 属性联写"></a>font 属性联写</h2><ol>
+<li>联写顺序：font-style|font-variant|font-weight|font-size|line-height|font-family;</li>
+<li>联写格式：<code>font: italic small-caps bold 12px/1.5em arial,verdana;</code></li>
+<li>联写时：<strong>font-size和line-height只能通过斜杠<code>/</code>组成</strong></li>
+<li>font属性联写<code>至少且必须要写font-size和font-family</code>，否则不生效</li>
+</ol>
+<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><p>为标签设置 <code>CSS</code> 属性<code>height</code>和<code>width</code>会覆盖标签本身的html属性<code>rows</code>和<code>cols</code></p>
+<h2 id="自定义浏览器滚动条"><a href="#自定义浏览器滚动条" class="headerlink" title="自定义浏览器滚动条"></a>自定义浏览器滚动条</h2><p><code>::-webkit-scrollbar</code>: body::–webkit-scrollbar</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">6px</span>;  </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">6px</span>;  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#F5F5F5</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/*定义滚动条轨道 内阴影+圆角*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.3);  </span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FFF</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/*定义滑块 内阴影+圆角*/</span>  </span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;  </span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,.3);  </span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#AAA</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="css-标准流"><a href="#css-标准流" class="headerlink" title="css 标准流"></a>css 标准流</h2><p>标准流中，块级元素独占一行，垂直放置。行级元素在水平方向上一个接一个的排列。</p>
+<h3 id="float-浮动"><a href="#float-浮动" class="headerlink" title="float 浮动"></a>float 浮动</h3><p>浮动脱离标准流，它的 margin 值会对其他元素位置造成影响，如果一行宽度不够，会自动将后面的浮动元素挤到下一行，可以使用 <code>margin-left 的负值</code>让该浮动元素与前面的浮动元素位于同一行。</p>
+<p><strong><em>注意一排浮动元素高度不一样的问题，可能会将某个浮动元素挤到某个奇怪的位置</em></strong>。</p>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">    *zoom: 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常见于 ul 标签下的 li 标签整体浮动导致ul没有高度，此时可以设置 ul 也浮动，并添加 <code>clearfix</code> 属性清除浮动。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="position-定位"><a href="#position-定位" class="headerlink" title="position 定位"></a>position 定位</h3><ol>
+<li>static：默认的属性值，该盒子按照标准流（包括浮动方式）进行布局；</li>
+<li><p>relative：相对定位，使用相对定位的盒子的位置常以标准流的排版方式为基础，然后使盒子相对于它在原本的标准位置偏移指定的距离。相对定位的盒子仍在标准流中，它后面的盒子仍以标准流方式对待它。</p>
+<ul>
+<li><strong>相对定位的元素仍然占据原来的空间</strong></li>
+<li><p>相对定位若不设置width，则由于block元素会自动伸展到宽度与父元素相同，如果加上left左偏100px，那么在浏览器中预览时，会出现横向滚动条。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>position<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="comment">/* .relative若不设置width，则由于block元素会自动伸展到宽度与父元素相同，且加上left的100px，则在浏览器中预览时，会出现横向滚动条。 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-class">.relative</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: relative;</span></span><br><span class="line"><span class="undefined">            top: 0px;</span></span><br><span class="line"><span class="undefined">            left: 100px;</span></span><br><span class="line"><span class="css">            <span class="comment">/* width: 500px; */</span></span></span><br><span class="line"><span class="undefined">            background: bisque;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.absolute</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: absolute;</span></span><br><span class="line"><span class="undefined">            top: 50px;</span></span><br><span class="line"><span class="undefined">            left: 50px;</span></span><br><span class="line"><span class="undefined">            background: aquamarine;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"relative"</span>&gt;</span>Position 相对偏移<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"absolute"</span>&gt;</span>Position 绝对定位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>absolute：绝对定位，盒子的位置以它的包含框为基准进行偏移。绝对定位的盒子从标准流中脱离。它对其后的相邻盒子的定位没有影响，其他的盒子就好像这个盒子不存在一样。</p>
+<ul>
+<li>使用absolute定位的盒子以它的“最近”的一个“已经定位”的“祖先元素”为基准进行偏移。如果没有已经定位的祖先元素，则以浏览器窗口为基准进行定位。<ul>
+<li>“已经定位”的含义是 position 属性被设置，并且被设置为<code>不是static</code>的任意一种方式。</li>
+<li>“最近”是指在这个节点的所有祖先节点中，距离该节点的层次最近的祖先节点，以距离最近的祖先节点作为定位基准。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fixed：固定定位，它和绝对定位类似，只是以浏览器窗口为基准进行定位，当拖动浏览器的滚动条时，依然保持对象位置不变。</li>
+</ol>
+<h3 id="opacity-透明度"><a href="#opacity-透明度" class="headerlink" title="opacity 透明度"></a>opacity 透明度</h3><p>块级元素使用了 opacity 属性会使子元素也跟着透明，即使子元素设置不透明。可改用 rgba 来做透明度。</p>
+<h2 id="Chrome-查看-CSS-属性"><a href="#Chrome-查看-CSS-属性" class="headerlink" title="Chrome 查看 CSS 属性"></a>Chrome 查看 CSS 属性</h2><blockquote>
+<p>总体来说，灰色代表该元素不能继承这个属性，划横线代表能继承但没继承或写错了这个属性</p>
+</blockquote>
+<ul>
+<li>灰色：该属性本来就是不可继承的（如 <code>background</code> ），该元素类别决定其不可继承的（如有些属性不允许外联元素继承，如 <code>div</code> 是外联元素，其不能继承其父的 <code>color</code> 属性），差不多就这些。</li>
+<li>划横线：首先是写错了的或是不支持的（有些浏览器前面会带黄色感叹号），可继承的但是由于优先级问题没有继承被抛弃的。</li>
+</ul>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="nth-of-type-与-nth-child"><a href="#nth-of-type-与-nth-child" class="headerlink" title=":nth-of-type() 与 :nth-child()"></a>:nth-of-type() 与 :nth-child()</h3><ol>
+<li><p><code>p:nth-of-type(2)</code></p>
+<ul>
+<li>表示选择包含p元素的某个父元素的所有p子元素中排行为2的每个p元素</li>
+<li><p>即某个父元素的所有p子元素中的第二个p元素(先挑出所有子代 p 元素，然后再确定排行和类型)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="comment">/* 首先确认p元素，然后选择所有p元素中的奇数项 */</span></span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(odd)</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 红色 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>:<span class="selector-id">#ff0000</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(even)</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 蓝色 */</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>:<span class="selector-id">#0000ff</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 蓝色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第三个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 蓝色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第四个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 红色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第五个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>p:nth-child(2)</p>
+<ul>
+<li>表示选择包含p元素的某个父元素的所有子元素中的排行为2的每个p元素</li>
+<li>即某个父元素的第二个子元素为p的元素(先挑出所有子代元素，然后再确定排行与类型)</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol>
+<li>:nth-of-type() 选择器匹配属于父元素的特定类型的第 N 个子元素的每个元素</li>
+<li>:nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，不论元素的类型</li>
+</ol>
+<h2 id="display-inline-block-列表布局"><a href="#display-inline-block-列表布局" class="headerlink" title="display: inline-block; 列表布局"></a>display: inline-block; 列表布局</h2><ol>
+<li>将元素CSS样式设置为<code>display: inline-block;</code>，表示元素可以使用<code>text-align: center;</code>居中，可以使用<code>vertical-align: middle</code>居中。</li>
+<li>另外，元素外面的div盒子可以使用<code>text-align: justify;</code>实现自动等宽水平排列的列表布局，而且是两端对齐的，不需要计算宽度，一切都是浏览器自动对齐的；</li>
+<li><p>也可以使用<code>white-space: nowrap;</code>让列表不换行，可用于列表元素的水平滚动切换。例如：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">            width: 80%;</span></span><br><span class="line"><span class="undefined">            padding: 20px;</span></span><br><span class="line"><span class="undefined">            margin: 20px auto;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background-color</span>: <span class="selector-id">#f0f3f9</span>;</span></span><br><span class="line"><span class="undefined">            text-align: justify;</span></span><br><span class="line"><span class="css">            <span class="comment">/* white-space: nowrap; */</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.list</span> &#123;</span></span><br><span class="line"><span class="undefined">            width: 120px;</span></span><br><span class="line"><span class="undefined">            display: inline-block;</span></span><br><span class="line"><span class="undefined">            padding-bottom: 20px;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            vertical-align: top;</span></span><br><span class="line"><span class="css">            <span class="comment">/* white-space: nowrap; */</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></span><br><span class="line">    哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="添加移除样式"><a href="#添加移除样式" class="headerlink" title="添加移除样式"></a>添加移除样式</h2><h3 id="js-元素方法"><a href="#js-元素方法" class="headerlink" title="js 元素方法"></a>js 元素方法</h3><ul>
+<li>添加行内样式：<code>document.getElementById(&#39;pageBody&#39;).style.color = &#39;#ccc&#39;</code></li>
+<li>移除行内样式：设置为空即可</li>
+<li>添加类样式：<code>document.getElementById(&#39;pageBody&#39;).className=&#39;red&#39;</code><ul>
+<li>如果只设置一个类样式会覆盖原有样式</li>
+</ul>
+</li>
+<li>移除类样式：设置为空即可</li>
+</ul>
+<p>还可以通过修改外联样式的 <code>href</code> 值实现网页样式实时切换</p>
+<h3 id="jQuery-中的方法"><a href="#jQuery-中的方法" class="headerlink" title="jQuery 中的方法"></a>jQuery 中的方法</h3><ol>
+<li>直接添加移除行内样式<ul>
+<li>键值对方式：<code>$(&#39;#id&#39;).css({color: &#39;red&#39;, backgroundColor: &#39;black&#39;})</code></li>
+<li>链式连接方式：<code>$(&#39;#id&#39;).css(color, &#39;red&#39;).css(&#39;background-color&#39;, &#39;red&#39;)</code></li>
+</ul>
+</li>
+<li>添加类样式<ul>
+<li>使用空格追加多个样式：<code>$(&#39;#id&#39;).addClass(&#39;one two&#39;)</code></li>
+</ul>
+</li>
+<li>移除类样式<ul>
+<li>如果不带参数表示全部移除：<code>$(&#39;#id&#39;).remove(&#39;one two&#39;)</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="CSS3-中的方法"><a href="#CSS3-中的方法" class="headerlink" title="CSS3 中的方法"></a>CSS3 中的方法</h3><ol>
+<li>添加类样式（追加，只能加一个）<ul>
+<li><code>DOM元素.classList.add(&#39;one&#39;)</code></li>
+</ul>
+</li>
+<li>移除类样式<ul>
+<li><code>DOM元素.classList.remove(&#39;one&#39;)</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="动态-rem-适配移动端"><a href="#动态-rem-适配移动端" class="headerlink" title="动态 rem 适配移动端"></a>动态 rem 适配移动端</h2><p><code>documentElement.clientWidth</code> 表示pc网页可见区域宽度，相当于移动设备浏览器的 <code>layout viewport</code> ，此时，为了防止某些网站因为可视区域太窄而显示错乱，会默认一个较宽的值，比如980px</p>
+<p><code>visual viewport</code> 表示浏览器可视区域大小，通过 <code>window.screen.width</code> 获取屏幕宽度</p>
+<p><code>ideal viewport</code> 适配移动设备。通过设置 meta 属性控制 layout viewport 宽度等于移动设备宽度，那么 layout viewport 将成为 ideal viewport</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">    style.innerHTML = <span class="string">'html&#123;font-size:'</span>+width/<span class="number">10</span>+<span class="string">'px;&#125;'</span>;</span><br><span class="line">    head.appendChild(style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>width/10</code> 是为了保证 <code>10rem</code> 占宽满屏。我们只需要动态加上上面的js代码，就不需要做各种媒体查询来适配各种设备宽度了。</p>
+<h2 id="移动端-safari-active-伪类无效解决方案"><a href="#移动端-safari-active-伪类无效解决方案" class="headerlink" title="移动端 safari :active 伪类无效解决方案"></a>移动端 safari :active 伪类无效解决方案</h2><p><code>active</code> 伪类常用于 <code>a</code> 标签，表示与鼠标交互时不同的链接颜色。如 <code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>。</p>
+<p>排序: L<code>(link)</code>OV<code>(visited)</code>E   H<code>(hover)</code>A<code>(active)</code>TE</p>
+<p>ios :active 不起作用答案:</p>
+<p>首先查看是否设置 <code>-webkit-tap-highlight-color: rgba(0, 0, 0, 0);</code></p>
+<p><code>By default, Safari Mobile does not use the :active state unless there is a touchstart event handler on the relevant element or on the &lt;body&gt;.</code></p>
+<p>所有在 ios 移动设备中，需要在<code>按钮元素</code>或 <code>body/html</code> 上绑定一个 <code>touchstart</code> 事件才能激活 <code>:active</code> 状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;) <span class="comment">//...空函数即可</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/12/13/CSS/CSS知识点/" data-id="cjvlw5bn500adxfq3bpwl4iwa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/事件冒泡与事件捕获" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/27/HTML/事件冒泡与事件捕获/" class="article-date">
+  <time datetime="2014-11-27T06:19:33.000Z" itemprop="datePublished">2014-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/27/HTML/事件冒泡与事件捕获/">事件冒泡与事件捕获</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h1><p>HTML DOM 使 JavaScript 有能力对 HTML 事件做出反应。我们可以在事件发生时执行 JavaScript。</p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>指从<code>document</code>到触发事件的那个节点，即自下而上的去触发事件，触发顺序自内向外。</p>
+<p>绑定事件方法的第三个参数，就是控制事件触发顺序是否为事件捕获。<code>true</code>，事件捕获；<code>false</code>，事件冒泡。</p>
+<p>默认<code>false</code>，即事件冒泡。Jquery的<code>e.stopPropagation</code>会阻止冒泡，意思就是到我为止，我的爹和祖宗的事件就不要触发了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>事件冒泡与事件捕获<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    #parent &#123;</span></span><br><span class="line"><span class="undefined">      height: 300px;</span></span><br><span class="line"><span class="undefined">      background-color: #0094ff;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    #child &#123;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      background-color: #cc66dd;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"child"</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>子盒子<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 事件冒泡</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"parent"</span>).addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">"parent事件被触发，"</span> + <span class="keyword">this</span>.id);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"child"</span>).addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">"child事件被触发，"</span> + <span class="keyword">this</span>.id)</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">child事件被触发，child</span><br><span class="line">parent事件被触发，parent</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论：先child，然后parent。事件的触发顺序自内向外，这就是事件冒泡。</p>
+</blockquote>
+<h2 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h2><p>指从document到触发事件的那个节点，即自上而下的去触发事件，触发顺序自外向内。</p>
+<p>现在改变绑定事件方法的第三个参数值为true:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件捕获</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"parent"</span>).addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"parent事件被触发，"</span> + e.target.id);</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"child"</span>).addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"child事件被触发，"</span> + e.target.id)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若点击#child盒子, 会触发两次, 点击#parent盒子只触发一次</span></span><br><span class="line">parent事件被触发，child</span><br><span class="line">child事件被触发，child</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论：先parent,然后child。事件触发顺序变更为自外向内，这就是事件捕获。</p>
+</blockquote>
+<h2 id="e-target与e-currentTarget"><a href="#e-target与e-currentTarget" class="headerlink" title="e.target与e.currentTarget"></a>e.target与e.currentTarget</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        #fa&#123;</span></span><br><span class="line"><span class="undefined">            width: 100%;</span></span><br><span class="line"><span class="undefined">            height: 170px;</span></span><br><span class="line"><span class="undefined">            padding: 20px 0px;</span></span><br><span class="line"><span class="undefined">            background-color: cadetblue;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        #son&#123;</span></span><br><span class="line"><span class="undefined">            width: 100%;</span></span><br><span class="line"><span class="undefined">            height: 20px;</span></span><br><span class="line"><span class="undefined">            padding: 30px 0px;</span></span><br><span class="line"><span class="undefined">            background-color: black;</span></span><br><span class="line"><span class="undefined">            color: white;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            cursor: pointer;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"fa"</span> <span class="attr">onmousedown</span>=<span class="string">"getEventTrigger(event)"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"son"</span> <span class="attr">onmousedown</span>=<span class="string">"getEventTrigger(event)"</span>&gt;</span>点我试试<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> fa = <span class="built_in">document</span>.getElementById(<span class="string">'fa'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> son = <span class="built_in">document</span>.getElementById(<span class="string">'son'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">getEventTrigger</span>(<span class="params">event</span>)</span></span></span><br><span class="line"><span class="undefined">    &#123;</span></span><br><span class="line"><span class="undefined">        x=event.currentTarget;</span></span><br><span class="line"><span class="undefined">        y=event.target;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">"currentTarget 指向："</span> + x.id + <span class="string">"， target指向："</span> + y.id);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当点击<code>id</code>为<code>son</code>的<code>p</code>元素时，执行的是<code>p</code>元素上绑定的事件，此时，事件监听的对象是<code>p</code>元素，目标也是<code>p</code>元素，<strong>结果</strong><code>currentTarget</code>指向：<code>son</code>，<code>target</code>指向：<code>son</code></p>
+<p>所以说<code>currentTarget</code>为<code>p</code>元素，<code>target</code>也是<code>p</code>元素；当事件冒泡到它的父级<code>id</code>为<code>fa</code>的元素<code>div</code>，触发了绑定在<code>div</code>上的事件，而这时，事件监听的对象是<code>div</code>，目标元素依然是<code>p</code>元素，也就是说，这时的<code>currentTarget</code>指向<code>div</code>，<code>target</code>依然指向<code>p</code>元素</p>
+<p><strong><em> 由此我们可以得出： </em></strong></p>
+<p><code>e.currentTarget</code>指的是注册了事件监听器的对象，而<code>e.target</code>指的是该对象里的子对象，也是触发这个事件的对象！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/11/27/HTML/事件冒泡与事件捕获/" data-id="cjvlw5bk5001yxfq3s7hjwsb4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/HTML知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/05/HTML/HTML知识点/" class="article-date">
+  <time datetime="2014-11-05T14:11:27.000Z" itemprop="datePublished">2014-11-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/05/HTML/HTML知识点/">HTML 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML-知识点"><a href="#HTML-知识点" class="headerlink" title="HTML 知识点"></a>HTML 知识点</h2><p>本文用于记录 <code>HTML</code> 中一些容易忘记、遗漏、混淆的知识点，不定时更新……</p>
+<h2 id="disabled-readonly-checked-selected-属性"><a href="#disabled-readonly-checked-selected-属性" class="headerlink" title="disabled readonly checked selected 属性"></a>disabled readonly checked selected 属性</h2><p>只要 <code>HTML</code> 包含此类属性，无论值是 <code>true</code> 或者 <code>false</code> ，都会生效。</p>
+<p><code>jQuery</code> 操作此类属性推荐使用 <code>prop()</code> 方法，无论是否含有此类属性，都会返回 <code>true</code> 或 <code>false</code> ：</p>
+<ul>
+<li>返回属性的值：<code>$(selector).prop(property)</code></li>
+<li>设置属性和值：<code>$(selector).prop(property,value)</code></li>
+</ul>
+<p>而 <code>attr()</code> 会返回 <code>disabled readonly checked selected</code> 或 <code>undefined</code></p>
+<h2 id="添加移除属性"><a href="#添加移除属性" class="headerlink" title="添加移除属性"></a>添加移除属性</h2><h3 id="js-中的方法"><a href="#js-中的方法" class="headerlink" title="js 中的方法"></a>js 中的方法</h3><ol>
+<li>直接添加属性（动态添加属性，不会出现在 HTML 代码中）<ul>
+<li>设置：<code>DOM元素.index = 1</code></li>
+<li>获取：<code>DOM元素.index</code></li>
+</ul>
+</li>
+<li><code>Attribute</code> 方法<ul>
+<li><code>setAttribute(name, value)</code> 设置 input 元素文本框的值的方式是 <code>input元素.value=&#39;天天向上&#39;</code></li>
+<li><code>getAttribute(name)</code> 获取 input 文本框的值的方式是 <code>input元素.value</code></li>
+<li><code>removeAttribute(name)</code></li>
+</ul>
+</li>
+<li><code>data-*</code> 属性<ul>
+<li>为 <code>DOM</code> 元素设置私有自定义数据：<code>DOM元素.dataset.name=&#39;xxx&#39;</code> 或 <code>DOM元素.dataset[&quot;name&quot;] = &#39;xxx&#39;</code></li>
+<li>获取 HTML 属性 <code>data-*</code> 保存的私有自定义数据：<code>DOM元素.dataset.name</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>注意：</strong> 假设 element 代表一个 DOM 元素，通过 <code>element.setAttribute(&#39;xxx&#39;, 1)</code> 和 <code>element.xxx = 1</code> 的形式设置值的时候</p>
+<ol>
+<li>如果 <code>xxx</code> 是代表特性的属性，比如 <code>id</code> 和 <code>class</code> ，那么不管哪种方法设置，都会互相共用，也就是说，通过 <code>element.xxx</code> 与 <code>element.getAttribute(&#39;xxx&#39;)</code> 获取的结果都一样。</li>
+<li>如果 <code>xxx</code> 代表的不是特性的属性，那么获取的值就不会共用。比如 <code>element.xxx = 1</code> ，通过 <code>getAttribute</code> 方法获取值的时候会返回 <code>null</code> ，并且不会出现在 HTML 代码中；同样的，通过 <code>setAttribute</code> 方法设置的值用 <code>element.xxx</code> 获取也不会返回值，只会返回 <code>undefined</code> ，但是新加的键和值会出现在 HTML 代码中。</li>
+<li>有些 HTML 的特性属性以 <code>element.xxx</code> 形式赋值或取值时需要做相应的变化，比如 <code>class</code> 要写成 <code>className</code> ， <code>for</code> 要写成 <code>HTMLFor</code> ， <code>readonly</code> 要写成 <code>readOnly</code> 。</li>
+</ol>
+<h3 id="jQuery-中的方法"><a href="#jQuery-中的方法" class="headerlink" title="jQuery 中的方法"></a>jQuery 中的方法</h3><ol>
+<li><code>jQuery</code> 不可以直接点出属性，需要通过 <code>attr(&#39;xxx&#39;)</code> 方法获取<ul>
+<li><code>$jq.attr(&#39;name&#39;, &#39;value&#39;)</code></li>
+<li>也可以使用对象的方式添加多个属性</li>
+</ul>
+</li>
+<li><code>input</code> 文本框与 <code>textarea</code> 文本域值的操作<ul>
+<li><code>$jq.val()</code></li>
+<li><code>$jq.val(&#39;天天向上&#39;)</code></li>
+</ul>
+</li>
+<li>DOM 元素的文本内容<ul>
+<li><code>$jq.text()</code></li>
+<li><code>$jq.text(&#39;内容&#39;)</code></li>
+</ul>
+</li>
+<li>移除属性<ul>
+<li><code>$jq.removeAttr(&#39;name&#39;)</code></li>
+</ul>
+</li>
+<li>对于 HTML 元素本身就带有的固有属性，在操作时采用 <code>prop()</code> 和<code>attr()</code> 方法均可，但是碰到 <code>checkbox、radio、select、button</code> 这些元素，它们的 <code>checked、selected、disabled</code> 属性要使用 <code>prop()</code> 方法。</li>
+<li>对于 HTML 中我们自定义的属性只能使用 <code>attr</code> 方法，使用 <code>prop</code> 设置和获取属性值时都会返回 <code>undefined</code> 。</li>
+</ol>
+<h2 id="根据已有-file-对象构建新的-file-对象"><a href="#根据已有-file-对象构建新的-file-对象" class="headerlink" title="根据已有 file 对象构建新的 file 对象"></a>根据已有 file 对象构建新的 file 对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> file = app.$(<span class="string">'videoInput'</span>).files[<span class="number">0</span>]; <span class="comment">//从 file input中获取File对象, dom对象$('#videoInput').get(0).files[0]</span></span><br><span class="line"><span class="comment">//如果没有后缀 vivo x5max</span></span><br><span class="line"><span class="keyword">if</span>(file.name.indexOf(<span class="string">"."</span>) &lt;= <span class="number">0</span>)&#123; <span class="comment">// 如果该文件没有后缀就新年构造一个File对象， 并指定文件名和类型</span></span><br><span class="line">    <span class="comment">// 第一个参数可以为Blob对象的数组 （第一个参数必须是数组）， File对象继承自Blob，所以可以传递File对象</span></span><br><span class="line">    <span class="comment">// 第二个参数为 要设置的文件名</span></span><br><span class="line">    <span class="comment">// 第三个参数为可选参数， 没有后缀可能获取不到该文件类型， 所以最好设置下该值</span></span><br><span class="line">    file = <span class="keyword">new</span> File([file], <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()+<span class="string">".mp4"</span>,&#123;<span class="attr">type</span>:<span class="string">"video/mp4"</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模板引擎-jade-art-template-nujunks等等"><a href="#模板引擎-jade-art-template-nujunks等等" class="headerlink" title="模板引擎 (jade/art-template/nujunks等等)"></a>模板引擎 (jade/art-template/nujunks等等)</h2><p><strong>模板引擎的本质是处理字符串</strong>，是按照自己规定的模板语法解析对应的模板字符串，跟 HTML、DOM 没有关系，只要字符串有对应的模板语法皆能解析处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/11/05/HTML/HTML知识点/" data-id="cjvlw5bjx001kxfq3wt3ydojp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Windows/windows终端命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/22/Windows/windows终端命令/" class="article-date">
+  <time datetime="2014-10-22T14:18:33.000Z" itemprop="datePublished">2014-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/22/Windows/windows终端命令/">windows 端口号查看与 mstc 远程连接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cmd-命令"><a href="#cmd-命令" class="headerlink" title="cmd 命令"></a>cmd 命令</h1><p>一些常用的 <code>cmd</code> 命令，不定时更新……</p>
+<h2 id="服务器与端口号"><a href="#服务器与端口号" class="headerlink" title="服务器与端口号"></a>服务器与端口号</h2><ul>
+<li>ip 地址是用来定位一个具体计算机的</li>
+<li>端口号是用来定位一个具体应用程序的</li>
+<li>url 路径(地址栏)是定义资源的标识</li>
+</ul>
+<h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><blockquote>
+<p>window+R –&gt; cmd –&gt; 进入命令提示符</p>
+</blockquote>
+<p>输入 <code>netstat -ano</code> 即可看到所有连接的 <code>PID</code>。之后在任务管理器中找到这个 <code>PID</code> 所对应的程序。如果任务管理器中没有 <code>PID</code> 这一项，可以在任务管理器中选“查看”-“选择列”。</p>
+<ol>
+<li><p>查看所有端口占用情况</p>
+<p> C:\Users\Administrator&gt;netstat -ano</p>
+</li>
+<li><p>查看指定端口号占用情况（<strong>也可输入PID</strong>）</p>
+<p> C:\Users\Administrator&gt;netstat -ano|findstr “3000”</p>
+</li>
+<li><p>查看PID对应的进程（<strong>必须输入PID，否则查询不到对应端口号</strong>）</p>
+<p> C:\Users\Administrator&gt;tasklist|findstr “6704”</p>
+</li>
+<li><p>结束该进程</p>
+<p> C:\Users\Administrator&gt;taskkill /f /t /im node.exe</p>
+<p> <code>/f</code>表示强制终止进程</p>
+<p> <code>/t</code>表示终止指定的进程和任何由此启动的子进程</p>
+<p> <code>/im name</code>表示要终止的进程的映像名称，可以使用通配符<code>*</code></p>
+<p> <code>/PID process id</code>指定要终止进程的PID</p>
+</li>
+</ol>
+<h2 id="windows-复制粘贴"><a href="#windows-复制粘贴" class="headerlink" title="windows 复制粘贴"></a>windows 复制粘贴</h2><p>windows 的 git 操作中复制 SSH 公有 key ：<code>clip &lt; ~/.ssh/id_rsa.pub</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo Hello | clip</span><br><span class="line"><span class="comment"># 将字符串Hello放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">dir | clip</span><br><span class="line"><span class="comment"># 将dir命令输出（当前目录列表）放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">clip &lt; README.TXT</span><br><span class="line"><span class="comment"># 将readme.txt的文本放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">echo | clip</span><br><span class="line"><span class="comment"># 将一个空行放入Windows剪贴板，即清空Windows剪贴板</span></span><br></pre></td></tr></table></figure>
+<h2 id="Mstsc-Microsoft-terminal-services-client"><a href="#Mstsc-Microsoft-terminal-services-client" class="headerlink" title="Mstsc (Microsoft terminal services client)"></a>Mstsc (Microsoft terminal services client)</h2><p>创建与终端服务器或其他远程计算机的连接</p>
+<p>Mstsc还有一种说法，<code>Microsoft Telnet Screen Control</code>，即“微软远程桌面控制”。</p>
+<blockquote>
+<p>操作方式: 打开 cmd，输入 mstsc 回车打开远程连接，当出来界面后，输入对方的IP和端口后，即可远程到对方的电脑，从而在本地操作对方的电脑。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/10/22/Windows/windows终端命令/" data-id="cjvlw5blw0062xfq3w9oax907" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/java对cookie的操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/18/Java/java对cookie的操作/" class="article-date">
+  <time datetime="2014-09-18T06:11:29.000Z" itemprop="datePublished">2014-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/18/Java/java对cookie的操作/">Java对 Cookie 的操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-操作-Cookie"><a href="#Java-操作-Cookie" class="headerlink" title="Java 操作 Cookie"></a>Java 操作 Cookie</h1><p>Java 对 Cookie 的操作比较简单，主要介绍下建立 cookie 和读取 cookie，以及如何设定 cookie 的生命周期和 cookie 的路径问题。</p>
+<ol>
+<li><p>建立一个无生命周期的cookie，即随着浏览器的关闭即消失的cookie，代码如下</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HttpServletRequest request</span><br><span class="line">HttpServletResponse response</span><br><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"cookiename"</span>,<span class="string">"cookievalue"</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面建立一个有生命周期的cookie,可以设置他的生命周期</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cookie = <span class="keyword">new</span> Cookie(<span class="string">"cookiename"</span>,<span class="string">"cookievalue"</span>);</span><br><span class="line">cookie.setMaxAge(<span class="number">3600</span>);</span><br><span class="line"><span class="comment">//设置路径，这个路径即该工程下都可以访问该cookie 如果不设置路径，那么只有设置该cookie路径及其子路径可以访问</span></span><br><span class="line">cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面介绍如何读取cookie，读取cookie代码如下</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Cookie[] cookies = request.getCookies();<span class="comment">//这样便可以获取一个cookie数组</span></span><br><span class="line"><span class="keyword">for</span>(Cookie cookie : cookies)&#123;</span><br><span class="line">    cookie.getName();<span class="comment">// get the cookie name</span></span><br><span class="line">    cookie.getValue(); <span class="comment">// get the cookie value</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面就是基本的读写 cookie 的操作。我们在实际中最好进行一下封装，比如增加一个 cookie，我们关注的是 cookie 的 name，value ，生命周期，所以进行封装一个函数，当然还要传入一个 response 对象，addCookie() 代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name  cookie名字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value cookie值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> maxAge cookie生命周期  以秒为单位</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addCookie</span><span class="params">(HttpServletResponse response,String name,String value,<span class="keyword">int</span> maxAge)</span></span>&#123;</span><br><span class="line">    Cookie cookie = <span class="keyword">new</span> Cookie(name,value);</span><br><span class="line">    cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">    <span class="keyword">if</span>(maxAge&gt;<span class="number">0</span>)  cookie.setMaxAge(maxAge);</span><br><span class="line">    response.addCookie(cookie);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>读取 cookie 的时候，为了方便我们的操作，我们希望封装一个函数，只要我们提供 cookie 的 name，我们便可以获取 cookie 的 value，带着这个想法，很容易想到将 cookie 封装到 Map 里面，于是进行下面的封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据名字获取cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name cookie名字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Cookie <span class="title">getCookieByName</span><span class="params">(HttpServletRequest request,String name)</span></span>&#123;</span><br><span class="line">    Map&lt;String,Cookie&gt; cookieMap = ReadCookieMap(request);</span><br><span class="line">    <span class="keyword">if</span>(cookieMap.containsKey(name))&#123;</span><br><span class="line">        Cookie cookie = (Cookie)cookieMap.get(name);</span><br><span class="line">        <span class="keyword">return</span> cookie;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将cookie封装到Map里面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Cookie&gt; <span class="title">ReadCookieMap</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    Map&lt;String,Cookie&gt; cookieMap = <span class="keyword">new</span> HashMap&lt;String,Cookie&gt;();</span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span>!=cookies)&#123;</span><br><span class="line">        <span class="keyword">for</span>(Cookie cookie : cookies)&#123;</span><br><span class="line">            cookieMap.put(cookie.getName(), cookie);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cookieMap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/wangshfa/article/details/40392049" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/09/18/Java/java对cookie的操作/" data-id="cjvlw5bkc002dxfq3u17rpv4k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/匿名内部类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/18/Java/匿名内部类/" class="article-date">
+  <time datetime="2014-08-18T03:34:00.000Z" itemprop="datePublished">2014-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/18/Java/匿名内部类/">Java 匿名内部类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="匿名内部类访问外部类中的局部变量必须是final属性"><a href="#匿名内部类访问外部类中的局部变量必须是final属性" class="headerlink" title="匿名内部类访问外部类中的局部变量必须是final属性"></a>匿名内部类访问外部类中的局部变量必须是final属性</h1><p>如果定义一个匿名内部类，并且希望它使用一个在其外部定的对象，那么编译器会要求其参数引用是final的。</p>
+<ol>
+<li>匿名内部类肯定是局部内部类(在一个方法里面定义的内部类)，因为在java中，语句必须写在方法里，而匿名内部类其实就是一条特殊的语句；</li>
+<li>外部给定的对象就是所有外来的对象：外部方法的形参、局部变量、基本类型或自定义类型等。</li>
+<li>内部类很微妙，它可以直接访问外部类的private field，这打破了类的封装。但是内部类又有它自身的好处，比如简洁，可见性等，于是就把它定位成“只读”，也就是final。不过这个保护也非常脆弱！</li>
+<li>local inner class访问local var时，那个var必须是final的。因为可以通过enclosing class访问那个local var，也可以通过inner class访问，可能造成问题，所以就必须是final的</li>
+<li><p>匿名内部类为什么只能用final.是变量的作用域的问题，因为匿名内部类是出现在一个方法的内部的，如果它要访问这个方法的参数或者方法中定义的变量，则这些参数和变量必须被修饰为final。因为虽然匿名内部类在方法的内部，但实际编译的时候，内部类编译成Outer.Inner,这说明内部类所处的位置和外部类中的方法处在同一个等级上，外部类中的方法中的变量或参数只是方法的局部变量，这些变量或参数的作用域只在这个方法内部有效。因为编译的时候内部类和方法在同一级别上，所以方法中的变量或参数只有为final，内部类才可以引用。</p>
+</li>
+<li><p>例子</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalInnerClassTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Outer obj=<span class="keyword">new</span> Outer();       <span class="comment">//生成一个外部类对象</span></span><br><span class="line">        <span class="comment">//调用外部类中的outer()方法，返回一个SuperInner类型对象赋值给si</span></span><br><span class="line">        SuperInner si=obj.outer();</span><br><span class="line">        si.m1();                     <span class="comment">//调用被覆盖的方法m1(),输出：Inner's m1() 20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个接口SuperInner，内部定义一个抽象方法m1(),无返回类型</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SuperInner</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个类Outer，内部只定义一个方法outer()，返回类型为SuperInner</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SuperInner <span class="title">outer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">10</span>;                <span class="comment">//方法中定义一个局部变量a，并赋值为10</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> b=<span class="number">20</span>;          <span class="comment">//再定义一个final局部变量b，初始化为20</span></span><br><span class="line">        <span class="comment">//在outer()方法中定义一个局部内部类Inner,实现接口SuperInner</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> <span class="keyword">implements</span> <span class="title">SuperInner</span></span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="comment">//类中只有一个覆盖接口SuperInner的方法m1()</span></span><br><span class="line">                System.out.println(<span class="string">"Inner's m1()"</span>+a);    <span class="comment">//编译报错</span></span><br><span class="line">                <span class="comment">//编译通过，输出：Inner's m1() 20</span></span><br><span class="line">                System.out.println(<span class="string">"Inner's m1() "</span>+b);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们先从主方法开始看代码的执行顺序，先生成一个Outer类对象obj，obj调用本类中方法outer()；程序开始跳到outer()方法内执行程序语句，先后生成局部变量a和b,再定义一个局部内部类Inner，返回一个SuperInner类型的对象。将返回的SuperInner类型对象地址传给SuperInner类型对象si。si再调用m1()方法，因为已经在局部内部类中覆盖了接口中的m1()方法，所以将调用局部内部类中的m1() 方法，程序跳到局部内部类中m1()方法内执行程序语句，先输出一段字符串和a，结果编译报错，先 将这条程序语句隐藏，执行下面的语句，你会发现编译通过而且输出Inner’s m1() 20！</p>
+<p>为什么会这样呢？大家都知道局部变量仅仅在一个范围内有效，在方法调用完就被内存释放，在Outer类对象obj调用outer()方法时，a和b才产生，调用结束后被内存释放，那么b这个值也就不复存在了，为什么还会输出20呢？难道局部变量被final修饰就不会被内存释放而保留？</p>
+<p>其实有部分操作对于程序员是透明的，那是JAVA语言开发者的小把戏，在定义a和b 时JVM(JAVA虚拟机)做了程序员看不到的操作，他将b拷贝了一份给局部内部类，也就是说JVM在局部内部类中定义了一个final int b=20；这个操作程序员是不知道的！当调用m1()方法时输出的20并不是原来outer()方法中定义的b，而仅仅是JVM拷贝的一个副本。那么为什么a没被打印出呢？那是因为JVM并没有拷贝它，因为没有final修饰，说明它可以被修改，如果把a 改为 a++，此时JVM就不知道拷贝a还是a++了，所以对于无final修饰的局部变量JVM是不会拷贝传给局部内部类的，自然无法打输出！</p>
+<p><a href="http://ldzyz007.iteye.com/blog/844380" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/08/18/Java/匿名内部类/" data-id="cjvlw5bka002axfq37l8jluar" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/Java内部类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/02/Java/Java内部类/" class="article-date">
+  <time datetime="2014-08-02T08:46:11.000Z" itemprop="datePublished">2014-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/02/Java/Java内部类/">Java 内部类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-实现类"><a href="#Java-实现类" class="headerlink" title="Java 实现类"></a>Java 实现类</h1><p>Java实现类就是接口的实现类，即实现了接口中那些方法的方法体</p>
+<h2 id="Java-内部类又叫-Inner-Class"><a href="#Java-内部类又叫-Inner-Class" class="headerlink" title="Java 内部类又叫 Inner Class"></a>Java 内部类又叫 Inner Class</h2><p>和变量差不多。随便在类中什么地方写。也和变量一样有作用域。在函数内部写的类，在函数外就不可调用了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> A().new B();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的内部类中不能含有任何static成员。你也看到了，要生成B的实例必须建立在A实例的基础上。因为每个内部类都必须拥有一个指向外部类的指针。这样才能访问外部类的变量，private的也行。</p>
+<p>把内部类声明为static，那么就不会有一个指向外部类的指针。自然也访问不了外部类的变量，除非外部变量是static的。也自然不需要先生成外部类的实例才能生成内部类的实例。这样的内部类叫做Nested Class</p>
+<p>Thinking in Java里讲的很清楚了。自己去看看吧。</p>
+<p>内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。</p>
+<ul>
+<li><p><strong>内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。</strong></p>
+<ul>
+<li><em>注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成后出现outer.class和outer$inner.class两类。所以内部类的成员变量/方法名可以和外部类的相同。</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h2><p>内部类的继承，是指内部类被继承，普通类 extents 内部类。而这时候代码上要有点特别处理，具体看以下例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InheritInner</span> <span class="keyword">extends</span> <span class="title">WithInner</span>.<span class="title">Inner</span> </span>&#123;</span><br><span class="line">    <span class="comment">// InheritInner() 是不能通过编译的，一定要加上形参</span></span><br><span class="line">    InheritInner(WithInner wi) &#123;</span><br><span class="line">        wi.<span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        WithInner wi = <span class="keyword">new</span> WithInner();</span><br><span class="line">        InheritInner obj = <span class="keyword">new</span> InheritInner(wi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WithInner</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到子类的构造函数里面要使用<strong><em>父类的外部类对象.super()</em></strong>;而这个对象需要从外面创建并传给形参。</p>
+<p>至于内部类的重载，感觉Thinking in Java的例子很复杂，在平常应用中应该很少，因为有点难懂，不清晰。而内部类和闭包之间的事情，暂时放下，以后再看。</p>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><p>成员内部类，就是作为外部类的成员，可以直接使用外部类的所有成员和方法，即使是private的。同时外部类要访问内部类的所有成员变量/方法，则需要通过内部类的对象来获取。</p>
+<p>要注意的是，成员内部类不能含有static的变量和方法。<strong><em>因为成员内部类需要先创建了外部类，才能创建它自己的</em></strong>，了解这一点，就可以明白更多事情，在此省略更多的细节了。</p>
+<p>在成员内部类要引用外部类对象时，使用outer.this来表示外部类对象；</p>
+<p>而需要创建内部类对象，可以使用outer.inner  obj = outerobj.new inner();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">        Outer.Inner inner = outer.new Inner();</span><br><span class="line">        inner.print(<span class="string">"Outer.new"</span>);</span><br><span class="line">        inner = outer.getInner();</span><br><span class="line">        inner.print(<span class="string">"Outer.get"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 个人推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Inner <span class="title">getInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p>局部内部类，是指内部类定义在方法和作用域内。Thinking in Java给了这么两个例子：</p>
+<p>定义在方法内：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parcel4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Destination <span class="title">destination</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">PDestination</span> <span class="keyword">implements</span> <span class="title">Destination</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String label;</span><br><span class="line">            <span class="function"><span class="keyword">private</span> <span class="title">PDestination</span><span class="params">(String whereTo)</span> </span>&#123;</span><br><span class="line">                label = whereTo;</span><br><span class="line">                System.out.println(<span class="string">"PDestination"</span>+label+whereTo);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">readLabel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> label;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PDestination(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Parcel4 p = <span class="keyword">new</span> Parcel4();</span><br><span class="line">        Destination d = p.destination(<span class="string">"Tasmania"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义在作用域里：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parcel5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">internalTracking</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b) &#123;</span><br><span class="line">            <span class="class"><span class="keyword">class</span> <span class="title">TrackingSlip</span> </span>&#123;</span><br><span class="line">                <span class="keyword">private</span> String id;</span><br><span class="line">                TrackingSlip(String s) &#123;</span><br><span class="line">                    id = s;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="function">String <span class="title">getSlip</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> id;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            TrackingSlip ts = <span class="keyword">new</span> TrackingSlip(<span class="string">"slip"</span>);</span><br><span class="line">            String s = ts.getSlip();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">track</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        internalTracking(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Parcel5 p = <span class="keyword">new</span> Parcel5();</span><br><span class="line">        p.track();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>局部内部类也像别的类一样进行编译，但只是作用域不同而已，只在该方法或条件的作用域内才能使用，退出这些作用域后无法引用的。</p>
+<h2 id="嵌套内部类"><a href="#嵌套内部类" class="headerlink" title="嵌套内部类"></a>嵌套内部类</h2><p>嵌套内部类，就是修饰为static的内部类。声明为static的内部类，不需要内部类对象和外部类对象之间的联系，就是说我们可以直接引用outer.inner，即不需要创建外部类，也不需要创建内部类。</p>
+<ul>
+<li><strong>嵌套类和普通的内部类还有一个区别：普通内部类不能有static数据和static属性，也不能包含嵌套类，但嵌套类可以。而嵌套类不能声明为private，一般声明为public，方便调用。</strong></li>
+</ul>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>有时候我为了免去给内部类命名，便倾向于使用匿名内部类，因为它没有名字。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">((Button) findViewById(R.id.start)).setOnClickListener(<span class="keyword">new</span> Button.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>匿名内部类是不能加访问修饰符的。<strong><em>要注意的是，new 匿名类，这个类是要先定义的</em></strong>，看下面例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">        Inner inner = outer.getInner(<span class="string">"Inner"</span>, <span class="string">"gz"</span>);</span><br><span class="line">        System.out.println(inner.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Inner <span class="title">getInner</span><span class="params">(<span class="keyword">final</span> String name, String city)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner() &#123;</span><br><span class="line">            <span class="keyword">private</span> String nameStr = name;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> nameStr;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注释后，编译时提示类Inner找不到</span></span><br><span class="line"><span class="comment">/* interface Inner &#123;</span></span><br><span class="line"><span class="comment">    String getName();</span></span><br><span class="line"><span class="comment">&#125; */</span></span><br></pre></td></tr></table></figure>
+<p>同时在这个例子，留意外部类的方法的形参，<strong><em>当所在的方法的形参需要被内部类里面使用时，该形参必须为final</em></strong>。这里可以看到形参name已经定义为final了，而形参city 没有被使用则不用定义为final。为什么要定义为final呢？在网上找到本人比较赞同的解释：</p>
+<p> “这是一个编译器设计的问题，如果你了解java的编译原理的话很容易理解。</p>
+<p>首先，内部类被编译的时候会生成一个单独的内部类的.class文件，这个文件并不与外部类在同一class文件中。</p>
+<p>当外部类传的参数被内部类调用时，从java程序的角度来看是直接的调用例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dosome</span><span class="params">(<span class="keyword">final</span> String a,<span class="keyword">final</span> <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Dosome</span></span>&#123;<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dosome</span><span class="params">()</span></span>&#123;System.out.println(a+b)&#125;&#125;;</span><br><span class="line">    Dosome some=<span class="keyword">new</span> Dosome();</span><br><span class="line">    some.dosome();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码来看好像是那个内部类直接调用的a参数和b参数，但是实际上不是，在java编译器编译以后实际的操作代码是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span>$<span class="title">Dosome</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dosome</span><span class="params">(<span class="keyword">final</span> String a,<span class="keyword">final</span> <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.Dosome$a=a;</span><br><span class="line">    <span class="keyword">this</span>.Dosome$b=b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dosome</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.Dosome$a+<span class="keyword">this</span>.Dosome$b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从以上代码看来，内部类并不是直接调用方法传进来的参数，而是内部类将传进来的参数通过自己的构造器备份到了自己的内部，自己内部的方法调用的实际是自己的属性而不是外部类方法的参数。</p>
+<p>这样理解就很容易得出为什么要用final了，因为两者从外表看起来是同一个东西，实际上却不是这样，如果内部类改掉了这些参数的值也不可能影响到原参数，然而这样却失去了参数的一致性，因为从编程人员的角度来看他们是同一个东西，如果编程人员在程序设计的时候在内部类中改掉参数的值，但是外部调用的时候又发现值其实没有被改掉，这就让人非常的难以理解和接受，为了避免这种尴尬的问题存在，所以编译器设计人员把内部类能够使用的参数设定为必须是final来规避这种莫名其妙错误的存在。”</p>
+<ul>
+<li><p><strong>(简单理解就是，拷贝引用，为了避免引用值发生改变，例如被外部类的方法修改等，而导致内部类得到的值不一致，于是用final来让该引用不可改变)</strong></p>
+</li>
+<li><p><strong>因为匿名内部类，没名字，是用默认的构造函数的，无参数的，那如果需要参数呢？则需要该类有带参数的构造函数：</strong></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">        Inner inner = outer.getInner(<span class="string">"Inner"</span>, <span class="string">"gz"</span>);</span><br><span class="line">        System.out.println(inner.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Inner <span class="title">getInner</span><span class="params">(<span class="keyword">final</span> String name, String city)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner(name, city) &#123;</span><br><span class="line">            <span class="keyword">private</span> String nameStr = name;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> nameStr;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    Inner(String name, String city) &#123;</span><br><span class="line">        System.out.println(city);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意这里的形参city，由于它没有被匿名内部类直接使用，而是被抽象类Inner的构造函数所使用，所以不必定义为final。</p>
+<p>而匿名内部类通过实例初始化，可以达到类似构造器的效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">        Inner inner = outer.getInner(<span class="string">"Inner"</span>, <span class="string">"gz"</span>);</span><br><span class="line">        System.out.println(inner.getName());</span><br><span class="line">        System.out.println(inner.getProvince());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Inner <span class="title">getInner</span><span class="params">(<span class="keyword">final</span> String name, <span class="keyword">final</span> String city)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner() &#123;</span><br><span class="line">            <span class="keyword">private</span> String nameStr = name;</span><br><span class="line">            <span class="keyword">private</span> String province;</span><br><span class="line">            <span class="comment">// 实例初始化</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (city.equals(<span class="string">"gz"</span>)) &#123;</span><br><span class="line">                    province = <span class="string">"gd"</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    province = <span class="string">""</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> nameStr;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">getProvince</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> province;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">getProvince</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/08/02/Java/Java内部类/" data-id="cjvlw5bn800agxfq33mkieoaq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/类的多态性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/11/Java/类的多态性/" class="article-date">
+  <time datetime="2014-07-11T10:08:19.000Z" itemprop="datePublished">2014-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/11/Java/类的多态性/">Java 类的多态性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="类的多态性一般什么时候用？"><a href="#类的多态性一般什么时候用？" class="headerlink" title="类的多态性一般什么时候用？"></a>类的多态性一般什么时候用？</h1><p>比如Student是Person的子类</p>
+<p>那么Person p = new Student  这个是多态我知道的，用P的引用指向堆中的new Student对象，关键这一般用在什么场合呢？还有什么时候需要用instanceOf来结合呢？</p>
+<p>其实这个问题以前也困扰过我。我个人理解的一个应用场合就是，当你拿到一个对象的引用时（例如参数），你可能需要判断这个引用真正指向的类。所以你需要从该类继承树的最底层开始，使用instanceof操作符判断，第一个结果为true的类即为引用真正指向的类。</p>
+<p>例如下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Postgraduate</span> <span class="keyword">extends</span> <span class="title">Student</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceofTester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        instanceofTest(<span class="keyword">new</span> Student());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">instanceofTest</span><span class="params">(Person p)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 判断p的真正类型</span></span><br><span class="line">    <span class="keyword">if</span> (p <span class="keyword">instanceof</span> Postgraduate)&#123;</span><br><span class="line">        System.out.println(<span class="string">"p是类Postgraduate的实例"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p <span class="keyword">instanceof</span> Student)&#123;</span><br><span class="line">        System.out.println(<span class="string">"p是类Student的实例"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p <span class="keyword">instanceof</span> Person)&#123;</span><br><span class="line">        System.out.println(<span class="string">"p是类Person的实例"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p <span class="keyword">instanceof</span> Object) &#123;</span><br><span class="line">        System.out.println(<span class="string">"p是类Object的实例"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*if(p instanceof Animal)&#123;//此错编译错误，所以做注释</span></span><br><span class="line"><span class="comment">        System.out.println("p是类Animal的实例");</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序的输出结果是：p是类Student的实例</p>
+<p>Person类所在的继承树是：Object&lt;–Person&lt;–Student&lt;–Postgraduate。</p>
+<p>这个例子中还加入一个Animal类，它不是在Person类的继承树中，所以不能作为instanceof的右操作项。</p>
+<p>你可以跑跑程序，应该就明白什么意思了。</p>
+<p>instanceof的应用场合应该还有其它，看看其他朋友有没补充。</p>
+<p>补充：什么时候用多态：</p>
+<p>在定义一个方法时，将方法的形参尽量定义为一个接口，或者是一个抽象类，这样当这个方法被掉用时，需要传入数，这时候，你就可以有选择性的传递参数了，你可以传递实现这个接口的任意一个类，这样程序的可扩展性就是最好的</p>
+<p>instanceOf：</p>
+<ol>
+<li>用instanceof来测试它所指向的对象是否是某个类。</li>
+<li>instanceof在对象类型的强制转换，先判断是否是某种类型，是的话再强制转换成改类型。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/07/11/Java/类的多态性/" data-id="cjvlw5bkd002hxfq39a31m6sr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/静态方法与非静态方法的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/26/Java/静态方法与非静态方法的区别/" class="article-date">
+  <time datetime="2014-06-26T14:17:32.000Z" itemprop="datePublished">2014-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/26/Java/静态方法与非静态方法的区别/">Java 静态方法与非静态方法的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="静态方法与非静态方法的区别"><a href="#静态方法与非静态方法的区别" class="headerlink" title="静态方法与非静态方法的区别"></a>静态方法与非静态方法的区别</h1><p>使用static修饰的静态方法是属于整个类的类方法，它在内存中的代码段会随类的定义而被分配和装载；而非静态方法是属于具体对象的方法，当这个对象创建时，在对象的内存中会拥有此方法的专用代码段。<strong><em>在引用静态方法时，可以使用对象名加前缀，也可以使用类名加前缀</em></strong>。</p>
+<p>eg. classA 实例化了一个对象objectA，classA中定义了一个静态方法：run( ). 则可使用 classA.run( ) 或者objectA.run( )来执行。</p>
+<p>非静态方法既可以访问静态数据成员又可以访问非静态数据成员，而静态方法只能访问静态数据成员；同样地非静态方法既可以访问静态方法又可以访问非静态方法，而静态方法只能访问静态数据方法。特别注意的是静态方法中的main方法，它作为程序运行的入口点，在每个程序中有且只能有一个。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> height;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Address</span><span class="params">(String x)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"address:"</span>+x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Birthday</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"birthday is "</span>+x+<span class="string">" month"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;<span class="comment">//静态方法</span></span><br><span class="line">        age=<span class="number">24</span>;           <span class="comment">//引用了非静态数据成员</span></span><br><span class="line">        height=<span class="number">173</span>;</span><br><span class="line">        Address(<span class="string">"xi'an"</span>);</span><br><span class="line">        Birthday(<span class="number">5</span>);      <span class="comment">//引用了非静态方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译时，就会出现无法从静态上下文中引用非静态变量age和非静态方法Birthday(int)的错误。</p>
+<p>还有一点就是静态方法不能被覆盖，下面有一个形象的例子：</p>
+<p>首先我们提供两个类，基类为Parent，派生类为Child。在Parent中我们提供两个方法，一个是静态方法staticMethod()，一个是非静态方法nonStaticMethod()。在Child类中我们覆盖着两个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonStaticMethod</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"parent's Non-Static Method is Called"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"parent's static method is called"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonStaticMethod</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"child's non-static method is called"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"child's static method is called"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Test类中我们分别使用<code>Parent p1 = new Parent(),Parent p2 = new Child(),Child c = new Child()</code>得到三个实例，并分别调用静态方法和非静态方法，我们来看程序的运行结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Parent p1 = <span class="keyword">new</span> Parent();</span><br><span class="line">        Parent p2 = <span class="keyword">new</span> Child();</span><br><span class="line">        Child c = <span class="keyword">new</span> Child();</span><br><span class="line">        System.out.print(<span class="string">"parent.static: "</span>); Parent.staticMethod();</span><br><span class="line">        System.out.print(<span class="string">"p1.static: "</span>); p1.staticMethod();</span><br><span class="line">        System.out.print(<span class="string">"p2.static: "</span>); p2.staticMethod();</span><br><span class="line">        System.out.print(<span class="string">"p1.nonStatic: "</span>); p1.nonStaticMethod();</span><br><span class="line">        System.out.print(<span class="string">"p2.nonStatic: "</span>); p2.nonStaticMethod();</span><br><span class="line">        System.out.print(<span class="string">"Child.static: "</span>); Child.staticMethod();</span><br><span class="line">        System.out.print(<span class="string">"c.static: "</span>); c.staticMethod();</span><br><span class="line">        System.out.print(<span class="string">"c.nonStatic: "</span>); c.nonStaticMethod();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序的运行结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Parent.static: parent<span class="string">'s static method is called</span></span><br><span class="line"><span class="string">p1.static: parent'</span>s static method is called</span><br><span class="line">p2.static: parent<span class="string">'s static method is called</span></span><br><span class="line"><span class="string">p1.nonStatic: Parent'</span>s Non-Static Method is Called</span><br><span class="line">p2.nonStatic: child<span class="string">'s non-static method is called</span></span><br><span class="line"><span class="string">Child.static: child'</span>s static method is called</span><br><span class="line">c.static: child<span class="string">'s static method is called</span></span><br><span class="line"><span class="string">c.nonStatic: child'</span>s non-static method is called</span><br></pre></td></tr></table></figure>
+<p>值得注重的是p2实际上是一个Child的类型的引用，然而在调用静态方法的时候，它执行的却是父类的静态方法，而不是Child的静态方法，而调用 p2的非静态方法的时候执行的是Child的非静态方法，为什么呢？原因是静态方法是在编译的时候把静态方法和类的引用类型进行匹配，而不是在运行的时候 和类引用进行匹配。因此我们得出结论：当我们在子类中创建的静态方法，它并不会覆盖父类中相同名字的静态方法。</p>
+<p><a href="http://blog.chinaunix.net/uid-20665441-id-2216988.html" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2014/06/26/Java/静态方法与非静态方法的区别/" data-id="cjvlw5bke002kxfq3a7y24pyv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

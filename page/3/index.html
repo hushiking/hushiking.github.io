@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hello, everyone, I love you!~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="化简为凡的小站">
+<meta property="og:url" content="http://hushiking.github.io/page/3/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="hello, everyone, I love you!~">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="化简为凡的小站">
+<meta name="twitter:description" content="hello, everyone, I love you!~">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JavaScript/函数与闭包/闭包的应用场景" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/21/JavaScript/函数与闭包/闭包的应用场景/" class="article-date">
+  <time datetime="2018-03-21T11:54:30.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/21/JavaScript/函数与闭包/闭包的应用场景/">闭包的应用场景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="嵌套函数的词法作用域规则-lexical-scoping-rules"><a href="#嵌套函数的词法作用域规则-lexical-scoping-rules" class="headerlink" title="嵌套函数的词法作用域规则(lexical scoping rules)"></a>嵌套函数的词法作用域规则(lexical scoping rules)</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkScope();   <span class="comment">//=&gt; "local scope"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码执行过程分析</p>
+</blockquote>
+<p>checkScope被invoke(调用)时，return f()，运行内部嵌套函数f，f沿着作用域链从内向外寻找变量scope，找到“local scope”，停止寻找，因此，函数返回 “local scope”;</p>
+<p>代码稍作修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkScope()();   <span class="comment">//=&gt; "这次返回什么？"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码执行过程分析</p>
+</blockquote>
+<p>checkScope被invoke时，将内部嵌套的函数f返回，因此checkScope()()这句执行时，其实运行的是f(), f函数返回scope变量，在这种情况下，f会从哪个作用域里去寻找变量scope呢？</p>
+<p>词法作用域的基础规则：<strong>函数被执行时(executed)使用的作用域链(scope chain)是被定义时的scope chain，而不是执行时的scope chain</strong></p>
+<p>嵌套函数f(), <em>被定义时，所在的作用域链中，变量scope是被绑定的值是“local scope”，而不是”global scope”，因此，以上代码的结果是啥？没错，是”local scope”!</em></p>
+<p>这就是闭包的神奇特性：闭包可以捕获到局部变量和参数的外部函数绑定，即便外部函数的调用已经结束。</p>
+<h2 id="闭包的使用场景"><a href="#闭包的使用场景" class="headerlink" title="闭包的使用场景"></a>闭包的使用场景</h2><h3 id="通过循环给页面上多个dom节点绑定事件"><a href="#通过循环给页面上多个dom节点绑定事件" class="headerlink" title="通过循环给页面上多个dom节点绑定事件"></a>通过循环给页面上多个dom节点绑定事件</h3><blockquote>
+<p>场景描述：假如页面上有5个button,要给button绑定onclick事件，点击的时候，弹出对应button的索引编号</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button0<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button4<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>先上一手 for 循环：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btns = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'button'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = btns.length; i &lt; len; i++) &#123;</span><br><span class="line">    btns[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行代码，发现不论点击那个 button，均 alert 5。因为，onclick事件是被异步触发的，当事件被触发时，for循环早已结束，此时变量 i 的值已经是 5 。所以，当onlick事件函数顺着作用域链从内向外查找变量 i 时，找到的值总是 5 。</p>
+<p>那么怎么循环给每个 button 添加点击事件，并且 alert 出不同的值呢？这就要使用到“闭包”。</p>
+<p>在闭包的作用下，定义事件函数的时候，每次循环的i值都被封闭起来，这样在函数执行时，会查找定义时的作用域链，这个作用域链里的i值是在每次循环中都被保留的，因此点击不同的button会alert出来不同的i。</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = btns.length; i &lt; len; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">        btns[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            alert(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(i))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在js中，没有块级作用域 ，只有函数作用域。可以采用“立即执行函数Immediately-Invoked Function Expression (IIFE)”的方式创建作用域。</p>
+<h3 id="使用闭包封装变量"><a href="#使用闭包封装变量" class="headerlink" title="使用闭包封装变量"></a>使用闭包封装变量</h3><p>闭包可以将一些不想暴露在全局的变量封装成“私有变量”。</p>
+<p>假如有一个计算乘积的函数，mult函数接收一些number类型的参数，并返回乘积结果。为了提高函数性能，我们增加缓存机制，将之前计算过的结果缓存起来，下次遇到同样的参数，就可以直接返回结果，而不需要参与运算。这里，存放缓存结果的变量不需要暴露给外界，并且需要在函数运行结束后，仍然保存，所以可以采用闭包。</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mult = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cache = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> calculate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</span><br><span class="line">            a = a * <span class="built_in">arguments</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>, <span class="string">','</span>);</span><br><span class="line">        <span class="keyword">if</span>(args <span class="keyword">in</span> cache) &#123;</span><br><span class="line">            <span class="keyword">return</span> cache[args];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cache[args] = calculate.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<h3 id="通过闭包延续局部变量的寿命"><a href="#通过闭包延续局部变量的寿命" class="headerlink" title="通过闭包延续局部变量的寿命"></a>通过闭包延续局部变量的寿命</h3><p>img对象经常用于数据上报，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> report = <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    img.src = src;</span><br><span class="line">&#125;</span><br><span class="line">report(<span class="string">'http://xxx.com/getUserInfo'</span>);</span><br></pre></td></tr></table></figure>
+<p>这段代码在运行时，发现在一些低版本浏览器上存在bug，会丢失部分数据上报，原因是img是report函数中的局部变量，当report函数调用结束后，img对象随即被销毁，而此时可能还没来得及发出http请求，所以此次请求就会丢失。</p>
+<p>因此，我们使用闭包把img对象封闭起来，就可以解决数据丢失的问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> report = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgs = [];</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        imgs.push(img);</span><br><span class="line">        img.src = src;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>作者：佩吉秋</li>
+<li>链接：<a href="https://www.jianshu.com/p/132fb6d485ee" title="https://www.jianshu.com/p/132fb6d485ee" target="_blank" rel="noopener">原文地址</a></li>
+<li>來源：简书</li>
+<li>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/03/21/JavaScript/函数与闭包/闭包的应用场景/" data-id="cjvlw5bnl00baxfq3mw5tf9c5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS/CSS属性中的百分比单位" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/11/CSS/CSS属性中的百分比单位/" class="article-date">
+  <time datetime="2018-02-11T09:32:28.000Z" itemprop="datePublished">2018-02-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/11/CSS/CSS属性中的百分比单位/">CSS 属性之中经常出现的百分比</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="百分比值的基数"><a href="#百分比值的基数" class="headerlink" title="百分比值的基数"></a>百分比值的基数</h1><p>CSS 的属性值中经常会出现百分比，搞清它们的基数是一件很重要的事情。我特意查看了一下 W3C 的 CSS2.1 标准，在此整理下：</p>
+<h2 id="百分比单位"><a href="#百分比单位" class="headerlink" title="百分比单位"></a>百分比单位</h2><ol>
+<li><p>乘以包含块的宽度 <code>margin, padding, left, right, text-indent, width, max-width, min-width</code></p>
+</li>
+<li><p>乘以包含块的高度 <code>top, bottom, height, max-height, min-height</code></p>
+</li>
+</ol>
+<p>关于包含块（containing block）的概念，不能简单地理解成是父元素。如果是静态定位和相对定位，包含块一般就是其父元素。但是对于绝对定位的元素，包含块应该是离它最近的 position 为 absolute、relative、或者 fixed 的祖先元素。对固定定位的元素，它的包含块是视口（viewport）。具体可以参考 W3Help。</p>
+<p><code>background-size</code>属性规定背景图片尺寸，如果以百分比规定尺寸，那么尺寸相对于父元素的宽度和高度。</p>
+<ol>
+<li><p>乘以元素的字体大小 <code>line-height</code></p>
+</li>
+<li><p>乘以元素的行高 <code>vertical-align</code></p>
+</li>
+</ol>
+<p>背景定位中的百分比 <code>background-position</code> 分别设置水平方向和垂直方向上的两个值，如果使用百分比，那么百分比值会同时应用于元素和图像。例如 50% 50% 会把图片的（50%, 50%）这一点与框的（50%, 50%）处对齐，相当于设置了 center center。同理 0% 0% 相当于 left top，100% 100% 相当于 right bottom。</p>
+<p><strong>字体大小中的百分比 font-size 中的百分比值应该乘以元素所继承到的字体大小，也就是父元素的字体大小</strong>。</p>
+<h3 id="字体单位浅谈"><a href="#字体单位浅谈" class="headerlink" title="字体单位浅谈"></a>字体单位浅谈</h3><p>既然说到了字体大小，顺便八一八其他的字体单位吧，有些可能平时并不会用，但是了解一下也没有坏处。有两个相对单位是：</p>
+<p>em——相当于当前的字体高度，称作“全身方框”（em square）。如果在 font-size 上使用这个单位，应该乘以父元素的字体大小。用在 font-size 之外的属性上，则应该乘以元素自身的字体大小。 ex——相当于字体中的”x”的高度。 以下是绝对单位：</p>
+<p>in——英寸（inch），相当于 2.54cm。 cm——厘米（centimeter）。 mm——毫米（millimeter）。 pt——磅（point）。1pt 相当于 1in 的 1/72。 pc——皮卡（pica）。1pc = 12pt。 px——像素（pixel unit）。1px = 0.75pt。</p>
+<h2 id="百分比的继承："><a href="#百分比的继承：" class="headerlink" title="百分比的继承："></a>百分比的继承：</h2><p>如果某个元素设置了百分比的属性，则后代元素继承的是计算后的值。例如：</p>
+<p><code>p { font-size: 10px } p { line-height: 120% }</code></p>
+<p><em>120% of ‘font-size‘</em>，那么p的子元素继承到的值是 <code>line-height: 12px</code>，而不是 line-height: 120%。</p>
+<p><strong>注意</strong>：<em>对于使用了 absolute 定位的元素，如果其父级元素没有设置 position:relative; 则百分比为页面可见高度的百分比</em>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/02/11/CSS/CSS属性中的百分比单位/" data-id="cjvlw5bjh000dxfq3b6i5rcb4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/Promise.then方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/18/JavaScript/Promise.then方法/" class="article-date">
+  <time datetime="2018-01-18T07:01:26.000Z" itemprop="datePublished">2018-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/18/JavaScript/Promise.then方法/">Promise.then 方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="then-方法"><a href="#then-方法" class="headerlink" title="then 方法"></a>then 方法</h2><p>我们都知道 <code>Promise</code> 对象有一个 <code>then</code> 方法，用来处理 <code>Promise</code> 状态确定时相应的逻辑，因此，我们自己要实现 <code>Promise</code> 的话，<code>then</code> 方法需要写在原型链上，那么 <code>then</code> 方法为什么会返回一个 <code>Promise</code> 呢？</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>关于上面谈到的问题，<code>Promise/A+</code> 标准并没有要求返回的一个新的 <code>Promise</code> 对象，但在 <code>Promise/A</code> 标准中，明确规定了要返回一个新的对象，但目前的实现中 <code>then</code> 几乎都是返回一个新的 <code>Promise</code>。</p>
+<p>标准中说，如果 <code>promise2 = promise1.then(onResolved,onRejected)</code> 里的 <code>onResolved/onRejected</code> 返回一个 <code>Promise</code>，则 <code>promise2</code> 直接取这个 <code>Promise</code> 的状态和值为己用，就像如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line">    resolve(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> promise2 = promise1.then(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>此时，如果 <code>foo</code> 执行了，则说明 <code>promise1</code> 的状态必然已经是 <code>resolved</code>。假如 <code>then</code> 返回了 <code>this</code>（即 <strong>promise2 === promise1</strong>），那么 <code>promise2</code> 与 <code>promise1</code> 就是同一个对象，而此时的 <code>promise1/2</code> 的状态已经确定，没有办法再取 <code>Promise.reject(2)</code> 的状态和结果为己用，因为 <code>Promise</code> 的状态确定后就无法再转换为其它状态。</p>
+<p>而且，每个 <code>Promise</code> 都可以在其上多次调用 <code>then</code> 方法，而每个 <code>then</code> 返回的 <code>Promise</code> 的状态取决于那一次调用 <code>then</code> 时的参数的返回值，所以 <code>then</code> 不能返回 <code>this</code>，因为 <code>then</code> 每次返回的 <code>Promise</code> 的结果都有可能不同。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/01/18/JavaScript/Promise.then方法/" data-id="cjvlw5bkw003uxfq36jsdkrnc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/总结一些常用的面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/08/JavaScript/总结一些常用的面试题/" class="article-date">
+  <time datetime="2018-01-08T05:56:41.000Z" itemprop="datePublished">2018-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/08/JavaScript/总结一些常用的面试题/">一些常用的面试题总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h1><p>作为一名程序员，在实际工作中难免会遇到各种各样的面试，总结一些有意思的面试题是一种习惯。</p>
+<h2 id="判断一个单词是否是回文"><a href="#判断一个单词是否是回文" class="headerlink" title="判断一个单词是否是回文"></a>判断一个单词是否是回文</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'abcdcba'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPalindrome</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str === str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">checkPalindrome(str) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="手写-document-getElementByClassName"><a href="#手写-document-getElementByClassName" class="headerlink" title="手写 document.getElementByClassName()"></a>手写 document.getElementByClassName()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getByClassName</span>(<span class="params">obj, cls</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// obj 目标元素，cls 要获取元素的 class 名</span></span><br><span class="line">    <span class="keyword">var</span> elem = obj.getElementByTagName(<span class="string">'*'</span>);</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elem.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (elem[i].className === cls) &#123;</span><br><span class="line">            result.push(elem[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遍历文档中所有的文本节点"><a href="#遍历文档中所有的文本节点" class="headerlink" title="遍历文档中所有的文本节点"></a>遍历文档中所有的文本节点</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归遍历</span></span><br><span class="line"><span class="keyword">var</span> textArr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nodeList = elem.childNodes;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodeList.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nodeList[i].nodeType == Node.TEXT_NODE &amp;&amp; nodeList[i].nodeValue.trim() !== <span class="string">''</span>) &#123;</span><br><span class="line">            textArr.push(nodeList[i].nodeValue);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nodeList[i].nodeType == Node.ELEMENT_NODE) &#123;</span><br><span class="line">            search(nodeList[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">serch(<span class="built_in">document</span>.body);</span><br><span class="line"><span class="built_in">console</span>.log(textArr);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2018/01/08/JavaScript/总结一些常用的面试题/" data-id="cjvlw5bl10049xfq3nqcf8wx8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/巧妙使用数组方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/JavaScript/巧妙使用数组方法/" class="article-date">
+  <time datetime="2017-12-15T14:15:27.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/JavaScript/巧妙使用数组方法/">巧妙使用数组方法创建一个长度为100的数组，并且每个元素的值等于它的下标（不使用 loop 循环）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="生成密集数组-内部值为-undefined"><a href="#生成密集数组-内部值为-undefined" class="headerlink" title="生成密集数组(内部值为 undefined)"></a>生成密集数组(内部值为 undefined)</h1><ol>
+<li><code>Array.from({length: 100})</code></li>
+<li><code>Array.apply(null, {length: 100})</code></li>
+<li>ES6 spread 拓展运算符：<code>[...Array(100)]</code></li>
+</ol>
+<h2 id="生成每个元素的值等于它的下标的数组"><a href="#生成每个元素的值等于它的下标的数组" class="headerlink" title="生成每个元素的值等于它的下标的数组"></a>生成每个元素的值等于它的下标的数组</h2><ol>
+<li>ES5 版本：<code>Object.keys(Array.apply(null,{length:100}));</code></li>
+<li>ES6 版本：<code>Array.from(Array(100).keys())</code>或者<code>[...Array(100).keys()]</code></li>
+<li><code>Array.from({length:100},(v, k) =&gt; k)</code></li>
+</ol>
+<h2 id="最朴素的写法"><a href="#最朴素的写法" class="headerlink" title="最朴素的写法"></a>最朴素的写法</h2><p>用所谓的函数式语言，递归实现循环的思路，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params">prev, curr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (curr &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">  &#125;</span><br><span class="line">  prev.push(curr)</span><br><span class="line">  <span class="keyword">return</span> reduce(prev, curr + <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = reduce([], <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>作者：Jim Liu</li>
+<li>链接：<a href="https://www.zhihu.com/question/41493194/answer/91299155" target="_blank" rel="noopener">原文地址</a></li>
+<li>来源：知乎</li>
+<li>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/12/15/JavaScript/巧妙使用数组方法/" data-id="cjvlw5bl00046xfq33pra6qx3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/JS数组 reduce 方法详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/JavaScript/JS数组 reduce 方法详解/" class="article-date">
+  <time datetime="2017-12-11T09:48:13.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/11/JavaScript/JS数组 reduce 方法详解/">JS数组 reduce 方法详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.reduce(callback[, initialValue])</span><br></pre></td></tr></table></figure>
+<ol>
+<li>callback 表示执行数组中每个值的函数，包含四个参数：<ul>
+<li>previous 上次调用回调返回的值，或者是提供的初始值(initialValue)</li>
+<li>currentValue 数组中当前被处理的元素</li>
+<li>index 当前元素在数组中的索引</li>
+<li>array 调用 reduce 的数组</li>
+<li>initialValue 作为第一次调用 callback 的第一个参数</li>
+</ul>
+</li>
+</ol>
+<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> items = [<span class="number">25</span>, <span class="number">175</span>, <span class="number">2500</span>];</span><br><span class="line"><span class="keyword">var</span> reducer = <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">sumSoFar, item</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sumSoFar + item;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> total = items.reduce(reducer, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(total); <span class="comment">// 2700</span></span><br></pre></td></tr></table></figure>
+<p>reduce 函数初始值为0，不断累加，完成数据求和。同理，初始值也可以是对象类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> items = [<span class="number">25</span>, <span class="number">175</span>, <span class="number">2500</span>];</span><br><span class="line"><span class="keyword">var</span> reducer = <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">sumSoFar, item</span>) </span>&#123;</span><br><span class="line">    sumSoFar.sum = sumSoFar.sum + item;</span><br><span class="line">    <span class="keyword">return</span> sumSoFar;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> total = items.reduce(reducer, &#123;<span class="attr">sum</span>: <span class="number">0</span>&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(total); <span class="comment">// &#123;sum: 2700&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="进阶应用"><a href="#进阶应用" class="headerlink" title="进阶应用"></a>进阶应用</h2><p>下面就是 manager 函数的实现，它需要 reducers 对象作为参数，并返回一个 callback 类型的函数，作为 reduce 的第一个参数。在该函数内部，则执行多维的叠加工作（Object.keys()）。</p>
+<p>通过这种分治的思想，可以完成目标对象多个属性的同时叠加，完整代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reducers = &#123;</span><br><span class="line">    totalInEuros : <span class="function"><span class="keyword">function</span>(<span class="params">state, item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state.euros += item.price * <span class="number">1.5</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    totalInYen : <span class="function"><span class="keyword">function</span>(<span class="params">state, item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state.yens += item.price * <span class="number">0.8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> manageReducers = <span class="function"><span class="keyword">function</span>(<span class="params">reducers</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">state, item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.keys(reducers).reduce(</span><br><span class="line">            <span class="function"><span class="keyword">function</span>(<span class="params">nextState, key</span>) </span>&#123;</span><br><span class="line">                reducers[key](state, item);</span><br><span class="line">                <span class="keyword">return</span> state;</span><br><span class="line">            &#125;, &#123;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> bigTotalPriceReducer = manageReducers(reducers);</span><br><span class="line"><span class="keyword">var</span> initialState = &#123;<span class="attr">euros</span>:<span class="number">0</span>, <span class="attr">yens</span>: <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> items = [&#123;<span class="attr">price</span>: <span class="number">10</span>&#125;, &#123;<span class="attr">price</span>: <span class="number">120</span>&#125;, &#123;<span class="attr">price</span>: <span class="number">1000</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> totals = items.reduce(bigTotalPriceReducer, initialState);</span><br><span class="line"><span class="built_in">console</span>.log(totals); <span class="comment">// &#123;euros: 1695, yens: 904&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>某同学考试成绩如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = [</span><br><span class="line">  &#123;</span><br><span class="line">    subject: <span class="string">'math'</span>,</span><br><span class="line">    score: <span class="number">99</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    subject: <span class="string">'chinese'</span>,</span><br><span class="line">    score: <span class="number">84</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    subject: <span class="string">'english'</span>,</span><br><span class="line">    score: <span class="number">82</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>利用 reduce 求总成绩</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = result.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cur.score + prev;</span><br><span class="line">&#125;, <span class="number">0</span>); <span class="comment">// 265</span></span><br><span class="line"><span class="comment">// 如果该同学因为违纪总成绩被扣10分</span></span><br><span class="line"><span class="keyword">var</span> sum = result.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cur.score + prev;</span><br><span class="line">&#125;, <span class="number">-10</span>); <span class="comment">// 255</span></span><br></pre></td></tr></table></figure>
+<p>下面增加点难度，假如该同学总成绩中各科比重所占不同，分别为50%，30%，20%，如何求出最终权重结果？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> weight = &#123;</span><br><span class="line">    math: <span class="number">0.5</span>,</span><br><span class="line">    chinese: <span class="number">0.3</span>,</span><br><span class="line">    english: <span class="number">0.2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> sum = result.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cur.score + prev;</span><br><span class="line">&#125;, <span class="number">-10</span>); <span class="comment">// 255</span></span><br><span class="line"><span class="keyword">var</span> qsum = result.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cur.score * weight[cur.subject] + prev;</span><br><span class="line">&#125;, <span class="number">0</span>) <span class="comment">// 91.10000000000001</span></span><br></pre></td></tr></table></figure>
+<h3 id="利用-reduce-求一串字符串每个字母出现次数"><a href="#利用-reduce-求一串字符串每个字母出现次数" class="headerlink" title="利用 reduce 求一串字符串每个字母出现次数"></a>利用 reduce 求一串字符串每个字母出现次数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arrString = <span class="string">'abcdaabc'</span>;</span><br><span class="line">arrString.split(<span class="string">''</span>).reduce(<span class="function"><span class="keyword">function</span>(<span class="params">res, cur</span>) </span>&#123;</span><br><span class="line">  res[cur] ? res[cur] ++ : res[cur] = <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;, &#123;&#125;); <span class="comment">// &#123;a: 3, b: 2, c: 2, d: 1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>其他用法，各种各样的类型转换，比如将数组按照一定规则转换为对象：</p>
+<ol>
+<li><p>一种形式数组转换为另一种形式数组：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">4</span>, <span class="number">6</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">res, cur</span>) </span>&#123;</span><br><span class="line">    res.push(cur + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;, []); <span class="comment">// [5, 7]</span></span><br><span class="line"></span><br><span class="line">[<span class="number">4</span>, <span class="number">6</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">res, cur</span>) </span>&#123;</span><br><span class="line">    res.a = res.a + cur;</span><br><span class="line">    res.b = res.b + cur;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">    &#125;, &#123;<span class="attr">a</span>: <span class="number">0</span>, <span class="attr">b</span>: <span class="number">0</span>&#125;); <span class="comment">// &#123;a: 10, b: 10&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>koa源码中有个 only 模块，整个模块就一个简单的返回 reduce 方法操作的对象</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> only = <span class="function"><span class="keyword">function</span>(<span class="params">obj, keys</span>)</span>&#123;</span><br><span class="line">    obj = obj || &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> keys) keys = keys.split(<span class="regexp">/ +/</span>);</span><br><span class="line">    <span class="keyword">return</span> keys.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">ret, key</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> == obj[key]) <span class="keyword">return</span> ret;</span><br><span class="line">        ret[key] = obj[key];</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;, &#123;&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> 通过对 reduce 概念的理解，这个模块主要是想新建并返回一个 obj 对象中存在的 keys 的 object 对象。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  env : <span class="string">'production'</span>,</span><br><span class="line">  proxy : <span class="literal">true</span>,</span><br><span class="line">  subdomainOffset : <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line">only(a,[<span class="string">'env'</span>,<span class="string">'proxy'</span>])  <span class="comment">// &#123;env:'production',proxy : true&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/12/11/JavaScript/JS数组 reduce 方法详解/" data-id="cjvlw5bkj002xxfq3g8zgrmc2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reduce/">reduce</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-React/React小知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/08/React/React小知识点/" class="article-date">
+  <time datetime="2017-11-08T11:11:26.000Z" itemprop="datePublished">2017-11-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/08/React/React小知识点/">关于 React 需要注意的小知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ol>
+<li><p><code>setState()</code> 是异步的<br> <code>this.setState()</code> 会调用 <code>render</code> 方法，但不会立即改变 state 的值，state 是在 render 方法中赋值的。所以执行 <code>this.setState()</code> 后立即获取 state 的值是不变的。同样的直接赋值 state 并不会触发更新，因为没有调用 render 函数。可以在 <code>setState</code> 的第二个参数触发回调函数，如下所示：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    curView: val,</span><br><span class="line">    loadingSmall: <span class="literal">true</span></span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">this</span>.loadData();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组件的生命周期<br> <code>componentWillMount，componentDidMount</code> 只有在初始化的时候才调用。<br> <code>componentWillReceivePorps，shouldComponentUpdate，componentWillUpdata，componentDidUpdate</code> 只有组件在更新的时候才被调用，初始化时不调用。</p>
+</li>
+<li><p>reducer必须返回一个新的对象才能出发组件的更新<br> 因为在 <code>connect</code> 函数中会对新旧两个 <code>state</code> 进行浅对比，如果 state 只是值改变但是引用地址没有改变，connect 会认为它们相同而不触发更新。</p>
+</li>
+<li><p>无论 reducer 返回的 state 是否改变，<code>subscribe</code> 中注册的所有回调函数都会被触发。</p>
+</li>
+<li><p>按需加载时如果组件是通过 <code>export default</code> 暴露出去，那么 <code>require.ensure</code> 时必须加上 <code>default</code>。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../Component/helloWorld'</span>).default)</span><br><span class="line">&#125;,<span class="string">'helloWorld'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>componentWillUpdate</code> 中可以直接改变 state 的值，而不能用 <code>setState</code>。</p>
+</li>
+<li><p>如果使用 es6class 类继承 react 的 component 组件，<code>constructor</code> 中必须调用 <code>super</code>，因为子类必须用 <code>super</code> 继承 component 的 <code>this</code>，否则实例化的时候会报错。</p>
+</li>
+<li>组件卸载之前，加在 dom 元素上的监听事件和定时器需要手动清除，因为这些并不在 react 的控制范围内，必须手动清除。指的是在 this.refs.xxx 这种真实 dom 上 addEventListener 这样添加的监听事件，在组件卸载的时候要手动清除(removeEventListener)，react 组件上的 onClick 这种不用管， react 帮我们处理好了。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/11/08/React/React小知识点/" data-id="cjvlw5bll005fxfq33227py7h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-React/关于this.refs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/04/React/关于this.refs/" class="article-date">
+  <time datetime="2017-10-04T01:19:37.000Z" itemprop="datePublished">2017-10-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/04/React/关于this.refs/">关于 React 的 this.refs 用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h1><p>ref 是 reference 的简称，在 React 中表示父组件引用子组件。</p>
+<p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM。只有当它插入文档以后，才会变成真实的 DOM。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM 上，这种算法叫做 DOM diff，它可以极大提高网页的性能表现。但是，我们有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性。</p>
+<h2 id="this-refs-refName"><a href="#this-refs-refName" class="headerlink" title="this.refs[refName]"></a>this.refs[refName]</h2><p>this.refs.[refName] 返回真实的 DOM 节点。需要注意的是，由于 this.refs.[refName] 属性获取的是真实 DOM，所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性，否则会报错。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    handleClick(event)&#123;</span><br><span class="line">        <span class="keyword">this</span>.refs.myInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;input type=<span class="string">"text"</span> ref=<span class="string">"myInput"</span> /&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;Focus on me&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">React.render(<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>,<span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
+<h2 id="ref-是函数"><a href="#ref-是函数" class="headerlink" title="ref 是函数"></a>ref 是函数</h2><p>ref 属性可以是一个回调函数，而不是一个名字。这个回调函数在组件挂载后立即执行。被引用的组件作为一个参数传递，且回调函数可以立即使用这个组件，或保存供以后使用(或实现这两种行为)。比如下面这段代码，ref 回调储存 DOM 节点的引用。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomTextInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.focus = <span class="keyword">this</span>.focus.bind(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">focus() &#123;</span><br><span class="line">    <span class="comment">// Explicitly focus the text input using the raw DOM API</span></span><br><span class="line">    <span class="keyword">this</span>.textInput.focus();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="comment">// Use the `ref` callback to store a reference to the text input DOM</span></span><br><span class="line">    <span class="comment">// element in this.textInput.</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"text"</span></span><br><span class="line">          ref=&#123;(input) =&gt; &#123; <span class="keyword">this</span>.textInput = input; &#125;&#125; /&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"button"</span></span><br><span class="line">          value=<span class="string">"Focus the text input"</span></span><br><span class="line">          onClick=&#123;<span class="keyword">this</span>.focus&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>React 将在组件 mount 时调用 ref 回调，输入 DOM 元素；在组件 unmount 时调用 ref 回调，输入 null。一种常见的模式是利用 ref 回调来访问 DOM 元素。如果你现在使用的是 this.refs.refName 来访问 ref，建议采用上面这种回调函数的形式。</p>
+<p>当 ref 属性用在一个自定义组件上，ref 回调接受这个组件的 mounted 实例作为参数。比如，如果我们想包裹上面的 CustomTextInput 组件来模拟它 mount 后立即被单击。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoFocusTextInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.textInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;CustomTextInput</span><br><span class="line">            ref=&#123;(input) =&gt; &#123; <span class="keyword">this</span>.textInput = input; &#125;&#125; /&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你可能不会在函数组件上使用 ref 属性，因为函数组件没有实例，然而你可以在函数组件的 render 函数中使用ref属性。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CustomTextInput</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// textInput must be declared here so the ref callback can refer to it</span></span><br><span class="line">    <span class="keyword">let</span> textInput = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        textInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">            type=<span class="string">"text"</span></span><br><span class="line">            ref=&#123;(input) =&gt; &#123; textInput = input; &#125;&#125; /&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">            type=<span class="string">"button"</span></span><br><span class="line">            value=<span class="string">"Focus the text input"</span></span><br><span class="line">            onClick=&#123;handleClick&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="不要滥用-refs"><a href="#不要滥用-refs" class="headerlink" title="不要滥用 refs"></a>不要滥用 refs</h2><p>当你想使用 refs 时，想想是否可以用 state 代替。最适合设置 state 的地方是在层级中较高的位置设置</p>
+<p><a href="http://www.cnblogs.com/YangqinCao/p/6142498.html" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/10/04/React/关于this.refs/" data-id="cjvlw5bln005ixfq3hh1viw2u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTML/visibilitychange事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/02/HTML/visibilitychange事件/" class="article-date">
+  <time datetime="2017-09-02T00:19:11.000Z" itemprop="datePublished">2017-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/02/HTML/visibilitychange事件/">visibilitychange —— HTML5 事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="visibilitychange"><a href="#visibilitychange" class="headerlink" title="visibilitychange"></a>visibilitychange</h1><p>最近研究 HTML5，发现 H5 一个比较特别的新事件，这个事件监听当前网页在可见和不可见之间变换的时候调用。</p>
+<p>比如用户正在看新闻，看到一半切去看视频了，这个时候新闻端就能通过 visibilitychange 发现用户没有在看自己了，进而根据实际需要暂停请求或者一些别的操作，等用户切回来的时候再继续加载。</p>
+<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>通过 <code>document.hidden</code> 属性判断网页标签是否可见，true 表示不可见。</p>
+<p>此事件时候在标签不可见的时候减少网络请求、缓解服务器压力，也可以进行一些比较有意思的操作，比如改变网页标题的文字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"visibilitychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="built_in">document</span>.hidden ? <span class="string">"(つェ⊂) 我藏好了哦~"</span> : <span class="string">"(*´∇｀*) 被你发现啦~"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/09/02/HTML/visibilitychange事件/" data-id="cjvlw5bk4001vxfq3lufa49x0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python/Django学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/14/Python/Django学习/" class="article-date">
+  <time datetime="2017-08-14T14:01:39.000Z" itemprop="datePublished">2017-08-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/14/Python/Django学习/">Django 学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><p>Django 作为一个 Python 的高级 Web 框架，功能非常强大，本文简要总结了 Django 常用的 API，不定时更新……</p>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>默认8000, 可以修改为0.0.0.0:8080, 表示任意网关的8080端口, 0.0.0.0表示任意网口</p>
+<h2 id="项目与应用"><a href="#项目与应用" class="headerlink" title="项目与应用"></a>项目与应用</h2><ul>
+<li>manage.py –&gt; 管理项目: 包括数据库建立, 服务器运行, 测试…</li>
+<li>mysite目录<ul>
+<li>settings.py –&gt; 配置文件: 应用, 中间件, 数据库, 静态目录各种配置…</li>
+<li>urls.py –&gt; URL映射配置文件: 决定一个url访问被哪个程序(函数)响应</li>
+<li>wsgi.py –&gt; Python应用程序或框架和Web服务器之间接口</li>
+</ul>
+</li>
+<li>blog应用 –&gt; 分割功能<ul>
+<li>创建blog –&gt; python manage.py startapp blog</li>
+<li>添加blog –&gt; mysite/settings.py –&gt;INSTALLED_APPS</li>
+</ul>
+</li>
+<li>views.py –&gt; 响应客户请求返回html页面</li>
+<li>models.py –&gt; 定义数据库中的表</li>
+<li>admin.py –&gt; admin相关</li>
+<li>test.py –&gt; 测试相关</li>
+</ul>
+<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><ul>
+<li><code>django-admin startproject mysite</code></li>
+</ul>
+<h3 id="新建应用"><a href="#新建应用" class="headerlink" title="新建应用"></a>新建应用</h3><ul>
+<li><code>cd mysite</code> –&gt; 进入项目目录</li>
+<li><code>python manage.py startapp blog</code> –&gt; 新建blog应用</li>
+</ul>
+<h4 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h4><p><code>raise TypeError(&#39;view must be a callable or a list/tuple in the case of include().&#39;)</code> –&gt; 采用<code>from blog.views import hello</code> –&gt; <code>url(r&#39;hello&#39;, hello)</code></p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li>匹配类型<ul>
+<li><code>re.S</code> –&gt; 表示’.’匹配任意字符, 包括换行符</li>
+<li><code>re.M</code> –&gt; 表示多行匹配, ‘.’匹配任意字符, 但不包括换行符</li>
+<li><code>.*</code> –&gt; Python里数量词默认是贪婪的（在少数语言里也可能是默认非贪婪）, 总是尝试匹配尽可能多的字符</li>
+<li>非贪婪则相反，总是尝试匹配尽可能少的字符。在<code>&quot;*&quot;,&quot;?&quot;,&quot;+&quot;,&quot;{m,n}&quot;</code>后面加上？，使贪婪变成非贪婪。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例如:</strong> test.txt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hello my name is liming</span><br><span class="line"><span class="built_in">where</span> are you from</span><br><span class="line">i am from america</span><br><span class="line">AAAB235CCCAAA33VVCCCNNNMMMA</span><br><span class="line">AAD234HJKBBBPPPCCCDDFFCC</span><br><span class="line">CC567CCCSSSDSFAAA4567CUICCC</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">fopen = open(<span class="string">'../test.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line">f = fopen.read().strip()</span><br><span class="line"></span><br><span class="line">print(<span class="string">"输出test.txt文件内容"</span>)</span><br><span class="line">print(f)</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"贪婪匹配,re.S('.'匹配任意字符,包括换行符)"</span>)</span><br><span class="line">print(re.findall(<span class="string">"AAA(.*)CCC"</span>, f, re.S))</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"非贪婪匹配,re.S('.'匹配任意字符,包括换行符)"</span>)</span><br><span class="line">list = re.findall(<span class="string">"AAA(.*?)CCC"</span>, f, re.S)</span><br><span class="line">print(list)</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"多行贪婪匹配,re.S('.'匹配任意字符,但不包括换行符)"</span>)</span><br><span class="line">print(re.findall(<span class="string">"AAA(.*)CCC"</span>, f, re.M))</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"多行非贪婪匹配,re.S('.'匹配任意字符,但不包括换行符)"</span>)</span><br><span class="line">list = re.findall(<span class="string">"AAA(.*?)CCC"</span>, f, re.M)</span><br><span class="line">print(list)</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"re.M匹配多行,这里把换行符匹配掉"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(re.findall(<span class="string">"(\d+)"</span>, i, re.M))</span><br><span class="line">print(<span class="string">"====="</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"把匹配出来的字段放到一个数组"</span>)</span><br><span class="line">array = []</span><br><span class="line"><span class="keyword">for</span> lst <span class="keyword">in</span> list:</span><br><span class="line">    re_list = re.findall(<span class="string">"(\d+)"</span>, lst, re.M)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> re_list:</span><br><span class="line">        array.append(i)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> array:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<p><strong>结果:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">输出test.txt文件内容</span><br><span class="line">hello my name is liming</span><br><span class="line"><span class="built_in">where</span> are you from</span><br><span class="line">i am from america</span><br><span class="line">AAAB235CCCAAA33VVCCCNNNMMMA</span><br><span class="line">AAD234HJKBBBPPPCCCDDFFCC</span><br><span class="line">CC567CCCSSSDSFAAA4567CUICCC</span><br><span class="line">==================================================</span><br><span class="line">贪婪匹配,re.S(<span class="string">'.'</span>匹配任意字符,包括换行符)</span><br><span class="line">[<span class="string">'B235CCCAAA33VVCCCNNNMMMA\nAAD234HJKBBBPPPCCCDDFFCC\nCC567CCCSSSDSFAAA4567CUI'</span>]</span><br><span class="line">==================================================</span><br><span class="line">非贪婪匹配,re.S(<span class="string">'.'</span>匹配任意字符,包括换行符)</span><br><span class="line">[<span class="string">'B235'</span>, <span class="string">'33VV'</span>, <span class="string">'4567CUI'</span>]</span><br><span class="line">==================================================</span><br><span class="line">多行贪婪匹配,re.S(<span class="string">'.'</span>匹配任意字符,但不包括换行符)</span><br><span class="line">[<span class="string">'B235CCCAAA33VV'</span>, <span class="string">'4567CUI'</span>]</span><br><span class="line">==================================================</span><br><span class="line">多行非贪婪匹配,re.S(<span class="string">'.'</span>匹配任意字符,但不包括换行符)</span><br><span class="line">[<span class="string">'B235'</span>, <span class="string">'33VV'</span>, <span class="string">'4567CUI'</span>]</span><br><span class="line">==================================================</span><br><span class="line">re.M匹配多行,这里把换行符匹配掉</span><br><span class="line">[<span class="string">'235'</span>]</span><br><span class="line">[<span class="string">'33'</span>]</span><br><span class="line">[<span class="string">'4567'</span>]</span><br><span class="line">==================================================</span><br><span class="line">把匹配出来的字段放到一个数组</span><br><span class="line">235</span><br><span class="line">33</span><br><span class="line">4567</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2017/08/14/Python/Django学习/" data-id="cjvlw5bli0058xfq3r5f7yf5t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

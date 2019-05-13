@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux 常用命令 | 化简为凡的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己总结了一些 Linux 系统常用的命令，不定时更新……">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 常用命令">
+<meta property="og:url" content="http://hushiking.github.io/2015/12/30/Linux/Linux 常用命令/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="自己总结了一些 Linux 系统常用的命令，不定时更新……">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-11T06:29:42.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 常用命令">
+<meta name="twitter:description" content="自己总结了一些 Linux 系统常用的命令，不定时更新……">
+  
+    <link rel="alternate" href="/atom.xml" title="化简为凡的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">化简为凡的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">用生命谱写代码的赞歌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushiking.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux/Linux 常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/30/Linux/Linux 常用命令/" class="article-date">
+  <time datetime="2015-12-29T22:28:15.000Z" itemprop="datePublished">2015-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维与Linux/">运维与Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-命令"><a href="#Linux-命令" class="headerlink" title="Linux 命令"></a>Linux 命令</h1><p>一些常用的 <code>Linux</code> 命令，不定时更新……</p>
+<h2 id="Linux文件和目录"><a href="#Linux文件和目录" class="headerlink" title="Linux文件和目录"></a>Linux文件和目录</h2><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><code>/</code>: linux根目录<ul>
+<li><code>/bin</code>: 可执行的二进制文件目录,如常用的命令ls/tar/mv/cat等</li>
+<li><code>/sbin</code>: 放置系统管理员使用的可执行命令</li>
+<li><code>/usr</code>: 用户相关</li>
+<li><code>/lib</code>: 系统使用的函数库的目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><ul>
+<li><code>.和..</code>: 每个目录下都有.和..<ul>
+<li>. 表示当前目录</li>
+<li>.. 表示上一级目录,即父目录</li>
+<li>根目录下的. 和 .. 都表示当前目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux简单命令"><a href="#Linux简单命令" class="headerlink" title="Linux简单命令"></a>Linux简单命令</h2><h3 id="sudo-s-获取管理员权限-Ubuntu"><a href="#sudo-s-获取管理员权限-Ubuntu" class="headerlink" title="sudo -s: 获取管理员权限(Ubuntu)"></a>sudo -s: 获取管理员权限(Ubuntu)</h3><h3 id="man-手册帮助-manual"><a href="#man-手册帮助-manual" class="headerlink" title="man: 手册帮助(manual)"></a>man: 手册帮助(manual)</h3><p>man是linux提供的一个手册,分成很多章节(section),使用时可以指定不同章节来浏览</p>
+<p><code>man ls</code>或者<code>man 2 printf</code></p>
+<p><strong><em>q可退出man手册,h可查看man手册如何操作</em></strong></p>
+<h3 id="grep-文本搜索"><a href="#grep-文本搜索" class="headerlink" title="grep: 文本搜索"></a>grep: 文本搜索</h3><p>一般格式: <code>grep [-选项] &#39;搜索内容串&#39; 文件名</code></p>
+<ul>
+<li><code>grep -v &#39;abc&#39; abc.py</code>: 显示不包含abc的所有行<ul>
+<li>v 表示不包含匹配文本的所有行(相当于求反)</li>
+<li>n 表示显示匹配行及行号</li>
+<li>i 表示忽略大小写</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>搜索内容串可采用正则表达式</em></strong></p>
+<h3 id="history-查看输入过的历史命令"><a href="#history-查看输入过的历史命令" class="headerlink" title="history: 查看输入过的历史命令"></a>history: 查看输入过的历史命令</h3><p><code>history &gt; history.txt</code>: 将历史记录到处到 TXT 文件中<br><code>cp ~/.bash_history myHistory.txt</code>: 将历史记录复制到任意命名的文件中</p>
+<h3 id="cat-查看或者合并文件内容-重定向"><a href="#cat-查看或者合并文件内容-重定向" class="headerlink" title="cat: 查看或者合并文件内容,重定向"></a>cat: 查看或者合并文件内容,重定向</h3><p><code>cat 1.py &gt; 2.py</code>: 将1文件的内容写入到2文件,如果没有2文件则新建2文件</p>
+<p><code>cat 1.py 2.py &gt; 3.py</code>: 将1文件和2文件的内容追加写入到3文件</p>
+<p><code>&gt;&gt;</code>: 追加重定向</p>
+<h3 id="more-分屏显示"><a href="#more-分屏显示" class="headerlink" title="more: 分屏显示"></a>more: 分屏显示</h3><p><code>more index.html</code>: 当一个屏幕显示不全可使用more命令分屏显示,每次只显示一页,<strong>按下空格键显示下一页,按下q键退出,按下h键获取帮助</strong></p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 <code>|</code></h3><blockquote>
+<p>管道: 一个命令的输出可以通过管道作为另一个命令的输入,例如:</p>
+</blockquote>
+<p><code>ls -alh | more</code></p>
+<h3 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find: 查找文件"></a>find: 查找文件</h3><p><code>find / -name aa.py</code>: 从根目录开始查找aa.py文件(文件名可以使用正则表达式)</p>
+<p><code>find / -size +2M</code>: 从根目录开始查找文件大小大于2M的文件</p>
+<p><code>find / -size -2M</code>: 从根目录开始查找文件大小小于2M的文件</p>
+<h3 id="cp-拷贝文件"><a href="#cp-拷贝文件" class="headerlink" title="cp: 拷贝文件"></a>cp: 拷贝文件</h3><ul>
+<li><p><code>cp aa.py python/</code>: 拷贝aa.py文件到当前的python目录下</p>
+</li>
+<li><p><code>cp python python2/ -r</code>: 拷贝python文件夹到当前的python2文件夹中</p>
+</li>
+<li><p><code>cp bb.py python/ -avi</code>:</p>
+<ul>
+<li>v表示显示拷贝进度;</li>
+<li>a表示复制目录时保留链接、文件属性,并递归地复制目录,即保持文件原有属性</li>
+<li>i表示交互式复制,在覆盖目标文件之前提示用户;</li>
+<li>r表示递归复制目录下的所有子目录和文件;</li>
+<li>f表示强制执行,已经存在的目标文件不提示</li>
+</ul>
+</li>
+</ul>
+<h3 id="ln-硬链接与软链接"><a href="#ln-硬链接与软链接" class="headerlink" title="ln: 硬链接与软链接"></a>ln: 硬链接与软链接</h3><p><code>ln abc.py abclink.py</code>: 硬链接,只能链接普通文件,不能链接目录.相当于一个文件有多个名字,删除一个不影响另一个</p>
+<p><code>ln -s abc.py abclink_s.py</code>: 软链接,不占用磁盘空间,删除源文件则链接失效,相当于windows的快捷方式</p>
+<h3 id="mv-移动文件-可用于重命名"><a href="#mv-移动文件-可用于重命名" class="headerlink" title="mv: 移动文件,可用于重命名"></a>mv: 移动文件,可用于重命名</h3><p><code>mv cc.py python/</code>: 移动cc.py文件到python文件夹</p>
+<p><code>mv python python2</code>: 移动python文件夹到python2文件夹</p>
+<p><code>mv cc.py dd.py</code>: 相当于将cc.py重命名为dd.py</p>
+<h3 id="tar-打包与-gzip-zip-压缩文件"><a href="#tar-打包与-gzip-zip-压缩文件" class="headerlink" title="tar: 打包与 gzip/zip: 压缩文件"></a>tar: 打包与 gzip/zip: 压缩文件</h3><p><code>tar -cvf test.tar 1.txt 2.txt 3.txt</code>: 打包1 2 3文件到test.tar</p>
+<p><code>tar -xvf test.tar</code>: 解包test.tar</p>
+<p><code>gzip -r test.tar test.tar.gz</code>或者简写为<code>gzip test.tar</code>: 压缩test.tar</p>
+<p><code>gzip -d test.tar.gz</code>: 解压缩test.tar.gz</p>
+<p><code>tar -zcvf test.tar.gz *.py</code>: 打包并压缩所有后缀名为py的文件</p>
+<p><code>tar -zxvf test.tar.gz</code>: 解压并解包</p>
+<p><code>tar -zxvf test.tar.gz -C python/</code>: 解压并解包到指定文件夹</p>
+<p><code>tar -jcvf test.tar.bz2 *.py</code>: 打包并压缩为bz2格式</p>
+<p><code>tar -jxvf test.tar.bz2</code>: 解压缩并解包</p>
+<p><code>zip -r myzip *.*</code>或者简写为<code>zip myzip *.*</code>: 压缩为zip格式</p>
+<p><code>unzip -d test myzip.zip</code>: 解压zip文件到test文件夹中</p>
+<h3 id="which-查看命令"><a href="#which-查看命令" class="headerlink" title="which: 查看命令"></a>which: 查看命令</h3><p><code>which ls</code>: ls命令在哪<br><code>which sudo</code>: sudo命令在哪</p>
+<h3 id="ps-查看进程信息"><a href="#ps-查看进程信息" class="headerlink" title="ps: 查看进程信息"></a>ps: 查看进程信息</h3><p><code>ps -ef|grep nginx</code>: 查看包含nginx的进程<br><code>lsof -i:8989</code>: 查看8989端口是否被占用<br><code>ps -lu hsj</code>: 查看属于用户hsj的进程<br><code>pgrep -l re</code>: 查看进程名中含有re的进程</p>
+<h3 id="top-动态显示进程"><a href="#top-动态显示进程" class="headerlink" title="top: 动态显示进程"></a>top: 动态显示进程</h3><h3 id="kill-杀死进程"><a href="#kill-杀死进程" class="headerlink" title="kill: 杀死进程"></a>kill: 杀死进程</h3><p><code>kill -9 进程pid号</code>: 强制杀死</p>
+<h3 id="reboot-shutdown-init-关机重启"><a href="#reboot-shutdown-init-关机重启" class="headerlink" title="reboot/shutdown/init: 关机重启"></a>reboot/shutdown/init: 关机重启</h3><h3 id="df-检测磁盘空间"><a href="#df-检测磁盘空间" class="headerlink" title="df: 检测磁盘空间"></a>df: 检测磁盘空间</h3><h3 id="ifconfig-查看或配置网卡信息"><a href="#ifconfig-查看或配置网卡信息" class="headerlink" title="ifconfig: 查看或配置网卡信息"></a>ifconfig: 查看或配置网卡信息</h3><h3 id="ping-测试远程主机连通性"><a href="#ping-测试远程主机连通性" class="headerlink" title="ping: 测试远程主机连通性"></a>ping: 测试远程主机连通性</h3><h2 id="Linux用户管理"><a href="#Linux用户管理" class="headerlink" title="Linux用户管理"></a>Linux用户管理</h2><h3 id="查看-添加-删除用户"><a href="#查看-添加-删除用户" class="headerlink" title="查看/添加/删除用户"></a>查看/添加/删除用户</h3><p><code>who</code>: 查看当前登录的信息</p>
+<p><code>whoami</code>: 查看我是谁</p>
+<p><code>ssh 用户名@ip地址</code>: 远程登录某台机器</p>
+<p><code>useradd xxx</code>或者<code>adduser yyy</code>: 添加新用户</p>
+<p><code>useradd laowang -m</code>: 添加新用户并添加家目录</p>
+<p><code>useradd laowang -d /home/xxx</code>: 添加新用户并且自己指定家目录</p>
+<p><code>passwd xxx</code>: 为xxx用户添加密码</p>
+<p><code>userdel -r laowang</code>: 删除用户并删除该用户家目录</p>
+<p><code>su - laowang</code>: 切换账户并把当前目录更换到家目录(Ubuntu)</p>
+<p><code>su laowang</code>: 切换账户(Ubuntu)</p>
+<p><code>su root</code>: 切换到root用户</p>
+<h3 id="Linux修改文件权限"><a href="#Linux修改文件权限" class="headerlink" title="Linux修改文件权限"></a>Linux修改文件权限</h3><ul>
+<li>字母法: <code>chmod u/g/o/a +/-/= rwx 文件名</code><ul>
+<li>u: user表示文件所有者</li>
+<li>g: group表示与该文件的所有者属于同一组(group)者,即用户组</li>
+<li>o: other表示其他人</li>
+<li>a: all表示这三者都是</li>
+<li>+: 增加权限</li>
+<li>-: 撤销权限</li>
+<li>=: 设定权限</li>
+</ul>
+</li>
+<li>数字法: <code>chmod 751 文件名</code><ul>
+<li>r: 读取权限,数字代号4</li>
+<li>w: 写入权限,数字代号2</li>
+<li>x: 执行权限,数字代号1</li>
+<li>-: 不具任何权限,数字代号0</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linux修改文件所有者"><a href="#Linux修改文件所有者" class="headerlink" title="Linux修改文件所有者"></a>Linux修改文件所有者</h3><p><code>chown 用户名 文件或目录名</code></p>
+<h3 id="Linux修改文件所属组"><a href="#Linux修改文件所属组" class="headerlink" title="Linux修改文件所属组"></a>Linux修改文件所属组</h3><p><code>chgrp 用户组名 文件或目录名</code></p>
+<h3 id="Linux-复制粘贴"><a href="#Linux-复制粘贴" class="headerlink" title="Linux 复制粘贴"></a>Linux 复制粘贴</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat README.TXT | xsel</span><br><span class="line">cat README.TXT | xsel -b <span class="comment"># 如有问题可以试试-b选项</span></span><br><span class="line">xsel &lt; README.TXT</span><br><span class="line"><span class="comment"># 将readme.txt的文本放入剪贴板</span></span><br><span class="line"></span><br><span class="line">xsel -c</span><br><span class="line"><span class="comment"># 清空剪贴板</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hushiking.github.io/2015/12/30/Linux/Linux 常用命令/" data-id="cjvlw5bl7004lxfq3dcokwnuy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/25/PHP/PHP常用API/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP 常用 API
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/16/JavaScript/JS表达式与语句区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS 语法中表达式与语句的区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web前端/">Web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自由随笔/">自由随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维与Linux/">运维与Linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSI/">SSI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPP/">WebAPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form表单/">form表单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reduce/">reduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型/">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型链/">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/循环遍历/">循环遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Ajax/" style="font-size: 12.5px;">Ajax</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 16.25px;">DOM</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/ECMAScript/" style="font-size: 11.25px;">ECMAScript</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/HTML/" style="font-size: 18.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Java/" style="font-size: 16.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Node-js/" style="font-size: 11.25px;">Node.js</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Promise/" style="font-size: 11.25px;">Promise</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/React/" style="font-size: 16.25px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SSI/" style="font-size: 10px;">SSI</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/WebAPP/" style="font-size: 10px;">WebAPP</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/audio/" style="font-size: 11.25px;">audio</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/es6/" style="font-size: 11.25px;">es6</a> <a href="/tags/form表单/" style="font-size: 10px;">form表单</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型/" style="font-size: 10px;">原型</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/循环遍历/" style="font-size: 10px;">循环遍历</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/缓存/" style="font-size: 11.25px;">缓存</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a> <a href="/tags/面试/" style="font-size: 13.75px;">面试</a> <a href="/tags/音视频/" style="font-size: 11.25px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/">HTML5 Audio兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/Webpack/webpack中externals用法/">webpack externals 的用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/Vue/Vue微信网页刷新问题/">Vue 微信网页刷新问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/JavaScript/JS生成[n,m]随机数/">JS 生成[n, m]随机数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/09/Vue/Vue使用中遇到的问题/">Vue 使用中遇到的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 化简为凡<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
