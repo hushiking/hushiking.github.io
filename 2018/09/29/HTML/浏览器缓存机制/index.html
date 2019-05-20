@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="浏览器缓存是网页性能优化里面静态资源相关优化的一大利器，那么浏览器是如何判断缓存是否过期呢？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.202Z">
+<meta property="og:updated_time" content="2019-05-20T10:23:35.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器缓存机制">
 <meta name="twitter:description" content="浏览器缓存是网页性能优化里面静态资源相关优化的一大利器，那么浏览器是如何判断缓存是否过期呢？">
@@ -356,7 +356,7 @@
       
 
       
-        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>浏览器缓存分为强缓存和协商缓存。</p>
+        <p>浏览器缓存分为强缓存和协商缓存。</p>
 <ol>
 <li>浏览器在加载资源时，先根据这个资源的一些http header判断它是否命中强缓存，强缓存如果命中，浏览器直接从自己的缓存中读取资源，不会发请求到服务器。比如某个css文件，如果浏览器在加载它所在的网页时，这个css文件的缓存配置命中了强缓存，浏览器就直接从缓存中加载这个css，连请求都不会发送到网页所在服务器。</li>
 <li>当强缓存没有命中的时候，浏览器一定会发送一个请求到服务器，通过服务器端依据资源的另外一些http header验证这个资源是否命中协商缓存，如果协商缓存命中，服务器会将这个请求返回，并且返回304，但是不会返回这个资源的数据，而是告诉客户端可以直接从缓存中加载这个资源，于是浏览器就又会从自己的缓存中去加载这个资源。</li>
@@ -522,7 +522,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">94</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +544,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强缓存-本地缓存"><span class="nav-number">1.1.</span> <span class="nav-text">强缓存(本地缓存)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协商缓存-对比缓存"><span class="nav-number">1.2.</span> <span class="nav-text">协商缓存(对比缓存)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器行为对缓存的影响"><span class="nav-number">1.3.</span> <span class="nav-text">浏览器行为对缓存的影响</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强缓存-本地缓存"><span class="nav-number">1.</span> <span class="nav-text">强缓存(本地缓存)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协商缓存-对比缓存"><span class="nav-number">2.</span> <span class="nav-text">协商缓存(对比缓存)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器行为对缓存的影响"><span class="nav-number">3.</span> <span class="nav-text">浏览器行为对缓存的影响</span></a></li></ol></div>
             
 
           </div>
