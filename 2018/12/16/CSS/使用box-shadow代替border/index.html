@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="有时候我们需要在鼠标悬浮某些项目时添加高亮效果，例如高亮边框或者一些变形的动画效果。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.199Z">
+<meta property="og:updated_time" content="2019-08-26T06:39:36.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 box-shadow 来代替 border">
 <meta name="twitter:description" content="有时候我们需要在鼠标悬浮某些项目时添加高亮效果，例如高亮边框或者一些变形的动画效果。">
@@ -356,7 +356,7 @@
       
 
       
-        <h1 id="高亮边框"><a href="#高亮边框" class="headerlink" title="高亮边框"></a>高亮边框</h1><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="高亮边框"><a href="#高亮边框" class="headerlink" title="高亮边框"></a>高亮边框</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#f00</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述做法有个明显的缺点，由于改变了元素的盒子结构，可能会触发一系列的重绘（页面其他部分会有相应的一些小的偏移）。尽管只是一个很小的方面，但是可能会给用户造成页面不稳定的印象。</p>
 <p>我们可以使用 box-shadow 来模拟 border 效果，样式如下：</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> rgba(<span class="number">90</span>, <span class="number">155</span>, <span class="number">255</span>, <span class="number">0.7</span>);</span><br><span class="line">        <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -483,7 +483,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -505,7 +505,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -538,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#高亮边框"><span class="nav-number">1.</span> <span class="nav-text">高亮边框</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高亮边框"><span class="nav-number">1.</span> <span class="nav-text">高亮边框</span></a></li></ol></div>
             
 
           </div>

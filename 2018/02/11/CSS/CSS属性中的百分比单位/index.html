@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="CSS 属性中很多值都可以用百分比表示，我们需要搞清楚这些百分比值的基数是什么。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.199Z">
+<meta property="og:updated_time" content="2019-08-26T06:40:09.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS 属性之中经常出现的百分比">
 <meta name="twitter:description" content="CSS 属性中很多值都可以用百分比表示，我们需要搞清楚这些百分比值的基数是什么。">
@@ -356,7 +356,7 @@
       
 
       
-        <h1 id="百分比值的基数"><a href="#百分比值的基数" class="headerlink" title="百分比值的基数"></a>百分比值的基数</h1><p>CSS 的属性值中经常会出现百分比，搞清它们的基数是一件很重要的事情。我特意查看了一下 W3C 的 CSS2.1 标准，在此整理下：</p>
+        <h2 id="百分比值的基数"><a href="#百分比值的基数" class="headerlink" title="百分比值的基数"></a>百分比值的基数</h2><p>CSS 的属性值中经常会出现百分比，搞清它们的基数是一件很重要的事情。我特意查看了一下 W3C 的 CSS2.1 标准，在此整理下：</p>
 <h2 id="百分比单位"><a href="#百分比单位" class="headerlink" title="百分比单位"></a>百分比单位</h2><ol>
 <li><p>乘以包含块的宽度 <code>margin, padding, left, right, text-indent, width, max-width, min-width</code></p>
 </li>
@@ -376,7 +376,7 @@
 <h3 id="字体单位浅谈"><a href="#字体单位浅谈" class="headerlink" title="字体单位浅谈"></a>字体单位浅谈</h3><p>既然说到了字体大小，顺便八一八其他的字体单位吧，有些可能平时并不会用，但是了解一下也没有坏处。有两个相对单位是：</p>
 <p>em——相当于当前的字体高度，称作“全身方框”（em square）。如果在 font-size 上使用这个单位，应该乘以父元素的字体大小。用在 font-size 之外的属性上，则应该乘以元素自身的字体大小。 ex——相当于字体中的”x”的高度。 以下是绝对单位：</p>
 <p>in——英寸（inch），相当于 2.54cm。 cm——厘米（centimeter）。 mm——毫米（millimeter）。 pt——磅（point）。1pt 相当于 1in 的 1/72。 pc——皮卡（pica）。1pc = 12pt。 px——像素（pixel unit）。1px = 0.75pt。</p>
-<h2 id="百分比的继承："><a href="#百分比的继承：" class="headerlink" title="百分比的继承："></a>百分比的继承：</h2><p>如果某个元素设置了百分比的属性，则后代元素继承的是计算后的值。例如：</p>
+<h2 id="百分比的继承"><a href="#百分比的继承" class="headerlink" title="百分比的继承"></a>百分比的继承</h2><p>如果某个元素设置了百分比的属性，则后代元素继承的是计算后的值。例如：</p>
 <p><code>p { font-size: 10px } p { line-height: 120% }</code></p>
 <p><em>120% of ‘font-size‘</em>，那么p的子元素继承到的值是 <code>line-height: 12px</code>，而不是 line-height: 120%。</p>
 <p><strong>注意</strong>：<em>对于使用了 absolute 定位的元素，如果其父级元素没有设置 position:relative; 则百分比为页面可见高度的百分比</em>。</p>
@@ -501,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -523,7 +523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -556,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#百分比值的基数"><span class="nav-number">1.</span> <span class="nav-text">百分比值的基数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比单位"><span class="nav-number">1.1.</span> <span class="nav-text">百分比单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字体单位浅谈"><span class="nav-number">1.1.1.</span> <span class="nav-text">字体单位浅谈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比的继承："><span class="nav-number">1.2.</span> <span class="nav-text">百分比的继承：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比值的基数"><span class="nav-number">1.</span> <span class="nav-text">百分比值的基数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比单位"><span class="nav-number">2.</span> <span class="nav-text">百分比单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字体单位浅谈"><span class="nav-number">2.1.</span> <span class="nav-text">字体单位浅谈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比的继承"><span class="nav-number">3.</span> <span class="nav-text">百分比的继承</span></a></li></ol></div>
             
 
           </div>

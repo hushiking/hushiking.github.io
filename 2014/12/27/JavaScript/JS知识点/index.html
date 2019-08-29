@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="自己总结了一些 JavaScript 中易忘的知识点，不定时更新……">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.581Z">
+<meta property="og:updated_time" content="2019-06-12T09:32:11.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 知识点">
 <meta name="twitter:description" content="自己总结了一些 JavaScript 中易忘的知识点，不定时更新……">
@@ -410,9 +410,11 @@
 <blockquote>
 <p>module.parent 指什么</p>
 </blockquote>
-<pre><code>- The module that first required this one.
-- 谁第一个require他 parent就是谁
-</code></pre><h3 id="JS-属性类型"><a href="#JS-属性类型" class="headerlink" title="JS 属性类型"></a>JS 属性类型</h3><ol>
+<ul>
+<li>The module that first required this one.</li>
+<li>谁第一个require他 parent就是谁</li>
+</ul>
+<h3 id="JS-属性类型"><a href="#JS-属性类型" class="headerlink" title="JS 属性类型"></a>JS 属性类型</h3><ol>
 <li><p>数据属性（有4个描述其行为的特性）</p>
 <ol>
 <li>[[Configurable]]: 表示能否通过 delete 删除属性，能否修改属性的特性，或者能否修改为访问器属性</li>
@@ -449,26 +451,26 @@
 <li><p>形参重名</p>
 <blockquote>
 <p>在函数中形参的初始值是最右边的形参对应的实参值，如果实参不存在则为undefined</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,a,a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>(a);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 输出 3</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 输出 undefined</span></span><br><span class="line">fn(<span class="number">1</span>); <span class="comment">// 输出 undefined</span></span><br></pre></td></tr></table></figure>
 </blockquote>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,a,a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>(a);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 输出 3</span></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 输出 undefined</span></span><br><span class="line">fn(<span class="number">1</span>); <span class="comment">// 输出 undefined</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>函数与形参重名</p>
 <blockquote>
 <p>函数与形参重名时，变量的初始值是函数</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </blockquote>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>形参是 <code>arguments</code></p>
 <blockquote>
 <p>此时arguments指的是函数中那个特殊变量arguments，如果一个参数是arguments，那么arguments的初始值对应传过来的实参</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arguments</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </blockquote>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arguments</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在变量中声明一个 <code>arguments</code></p>
 <blockquote>
 <p>重新声明的arguments无效，arguments的初始值是在JS中定义的那个</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">arguments</span>); <span class="comment">// object</span></span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
 </blockquote>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">arguments</span>); <span class="comment">// object</span></span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>上述测试表明，重名时初始值的优先级顺序是：函数声明 &gt; 形参，形参 &gt; arguments，arguments &gt; 变量声明。当然，变量赋值又是另一回事了，它能改变传过来的实参值。</p>
 </blockquote>
@@ -605,7 +607,8 @@
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nav.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    toggleNav(arg1, arg2);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 <p> 但是这样就改变了作用域,我们又一次创建了一个不需要的函数,这样做需要花费很多,当我们在一个循环中绑定事件监听的时候.</p>
 </li>
-<li>这时候就需要.bind()闪亮登场了,因为我们可以使用他来进行绑定作用域,传递参数,并且函数还不会立即执行: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nav.addEventListener(<span class="string">'click'</span>, toggleNav.bind(scope, arg1, arg2), <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<li><p>这时候就需要.bind()闪亮登场了,因为我们可以使用他来进行绑定作用域,传递参数,并且函数还不会立即执行:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nav.addEventListener(<span class="string">'click'</span>, toggleNav.bind(scope, arg1, arg2), <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -636,6 +639,16 @@
 </ol>
 </li>
 </ul>
+<h2 id="div-的-click-事件在手机浏览器不生效问题"><a href="#div-的-click-事件在手机浏览器不生效问题" class="headerlink" title="div 的 click 事件在手机浏览器不生效问题"></a>div 的 click 事件在手机浏览器不生效问题</h2><p>使用 <code>jQuery</code> 给 div 绑定 <code>click</code> 事件, 在 PC 端浏览器可以正常触发, 但是在手机浏览器上无法触发</p>
+<p>解决办法:</p>
+<ol>
+<li>给 div 添加 <code>cursor: pointer</code> 属性即可</li>
+<li><p>将 <code>click</code> 改为 <code>touchstart</code> 事件, 或者共存. 但是 <code>touchstart</code> 在滑动页面的时候会误触, 推荐使用 <code>click + cursor</code></p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">"click touchstart"</span>, <span class="string">".name"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'name'</span>);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把事件添加到 <code>a, button</code> 等本身可以点击的标签上, 确保 click 正常使用</p>
+</li>
+</ol>
 
       
     </div>
@@ -763,7 +776,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -785,7 +798,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -818,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-知识点"><span class="nav-number">1.</span> <span class="nav-text">JS 知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-语法"><span class="nav-number">1.1.</span> <span class="nav-text">JS 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-的-CommonJS-规范"><span class="nav-number">1.1.1.</span> <span class="nav-text">node 的 CommonJS 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#module-exports-与-exports的区别"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">module.exports 与 exports的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-属性类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">JS 属性类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-实例属性搜索原则"><span class="nav-number">1.1.3.</span> <span class="nav-text">JS 实例属性搜索原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件的节流思想"><span class="nav-number">1.1.4.</span> <span class="nav-text">监听事件的节流思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-执行过程"><span class="nav-number">1.2.</span> <span class="nav-text">JS 执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域提升"><span class="nav-number">1.2.1.</span> <span class="nav-text">作用域提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数执行环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">函数执行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当处于执行上下文创建阶段时，这时候还没有执行代码"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">当处于执行上下文创建阶段时，这时候还没有执行代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数执行过程"><span class="nav-number">1.2.3.</span> <span class="nav-text">函数执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用时实参和形参之间的值如何传递"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">函数调用时实参和形参之间的值如何传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包（closure）"><span class="nav-number">1.3.</span> <span class="nav-text">闭包（closure）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">1.4.</span> <span class="nav-text">Ajax</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-知识点"><span class="nav-number">1.</span> <span class="nav-text">JS 知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-语法"><span class="nav-number">1.1.</span> <span class="nav-text">JS 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-的-CommonJS-规范"><span class="nav-number">1.1.1.</span> <span class="nav-text">node 的 CommonJS 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#module-exports-与-exports的区别"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">module.exports 与 exports的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-属性类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">JS 属性类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-实例属性搜索原则"><span class="nav-number">1.1.3.</span> <span class="nav-text">JS 实例属性搜索原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件的节流思想"><span class="nav-number">1.1.4.</span> <span class="nav-text">监听事件的节流思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-执行过程"><span class="nav-number">1.2.</span> <span class="nav-text">JS 执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域提升"><span class="nav-number">1.2.1.</span> <span class="nav-text">作用域提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数执行环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">函数执行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当处于执行上下文创建阶段时，这时候还没有执行代码"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">当处于执行上下文创建阶段时，这时候还没有执行代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数执行过程"><span class="nav-number">1.2.3.</span> <span class="nav-text">函数执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用时实参和形参之间的值如何传递"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">函数调用时实参和形参之间的值如何传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包（closure）"><span class="nav-number">1.3.</span> <span class="nav-text">闭包（closure）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">1.4.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div-的-click-事件在手机浏览器不生效问题"><span class="nav-number">1.5.</span> <span class="nav-text">div 的 click 事件在手机浏览器不生效问题</span></a></li></ol></li></ol></div>
             
 
           </div>
