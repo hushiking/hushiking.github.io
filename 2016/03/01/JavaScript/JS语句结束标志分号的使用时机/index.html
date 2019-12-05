@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="在 JavaScript 代码中，每行末尾的结束标志并不是一定要写分号的，基本都可以省略，只是有些省略需要看准时机，不然会导致解析错误。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.580Z">
+<meta property="og:updated_time" content="2019-12-05T02:48:30.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 语句结束标志分号的使用时机">
 <meta name="twitter:description" content="在 JavaScript 代码中，每行末尾的结束标志并不是一定要写分号的，基本都可以省略，只是有些省略需要看准时机，不然会导致解析错误。">
@@ -356,7 +356,7 @@
       
 
       
-        <h1 id="在js里面什么时候需要用-来作结束标志？"><a href="#在js里面什么时候需要用-来作结束标志？" class="headerlink" title="在js里面什么时候需要用 ; 来作结束标志？"></a>在js里面什么时候需要用 <code>;</code> 来作结束标志？</h1><ul>
+        <h2 id="在js里面什么时候需要用-来作结束标志"><a href="#在js里面什么时候需要用-来作结束标志" class="headerlink" title="在js里面什么时候需要用 ; 来作结束标志"></a>在js里面什么时候需要用 <code>;</code> 来作结束标志</h2><ul>
 <li>有人坚持认为 js 不应该用分号作为结束标志，换行即可，多写一个分号会觉得多余</li>
 <li>也有人坚持一定要习惯用 <code>;</code> 来表示结束，即便多写一两个分号其实也没什么错</li>
 <li>其实怎么使用是个人风格问题，但我们要了解什么情况下，不用 <code>;</code> 会存在风险<ul>
@@ -374,10 +374,10 @@
 <h2 id="先看圆括号"><a href="#先看圆括号" class="headerlink" title="先看圆括号 ("></a>先看圆括号 (</h2><blockquote>
 <p>在js里面圆括号是优先级最高的运算符，因此在它之前存在另外一个表达式，就要用分号隔开，否则就会出现异常，而且它的异常存在隐式的错误，也就是不报错，但运行结果不是预期的，导致问题很难定位。</p>
 </blockquote>
-<h3 id="圆括号的二义性："><a href="#圆括号的二义性：" class="headerlink" title="圆括号的二义性："></a>圆括号的二义性：</h3><ol>
-<li>表示一个独立表达式（例如：<code>1 + 2 * 3 = 7 , (1 + 2) * 3 = 9</code> ），优先级 19</li>
-<li>表示函数运行表达式（例如：a() ），优先级 17<ul>
-<li><strong>注意：js 运算符的优先级有19级，19~0递减，数值越大，越优先</strong></li>
+<h3 id="圆括号的二义性"><a href="#圆括号的二义性" class="headerlink" title="圆括号的二义性"></a>圆括号的二义性</h3><ol>
+<li>表示一个独立表达式（例如：<code>1 + 2 * 3 = 7 , (1 + 2) * 3 = 9</code> ），优先级 20</li>
+<li>表示函数运行表达式（例如：a() ），优先级 10<ul>
+<li><strong>注意：js 运算符的优先级有20级，20~0递减，数值越大，越优先</strong></li>
 <li>参考:<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" title="运算符优先级" target="_blank" rel="noopener">运算符优先级</a></li>
 </ul>
 </li>
@@ -387,8 +387,8 @@
 <li>很多 bug 都是这玩意导致的，而且也比较难定位。</li>
 </ul>
 <h3 id="二义性"><a href="#二义性" class="headerlink" title="二义性"></a>二义性</h3><ol>
-<li>一元 加法/减法 ，优先级15</li>
-<li>加法/减法 运算 ，优先级13</li>
+<li>一元 加法/减法 ，优先级16</li>
+<li>加法/减法 运算 ，优先级14</li>
 </ol>
 <h2 id="方括号"><a href="#方括号" class="headerlink" title="方括号 ["></a>方括号 [</h2><ul>
 <li><code>[]</code> 是成员访问表达式（Property accessors）</li>
@@ -397,7 +397,7 @@
 <li>两者的优先级是一致的。在什么情况下会出现异常呢？</li>
 </ul>
 <h3 id="方括号的三义性"><a href="#方括号的三义性" class="headerlink" title="方括号的三义性"></a>方括号的三义性</h3><ol>
-<li>数组/对象的成员访问符 ，优先级18</li>
+<li>数组/对象的成员访问符 ，优先级19</li>
 <li>数组字面量，快速定义数组，优先级 无</li>
 <li>ES2015以后，数组解构表达式，用于批量赋值</li>
 </ol>
@@ -549,7 +549,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在js里面什么时候需要用-来作结束标志？"><span class="nav-number">1.</span> <span class="nav-text">在js里面什么时候需要用 ; 来作结束标志？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先看圆括号"><span class="nav-number">1.1.</span> <span class="nav-text">先看圆括号 (</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆括号的二义性："><span class="nav-number">1.1.1.</span> <span class="nav-text">圆括号的二义性：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加号-和减号"><span class="nav-number">1.2.</span> <span class="nav-text">加号 + 和减号 -</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二义性"><span class="nav-number">1.2.1.</span> <span class="nav-text">二义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方括号"><span class="nav-number">1.3.</span> <span class="nav-text">方括号 [</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方括号的三义性"><span class="nav-number">1.3.1.</span> <span class="nav-text">方括号的三义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#除号"><span class="nav-number">1.4.</span> <span class="nav-text">除号 /</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#除号的二义性"><span class="nav-number">1.4.1.</span> <span class="nav-text">除号的二义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充：-花括符"><span class="nav-number">1.5.</span> <span class="nav-text">补充：{} 花括符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于分号的处理，我的观点"><span class="nav-number">1.6.</span> <span class="nav-text">对于分号的处理，我的观点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在js里面什么时候需要用-来作结束标志"><span class="nav-number">1.</span> <span class="nav-text">在js里面什么时候需要用 ; 来作结束标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先看圆括号"><span class="nav-number">2.</span> <span class="nav-text">先看圆括号 (</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆括号的二义性"><span class="nav-number">2.1.</span> <span class="nav-text">圆括号的二义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加号-和减号"><span class="nav-number">3.</span> <span class="nav-text">加号 + 和减号 -</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二义性"><span class="nav-number">3.1.</span> <span class="nav-text">二义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方括号"><span class="nav-number">4.</span> <span class="nav-text">方括号 [</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方括号的三义性"><span class="nav-number">4.1.</span> <span class="nav-text">方括号的三义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#除号"><span class="nav-number">5.</span> <span class="nav-text">除号 /</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#除号的二义性"><span class="nav-number">5.1.</span> <span class="nav-text">除号的二义性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充：-花括符"><span class="nav-number">6.</span> <span class="nav-text">补充：{} 花括符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于分号的处理，我的观点"><span class="nav-number">7.</span> <span class="nav-text">对于分号的处理，我的观点</span></a></li></ol></div>
             
 
           </div>
