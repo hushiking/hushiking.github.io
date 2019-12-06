@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="自己总结了一些 ES6 相关的知识点，不定时更新……">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T16:56:32.786Z">
+<meta property="og:updated_time" content="2019-12-06T02:49:14.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ECMAScript6 相关">
 <meta name="twitter:description" content="自己总结了一些 ES6 相关的知识点，不定时更新……">
@@ -375,8 +375,8 @@
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES6的Class之间可以通过 <code>extends</code> 关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(x, y, color) &#123;</span><br><span class="line">        <span class="keyword">super</span>(x, y); <span class="comment">// 调用父类的constructor(x, y)</span></span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.color + <span class="string">' '</span> + <span class="keyword">super</span>.toString(); <span class="comment">// 调用父类的toString()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>上面代码中，constructor方法和toString方法之中，都出现了super关键字，它在这里表示父类的构造函数，用来新建父类的this对象。</li>
-<li>子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象。</li>
+<li>上面代码中，constructor 方法和 toString 方法之中，都出现了 <code>super</code> 关键字，它在这里表示父类的构造函数，用来新建父类的 <code>this</code> 对象。</li>
+<li>子类必须在 constructor 方法中调用 <code>super</code> 方法，否则新建实例时会报错。这是因为子类没有自己的 <code>this</code> 对象，而是继承父类的 <code>this</code> 对象，然后对其进行加工。如果不调用 <code>super</code> 方法，子类就得不到 <code>this</code> 对象。</li>
 </ul>
 <h3 id="原生构造函数继承"><a href="#原生构造函数继承" class="headerlink" title="原生构造函数继承"></a>原生构造函数继承</h3><p>原生构造函数是指语言内置的构造函数，通常用来生成数据结构。ECMAScript的原生构造函数大致有下面这些。以前，这些原生构造函数是无法继承的。</p>
 <p>Boolean()、Number()、String()、Array()、Date()、Function()、RegExp()、Error()、Object()</p>
@@ -384,7 +384,7 @@
 <p>上面代码定义了一个MyArray类，继承了Array构造函数，因此就可以从MyArray生成数组的实例。这意味着，<strong>ES6可以自定义原生数据结构</strong>（比如Array、String等）的子类，<strong>这是ES5无法做到的</strong>。</p>
 <h3 id="Class-的-Generator-方法"><a href="#Class-的-Generator-方法" class="headerlink" title="Class 的 Generator 方法"></a>Class 的 Generator 方法</h3><p>如果某个方法之前加上星号（*），就表示该方法是一个Generator函数。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(...args) &#123;</span><br><span class="line">        <span class="keyword">this</span>.args = args;</span><br><span class="line">    &#125;</span><br><span class="line">    * [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> arg <span class="keyword">of</span> <span class="keyword">this</span>.args) &#123;</span><br><span class="line">            <span class="keyword">yield</span> arg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> <span class="keyword">new</span> Foo(<span class="string">'hello'</span>, <span class="string">'world'</span>)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br><span class="line"><span class="comment">// world</span></span><br></pre></td></tr></table></figure>
-<p>上面代码中，Foo类的Symbol.iterator方法前有一个星号，表示该方法是一个Generator函数。Symbol.iterator方法返回一个Foo类的默认遍历器，for…of循环会自动调用这个遍历器。</p>
+<p>上面代码中， Foo 类的 <code>Symbol.iterator</code> 方法前有一个星号，表示该方法是一个 <code>Generator</code> 函数。 <code>Symbol.iterator</code> 方法返回一个 Foo 类的默认遍历器， <code>for...of</code> 循环会自动调用这个遍历器。</p>
 <h3 id="Class-继承静态方法"><a href="#Class-继承静态方法" class="headerlink" title="Class 继承静态方法"></a>Class 继承静态方法</h3><p>父类的静态方法，可以被子类继承。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> classMethod() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Bar.classMethod(); <span class="comment">// 'hello'</span></span><br></pre></td></tr></table></figure>
 <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>用来封装异步任务 <code>new Promise((resolve, reject) =&gt; { })</code></p>
@@ -480,12 +480,12 @@
 <p>实际上，任何数据结构只要有 Iterator 接口，就可以被yield*遍历。</p>
 </blockquote>
 <h2 id="async-amp-await"><a href="#async-amp-await" class="headerlink" title="async &amp; await"></a>async &amp; await</h2><ol>
-<li>箭头函数：没有{ }时不写return 也有返回值</li>
+<li>箭头函数：没有{ }时不写 return 也有返回值</li>
 <li><code>new Promise().then().then().catch()</code> ：第一个then触发条件：是 Promise() 实例化时resolve()触发， 第二个及以后的then() 触发条件是前一个then() 执行完成，并且将return值作为下一个then的参数</li>
 <li>async：表明一个异步函数</li>
 <li>await：后面必须跟Promise对象，若非Promise，则不会拦截后面代码执行。当promise对象resolve过后并且执行完then里面的代码，就执行下一步代码，不resolve不会触发下一行代码执行。</li>
 </ol>
-<p>需注意：如果then()中需要异步操作，不会等then中的异步执行完过后再执行下一个then()的函数。<strong><em>原因就是，异步函数中，没有时间让你return值给下一个then()回调函数</em></strong>。解决方案是使用async函数包裹then中的回调函数，将其中的异步操作用<code>new Promise((res, rej) =&gt; { 异步操作 })</code>包裹，并用await等待异步操作完成。</p>
+<p>需注意：如果then()中需要异步操作，不会等then中的异步执行完过后再执行下一个then()的函数。<strong><em>原因就是，异步函数中，没有时间让你return值给下一个then()回调函数</em></strong>。解决方案是使用 <code>async</code> 函数包裹 <code>then</code> 中的回调函数，将其中的异步操作用<code>new Promise((res, rej) =&gt; { 异步操作 })</code>包裹，并用await等待异步操作完成。</p>
 
       
     </div>
@@ -609,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +631,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
