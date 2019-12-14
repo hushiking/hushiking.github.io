@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="简要记录使用 Mac 过程中遇到的一些快捷操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T16:31:03.000Z">
+<meta property="og:updated_time" content="2019-12-09T19:34:37.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac shortcut">
 <meta name="twitter:description" content="简要记录使用 Mac 过程中遇到的一些快捷操作。">
@@ -356,7 +356,7 @@
       
 
       
-        <h1 id="Mac-shortcut"><a href="#Mac-shortcut" class="headerlink" title="Mac shortcut"></a>Mac shortcut</h1><p>本文用于总结 Mac 使用过程中一些常用的快捷键，不定时更新……</p>
+        <h2 id="Mac-shortcut"><a href="#Mac-shortcut" class="headerlink" title="Mac shortcut"></a>Mac shortcut</h2><p>本文用于总结 Mac 使用过程中一些常用的快捷键，不定时更新……</p>
 <h2 id="系统操作快捷键"><a href="#系统操作快捷键" class="headerlink" title="系统操作快捷键"></a>系统操作快捷键</h2><ul>
 <li>删除：<code>Command + Delete</code></li>
 <li>清空废纸篓： <code>Command + Shift + Delete</code></li>
@@ -390,6 +390,16 @@
 <blockquote>
 <p>复制 SSH 公有 key ：<code>pbcopy &lt; ~/.ssh/id_rsa.pub</code></p>
 </blockquote>
+<h2 id="Linux-重定向"><a href="#Linux-重定向" class="headerlink" title="Linux 重定向"></a>Linux 重定向</h2><p><code>&quot;&lt;&quot;</code> 表示输入重定向</p>
+<p><code>&quot;&gt;&quot;</code> 表示输出重定向</p>
+<p>所谓的输入重定向即输入不从键盘读入，而是从文件输入或其它。</p>
+<p>所谓的输出重定向即不输出到终端上，而是输出到文件中去或其它。</p>
+<p><code>&quot;&lt;&lt;&quot;</code> 代表当前标准输入来自<strong>命令行的一对分隔号的中间内容</strong>。(下面例子中的两个分隔号 <code>aa</code> 中间内容复制粘贴)</p>
+<p>用 <code>&quot;&gt;&quot;</code> 输出时，如果文件不存在会自动建立一个文件，如果第二次输入时，会覆盖前一次的输入内容，而 <code>&quot;&gt;&gt;&quot;</code> 输出，表示追加到文件中，不覆盖。当前输出内容会追加到指定文件的尾部。</p>
+<blockquote>
+<p>例如:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt;&lt; aa</span><br><span class="line">&gt; 1</span><br><span class="line">&gt; 11</span><br><span class="line">&gt; 111</span><br><span class="line">&gt; aa</span><br><span class="line">pbpaste bb</span><br><span class="line">&gt; 1</span><br><span class="line">&gt; 11</span><br><span class="line">&gt; 111</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -566,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac-shortcut"><span class="nav-number">1.</span> <span class="nav-text">Mac shortcut</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统操作快捷键"><span class="nav-number">1.1.</span> <span class="nav-text">系统操作快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Finder显示访问路径"><span class="nav-number">1.1.1.</span> <span class="nav-text">Finder显示访问路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新-DNS-缓存"><span class="nav-number">1.1.2.</span> <span class="nav-text">刷新 DNS 缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminal-快捷键"><span class="nav-number">1.2.</span> <span class="nav-text">Terminal 快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-复制粘贴"><span class="nav-number">1.3.</span> <span class="nav-text">Mac 复制粘贴</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-shortcut"><span class="nav-number">1.</span> <span class="nav-text">Mac shortcut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统操作快捷键"><span class="nav-number">2.</span> <span class="nav-text">系统操作快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Finder显示访问路径"><span class="nav-number">2.1.</span> <span class="nav-text">Finder显示访问路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新-DNS-缓存"><span class="nav-number">2.2.</span> <span class="nav-text">刷新 DNS 缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminal-快捷键"><span class="nav-number">3.</span> <span class="nav-text">Terminal 快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac-复制粘贴"><span class="nav-number">4.</span> <span class="nav-text">Mac 复制粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-重定向"><span class="nav-number">5.</span> <span class="nav-text">Linux 重定向</span></a></li></ol></div>
             
 
           </div>
