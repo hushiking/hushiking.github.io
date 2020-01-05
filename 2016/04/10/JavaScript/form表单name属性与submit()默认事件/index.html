@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://hushiking.github.io').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
+<meta name="keywords" content="JavaScript,form表单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="form 表单 name 属性与 submit() 默认事件">
+<meta property="og:url" content="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/index.html">
+<meta property="og:site_name" content="化简为凡的小站">
+<meta property="og:description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-04T11:32:43.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="form 表单 name 属性与 submit() 默认事件">
+<meta name="twitter:description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
+
+<link rel="canonical" href="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>form 表单 name 属性与 submit() 默认事件 | 化简为凡的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">化简为凡的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">用生命谱写代码的赞歌</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="化简为凡">
+      <meta itemprop="description" content="hello, everyone, I love you!~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="化简为凡的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          form 表单 name 属性与 submit() 默认事件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-04-10 21:57:33" itemprop="dateCreated datePublished" datetime="2016-04-10T21:57:33+08:00">2016-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-04 19:32:43" itemprop="dateModified" datetime="2020-01-04T19:32:43+08:00">2020-01-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">总结 form 表单的一些属性以及 submit() 默认事件。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="name-属性用途"><a href="#name-属性用途" class="headerlink" title="name 属性用途"></a>name 属性用途</h2><ol>
+<li>作为可与服务器交互数据的 HTML 元素的服务器端标识，比如 input、select、textarea和 button 等。我们可以在服务器端根据其 Name 通过 Request.Params 取得元素提交的值。</li>
+<li>HTML 元素 Input type=’radio’ 分组，我们知道 radio button 控件在同一个分组类，check 操作是mutex(互斥) 的，同一时间只能选中一个 radio，这个分组就是根据相同的 Name 属性来实现的。</li>
+<li>建立页面中的锚点，我们知道 <code>&lt;a href=&quot;URL&quot;&gt;link&lt;/a&gt;</code> 是获得一个页面超级链接，如果不用href属性，而改用Name，如：<code>&lt;a name=&quot;PageBottom&quot;&gt;&lt;/a&gt;</code>，我们就获得了一个页面锚点。</li>
+</ol>
+<h2 id="name-属性与-id-属性的区别"><a href="#name-属性与-id-属性的区别" class="headerlink" title="name 属性与 id 属性的区别"></a>name 属性与 id 属性的区别</h2><ol>
+<li>names属性：下面代码中 <strong>必须name相同才能成为一组单选按钮</strong>，而id属性没有这个功能</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"1 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"2 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"3 "</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>id属性：下面代码中 <strong>for属性必须指向一个id</strong>，否则没效果</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">id</span>= <span class="string">"xx "</span>   <span class="attr">name</span>= <span class="string">"yy "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>   <span class="attr">for</span>= <span class="string">"xx "</span>&gt;</span> Label <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="submit-默认事件"><a href="#submit-默认事件" class="headerlink" title="submit()默认事件"></a>submit()默认事件</h2><ul>
+<li>var collection = document.forms;<ul>
+<li>该属性返回一个 (HTMLCollection) 数组集合，包含了文档中的所有 form 元素</li>
+<li>因此 document.forms[“myForm”] 代表选择 name 属性为 myForm 的表单</li>
+<li>单个表单的选择也可以使用 document.forms[0] 等等</li>
+<li>类似还有直接使用 document.myForm 也是选择对应 name 属性的表单</li>
+<li>由此发现，包含 name 属性的元素可以使用 document.name.name 一级一级地找寻到，如果 name 相同会返回数组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> thisForm = <span class="built_in">document</span>.forms[<span class="string">'form1'</span>]; <span class="comment">//获取name为form1的form表单</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//或者</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//var thisForm = document.forms[0]; //获取第一个form表单</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.username.value); <span class="comment">//输出表单name属性值为form1的 username 的值</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.address.value);</span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.forms[<span class="number">0</span>].submit(); <span class="comment">//表单提交</span></span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 以下为三个简单的form表单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form1"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"zhangsan"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">value</span>=<span class="string">"beijing"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form2"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form3"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>submit()<ul>
+<li>默认表单提交事件,早于 <code>Input type=&#39;submit&#39;</code> 按钮</li>
+<li>该事件发生在提交之前,可以用来进行表单验证</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">submitFun</span>(<span class="params">obj</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(obj.category.value==<span class="string">''</span>)&#123;</span></span><br><span class="line"><span class="javascript">          alert(<span class="string">"请输入"</span>);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">"return submitFun(this);"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"category"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>当”提交”按钮被点击时，依然会执行submitFun()函数，在submitFun()函数中，我们对表单输入框进行了空验证，如果为空，提示输入并 return false,这样表单就不会提交（上面已经说到：当该事件触发的函数中返回 false 时，表单就不会被提交）。</li>
+<li>同时，这里要注意 onsubmit=”return submitFun(this);”，不能掉了 return，否则表单永远会提交。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/form表单/" rel="tag"># form表单</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/03/22/Essay/程序员学习方法/" rel="prev" title="程序员学习方法">
+      <i class="fa fa-chevron-left"></i> 程序员学习方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/05/13/JavaScript/JS可枚举与不可枚举/" rel="next" title="JS 可枚举与不可枚举">
+      JS 可枚举与不可枚举 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#name-属性用途"><span class="nav-number">1.</span> <span class="nav-text">name 属性用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#name-属性与-id-属性的区别"><span class="nav-number">2.</span> <span class="nav-text">name 属性与 id 属性的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#submit-默认事件"><span class="nav-number">3.</span> <span class="nav-text">submit()默认事件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">化简为凡</p>
+  <div class="site-description" itemprop="description">hello, everyone, I love you!~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">化简为凡</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
