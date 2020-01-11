@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="主要讲解了 JavaScript 的原型与原型链，顺便介绍了 Object 原型上的一些方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:14:27.188Z">
+<meta property="og:updated_time" content="2020-01-11T15:14:12.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型与原型链">
 <meta name="twitter:description" content="主要讲解了 JavaScript 的原型与原型链，顺便介绍了 Object 原型上的一些方法。">
@@ -201,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-13 15:14:27" itemprop="dateModified" datetime="2019-05-13T15:14:27+08:00">2019-05-13</time>
+                <time title="Modified: 2020-01-11 23:14:12" itemprop="dateModified" datetime="2020-01-11T23:14:12+08:00">2020-01-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><ol>
+        <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ol>
 <li>概念：所谓原型就是指函数的 <code>prototype</code> 属性所引用的对象<ul>
 <li>只要定义一个函数，那么就会创建其原型</li>
 <li>由上述函数创建出来的所有对象，都可以直接访问到原型上的成员</li>
@@ -241,7 +241,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="原型特性："><a href="#原型特性：" class="headerlink" title="原型特性："></a>原型特性：</h2><blockquote>
+<h2 id="原型特性"><a href="#原型特性" class="headerlink" title="原型特性"></a>原型特性</h2><blockquote>
 <p>动态性：置换原型记得重新要设置 constructor 属性指向构造函数！！！</p>
 </blockquote>
 <ul>
@@ -456,7 +456,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型特性："><span class="nav-number">1.1.</span> <span class="nav-text">原型特性：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组合方式创建对象"><span class="nav-number">1.1.1.</span> <span class="nav-text">组合方式创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-与-prototype"><span class="nav-number">1.1.2.</span> <span class="nav-text">__proto__ 与 prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链的概念"><span class="nav-number">1.3.</span> <span class="nav-text">原型链的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制原型链"><span class="nav-number">1.3.1.</span> <span class="nav-text">绘制原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-的方法简介"><span class="nav-number">1.3.2.</span> <span class="nav-text">Object.prototype 的方法简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱-与-拆箱"><span class="nav-number">1.4.</span> <span class="nav-text">装箱 与 拆箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调几点"><span class="nav-number">1.5.</span> <span class="nav-text">强调几点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof介绍"><span class="nav-number">1.6.</span> <span class="nav-text">instanceof介绍</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型特性"><span class="nav-number">2.</span> <span class="nav-text">原型特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组合方式创建对象"><span class="nav-number">2.1.</span> <span class="nav-text">组合方式创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-与-prototype"><span class="nav-number">2.2.</span> <span class="nav-text">__proto__ 与 prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链的概念"><span class="nav-number">4.</span> <span class="nav-text">原型链的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制原型链"><span class="nav-number">4.1.</span> <span class="nav-text">绘制原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-的方法简介"><span class="nav-number">4.2.</span> <span class="nav-text">Object.prototype 的方法简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱-与-拆箱"><span class="nav-number">5.</span> <span class="nav-text">装箱 与 拆箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调几点"><span class="nav-number">6.</span> <span class="nav-text">强调几点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof介绍"><span class="nav-number">7.</span> <span class="nav-text">instanceof介绍</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

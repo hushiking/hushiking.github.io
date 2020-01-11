@@ -57,7 +57,7 @@
 <meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举1.png">
 <meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举2.png">
 <meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举3.png">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.204Z">
+<meta property="og:updated_time" content="2020-01-11T15:14:48.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 可枚举与不可枚举">
 <meta name="twitter:description" content="这篇文章介绍了 JS 可枚举属性与不可枚举属性。">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-13 14:58:05" itemprop="dateModified" datetime="2019-05-13T14:58:05+08:00">2019-05-13</time>
+                <time title="Modified: 2020-01-11 23:14:48" itemprop="dateModified" datetime="2020-01-11T23:14:48+08:00">2020-01-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="JavaScript-可枚举与不可枚举属性"><a href="#JavaScript-可枚举与不可枚举属性" class="headerlink" title="JavaScript 可枚举与不可枚举属性"></a>JavaScript 可枚举与不可枚举属性</h1><p>在 JavaScript 中，对象的属性分为可枚举和不可枚举之分，它们是由属性的 enumerable 值决定的。可枚举性决定了这个属性能否被 for…in 查找遍历到。</p>
+        <h2 id="JavaScript-可枚举与不可枚举属性"><a href="#JavaScript-可枚举与不可枚举属性" class="headerlink" title="JavaScript 可枚举与不可枚举属性"></a>JavaScript 可枚举与不可枚举属性</h2><p>在 JavaScript 中，对象的属性分为可枚举和不可枚举之分，它们是由属性的 enumerable 值决定的。可枚举性决定了这个属性能否被 for…in 查找遍历到。</p>
 <h2 id="怎么判断属性是否可枚举"><a href="#怎么判断属性是否可枚举" class="headerlink" title="怎么判断属性是否可枚举"></a>怎么判断属性是否可枚举</h2><p>js中基本包装类型的原型属性是不可枚举的，如 Object, Array, Number 等，如果你写出这样的代码遍历其中的属性：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> num) &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"num."</span> + pro + <span class="string">" = "</span> + num[pro]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>它的输出结果会是空。这是因为 Number 中内置的属性是不可枚举的，所以不能被 for…in 访问到。</p>
@@ -348,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-可枚举与不可枚举属性"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 可枚举与不可枚举属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么判断属性是否可枚举"><span class="nav-number">1.1.</span> <span class="nav-text">怎么判断属性是否可枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举性的作用"><span class="nav-number">1.2.</span> <span class="nav-text">枚举性的作用</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-可枚举与不可枚举属性"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 可枚举与不可枚举属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么判断属性是否可枚举"><span class="nav-number">2.</span> <span class="nav-text">怎么判断属性是否可枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举性的作用"><span class="nav-number">3.</span> <span class="nav-text">枚举性的作用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
