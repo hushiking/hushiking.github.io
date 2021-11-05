@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="本文主要介绍函数与闭包的一些知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.581Z">
+<meta property="og:updated_time" content="2021-11-04T08:54:55.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数与闭包">
 <meta name="twitter:description" content="本文主要介绍函数与闭包的一些知识。">
@@ -201,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-13 14:58:05" itemprop="dateModified" datetime="2019-05-13T14:58:05+08:00">2019-05-13</time>
+                <time title="Modified: 2021-11-04 16:54:55" itemprop="dateModified" datetime="2021-11-04T16:54:55+08:00">2021-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h1><ul>
+        <h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul>
 <li>声明式</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -329,14 +329,16 @@
 </blockquote>
 <h3 id="实例成员与静态成员"><a href="#实例成员与静态成员" class="headerlink" title="实例成员与静态成员"></a>实例成员与静态成员</h3><ul>
 <li>实例成员：通过构造函数创建出来的对象上的成员，称为实例成员</li>
-<li>静态成员：函数对象上的成员，被称为静态成员<blockquote>
+<li>静态成员：函数对象上的成员，被称为静态成员</li>
+</ul>
+<blockquote>
 <p>区别：实例成员必须先创建实例，再访问；而静态成员直接通过函数的名字即可访问。</p>
 </blockquote>
-</li>
+<ul>
 <li>在实际开发时，如果遇到 <strong>工具类方法</strong>，此时可以考虑写成静态成员。</li>
 <li>静态成员相对于实例成员好处为：不需要创建对象，直接通过函数名字来访问成员。</li>
 </ul>
-<h2 id="递归：函数调用自己。"><a href="#递归：函数调用自己。" class="headerlink" title="递归：函数调用自己。"></a>递归：函数调用自己。</h2><ul>
+<h2 id="递归：函数调用自己"><a href="#递归：函数调用自己" class="headerlink" title="递归：函数调用自己"></a>递归：函数调用自己</h2><ul>
 <li>场景：在遍历 <strong>树形结构</strong> 时，优先考虑使用递归方式。</li>
 <li>摸索规律，找到一个简单的方式来解决复杂问题 。</li>
 </ul>
@@ -419,7 +421,7 @@
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 闭包,返回sayAlert函数的执行需要依赖say667()函数的num变量,所以num变量在say667()函数执行后不会回收</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say667</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> num = <span class="number">666</span>;</span><br><span class="line">        <span class="keyword">var</span> sayAlert = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(num); <span class="comment">// 667</span></span><br><span class="line">        &#125;</span><br><span class="line">        num++;</span><br><span class="line">        <span class="keyword">return</span> sayAlert;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> sayAlert = say667();</span><br><span class="line">    sayAlert();</span><br></pre></td></tr></table></figure>
-<h2 id="变量的搜索原则："><a href="#变量的搜索原则：" class="headerlink" title="变量的搜索原则："></a>变量的搜索原则：</h2><p>当访问一个变量时，</p>
+<h2 id="变量的搜索原则"><a href="#变量的搜索原则" class="headerlink" title="变量的搜索原则"></a>变量的搜索原则</h2><p>当访问一个变量时，</p>
 <ul>
 <li>首先在当前作用域上查找，如果找到就直接使用，并停止查找；</li>
 <li>如果没有找到，就会向上一级作用域上查找，如果找到就直接使用，并停止查找；</li>
@@ -514,7 +516,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Function"><span class="nav-number">1.</span> <span class="nav-text">Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#几个概念"><span class="nav-number">1.1.</span> <span class="nav-text">几个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数相关属性"><span class="nav-number">1.2.</span> <span class="nav-text">函数相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments-伪数组对象，用于存储实参"><span class="nav-number">1.2.1.</span> <span class="nav-text">arguments 伪数组对象，用于存储实参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数四种调用模式"><span class="nav-number">1.2.2.</span> <span class="nav-text">函数四种调用模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-和-apply-的区别"><span class="nav-number">1.3.</span> <span class="nav-text">call 和 apply 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文模式应用"><span class="nav-number">1.3.1.</span> <span class="nav-text">上下文模式应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数的执行过程"><span class="nav-number">1.4.</span> <span class="nav-text">构造函数的执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例成员与静态成员"><span class="nav-number">1.4.1.</span> <span class="nav-text">实例成员与静态成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归：函数调用自己。"><span class="nav-number">1.5.</span> <span class="nav-text">递归：函数调用自己。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">1.6.</span> <span class="nav-text">词法作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js中预解析"><span class="nav-number">1.6.1.</span> <span class="nav-text">js中预解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域种类"><span class="nav-number">1.6.2.</span> <span class="nav-text">作用域种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in"><span class="nav-number">1.7.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete"><span class="nav-number">1.8.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eval-与-Function"><span class="nav-number">1.9.</span> <span class="nav-text">eval 与 Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.10.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的作用"><span class="nav-number">1.10.1.</span> <span class="nav-text">闭包的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的优缺点"><span class="nav-number">1.10.2.</span> <span class="nav-text">闭包的优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的搜索原则："><span class="nav-number">1.11.</span> <span class="nav-text">变量的搜索原则：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">1.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个概念"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数相关属性"><span class="nav-number">3.</span> <span class="nav-text">函数相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments-伪数组对象，用于存储实参"><span class="nav-number">3.1.</span> <span class="nav-text">arguments 伪数组对象，用于存储实参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数四种调用模式"><span class="nav-number">3.2.</span> <span class="nav-text">函数四种调用模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-和-apply-的区别"><span class="nav-number">4.</span> <span class="nav-text">call 和 apply 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文模式应用"><span class="nav-number">4.1.</span> <span class="nav-text">上下文模式应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数的执行过程"><span class="nav-number">5.</span> <span class="nav-text">构造函数的执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例成员与静态成员"><span class="nav-number">5.1.</span> <span class="nav-text">实例成员与静态成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归：函数调用自己"><span class="nav-number">6.</span> <span class="nav-text">递归：函数调用自己</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">7.</span> <span class="nav-text">词法作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js中预解析"><span class="nav-number">7.1.</span> <span class="nav-text">js中预解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域种类"><span class="nav-number">7.2.</span> <span class="nav-text">作用域种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in"><span class="nav-number">8.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete"><span class="nav-number">9.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eval-与-Function"><span class="nav-number">10.</span> <span class="nav-text">eval 与 Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">11.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的作用"><span class="nav-number">11.1.</span> <span class="nav-text">闭包的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的优缺点"><span class="nav-number">11.2.</span> <span class="nav-text">闭包的优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的搜索原则"><span class="nav-number">12.</span> <span class="nav-text">变量的搜索原则</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -528,7 +530,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -539,7 +541,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

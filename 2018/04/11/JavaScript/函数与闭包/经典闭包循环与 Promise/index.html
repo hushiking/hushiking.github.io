@@ -47,14 +47,14 @@
 </script>
 
   <meta name="description" content="一道经典的闭包循环题目，利用 for 循环配合闭包，每隔一秒打印 0 1 2 3 4...">
-<meta name="keywords" content="JavaScript,闭包,Promise">
+<meta name="keywords" content="JavaScript,Promise,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="经典闭包循环与 Promise">
 <meta property="og:url" content="http://hushiking.github.io/2018/04/11/JavaScript/函数与闭包/经典闭包循环与 Promise/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="一道经典的闭包循环题目，利用 for 循环配合闭包，每隔一秒打印 0 1 2 3 4...">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.582Z">
+<meta property="og:updated_time" content="2021-11-04T08:55:31.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经典闭包循环与 Promise">
 <meta name="twitter:description" content="一道经典的闭包循环题目，利用 for 循环配合闭包，每隔一秒打印 0 1 2 3 4...">
@@ -201,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-13 14:58:05" itemprop="dateModified" datetime="2019-05-13T14:58:05+08:00">2019-05-13</time>
+                <time title="Modified: 2021-11-04 16:55:31" itemprop="dateModified" datetime="2021-11-04T16:55:31+08:00">2021-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="经典闭包循环"><a href="#经典闭包循环" class="headerlink" title="经典闭包循环"></a>经典闭包循环</h1><ul>
+        <h2 id="经典闭包循环"><a href="#经典闭包循环" class="headerlink" title="经典闭包循环"></a>经典闭包循环</h2><ul>
 <li><p>初始题目</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
 <p>  上面的代码等同于：</p>
@@ -280,8 +280,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/闭包/" rel="tag"># 闭包</a>
               <a href="/tags/Promise/" rel="tag"># Promise</a>
+              <a href="/tags/闭包/" rel="tag"># 闭包</a>
           </div>
 
         
@@ -356,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#经典闭包循环"><span class="nav-number">1.</span> <span class="nav-text">经典闭包循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise"><span class="nav-number">1.1.</span> <span class="nav-text">Promise</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经典闭包循环"><span class="nav-number">1.</span> <span class="nav-text">经典闭包循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise"><span class="nav-number">2.</span> <span class="nav-text">Promise</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -370,7 +370,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -381,7 +381,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -47,14 +47,14 @@
 </script>
 
   <meta name="description" content="JS 面试题系列，本篇主要跟闭包相关，不定时更新……">
-<meta name="keywords" content="JavaScript,闭包,面试">
+<meta name="keywords" content="JavaScript,面试,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 面试题（一）">
 <meta property="og:url" content="http://hushiking.github.io/2015/07/19/JavaScript/函数与闭包/一道经典的JS闭包面试题/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="JS 面试题系列，本篇主要跟闭包相关，不定时更新……">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.581Z">
+<meta property="og:updated_time" content="2021-11-04T08:53:53.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 面试题（一）">
 <meta name="twitter:description" content="JS 面试题系列，本篇主要跟闭包相关，不定时更新……">
@@ -201,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-05-13 14:58:05" itemprop="dateModified" datetime="2019-05-13T14:58:05+08:00">2019-05-13</time>
+                <time title="Modified: 2021-11-04 16:53:53" itemprop="dateModified" datetime="2021-11-04T16:53:53+08:00">2021-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,11 +227,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="闭包面试题"><a href="#闭包面试题" class="headerlink" title="闭包面试题"></a>闭包面试题</h1><p>闭包就是能够读取其他函数内部变量的函数。</p>
+        <h2 id="闭包面试题"><a href="#闭包面试题" class="headerlink" title="闭包面试题"></a>闭包面试题</h2><p>闭包就是能够读取其他函数内部变量的函数。</p>
 <p>由于在 Javascript 语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成“定义在一个函数内部的函数”。</p>
 <p>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
 <p>闭包有两个作用，一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">n, o</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        fun: <span class="function"><span class="keyword">function</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> fun(m, n)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = fun(<span class="number">0</span>)  <span class="comment">// undefined</span></span><br><span class="line">a.fun(<span class="number">1</span>)  <span class="comment">// 0</span></span><br><span class="line">a.fun(<span class="number">2</span>)  <span class="comment">// 0</span></span><br><span class="line">a.fun(<span class="number">3</span>)  <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = fun(<span class="number">0</span>).fun(<span class="number">1</span>).fun(<span class="number">2</span>).fun(<span class="number">3</span>)  <span class="comment">// undefined 0 1 2</span></span><br><span class="line"><span class="keyword">var</span> c = fun(<span class="number">0</span>).fun(<span class="number">1</span>)  <span class="comment">// undefined 0</span></span><br><span class="line">c.fun(<span class="number">2</span>)  <span class="comment">// 1</span></span><br><span class="line">c.fun(<span class="number">3</span>)  <span class="comment">// 1</span></span><br><span class="line">b.fun()  <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">var</span> d = b.fun()</span><br><span class="line">d.fun()  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -241,8 +242,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/闭包/" rel="tag"># 闭包</a>
               <a href="/tags/面试/" rel="tag"># 面试</a>
+              <a href="/tags/闭包/" rel="tag"># 闭包</a>
           </div>
 
         
@@ -317,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包面试题"><span class="nav-number">1.</span> <span class="nav-text">闭包面试题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包面试题"><span class="nav-number">1.</span> <span class="nav-text">闭包面试题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -331,7 +332,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -342,7 +343,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
