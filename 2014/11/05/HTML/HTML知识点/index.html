@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="自己总结了一些 HTML 中易忘的知识点，不定时更新……">
-<meta name="keywords" content="HTML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML 知识点">
-<meta property="og:url" content="http://hushiking.github.io/2014/11/05/HTML/HTML知识点/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2014/11/05/HTML/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="自己总结了一些 HTML 中易忘的知识点，不定时更新……">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.202Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-11-05T14:11:27.000Z">
+<meta property="article:modified_time" content="2019-05-13T06:58:05.202Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="HTML">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML 知识点">
-<meta name="twitter:description" content="自己总结了一些 HTML 中易忘的知识点，不定时更新……">
 
-<link rel="canonical" href="http://hushiking.github.io/2014/11/05/HTML/HTML知识点/">
+<link rel="canonical" href="http://hushiking.github.io/2014/11/05/HTML/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/11/05/HTML/HTML知识点/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/11/05/HTML/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -282,8 +282,9 @@
 <li>对于 HTML 元素本身就带有的固有属性，在操作时采用 <code>prop()</code> 和<code>attr()</code> 方法均可，但是碰到 <code>checkbox、radio、select、button</code> 这些元素，它们的 <code>checked、selected、disabled</code> 属性要使用 <code>prop()</code> 方法。</li>
 <li>对于 HTML 中我们自定义的属性只能使用 <code>attr</code> 方法，使用 <code>prop</code> 设置和获取属性值时都会返回 <code>undefined</code> 。</li>
 </ol>
-<h2 id="根据已有-file-对象构建新的-file-对象"><a href="#根据已有-file-对象构建新的-file-对象" class="headerlink" title="根据已有 file 对象构建新的 file 对象"></a>根据已有 file 对象构建新的 file 对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> file = app.$(<span class="string">'videoInput'</span>).files[<span class="number">0</span>]; <span class="comment">//从 file input中获取File对象, dom对象$('#videoInput').get(0).files[0]</span></span><br><span class="line"><span class="comment">//如果没有后缀 vivo x5max</span></span><br><span class="line"><span class="keyword">if</span>(file.name.indexOf(<span class="string">"."</span>) &lt;= <span class="number">0</span>)&#123; <span class="comment">// 如果该文件没有后缀就新年构造一个File对象， 并指定文件名和类型</span></span><br><span class="line">    <span class="comment">// 第一个参数可以为Blob对象的数组 （第一个参数必须是数组）， File对象继承自Blob，所以可以传递File对象</span></span><br><span class="line">    <span class="comment">// 第二个参数为 要设置的文件名</span></span><br><span class="line">    <span class="comment">// 第三个参数为可选参数， 没有后缀可能获取不到该文件类型， 所以最好设置下该值</span></span><br><span class="line">    file = <span class="keyword">new</span> File([file], <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()+<span class="string">".mp4"</span>,&#123;<span class="attr">type</span>:<span class="string">"video/mp4"</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="模板引擎-jade-art-template-nujunks等等"><a href="#模板引擎-jade-art-template-nujunks等等" class="headerlink" title="模板引擎 (jade/art-template/nujunks等等)"></a>模板引擎 (jade/art-template/nujunks等等)</h2><p><strong>模板引擎的本质是处理字符串</strong>，是按照自己规定的模板语法解析对应的模板字符串，跟 HTML、DOM 没有关系，只要字符串有对应的模板语法皆能解析处理。</p>
+<h2 id="根据已有-file-对象构建新的-file-对象"><a href="#根据已有-file-对象构建新的-file-对象" class="headerlink" title="根据已有 file 对象构建新的 file 对象"></a>根据已有 file 对象构建新的 file 对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> file = app.$(<span class="string">&#x27;videoInput&#x27;</span>).<span class="property">files</span>[<span class="number">0</span>]; <span class="comment">//从 file input中获取File对象, dom对象$(&#x27;#videoInput&#x27;).get(0).files[0]</span></span><br><span class="line"><span class="comment">//如果没有后缀 vivo x5max</span></span><br><span class="line"><span class="keyword">if</span>(file.<span class="property">name</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;.&quot;</span>) &lt;= <span class="number">0</span>)&#123; <span class="comment">// 如果该文件没有后缀就新年构造一个File对象， 并指定文件名和类型</span></span><br><span class="line">    <span class="comment">// 第一个参数可以为Blob对象的数组 （第一个参数必须是数组）， File对象继承自Blob，所以可以传递File对象</span></span><br><span class="line">    <span class="comment">// 第二个参数为 要设置的文件名</span></span><br><span class="line">    <span class="comment">// 第三个参数为可选参数， 没有后缀可能获取不到该文件类型， 所以最好设置下该值</span></span><br><span class="line">    file = <span class="keyword">new</span> <span class="title class_">File</span>([file], <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()+<span class="string">&quot;.mp4&quot;</span>,&#123;<span class="attr">type</span>:<span class="string">&quot;video/mp4&quot;</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="模板引擎-jade-art-template-nujunks等等"><a href="#模板引擎-jade-art-template-nujunks等等" class="headerlink" title="模板引擎 (jade&#x2F;art-template&#x2F;nujunks等等)"></a>模板引擎 (jade&#x2F;art-template&#x2F;nujunks等等)</h2><p><strong>模板引擎的本质是处理字符串</strong>，是按照自己规定的模板语法解析对应的模板字符串，跟 HTML、DOM 没有关系，只要字符串有对应的模板语法皆能解析处理。</p>
 
     </div>
 
@@ -302,11 +303,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2014/10/22/Windows/windows终端命令/" rel="prev" title="windows 端口号查看与 mstc 远程连接">
+    <a href="/2014/10/22/Windows/windows%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/" rel="prev" title="windows 端口号查看与 mstc 远程连接">
       <i class="fa fa-chevron-left"></i> windows 端口号查看与 mstc 远程连接
     </a></div>
       <div class="post-nav-item">
-    <a href="/2014/11/27/HTML/事件冒泡与事件捕获/" rel="next" title="事件冒泡与事件捕获">
+    <a href="/2014/11/27/HTML/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7/" rel="next" title="事件冒泡与事件捕获">
       事件冒泡与事件捕获 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -368,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-知识点"><span class="nav-number">1.</span> <span class="nav-text">HTML 知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled-readonly-checked-selected-属性"><span class="nav-number">2.</span> <span class="nav-text">disabled readonly checked selected 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加移除属性"><span class="nav-number">3.</span> <span class="nav-text">添加移除属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js-中的方法"><span class="nav-number">3.1.</span> <span class="nav-text">js 中的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-中的方法"><span class="nav-number">3.2.</span> <span class="nav-text">jQuery 中的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据已有-file-对象构建新的-file-对象"><span class="nav-number">4.</span> <span class="nav-text">根据已有 file 对象构建新的 file 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板引擎-jade-art-template-nujunks等等"><span class="nav-number">5.</span> <span class="nav-text">模板引擎 (jade/art-template/nujunks等等)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">HTML 知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled-readonly-checked-selected-%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">disabled readonly checked selected 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%A7%BB%E9%99%A4%E5%B1%9E%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">添加移除属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js-%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">js 中的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">jQuery 中的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%B7%B2%E6%9C%89-file-%E5%AF%B9%E8%B1%A1%E6%9E%84%E5%BB%BA%E6%96%B0%E7%9A%84-file-%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">根据已有 file 对象构建新的 file 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E-jade-art-template-nujunks%E7%AD%89%E7%AD%89"><span class="nav-number">5.</span> <span class="nav-text">模板引擎 (jade&#x2F;art-template&#x2F;nujunks等等)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,16 +419,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -447,9 +448,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

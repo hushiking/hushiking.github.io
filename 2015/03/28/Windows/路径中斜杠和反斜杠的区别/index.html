@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="斜杠/ 和反斜杠\ 一直很让人困扰，经常弄错，这里详细总结一下。">
-<meta name="keywords" content="HTTP">
+  <meta name="description" content="斜杠&#x2F; 和反斜杠\ 一直很让人困扰，经常弄错，这里详细总结一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="路径中斜杠&#x2F; 和反斜杠\ 的区别">
-<meta property="og:url" content="http://hushiking.github.io/2015/03/28/Windows/路径中斜杠和反斜杠的区别/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2015/03/28/Windows/%E8%B7%AF%E5%BE%84%E4%B8%AD%E6%96%9C%E6%9D%A0%E5%92%8C%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
-<meta property="og:description" content="斜杠/ 和反斜杠\ 一直很让人困扰，经常弄错，这里详细总结一下。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T16:14:16.000Z">
+<meta property="og:description" content="斜杠&#x2F; 和反斜杠\ 一直很让人困扰，经常弄错，这里详细总结一下。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-03-28T02:08:44.000Z">
+<meta property="article:modified_time" content="2017-10-17T16:14:16.000Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="路径中斜杠&#x2F; 和反斜杠\ 的区别">
-<meta name="twitter:description" content="斜杠/ 和反斜杠\ 一直很让人困扰，经常弄错，这里详细总结一下。">
 
-<link rel="canonical" href="http://hushiking.github.io/2015/03/28/Windows/路径中斜杠和反斜杠的区别/">
+<link rel="canonical" href="http://hushiking.github.io/2015/03/28/Windows/%E8%B7%AF%E5%BE%84%E4%B8%AD%E6%96%9C%E6%9D%A0%E5%92%8C%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/03/28/Windows/路径中斜杠和反斜杠的区别/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/03/28/Windows/%E8%B7%AF%E5%BE%84%E4%B8%AD%E6%96%9C%E6%9D%A0%E5%92%8C%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维与Linux/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E4%B8%8ELinux/" itemprop="url" rel="index">
                     <span itemprop="name">运维与Linux</span>
                   </a>
                 </span>
@@ -227,18 +227,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="路径中-斜杠-和-反斜杠-的区别"><a href="#路径中-斜杠-和-反斜杠-的区别" class="headerlink" title="路径中 斜杠/ 和 反斜杠\ 的区别"></a>路径中 斜杠/ 和 反斜杠\ 的区别</h1><p>最近在项目中遇到了一个小问题，纠结了半天。</p>
-<p>路径中使用 斜杠/ 和 反斜杠\ 的区别到底是什么。查阅了一些资料后可知。</p>
-<p>Unix 使用 <em><strong>斜杠/</strong></em> 作为<strong>路径分隔符</strong>，而 web 应用最新使用在 Unix 系统上面，所以目前所有的网络地址都采用 斜杠/ 作为分隔符。</p>
-<p>Windows 由于使用 <em><strong>斜杠/</strong></em> 作为 <strong>DOS命令提示符的参数标志</strong> 了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前 windows 系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令提示符也用的很少，斜杠和反斜杠在大多数情况下可以互换，没有影响。<strong>（Windows中 斜杠/ 和 斜杠\ 均可最为路径分隔符）</strong></p>
+        <h1 id="路径中-斜杠-和-反斜杠-的区别"><a href="#路径中-斜杠-和-反斜杠-的区别" class="headerlink" title="路径中 斜杠&#x2F; 和 反斜杠\ 的区别"></a>路径中 斜杠&#x2F; 和 反斜杠\ 的区别</h1><p>最近在项目中遇到了一个小问题，纠结了半天。</p>
+<p>路径中使用 斜杠&#x2F; 和 反斜杠\ 的区别到底是什么。查阅了一些资料后可知。</p>
+<p>Unix 使用 <em><strong>斜杠&#x2F;</strong></em> 作为<strong>路径分隔符</strong>，而 web 应用最新使用在 Unix 系统上面，所以目前所有的网络地址都采用 斜杠&#x2F; 作为分隔符。</p>
+<p>Windows 由于使用 <em><strong>斜杠&#x2F;</strong></em> 作为 <strong>DOS命令提示符的参数标志</strong> 了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前 windows 系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令提示符也用的很少，斜杠和反斜杠在大多数情况下可以互换，没有影响。<strong>（Windows中 斜杠&#x2F; 和 斜杠\ 均可最为路径分隔符）</strong></p>
 <p>知道这个背景后，可以总结一下结论：</p>
-<p>（1）浏览器地址栏网址使用 斜杠/ ;</p>
+<p>（1）浏览器地址栏网址使用 斜杠&#x2F; ;</p>
 <p>（2）windows文件浏览器上使用 反斜杠\ ;</p>
-<p>（3）出现在 <code>html url()</code> 属性中的路径，指定的路径是网络路径，所以必须用 斜杠/ ;</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-image:url(/Image/Control/title.jpg); background-repeat:repeat-x; padding:10px 10px 10px 10px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--如果url后面用反斜杠，就不会显示任何背景--&gt;</span></span><br></pre></td></tr></table></figure>
-<p>（4）出现在普通字符串中的路径，如果代表的是 windows 文件路径，则使用 斜杠/ 和 反斜杠\ 是一样的；如果代表的是网络文件路径，则必须使用 斜杠/ ;</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">".\Image/Control/ding.jpg"</span> /&gt;</span><span class="comment">&lt;!--本地文件路径，/ 和 \ 是等效的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./Image\Control\cai.jpg"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://hiphotos.baidu.com/yuhua522/pic/item/01a949c67e1023549c163df2.jpg"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--网络文件路径，一定要使用 斜杠/--&gt;</span></span><br></pre></td></tr></table></figure>
-<p>斜杠/ 和 反斜杠\ 的区别基本上就是这些了，下面再讨论一下相对路径和绝对路径。</p>
+<p>（3）出现在 <code>html url()</code> 属性中的路径，指定的路径是网络路径，所以必须用 斜杠&#x2F; ;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background-image:url(/Image/Control/title.jpg); background-repeat:repeat-x; padding:10px 10px 10px 10px&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--如果url后面用反斜杠，就不会显示任何背景--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（4）出现在普通字符串中的路径，如果代表的是 windows 文件路径，则使用 斜杠&#x2F; 和 反斜杠\ 是一样的；如果代表的是网络文件路径，则必须使用 斜杠&#x2F; ;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;.\Image/Control/ding.jpg&quot;</span> /&gt;</span><span class="comment">&lt;!--本地文件路径，/ 和 \ 是等效的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./Image\Control\cai.jpg&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://hiphotos.baidu.com/yuhua522/pic/item/01a949c67e1023549c163df2.jpg&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--网络文件路径，一定要使用 斜杠/--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>斜杠&#x2F; 和 反斜杠\ 的区别基本上就是这些了，下面再讨论一下相对路径和绝对路径。</p>
 <p><code>./src/</code> 这样写表示，当前目录中的 src 文件夹；</p>
 <p><code>../src/</code> 这样写表示，当前目录的上一层目录中 src 文件夹；</p>
 <p><code>/src/</code> 这样写表示，项目根目录（可以只磁盘根目录，也可以指项目根目录，具体根据实际情况而定）</p>
@@ -260,11 +262,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/03/23/JavaScript/this指向问题/" rel="prev" title="JS 中 this 指向问题">
+    <a href="/2015/03/23/JavaScript/this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/" rel="prev" title="JS 中 this 指向问题">
       <i class="fa fa-chevron-left"></i> JS 中 this 指向问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/04/01/HTML/HTML页面锚点添加方式/" rel="next" title="HTML 页面锚点添加的方式">
+    <a href="/2015/04/01/HTML/HTML%E9%A1%B5%E9%9D%A2%E9%94%9A%E7%82%B9%E6%B7%BB%E5%8A%A0%E6%96%B9%E5%BC%8F/" rel="next" title="HTML 页面锚点添加的方式">
       HTML 页面锚点添加的方式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -326,7 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#路径中-斜杠-和-反斜杠-的区别"><span class="nav-number">1.</span> <span class="nav-text">路径中 斜杠/ 和 反斜杠\ 的区别</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E4%B8%AD-%E6%96%9C%E6%9D%A0-%E5%92%8C-%E5%8F%8D%E6%96%9C%E6%9D%A0-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">路径中 斜杠&#x2F; 和 反斜杠\ 的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,16 +378,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -405,9 +407,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,22 +47,22 @@
 </script>
 
   <meta name="description" content="关于 JavaScript 语法中表达式与语句的一些不同点。">
-<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 语法中表达式与语句的区别">
-<meta property="og:url" content="http://hushiking.github.io/2015/12/16/JavaScript/JS表达式与语句区别/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2015/12/16/JavaScript/JS%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="关于 JavaScript 语法中表达式与语句的一些不同点。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hushiking.github.io/img/json字符串解析报错.png">
-<meta property="og:image" content="http://hushiking.github.io/img/表达式与语句.png">
-<meta property="og:updated_time" content="2020-01-05T03:26:14.358Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://hushiking.github.io/img/json%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%8A%A5%E9%94%99.png">
+<meta property="og:image" content="http://hushiking.github.io/img/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5.png">
+<meta property="article:published_time" content="2015-12-16T15:01:06.000Z">
+<meta property="article:modified_time" content="2020-01-05T03:26:14.358Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS 语法中表达式与语句的区别">
-<meta name="twitter:description" content="关于 JavaScript 语法中表达式与语句的一些不同点。">
-<meta name="twitter:image" content="http://hushiking.github.io/img/json字符串解析报错.png">
+<meta name="twitter:image" content="http://hushiking.github.io/img/json%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%8A%A5%E9%94%99.png">
 
-<link rel="canonical" href="http://hushiking.github.io/2015/12/16/JavaScript/JS表达式与语句区别/">
+<link rel="canonical" href="http://hushiking.github.io/2015/12/16/JavaScript/JS%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/12/16/JavaScript/JS表达式与语句区别/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/12/16/JavaScript/JS%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,7 +212,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -240,13 +240,15 @@
 </li>
 </ol>
 <p>JavaScript 一个表达式会产生一个值，它可以放在任何需要一个值的地方。比如，作为一个函数调用的参数。下面的每行代码都是一个表达式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myBook</span><br><span class="line"><span class="number">5</span> - x</span><br><span class="line">myFunc(<span class="string">'a'</span>, <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myBook</span><br><span class="line"><span class="number">5</span> - x</span><br><span class="line"><span class="title function_">myFunc</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>语句可以理解成一个行为。循环语句和 if 语句就是典型的语句。一个程序是由一系列语句组成的。JavaScript 中某些需要语句的地方，你可以使用一个表达式来代替。这样的语句称之为表达式语句。但反过来不可以：你不能在一个需要表达式的地方放一个语句。比如，一个if语句不能作为一个函数的参数。</p>
 <h2 id="json-与-eval-用法区别"><a href="#json-与-eval-用法区别" class="headerlink" title="json 与 eval 用法区别"></a>json 与 eval 用法区别</h2><ul>
 <li>json字符串的解析方法</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonData = <span class="string">'&#123;"data1":"Hello,", "data2":"world!&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> evalJson=<span class="built_in">eval</span>(<span class="string">'('</span>+jsonData+<span class="string">')'</span>);</span><br><span class="line"><span class="keyword">var</span> jsonParseJson=<span class="built_in">JSON</span>.parse(jsonData);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> jsonstr = <span class="string">'&#123;"data1":"hello","data2":++value&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> data1 = <span class="built_in">eval</span>(<span class="string">'('</span>+jsonstr+<span class="string">')'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(data1);<span class="comment">//这时value值为2</span></span><br><span class="line"><span class="keyword">var</span> data2=<span class="built_in">JSON</span>.parse(jsonstr);</span><br><span class="line"><span class="built_in">console</span>.log(data2);<span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-<p><img src="/img/json字符串解析报错.png" alt="Alt json字符串解析报错" title="json字符串解析报错"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonData = <span class="string">&#x27;&#123;&quot;data1&quot;:&quot;Hello,&quot;, &quot;data2&quot;:&quot;world!&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> evalJson=<span class="built_in">eval</span>(<span class="string">&#x27;(&#x27;</span>+jsonData+<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> jsonParseJson=<span class="title class_">JSON</span>.<span class="title function_">parse</span>(jsonData);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> jsonstr = <span class="string">&#x27;&#123;&quot;data1&quot;:&quot;hello&quot;,&quot;data2&quot;:++value&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> data1 = <span class="built_in">eval</span>(<span class="string">&#x27;(&#x27;</span>+jsonstr+<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data1);<span class="comment">//这时value值为2</span></span><br><span class="line"><span class="keyword">var</span> data2=<span class="title class_">JSON</span>.<span class="title function_">parse</span>(jsonstr);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data2);<span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/json%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%8A%A5%E9%94%99.png" alt="Alt json字符串解析报错" title="json字符串解析报错"></p>
 <ul>
 <li><p>结果分析</p>
 <ul>
@@ -263,7 +265,7 @@
 <li>所以最终形式是：<code>console.log(&quot;\\&quot;)</code>;</li>
 <li>但是由于 <code>JSON.parse</code> 解析的是字符串的真实含义</li>
 <li>所以每一个<code>&quot;\&quot;</code>又都要使用<code>&quot;\&quot;</code>来进行转义</li>
-<li>所以最终形式为：<code>console.log(JSON.parse(&#39;{&quot;a&quot;:&quot;\\\\&quot;}&#39;))</code>;</li>
+<li>所以最终形式为：<code>console.log(JSON.parse(&#39;&#123;&quot;a&quot;:&quot;\\\\&quot;&#125;&#39;))</code>;</li>
 <li>要注意理解其中意思。</li>
 </ul>
 </li>
@@ -291,8 +293,8 @@
 </li>
 <li>可见这是一种递归的定义，所以又规定 <strong>字面量(就是1,2,3,“abc”)，this等是表达式</strong></li>
 <li>“语句”的意思是指不是表达式的语句。<ul>
-<li>在 javascript 里面满足这个条件的就函数声明、变量声明(var a=10是声明和赋值)、for语句、if语句、while语句、switch语句、return、try catch。</li>
-<li>javascript 还有一种函数表达式，它的形式跟函数声明一模一样。如果写 <code>function fn() { return 0;}</code> 是函数声明而写 <code>var a = function fn(){ return 0;}</code> 等号后面的就是函数表达式。</li>
+<li>在 javascript 里面满足这个条件的就函数声明、变量声明(var a&#x3D;10是声明和赋值)、for语句、if语句、while语句、switch语句、return、try catch。</li>
+<li>javascript 还有一种函数表达式，它的形式跟函数声明一模一样。如果写 <code>function fn() &#123; return 0;&#125;</code> 是函数声明而写 <code>var a = function fn()&#123; return 0;&#125;</code> 等号后面的就是函数表达式。</li>
 </ul>
 </li>
 <li><strong>最简单的区别</strong><ul>
@@ -309,7 +311,8 @@
 <li>在程序设计语言中，语句指的是执行单元，通常以行作为单位。</li>
 <li>表达式指的是可用于计算的式子，即可能产生一个值的式子。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+aa;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+aa();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params">var aa</span>)</span>&#123;alert aa+<span class="number">1</span>;&#125;</span><br><span class="line">bb=<span class="number">2</span>;</span><br><span class="line">aa(bb+<span class="number">56</span>);</span><br><span class="line"></span><br><span class="line">aa++;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+aa;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">aa=<span class="number">35</span>;</span><br><span class="line">bb=<span class="number">1</span>+<span class="title function_">aa</span>();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">aa</span>(<span class="params"><span class="keyword">var</span> aa</span>)&#123;alert aa+<span class="number">1</span>;&#125;</span><br><span class="line">bb=<span class="number">2</span>;</span><br><span class="line"><span class="title function_">aa</span>(bb+<span class="number">56</span>);</span><br><span class="line"></span><br><span class="line">aa++;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>语句可以包含有表达式，表达式也可以单独形成一个语句，如上所示<ul>
 <li>其中<code>1+aa()</code>和<code>bb+56</code>就是表达式</li>
@@ -320,7 +323,7 @@
 </ul>
 <h2 id="看似语句的表达式"><a href="#看似语句的表达式" class="headerlink" title="看似语句的表达式"></a>看似语句的表达式</h2><ol>
 <li><p>下面是一个对象字面量,也就是一个可以生成一个对象值的表达式</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    foo: bar(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="title function_">bar</span>(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>不过同时，它也是一个完全合法的语句，这个语句的组成部分有：</p>
 <ol>
@@ -333,11 +336,12 @@
 <blockquote>
 <p>你也许会感到震惊，那就是 JavaScript 居然可以有独立的代码块(常见的代码块是依托于循环或者 if 语句的)。下面的代码演示了这种代码块的作用：你可以给它设置一个标签然后跳出这个代码块.</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">printTwo</span>) </span>&#123;</span><br><span class="line">    printing: &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"One"</span>);</span><br><span class="line">        <span class="keyword">if</span> (!printTwo) <span class="keyword">break</span> printing;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Two"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Three"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt; test(<span class="literal">false</span>)</span><br><span class="line">One</span><br><span class="line">Three</span><br><span class="line"></span><br><span class="line">&gt; test(<span class="literal">true</span>)</span><br><span class="line">One</span><br><span class="line">Two</span><br><span class="line">Three</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">printTwo</span>) &#123;</span><br><span class="line">    <span class="attr">printing</span>: &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;One&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!printTwo) <span class="keyword">break</span> printing;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Two&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Three&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="title function_">test</span>(<span class="literal">false</span>)</span><br><span class="line"><span class="title class_">One</span></span><br><span class="line"><span class="title class_">Three</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="title function_">test</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="title class_">One</span></span><br><span class="line"><span class="title class_">Two</span></span><br><span class="line"><span class="title class_">Three</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>简单用一幅图表示表达式与语句直接的关系</p>
 </blockquote>
-<p><img src="/img/表达式与语句.png" alt="Alt 表达式与语句关系图" title="表达式与语句关系图"></p>
+<p><img src="/img/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5.png" alt="Alt 表达式与语句关系图" title="表达式与语句关系图"></p>
 
     </div>
 
@@ -356,11 +360,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/11/12/Git/git与hexo报错集锦/" rel="prev" title="Git 与 Hexo 运行错误集锦">
+    <a href="/2015/11/12/Git/git%E4%B8%8Ehexo%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A6/" rel="prev" title="Git 与 Hexo 运行错误集锦">
       <i class="fa fa-chevron-left"></i> Git 与 Hexo 运行错误集锦
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/12/30/Linux/Linux 常用命令/" rel="next" title="Linux 常用命令">
+    <a href="/2015/12/30/Linux/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Linux 常用命令">
       Linux 常用命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -422,7 +426,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-表达式与语句区别"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 表达式与语句区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json-与-eval-用法区别"><span class="nav-number">2.</span> <span class="nav-text">json 与 eval 用法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js表达式与语句"><span class="nav-number">3.</span> <span class="nav-text">js表达式与语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看似语句的表达式"><span class="nav-number">4.</span> <span class="nav-text">看似语句的表达式</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 表达式与语句区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json-%E4%B8%8E-eval-%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">json 与 eval 用法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">js表达式与语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E4%BC%BC%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">看似语句的表达式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -472,16 +476,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -501,9 +505,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

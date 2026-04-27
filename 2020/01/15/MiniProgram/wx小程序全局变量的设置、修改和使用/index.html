@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="全局变量在 app.json 的 onLaunch 生命周期过程中调用接口去改变全局变量中的值，但是在使用页面中却没有获取改变之后的值。">
-<meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序全局变量的设置、修改和使用">
-<meta property="og:url" content="http://hushiking.github.io/2020/01/15/MiniProgram/wx小程序全局变量的设置、修改和使用/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2020/01/15/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%E3%80%81%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="全局变量在 app.json 的 onLaunch 生命周期过程中调用接口去改变全局变量中的值，但是在使用页面中却没有获取改变之后的值。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-08-24T10:51:10.877Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-01-15T13:50:11.000Z">
+<meta property="article:modified_time" content="2022-08-24T10:51:10.877Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="小程序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序全局变量的设置、修改和使用">
-<meta name="twitter:description" content="全局变量在 app.json 的 onLaunch 生命周期过程中调用接口去改变全局变量中的值，但是在使用页面中却没有获取改变之后的值。">
 
-<link rel="canonical" href="http://hushiking.github.io/2020/01/15/MiniProgram/wx小程序全局变量的设置、修改和使用/">
+<link rel="canonical" href="http://hushiking.github.io/2020/01/15/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%E3%80%81%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BD%BF%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2020/01/15/MiniProgram/wx小程序全局变量的设置、修改和使用/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2020/01/15/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%E3%80%81%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -229,9 +229,10 @@
       
         <h2 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h2><p>在 app.js 中定义一个全局方法，在使用的时候执行这个全局方法，获取返回值来改变全局变量的值。废话不多说，下面是具体解决方法：</p>
 <p>在 app.js 页面里</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js 页面</span></span><br><span class="line">App(&#123;</span><br><span class="line">  globalData: &#123;</span><br><span class="line">    isLoad: <span class="literal">false</span>,</span><br><span class="line">    global_mask: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.getMaskState()</span><br><span class="line">  &#125;,</span><br><span class="line">  getMaskState() &#123; <span class="comment">// 全局方法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.globalData.isLoad) &#123; <span class="comment">// 避免多次调用接口</span></span><br><span class="line">        resolve(<span class="keyword">this</span>.globalData.global_mask)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = &#123;&#125;</span><br><span class="line">        maskRequest(&#123;data&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.globalData.global_mask = res.data.global_mask <span class="comment">// 通过接口请求获取mask状态值</span></span><br><span class="line">          <span class="keyword">this</span>.globalData.isLoad = <span class="literal">true</span></span><br><span class="line">          resolve(<span class="keyword">this</span>.globalData.global_mask)</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          reject(err)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js 页面</span></span><br><span class="line"><span class="title class_">App</span>(&#123;</span><br><span class="line">  <span class="attr">globalData</span>: &#123;</span><br><span class="line">    <span class="attr">isLoad</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">global_mask</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">onLaunch</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">getMaskState</span>()</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">getMaskState</span>(<span class="params"></span>) &#123; <span class="comment">// 全局方法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">isLoad</span>) &#123; <span class="comment">// 避免多次调用接口</span></span><br><span class="line">        <span class="title function_">resolve</span>(<span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">global_mask</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = &#123;&#125;</span><br><span class="line">        <span class="title function_">maskRequest</span>(&#123;data&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">global_mask</span> = res.<span class="property">data</span>.<span class="property">global_mask</span> <span class="comment">// 通过接口请求获取mask状态值</span></span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">isLoad</span> = <span class="literal">true</span></span><br><span class="line">          <span class="title function_">resolve</span>(<span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">global_mask</span>)</span><br><span class="line">        &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">reject</span>(err)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>在使用页面里</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js 使用页面</span></span><br><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    global_mask: app.globalData.global_mask <span class="comment">// 获取全局变量值</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    app.getMaskState().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="comment">// 执行全局方法</span></span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        global_mask: res</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js 使用页面</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">getApp</span>()</span><br><span class="line"></span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">global_mask</span>: app.<span class="property">globalData</span>.<span class="property">global_mask</span> <span class="comment">// 获取全局变量值</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">onLoad</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    app.<span class="title function_">getMaskState</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="comment">// 执行全局方法</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">        <span class="attr">global_mask</span>: res</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -241,7 +242,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/小程序/" rel="tag"># 小程序</a>
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
           </div>
 
         
@@ -250,7 +251,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/08/JavaScript/JavaScript中Unicode编码与String互相转换/" rel="prev" title="JavaScript中Unicode编码与String互相转换">
+    <a href="/2020/01/08/JavaScript/JavaScript%E4%B8%ADUnicode%E7%BC%96%E7%A0%81%E4%B8%8EString%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2/" rel="prev" title="JavaScript中Unicode编码与String互相转换">
       <i class="fa fa-chevron-left"></i> JavaScript中Unicode编码与String互相转换
     </a></div>
       <div class="post-nav-item"></div>
@@ -313,7 +314,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析原因"><span class="nav-number">1.</span> <span class="nav-text">分析原因</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">分析原因</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -363,16 +364,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -392,9 +393,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

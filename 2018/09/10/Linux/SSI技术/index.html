@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="SSI（Server Side Include）使用在HTML中，用于在请求内容返回到客户端前执行页面中的SSI命令，生成动态内容。">
-<meta name="keywords" content="SSI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSI 技术">
-<meta property="og:url" content="http://hushiking.github.io/2018/09/10/Linux/SSI技术/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2018/09/10/Linux/SSI%E6%8A%80%E6%9C%AF/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="SSI（Server Side Include）使用在HTML中，用于在请求内容返回到客户端前执行页面中的SSI命令，生成动态内容。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T03:59:41.100Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-09-10T14:16:49.000Z">
+<meta property="article:modified_time" content="2019-05-13T03:59:41.100Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="SSI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSI 技术">
-<meta name="twitter:description" content="SSI（Server Side Include）使用在HTML中，用于在请求内容返回到客户端前执行页面中的SSI命令，生成动态内容。">
 
-<link rel="canonical" href="http://hushiking.github.io/2018/09/10/Linux/SSI技术/">
+<link rel="canonical" href="http://hushiking.github.io/2018/09/10/Linux/SSI%E6%8A%80%E6%9C%AF/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/09/10/Linux/SSI技术/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/09/10/Linux/SSI%E6%8A%80%E6%9C%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维与Linux/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E4%B8%8ELinux/" itemprop="url" rel="index">
                     <span itemprop="name">运维与Linux</span>
                   </a>
                 </span>
@@ -235,12 +235,14 @@
 <p>上述以上代码便能在服务端完成header.html的动态引入，非常简单。</p>
 <h2 id="配置服务器以允许-SSI"><a href="#配置服务器以允许-SSI" class="headerlink" title="配置服务器以允许 SSI"></a>配置服务器以允许 SSI</h2><p>使用SSI之前需要服务端进行简单的配置，开启SSI功能。SSI是针对HTML增加动态内容的技术，所以只对HTML类型文件（.html,.shtml），使用SSI功能的文件建议使用.shtml后缀，便于维护。如果使用.shtml后缀需在服务端作一些配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType text/html .shtml</span><br><span class="line">AddOutputFilter INCLUDES .shtml</span><br></pre></td></tr></table></figure>
+
 <p>第一行命名配置将.shtml作为html文件返回</p>
 <p>第二行命令用于在返回请求内容前执行页面中的SSI命令，如果你在.html文件中使用SSI，那么将.shtml改为.html即可。</p>
 <h2 id="nginx-配置-SSI"><a href="#nginx-配置-SSI" class="headerlink" title="nginx 配置 SSI"></a>nginx 配置 SSI</h2><p>需要的选项主要是以下三个：</p>
-<p><strong>ssi</strong>: 默认值off，启用ssi时将其设为on<br><strong>ssi_silent_errors</strong>: 默认值off，开启后在处理SSI文件出错时不输出错误提示”[an error occurred while processing the directive]”。<br><strong>ssi_types</strong>: 默认是text/html，所以如果需支持html，则不需要设置这句，如果需要支持shtml则需要设置：ssi_types text/shtml<br>三个参数可以放在http, server或location作用域下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen  10.3.9.27:80;</span><br><span class="line">    server_name  www.ball.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        ssi on;</span><br><span class="line">        ssi_silent_errors on;</span><br><span class="line">        ssi_types text/shtml;</span><br><span class="line">        index index.shtml;</span><br><span class="line">        root /usr/<span class="built_in">local</span>/web/wwwroot;</span><br><span class="line">        expires 30d;</span><br><span class="line">        access_log      /data/logs/www.ball.com-access_log main;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="SSI-命令"><a href="#SSI-命令" class="headerlink" title="SSI 命令"></a>SSI 命令</h2><p>SSI的语法有点像HTML注释，所以如果SSI不能识别，那么将被视作HTML注释处理。SSI的语法功能主要包括：变量的设置/获取，文件的引用，可执行命令，条件表达式等。</p>
+<p><strong>ssi</strong>: 默认值off，启用ssi时将其设为on<br><strong>ssi_silent_errors</strong>: 默认值off，开启后在处理SSI文件出错时不输出错误提示”[an error occurred while processing the directive]”。<br><strong>ssi_types</strong>: 默认是text&#x2F;html，所以如果需支持html，则不需要设置这句，如果需要支持shtml则需要设置：ssi_types text&#x2F;shtml<br>三个参数可以放在http, server或location作用域下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen  10.3.9.27:80;</span><br><span class="line">    server_name  www.ball.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        ssi on;</span><br><span class="line">        ssi_silent_errors on;</span><br><span class="line">        ssi_types text/shtml;</span><br><span class="line">        index index.shtml;</span><br><span class="line">        root /usr/local/web/wwwroot;</span><br><span class="line">        expires 30d;</span><br><span class="line">        access_log      /data/logs/www.ball.com-access_log main;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SSI-命令"><a href="#SSI-命令" class="headerlink" title="SSI 命令"></a>SSI 命令</h2><p>SSI的语法有点像HTML注释，所以如果SSI不能识别，那么将被视作HTML注释处理。SSI的语法功能主要包括：变量的设置&#x2F;获取，文件的引用，可执行命令，条件表达式等。</p>
 <blockquote>
 <p>基本语法 <code>&lt;!--#command param=&quot;value&quot;--&gt;</code></p>
 </blockquote>
@@ -250,7 +252,7 @@
 <li>SSI 对大小写敏感</li>
 <li>所有 value 均要写在引号中</li>
 </ol>
-<p><a href="http://ju.outofmemory.cn/entry/16773" target="_blank" rel="noopener">参考文章</a></p>
+<p><a href="http://ju.outofmemory.cn/entry/16773">参考文章</a></p>
 
     </div>
 
@@ -269,11 +271,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/08/13/Docker/Docker安装MongoDB/" rel="prev" title="Docker 安装 MongoDB">
+    <a href="/2018/08/13/Docker/Docker%E5%AE%89%E8%A3%85MongoDB/" rel="prev" title="Docker 安装 MongoDB">
       <i class="fa fa-chevron-left"></i> Docker 安装 MongoDB
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/09/19/HTML/Meta标签常用设置/" rel="next" title="Meta 标签常用设置">
+    <a href="/2018/09/19/HTML/Meta%E6%A0%87%E7%AD%BE%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/" rel="next" title="Meta 标签常用设置">
       Meta 标签常用设置 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -335,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-SSI-？"><span class="nav-number">1.</span> <span class="nav-text">什么是 SSI ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置服务器以允许-SSI"><span class="nav-number">2.</span> <span class="nav-text">配置服务器以允许 SSI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-配置-SSI"><span class="nav-number">3.</span> <span class="nav-text">nginx 配置 SSI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSI-命令"><span class="nav-number">4.</span> <span class="nav-text">SSI 命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-SSI-%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是 SSI ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A5%E5%85%81%E8%AE%B8-SSI"><span class="nav-number">2.</span> <span class="nav-text">配置服务器以允许 SSI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-%E9%85%8D%E7%BD%AE-SSI"><span class="nav-number">3.</span> <span class="nav-text">nginx 配置 SSI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSI-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">SSI 命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -385,16 +387,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -414,9 +416,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

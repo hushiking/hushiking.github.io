@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="Docker 安装 MongoDB 具体操作步骤以及在 Docker 下使用 MongoDB 的方式。">
-<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 安装 MongoDB">
-<meta property="og:url" content="http://hushiking.github.io/2018/08/13/Docker/Docker安装MongoDB/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2018/08/13/Docker/Docker%E5%AE%89%E8%A3%85MongoDB/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="Docker 安装 MongoDB 具体操作步骤以及在 Docker 下使用 MongoDB 的方式。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-11T09:09:20.746Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-08-13T11:56:31.000Z">
+<meta property="article:modified_time" content="2019-02-11T09:09:20.746Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 安装 MongoDB">
-<meta name="twitter:description" content="Docker 安装 MongoDB 具体操作步骤以及在 Docker 下使用 MongoDB 的方式。">
 
-<link rel="canonical" href="http://hushiking.github.io/2018/08/13/Docker/Docker安装MongoDB/">
+<link rel="canonical" href="http://hushiking.github.io/2018/08/13/Docker/Docker%E5%AE%89%E8%A3%85MongoDB/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/08/13/Docker/Docker安装MongoDB/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/08/13/Docker/Docker%E5%AE%89%E8%A3%85MongoDB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维与Linux/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E4%B8%8ELinux/" itemprop="url" rel="index">
                     <span itemprop="name">运维与Linux</span>
                   </a>
                 </span>
@@ -229,15 +229,17 @@
       
         <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本文一方面为了学习 Docker 的操作和使用，另一方面是方便以后 MongoDB 的移植。</p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol>
-<li>查找 docker 中的 mongo<br> <code>docker search mongo</code></li>
-<li>拉取镜像<br> <code>docker pull mongo:3.6</code> 或者 <code>docker pull mongo</code> 默认拉取 latest</li>
+<li><p>查找 docker 中的 mongo<br> <code>docker search mongo</code></p>
+</li>
+<li><p>拉取镜像<br> <code>docker pull mongo:3.6</code> 或者 <code>docker pull mongo</code> 默认拉取 latest</p>
+</li>
 <li><p>在本地主机创建文件夹作为 mongo 数据存储目录</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir mongo</span><br><span class="line"><span class="built_in">cd</span> mongo</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> mongo</span><br><span class="line"><span class="built_in">cd</span> mongo</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>运行 mongo 镜像<br> <code>docker run -p 27017:27017 -v $PWD/db:/data/db -d mongo:3.6</code></p>
 <ul>
 <li>-p 27017:27017 :将容器的 27017 端口映射到主机的 27917 端口（端口可以自己定义）</li>
-<li>-v \$PWD/db:/data/db :将主机中当前目录下的 db 挂载到容器的/data/db，作为 mongo 数据存储目录(<code>$PWD</code>必须要大写)</li>
+<li>-v $PWD&#x2F;db:&#x2F;data&#x2F;db :将主机中当前目录下的 db 挂载到容器的&#x2F;data&#x2F;db，作为 mongo 数据存储目录(<code>$PWD</code>必须要大写)</li>
 <li>–name 设置该容器的名称</li>
 <li>-d 设置容器以守护进程方式运行</li>
 </ul>
@@ -246,28 +248,30 @@
 </li>
 <li><p>进入 admin 数据库</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it hu_mongo bash</span><br><span class="line">mongo admin</span><br></pre></td></tr></table></figure>
+
 <p> 也可简写为 <code>docker exec -it hu_mongo mongo admin</code></p>
 </li>
 <li><p>创建数据库账户</p>
 <ol>
 <li><p>创建管理员账户(拥有所有权限)，如果出现加密错误的问题，需要在创建用户命令中加一个参数换一种加密方式：mechanisms: [“SCRAM-SHA-1”]</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user: 'admin',</span><br><span class="line">    pwd: '123456',</span><br><span class="line">    roles: [&#123;role: "userAdminAnyDatabase", db: "admin"&#125;],</span><br><span class="line">    mechanisms : ["SCRAM-SHA-1"]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    <span class="keyword">user</span>: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    pwd: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">    roles: [&#123;role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;&#125;],</span><br><span class="line">    mechanisms : [&quot;SCRAM-SHA-1&quot;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开启验证<br> <code>db.auth(&quot;admin&quot;,&quot;123456&quot;);</code> 1 代表授权验证成功</p>
 </li>
-<li>创建目标数据库（实际上切换即可）<br> <code>use test</code></li>
+<li><p>创建目标数据库（实际上切换即可）<br> <code>use test</code></p>
+</li>
 <li><p>创建目标数据库管理用户</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user: 'test',</span><br><span class="line">    pwd: 'test',</span><br><span class="line">    roles: [&#123;role: "readWrite", db: "test"&#125;],</span><br><span class="line">    mechanisms : ["SCRAM-SHA-1"]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    <span class="keyword">user</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">    pwd: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">    roles: [&#123;role: &quot;readWrite&quot;, db: &quot;test&quot;&#125;],</span><br><span class="line">    mechanisms : [&quot;SCRAM-SHA-1&quot;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>开启验证<br> <code>db.auth(&quot;test&quot;,&quot;test&quot;);</code> 1 代表授权验证成功<br>注意:</p>
-</li>
-</ol>
-<ul>
-<li>admin 的作用是管理用户,MongoDB 下的每个数据库，用户都被它管理，除此外，它基本没什么更多权限做其他事情</li>
-<li>MongoDB 没有通常意义的超级用户的概念,test 库的授权用户只能被 admin 创建，而 admin 只能登陆 admin 数据库</li>
-</ul>
+<li><p>开启验证<br> <code>db.auth(&quot;test&quot;,&quot;test&quot;);</code> 1 代表授权验证成功</p>
 </li>
 </ol>
+</li>
+</ol>
+<p>注意:</p>
+<pre><code>- admin 的作用是管理用户,MongoDB 下的每个数据库，用户都被它管理，除此外，它基本没什么更多权限做其他事情
+- MongoDB 没有通常意义的超级用户的概念,test 库的授权用户只能被 admin 创建，而 admin 只能登陆 admin 数据库
+</code></pre>
 
     </div>
 
@@ -286,11 +290,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/07/26/Docker/Docker命令说明/" rel="prev" title="Docker 命令说明">
+    <a href="/2018/07/26/Docker/Docker%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E/" rel="prev" title="Docker 命令说明">
       <i class="fa fa-chevron-left"></i> Docker 命令说明
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/09/10/Linux/SSI技术/" rel="next" title="SSI 技术">
+    <a href="/2018/09/10/Linux/SSI%E6%8A%80%E6%9C%AF/" rel="next" title="SSI 技术">
       SSI 技术 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -352,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作步骤"><span class="nav-number">1.1.</span> <span class="nav-text">操作步骤</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.</span> <span class="nav-text">操作步骤</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -402,16 +406,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -431,9 +435,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

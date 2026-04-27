@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="React中容易遇到的问题和注意点。">
-<meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 React 需要注意的小知识点">
-<meta property="og:url" content="http://hushiking.github.io/2017/11/08/React/React小知识点/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2017/11/08/React/React%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="React中容易遇到的问题和注意点。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:06:14.289Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-11-08T11:11:26.000Z">
+<meta property="article:modified_time" content="2019-05-13T07:06:14.289Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于 React 需要注意的小知识点">
-<meta name="twitter:description" content="React中容易遇到的问题和注意点。">
 
-<link rel="canonical" href="http://hushiking.github.io/2017/11/08/React/React小知识点/">
+<link rel="canonical" href="http://hushiking.github.io/2017/11/08/React/React%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/11/08/React/React小知识点/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/11/08/React/React%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,13 +209,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/前端框架/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
                     <span itemprop="name">前端框架</span>
                   </a>
                 </span>
@@ -235,7 +235,7 @@
       
         <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ol>
 <li><p><code>setState()</code> 是异步的<br> <code>this.setState()</code> 会调用 <code>render</code> 方法，但不会立即改变 state 的值，state 是在 render 方法中赋值的。所以执行 <code>this.setState()</code> 后立即获取 state 的值是不变的。同样的直接赋值 state 并不会触发更新，因为没有调用 render 函数。可以在 <code>setState</code> 的第二个参数触发回调函数，如下所示：</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    curView: val,</span><br><span class="line">    loadingSmall: <span class="literal">true</span></span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">this</span>.loadData();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">    <span class="attr">curView</span>: val,</span><br><span class="line">    <span class="attr">loadingSmall</span>: <span class="literal">true</span></span><br><span class="line">&#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">loadData</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>组件的生命周期<br> <code>componentWillMount，componentDidMount</code> 只有在初始化的时候才调用。<br> <code>componentWillReceivePorps，shouldComponentUpdate，componentWillUpdata，componentDidUpdate</code> 只有组件在更新的时候才被调用，初始化时不调用。</p>
 </li>
@@ -244,13 +244,13 @@
 <li><p>无论 reducer 返回的 state 是否改变，<code>subscribe</code> 中注册的所有回调函数都会被触发。</p>
 </li>
 <li><p>按需加载时如果组件是通过 <code>export default</code> 暴露出去，那么 <code>require.ensure</code> 时必须加上 <code>default</code>。</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.ensure([], <span class="built_in">require</span> =&gt; &#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'../Component/helloWorld'</span>).default)</span><br><span class="line">&#125;,<span class="string">'helloWorld'</span>)</span><br></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.<span class="title function_">ensure</span>([], <span class="function"><span class="params">require</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">cb</span>(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">&#x27;../Component/helloWorld&#x27;</span>).<span class="property">default</span>)</span><br><span class="line">&#125;,<span class="string">&#x27;helloWorld&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 <li><p><code>componentWillUpdate</code> 中可以直接改变 state 的值，而不能用 <code>setState</code>。</p>
 </li>
 <li><p>如果使用 es6class 类继承 react 的 component 组件，<code>constructor</code> 中必须调用 <code>super</code>，因为子类必须用 <code>super</code> 继承 component 的 <code>this</code>，否则实例化的时候会报错。</p>
 </li>
-<li>组件卸载之前，加在 dom 元素上的监听事件和定时器需要手动清除，因为这些并不在 react 的控制范围内，必须手动清除。指的是在 this.refs.xxx 这种真实 dom 上 addEventListener 这样添加的监听事件，在组件卸载的时候要手动清除(removeEventListener)，react 组件上的 onClick 这种不用管， react 帮我们处理好了。</li>
+<li><p>组件卸载之前，加在 dom 元素上的监听事件和定时器需要手动清除，因为这些并不在 react 的控制范围内，必须手动清除。指的是在 this.refs.xxx 这种真实 dom 上 addEventListener 这样添加的监听事件，在组件卸载的时候要手动清除(removeEventListener)，react 组件上的 onClick 这种不用管， react 帮我们处理好了。</p>
+</li>
 </ol>
 
     </div>
@@ -270,11 +270,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/10/04/React/关于this.refs/" rel="prev" title="关于 React 的 this.refs 用法">
+    <a href="/2017/10/04/React/%E5%85%B3%E4%BA%8Ethis.refs/" rel="prev" title="关于 React 的 this.refs 用法">
       <i class="fa fa-chevron-left"></i> 关于 React 的 this.refs 用法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/12/11/JavaScript/数组/JS数组reduce方法详解/" rel="next" title="JS数组 reduce 方法详解">
+    <a href="/2017/12/11/JavaScript/%E6%95%B0%E7%BB%84/JS%E6%95%B0%E7%BB%84reduce%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="next" title="JS数组 reduce 方法详解">
       JS数组 reduce 方法详解 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -336,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -386,16 +386,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -415,9 +415,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,23 +47,24 @@
 </script>
 
   <meta name="description" content="这篇文章介绍了 JS 可枚举属性与不可枚举属性。">
-<meta name="keywords" content="JavaScript,枚举">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 可枚举与不可枚举">
-<meta property="og:url" content="http://hushiking.github.io/2016/05/13/JavaScript/JS可枚举与不可枚举/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2016/05/13/JavaScript/JS%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="这篇文章介绍了 JS 可枚举属性与不可枚举属性。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举1.png">
-<meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举2.png">
-<meta property="og:image" content="http://hushiking.github.io/img/JavaScript可枚举3.png">
-<meta property="og:updated_time" content="2020-01-11T15:14:48.557Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://hushiking.github.io/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE1.png">
+<meta property="og:image" content="http://hushiking.github.io/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE2.png">
+<meta property="og:image" content="http://hushiking.github.io/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE3.png">
+<meta property="article:published_time" content="2016-05-13T10:46:43.000Z">
+<meta property="article:modified_time" content="2020-01-11T15:14:48.557Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="枚举">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS 可枚举与不可枚举">
-<meta name="twitter:description" content="这篇文章介绍了 JS 可枚举属性与不可枚举属性。">
-<meta name="twitter:image" content="http://hushiking.github.io/img/JavaScript可枚举1.png">
+<meta name="twitter:image" content="http://hushiking.github.io/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE1.png">
 
-<link rel="canonical" href="http://hushiking.github.io/2016/05/13/JavaScript/JS可枚举与不可枚举/">
+<link rel="canonical" href="http://hushiking.github.io/2016/05/13/JavaScript/JS%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE/">
 
 
 <script id="page-configurations">
@@ -175,7 +176,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/05/13/JavaScript/JS可枚举与不可枚举/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/05/13/JavaScript/JS%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -213,7 +214,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -233,7 +234,8 @@
       
         <h2 id="JavaScript-可枚举与不可枚举属性"><a href="#JavaScript-可枚举与不可枚举属性" class="headerlink" title="JavaScript 可枚举与不可枚举属性"></a>JavaScript 可枚举与不可枚举属性</h2><p>在 JavaScript 中，对象的属性分为可枚举和不可枚举之分，它们是由属性的 enumerable 值决定的。可枚举性决定了这个属性能否被 for…in 查找遍历到。</p>
 <h2 id="怎么判断属性是否可枚举"><a href="#怎么判断属性是否可枚举" class="headerlink" title="怎么判断属性是否可枚举"></a>怎么判断属性是否可枚举</h2><p>js中基本包装类型的原型属性是不可枚举的，如 Object, Array, Number 等，如果你写出这样的代码遍历其中的属性：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> num) &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"num."</span> + pro + <span class="string">" = "</span> + num[pro]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="title class_">Number</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> num) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;num.&quot;</span> + pro + <span class="string">&quot; = &quot;</span> + num[pro]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>它的输出结果会是空。这是因为 Number 中内置的属性是不可枚举的，所以不能被 for…in 访问到。</p>
 <p>Object 对象的 propertyIsEnumerable() 方法可以判断此对象是否包含某个属性，并且这个属性是否可枚举。</p>
 <p><strong>需要注意的是</strong>：如果判断的属性存在于 Object 对象的 <em>原型</em> 内，不管它是否可枚举都会返回 false。</p>
@@ -242,26 +244,30 @@
 <p>Object.keys()</p>
 <p>JSON.stringify</p>
 <p>先看一个例子，按如下方法创建kxy对象：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"KXY"</span>;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    job: "student",</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var kxy = new Person();</span><br><span class="line">Object.defineProperty(kxy, "sex", &#123;</span><br><span class="line">    value: <span class="string">"female"</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = <span class="string">&quot;KXY&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="attr">constructor</span>: <span class="title class_">Person</span>,</span><br><span class="line">    <span class="attr">job</span>: <span class="string">&quot;student&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> kxy = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(kxy, <span class="string">&quot;sex&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&quot;female&quot;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <p>其中用 defineProperty 为对象定义了一个名为 “sex” 的不可枚举属性</p>
 <p>接下来做以下验证：</p>
 <ul>
 <li>遍历结果如下:</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> kxy) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"kxy."</span> + pro + <span class="string">" = "</span> + kxy[pro]);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/img/JavaScript可枚举1.png" alt="枚举遍历结果" title="枚举属性"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pro <span class="keyword">in</span> kxy) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;kxy.&quot;</span> + pro + <span class="string">&quot; = &quot;</span> + kxy[pro]);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE1.png" alt="枚举遍历结果" title="枚举属性"></p>
 <p>可以看到除了 “sex” 之外的属性都遍历到了。</p>
 <ul>
 <li>结果:</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(kxy));</span><br></pre></td></tr></table></figure>
-<p><img src="/img/JavaScript可枚举2.png" alt="枚举遍历结果" title="枚举属性"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(kxy));</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE2.png" alt="枚举遍历结果" title="枚举属性"></p>
 <p>只包含 “name” 属性，说明该方法只能返回对象本身具有的可枚举属性。</p>
 <ul>
 <li>结果:</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(kxy));</span><br></pre></td></tr></table></figure>
-<p><img src="/img/JavaScript可枚举3.png" alt="枚举遍历结果" title="枚举属性"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(kxy));</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/JavaScript%E5%8F%AF%E6%9E%9A%E4%B8%BE3.png" alt="枚举遍历结果" title="枚举属性"></p>
 <p>此方法也只能读取对象本身的可枚举属性，并序列化为 JSON 对象。</p>
 
     </div>
@@ -273,7 +279,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/枚举/" rel="tag"># 枚举</a>
+              <a href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag"># 枚举</a>
           </div>
 
         
@@ -282,11 +288,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/04/10/JavaScript/form表单name属性与submit()默认事件/" rel="prev" title="form 表单 name 属性与 submit() 默认事件">
+    <a href="/2016/04/10/JavaScript/form%E8%A1%A8%E5%8D%95name%E5%B1%9E%E6%80%A7%E4%B8%8Esubmit()%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6/" rel="prev" title="form 表单 name 属性与 submit() 默认事件">
       <i class="fa fa-chevron-left"></i> form 表单 name 属性与 submit() 默认事件
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/06/22/Front-end/大前端介绍/" rel="next" title="大前端工具介绍">
+    <a href="/2016/06/22/Front-end/%E5%A4%A7%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D/" rel="next" title="大前端工具介绍">
       大前端工具介绍 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -348,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-可枚举与不可枚举属性"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 可枚举与不可枚举属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么判断属性是否可枚举"><span class="nav-number">2.</span> <span class="nav-text">怎么判断属性是否可枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举性的作用"><span class="nav-number">3.</span> <span class="nav-text">枚举性的作用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 可枚举与不可枚举属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8F%AF%E6%9E%9A%E4%B8%BE"><span class="nav-number">2.</span> <span class="nav-text">怎么判断属性是否可枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E6%80%A7%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">枚举性的作用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -398,16 +404,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -427,9 +433,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

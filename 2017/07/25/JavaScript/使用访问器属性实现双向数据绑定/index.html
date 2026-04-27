@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="双向数据绑定作为当下热门技术经常被提到，一直不得其深意，最近详细研究了一下，并使用 JS 的访问器属性自己实现。">
-<meta name="keywords" content="JavaScript,Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用访问器属性实现双向数据绑定">
-<meta property="og:url" content="http://hushiking.github.io/2017/07/25/JavaScript/使用访问器属性实现双向数据绑定/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2017/07/25/JavaScript/%E4%BD%BF%E7%94%A8%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="双向数据绑定作为当下热门技术经常被提到，一直不得其深意，最近详细研究了一下，并使用 JS 的访问器属性自己实现。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T15:46:11.650Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-07-25T11:56:34.000Z">
+<meta property="article:modified_time" content="2020-01-08T15:46:11.650Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用访问器属性实现双向数据绑定">
-<meta name="twitter:description" content="双向数据绑定作为当下热门技术经常被提到，一直不得其深意，最近详细研究了一下，并使用 JS 的访问器属性自己实现。">
 
-<link rel="canonical" href="http://hushiking.github.io/2017/07/25/JavaScript/使用访问器属性实现双向数据绑定/">
+<link rel="canonical" href="http://hushiking.github.io/2017/07/25/JavaScript/%E4%BD%BF%E7%94%A8%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/07/25/JavaScript/使用访问器属性实现双向数据绑定/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/07/25/JavaScript/%E4%BD%BF%E7%94%A8%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -231,16 +232,19 @@
 <h2 id="ES5数据属性"><a href="#ES5数据属性" class="headerlink" title="ES5数据属性"></a>ES5数据属性</h2><p>数据属性有4个描述其行为的特性：</p>
 <ol>
 <li><p>[[Configurable]]：表示能否通过delete删除属性并重新定义属性，能否修改属性的特性…例如</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</span><br><span class="line">    writable: <span class="literal">false</span>,</span><br><span class="line">    value: <span class="string">"Nick"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&quot;name&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&quot;Nick&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>[[Enumerable]]：表示能否通过for-in循环返回属性</p>
 </li>
-<li>[[Writable]]：表示能否修改属性值</li>
-<li>[[Value]]：包含这个属性的数据值，默认为undefined</li>
+<li><p>[[Writable]]：表示能否修改属性值</p>
+</li>
+<li><p>[[Value]]：包含这个属性的数据值，默认为undefined</p>
+</li>
 </ol>
 <h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>访问器属性不包含数据值，包含一对getter和setter函数（不是必需的）。在读取访问器属性时会调用getter函数，这个函数负责返回有效的值；在写入访问器属性时会调用setter函数并传入新值，这个函数负责决定如何处理数据。例如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2017</span>,</span><br><span class="line">    edition: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">Obj.defineProperty(book, <span class="string">"year"</span>, &#123;</span><br><span class="line">    <span class="keyword">get</span>: function() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function(newValue) &#123;</span><br><span class="line">        <span class="keyword">if</span> (newValue &gt; <span class="number">2017</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue</span><br><span class="line">            <span class="keyword">this</span>.edition += newValue - <span class="number">2017</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2018</span></span><br><span class="line">alert(book.edition)  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h2 id="访问器属性实现双向数据绑定"><a href="#访问器属性实现双向数据绑定" class="headerlink" title="访问器属性实现双向数据绑定"></a>访问器属性实现双向数据绑定</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"inputDom"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">style</span>=<span class="string">"width:100px;height:40px;border:1px solid red"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"bandleDom"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> obj = &#123;</span></span><br><span class="line"><span class="javascript">        _name: <span class="string">''</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">'#inputDom'</span>).onkeyup = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> _ele = e.target</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> inputVal = _ele.value</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(inputVal)</span></span><br><span class="line">        obj.name = inputVal</span><br><span class="line">    &#125;</span><br><span class="line">    for (key in obj) &#123;</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(key)</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="built_in">Object</span>.defineProperty(obj, <span class="string">'name'</span>, &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">get</span>() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="keyword">this</span>._name</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        <span class="keyword">set</span>(newVal) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>._name = newVal</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.querySelector(<span class="string">'#bandleDom'</span>).innerHTML = newVal</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    <span class="attr">_year</span>: <span class="number">2017</span>,</span><br><span class="line">    <span class="attr">edition</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Obj</span>.<span class="title function_">defineProperty</span>(book, <span class="string">&quot;year&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_year</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">set</span>: <span class="keyword">function</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (newValue &gt; <span class="number">2017</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_year</span> = newValue</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">edition</span> += newValue - <span class="number">2017</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">book.<span class="property">year</span> = <span class="number">2018</span></span><br><span class="line"><span class="title function_">alert</span>(book.<span class="property">edition</span>)  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="访问器属性实现双向数据绑定"><a href="#访问器属性实现双向数据绑定" class="headerlink" title="访问器属性实现双向数据绑定"></a>访问器属性实现双向数据绑定</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;inputDom&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width:100px;height:40px;border:1px solid red&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;bandleDom&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> obj = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">_name</span>: <span class="string">&#x27;&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#inputDom&#x27;</span>).<span class="property">onkeyup</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> _ele = e.<span class="property">target</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> inputVal = _ele.<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(inputVal)</span></span><br><span class="line"><span class="language-javascript">        obj.<span class="property">name</span> = inputVal</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">for</span> (key <span class="keyword">in</span> obj) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(key)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">get</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">this</span>.<span class="property">_name</span> = newVal</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#bandleDom&#x27;</span>).<span class="property">innerHTML</span> = newVal</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -260,11 +264,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/06/19/JavaScript/JS正则表达式/" rel="prev" title="JS 正则表达式简介">
+    <a href="/2017/06/19/JavaScript/JS%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="JS 正则表达式简介">
       <i class="fa fa-chevron-left"></i> JS 正则表达式简介
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/08/14/Python/Django学习/" rel="next" title="Django 学习">
+    <a href="/2017/08/14/Python/Django%E5%AD%A6%E4%B9%A0/" rel="next" title="Django 学习">
       Django 学习 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -326,7 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5数据属性"><span class="nav-number">1.</span> <span class="nav-text">ES5数据属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问器属性"><span class="nav-number">2.</span> <span class="nav-text">访问器属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问器属性实现双向数据绑定"><span class="nav-number">3.</span> <span class="nav-text">访问器属性实现双向数据绑定</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">ES5数据属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">访问器属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">访问器属性实现双向数据绑定</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,16 +380,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -405,9 +409,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

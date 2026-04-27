@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="微信小程序进入后台一定时间或系统占用资源过高后会被销毁，所谓的后台，就是用户点击小程序左上角的关闭或按HOME键离开微信。小程序销毁后，globalData会被清空，下次打开小程序时会被重新初始化。">
-<meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序globalData使用介绍">
-<meta property="og:url" content="http://hushiking.github.io/2019/07/02/MiniProgram/wx小程序globalData介绍/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2019/07/02/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8FglobalData%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="微信小程序进入后台一定时间或系统占用资源过高后会被销毁，所谓的后台，就是用户点击小程序左上角的关闭或按HOME键离开微信。小程序销毁后，globalData会被清空，下次打开小程序时会被重新初始化。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-11-05T09:31:55.924Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-07-02T02:00:26.000Z">
+<meta property="article:modified_time" content="2021-11-05T09:31:55.924Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="小程序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序globalData使用介绍">
-<meta name="twitter:description" content="微信小程序进入后台一定时间或系统占用资源过高后会被销毁，所谓的后台，就是用户点击小程序左上角的关闭或按HOME键离开微信。小程序销毁后，globalData会被清空，下次打开小程序时会被重新初始化。">
 
-<link rel="canonical" href="http://hushiking.github.io/2019/07/02/MiniProgram/wx小程序globalData介绍/">
+<link rel="canonical" href="http://hushiking.github.io/2019/07/02/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8FglobalData%E4%BB%8B%E7%BB%8D/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/07/02/MiniProgram/wx小程序globalData介绍/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/07/02/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8FglobalData%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -234,42 +234,48 @@
 <li>点击编译器的编译，也会被清空，然后初始化</li>
 </ol>
 <h3 id="globalData的用法"><a href="#globalData的用法" class="headerlink" title="globalData的用法"></a>globalData的用法</h3><p>app.js中:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局属性</span></span><br><span class="line">globalData: &#123;</span><br><span class="line">    audioList: [] <span class="comment">// 音频列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局属性</span></span><br><span class="line"><span class="attr">globalData</span>: &#123;</span><br><span class="line">    <span class="attr">audioList</span>: [] <span class="comment">// 音频列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>index.js中对全局变量的取用和保存操作：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line">Page(&#123;</span><br><span class="line">    <span class="comment">// 页面初始数据</span></span><br><span class="line">    data: &#123;</span><br><span class="line">        sortList: [] <span class="comment">// 正在播放的音频列表</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生命周期函数--监听页面加载</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    onLoad() &#123;</span><br><span class="line">        <span class="comment">// 取用全局变量</span></span><br><span class="line">        <span class="keyword">if</span> (app.globalData.audioList.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">                sortList: app.globalData.audioList</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    getAudioList() &#123;</span><br><span class="line">        <span class="keyword">let</span> audio = &#123;</span><br><span class="line">            title: <span class="string">"神秘岛旅梦"</span>,</span><br><span class="line">            type: <span class="string">"美眠"</span>,</span><br><span class="line">            intro: <span class="string">"带你且听风吟"</span>,</span><br><span class="line">            label: <span class="string">"睡眠"</span>,</span><br><span class="line">            mold: <span class="string">"sleep"</span>,</span><br><span class="line">            <span class="keyword">new</span>: <span class="string">"1"</span>,</span><br><span class="line">            pro: <span class="string">"1"</span>,</span><br><span class="line">            beginDate: &#123;</span><br><span class="line">                <span class="string">"$date"</span>: <span class="string">"2021-10-08T19:58:18.014Z"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保存到全局变量里的 audioList 中</span></span><br><span class="line">        <span class="keyword">let</span> list = app.globalData.audioList</span><br><span class="line">        list.push(audio)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="title function_">getApp</span>()</span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">    <span class="comment">// 页面初始数据</span></span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">sortList</span>: [] <span class="comment">// 正在播放的音频列表</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生命周期函数--监听页面加载</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="title function_">onLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 取用全局变量</span></span><br><span class="line">        <span class="keyword">if</span> (app.<span class="property">globalData</span>.<span class="property">audioList</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">                <span class="attr">sortList</span>: app.<span class="property">globalData</span>.<span class="property">audioList</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">getAudioList</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> audio = &#123;</span><br><span class="line">            <span class="attr">title</span>: <span class="string">&quot;神秘岛旅梦&quot;</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;美眠&quot;</span>,</span><br><span class="line">            <span class="attr">intro</span>: <span class="string">&quot;带你且听风吟&quot;</span>,</span><br><span class="line">            <span class="attr">label</span>: <span class="string">&quot;睡眠&quot;</span>,</span><br><span class="line">            <span class="attr">mold</span>: <span class="string">&quot;sleep&quot;</span>,</span><br><span class="line">            <span class="attr">new</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">            <span class="attr">pro</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">            <span class="attr">beginDate</span>: &#123;</span><br><span class="line">                <span class="string">&quot;$date&quot;</span>: <span class="string">&quot;2021-10-08T19:58:18.014Z&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保存到全局变量里的 audioList 中</span></span><br><span class="line">        <span class="keyword">let</span> list = app.<span class="property">globalData</span>.<span class="property">audioList</span></span><br><span class="line">        list.<span class="title function_">push</span>(audio)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <h3 id="使用globalData"><a href="#使用globalData" class="headerlink" title="使用globalData"></a>使用globalData</h3><p>根据自己的需要设置任何数据。在app.js中读取globalData使用this就可以了，若要修改globalData，直接对其赋值即可。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line">App(&#123;</span><br><span class="line">    globalData: &#123;</span><br><span class="line">        userInfo: [&#123;</span><br><span class="line">                userName: <span class="string">'张无忌'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                age: <span class="number">20</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        book: <span class="string">'倚天屠龙记'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onLoad: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.globalData.book);</span><br><span class="line">        <span class="keyword">this</span>.globalData.book = <span class="string">'神雕侠侣'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="title class_">App</span>(&#123;</span><br><span class="line">    <span class="attr">globalData</span>: &#123;</span><br><span class="line">        <span class="attr">userInfo</span>: [&#123;</span><br><span class="line">                <span class="attr">userName</span>: <span class="string">&#x27;张无忌&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">book</span>: <span class="string">&#x27;倚天屠龙记&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">onLoad</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">book</span>);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">globalData</span>.<span class="property">book</span> = <span class="string">&#x27;神雕侠侣&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>在其他页面读取以及修改globalData。不论是读取还是修改，首先需要在应用的页面js文件中，引用app()实例。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> app = getApp();</span><br><span class="line">Page(&#123;</span><br><span class="line">    onLoad: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(app.globalData.book);</span><br><span class="line">        app.globalData.book = <span class="string">'射雕英雄传'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// PS：这段时间，在开发微信小程序的过程中，出现了在app.js文件中，用this.globalData.ciku不能获取globaldata中的ciku（数组，有三百多条数据）的值，最后解决的办法是删除了数组中的一些元素。记录以下，以防下次遇到同样的问题。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">getApp</span>();</span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">    <span class="attr">onLoad</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(app.<span class="property">globalData</span>.<span class="property">book</span>);</span><br><span class="line">        app.<span class="property">globalData</span>.<span class="property">book</span> = <span class="string">&#x27;射雕英雄传&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// PS：这段时间，在开发微信小程序的过程中，出现了在app.js文件中，用this.globalData.ciku不能获取globaldata中的ciku（数组，有三百多条数据）的值，最后解决的办法是删除了数组中的一些元素。记录以下，以防下次遇到同样的问题。</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="缓存（StorageSync）本地存储"><a href="#缓存（StorageSync）本地存储" class="headerlink" title="缓存（StorageSync）本地存储"></a>缓存（StorageSync）本地存储</h2><ol>
 <li>小程序中的本地存储有同步功能，可用于保存用户信息(用户登录后的一些基本信息)</li>
 <li>缓存的更新需要使用setStorageSync方法。</li>
 </ol>
 <h3 id="StorageSync的用法"><a href="#StorageSync的用法" class="headerlink" title="StorageSync的用法"></a>StorageSync的用法</h3><ol>
-<li><p>存入缓存</p>
+<li>存入缓存</li>
+</ol>
 <blockquote>
-<p>var addressList= wx.setStorageSync(key, value)</p>
+<p>var addressList&#x3D; wx.setStorageSync(key, value)</p>
 </blockquote>
-</li>
-<li><p>取出缓存</p>
+<ol>
+<li>取出缓存</li>
+</ol>
 <blockquote>
-<p>var addressList= wx.getStorageSync(key)</p>
+<p>var addressList&#x3D; wx.getStorageSync(key)</p>
 </blockquote>
-</li>
-<li><p>清除缓存</p>
+<ol>
+<li>清除缓存</li>
+</ol>
 <blockquote>
 <p>wx.removeStorageSync(key)</p>
 </blockquote>
-</li>
-<li><p>清除所有缓存</p>
+<ol>
+<li>清除所有缓存</li>
+</ol>
 <blockquote>
 <p>wx.clearStorageSync()</p>
 </blockquote>
-</li>
-</ol>
 <h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ul>
-<li><a href="http://www.duanlonglong.com/qdjy/916.html" target="_blank" rel="noopener">浅谈小程序globalData的那些事儿</a></li>
-<li><a href="https://www.cnblogs.com/sjruxe/p/13392934.html" target="_blank" rel="noopener">关于小程序globalData</a></li>
+<li><a href="http://www.duanlonglong.com/qdjy/916.html">浅谈小程序globalData的那些事儿</a></li>
+<li><a href="https://www.cnblogs.com/sjruxe/p/13392934.html">关于小程序globalData</a></li>
 </ul>
 
     </div>
@@ -280,7 +286,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/小程序/" rel="tag"># 小程序</a>
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
           </div>
 
         
@@ -289,12 +295,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/06/24/MiniProgram/wx小程序弹窗阻止屏幕滚动(滚动穿透)/" rel="prev" title="微信小程序自定义弹窗后禁止屏幕滚动（滚动穿透）">
-      <i class="fa fa-chevron-left"></i> 微信小程序自定义弹窗后禁止屏幕滚动（滚动穿透）
+    <a href="/2019/07/02/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%82%B9%E5%87%BB%E4%B8%8E%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B6%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%20copy/" rel="prev" title="微信小程序点击/滑动事件冲突解决方式">
+      <i class="fa fa-chevron-left"></i> 微信小程序点击/滑动事件冲突解决方式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/07/02/MiniProgram/wx小程序点击与滑动事件冲突问题 copy/" rel="next" title="微信小程序点击/滑动事件冲突解决方式">
-      微信小程序点击/滑动事件冲突解决方式 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/07/17/CSS/flex%E5%B8%83%E5%B1%80%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%E5%8F%B3%E4%BE%A7%E5%86%85%E5%AE%B9%E4%B8%8D%E8%B6%85%E8%BF%87%E5%AE%B9%E5%99%A8/" rel="next" title="flex 布局左侧固定，右侧内容不超过容器解决方案">
+      flex 布局左侧固定，右侧内容不超过容器解决方案 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -355,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是globalData"><span class="nav-number">1.</span> <span class="nav-text">什么是globalData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量-globalData"><span class="nav-number">2.</span> <span class="nav-text">全局变量(globalData)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#globalData的用法"><span class="nav-number">2.1.</span> <span class="nav-text">globalData的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用globalData"><span class="nav-number">2.2.</span> <span class="nav-text">使用globalData</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存（StorageSync）本地存储"><span class="nav-number">3.</span> <span class="nav-text">缓存（StorageSync）本地存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StorageSync的用法"><span class="nav-number">3.1.</span> <span class="nav-text">StorageSync的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">3.1.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFglobalData"><span class="nav-number">1.</span> <span class="nav-text">什么是globalData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-globalData"><span class="nav-number">2.</span> <span class="nav-text">全局变量(globalData)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#globalData%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">globalData的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8globalData"><span class="nav-number">2.2.</span> <span class="nav-text">使用globalData</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%EF%BC%88StorageSync%EF%BC%89%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="nav-number">3.</span> <span class="nav-text">缓存（StorageSync）本地存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StorageSync%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">StorageSync的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">3.1.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -405,16 +411,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -434,9 +440,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="最近经常用到 git 版本控制工具，对于 git diff 命令的显示结果有些不明白，就顺便查了查。">
-<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git diff 详解">
-<meta property="og:url" content="http://hushiking.github.io/2016/02/05/Git/git diff详解/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2016/02/05/Git/git%20diff%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="最近经常用到 git 版本控制工具，对于 git diff 命令的显示结果有些不明白，就顺便查了查。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.574Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-02-05T15:00:46.000Z">
+<meta property="article:modified_time" content="2019-05-13T06:58:05.574Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git diff 详解">
-<meta name="twitter:description" content="最近经常用到 git 版本控制工具，对于 git diff 命令的显示结果有些不明白，就顺便查了查。">
 
-<link rel="canonical" href="http://hushiking.github.io/2016/02/05/Git/git diff详解/">
+<link rel="canonical" href="http://hushiking.github.io/2016/02/05/Git/git%20diff%E8%AF%A6%E8%A7%A3/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/02/05/Git/git diff详解/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/02/05/Git/git%20diff%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -231,7 +231,7 @@
 <h2 id="git-diff-（不带参数）"><a href="#git-diff-（不带参数）" class="headerlink" title="git diff （不带参数）"></a>git diff （不带参数）</h2><p><code>git diff</code> 比较显示暂存区 (staging area) 与工作区 (working area) 文件的不同</p>
 <h2 id="git-diff-master"><a href="#git-diff-master" class="headerlink" title="git diff master"></a>git diff master</h2><p>比较显示 <code>master</code> 分支与工作区文件的不同</p>
 <h2 id="git-diff-HEAD"><a href="#git-diff-HEAD" class="headerlink" title="git diff HEAD"></a>git diff HEAD</h2><p>比较显示 <code>HEAD</code> 指向的内容与工作区文件的不同</p>
-<h2 id="git-diff-refs-remotes-origin-master"><a href="#git-diff-refs-remotes-origin-master" class="headerlink" title="git diff refs/remotes/origin/master"></a>git diff refs/remotes/origin/master</h2><p>比较显示 <code>master</code> 分支与当前工作区文件的不同</p>
+<h2 id="git-diff-refs-remotes-origin-master"><a href="#git-diff-refs-remotes-origin-master" class="headerlink" title="git diff refs&#x2F;remotes&#x2F;origin&#x2F;master"></a>git diff refs&#x2F;remotes&#x2F;origin&#x2F;master</h2><p>比较显示 <code>master</code> 分支与当前工作区文件的不同</p>
 <h2 id="比较-master-分支的历史提交版本与工作区"><a href="#比较-master-分支的历史提交版本与工作区" class="headerlink" title="比较 master 分支的历史提交版本与工作区"></a>比较 master 分支的历史提交版本与工作区</h2><p><code>git diff 0c5ee16a6a4c849d0ae0448caa8ff174399c7c3c ./header.html</code></p>
 <p>上面的命令中， <code>diff</code> 后面的参数指的是 <code>commit id</code> ， <code>./header.html</code> 是要比较的文件路径。</p>
 <h2 id="git-diff-命令输出格式"><a href="#git-diff-命令输出格式" class="headerlink" title="git diff 命令输出格式"></a>git diff 命令输出格式</h2><ol>
@@ -245,7 +245,8 @@
 <li><strong>空格</strong>开头的行，是源文件和目标文件中都出现的行</li>
 <li>差异按照差异小结进行组织，每个差异小结的第一行都是定位语句，由@@开头，@@结尾。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/webpack.production.js b/webpack.production.js</span><br><span class="line">index eb5e967..ffba89b 100644</span><br><span class="line">--- a/webpack.production.js</span><br><span class="line">+++ b/webpack.production.js</span><br><span class="line">@@ -85,7 +85,7 @@ module.exports = &#123;</span><br><span class="line">   &#125;,</span><br><span class="line">   plugins: [</span><br><span class="line">     // webpack 内置的 banner-plugin</span><br><span class="line">-    new webpack.BannerPlugin(<span class="string">"Copyright by 2015-2016."</span>),</span><br><span class="line">+    new webpack.BannerPlugin(<span class="string">"Copyright by hushiking@github.com."</span>),</span><br><span class="line"></span><br><span class="line">     // html 模板插件</span><br><span class="line">     new HtmlWebpackPlugin(&#123;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/webpack.production.js b/webpack.production.js</span><br><span class="line">index eb5e967..ffba89b 100644</span><br><span class="line">--- a/webpack.production.js</span><br><span class="line">+++ b/webpack.production.js</span><br><span class="line">@@ -85,7 +85,7 @@ module.exports = &#123;</span><br><span class="line">   &#125;,</span><br><span class="line">   plugins: [</span><br><span class="line">     // webpack 内置的 banner-plugin</span><br><span class="line">-    new webpack.BannerPlugin(<span class="string">&quot;Copyright by 2015-2016.&quot;</span>),</span><br><span class="line">+    new webpack.BannerPlugin(<span class="string">&quot;Copyright by hushiking@github.com.&quot;</span>),</span><br><span class="line"></span><br><span class="line">     // html 模板插件</span><br><span class="line">     new HtmlWebpackPlugin(&#123;</span><br></pre></td></tr></table></figure>
+
 <p>上面的 <code>git diff</code> 结果说明：</p>
 <ol>
 <li>文件之前的某个提交是源文件，当前工作区的该文件是目标文件</li>
@@ -271,11 +272,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/01/25/PHP/PHP常用API/" rel="prev" title="PHP 常用 API">
+    <a href="/2016/01/25/PHP/PHP%E5%B8%B8%E7%94%A8API/" rel="prev" title="PHP 常用 API">
       <i class="fa fa-chevron-left"></i> PHP 常用 API
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/03/01/JavaScript/JS语句结束标志分号的使用时机/" rel="next" title="JS 语句结束标志分号的使用时机">
+    <a href="/2016/03/01/JavaScript/JS%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9D%9F%E6%A0%87%E5%BF%97%E5%88%86%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA/" rel="next" title="JS 语句结束标志分号的使用时机">
       JS 语句结束标志分号的使用时机 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -337,7 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git-diff-命令"><span class="nav-number">1.</span> <span class="nav-text">git diff 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-（不带参数）"><span class="nav-number">1.1.</span> <span class="nav-text">git diff （不带参数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-master"><span class="nav-number">1.2.</span> <span class="nav-text">git diff master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-HEAD"><span class="nav-number">1.3.</span> <span class="nav-text">git diff HEAD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-refs-remotes-origin-master"><span class="nav-number">1.4.</span> <span class="nav-text">git diff refs/remotes/origin/master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较-master-分支的历史提交版本与工作区"><span class="nav-number">1.5.</span> <span class="nav-text">比较 master 分支的历史提交版本与工作区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-命令输出格式"><span class="nav-number">1.6.</span> <span class="nav-text">git diff 命令输出格式</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git-diff-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">git diff 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-%EF%BC%88%E4%B8%8D%E5%B8%A6%E5%8F%82%E6%95%B0%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">git diff （不带参数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-master"><span class="nav-number">1.2.</span> <span class="nav-text">git diff master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-HEAD"><span class="nav-number">1.3.</span> <span class="nav-text">git diff HEAD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-refs-remotes-origin-master"><span class="nav-number">1.4.</span> <span class="nav-text">git diff refs&#x2F;remotes&#x2F;origin&#x2F;master</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83-master-%E5%88%86%E6%94%AF%E7%9A%84%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E7%89%88%E6%9C%AC%E4%B8%8E%E5%B7%A5%E4%BD%9C%E5%8C%BA"><span class="nav-number">1.5.</span> <span class="nav-text">比较 master 分支的历史提交版本与工作区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-diff-%E5%91%BD%E4%BB%A4%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">git diff 命令输出格式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,16 +388,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -416,9 +417,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

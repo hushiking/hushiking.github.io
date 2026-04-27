@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="this.refs 用法详细介绍。">
-<meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 React 的 this.refs 用法">
-<meta property="og:url" content="http://hushiking.github.io/2017/10/04/React/关于this.refs/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2017/10/04/React/%E5%85%B3%E4%BA%8Ethis.refs/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="this.refs 用法详细介绍。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:06:58.158Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-04T01:19:37.000Z">
+<meta property="article:modified_time" content="2019-05-13T07:06:58.158Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于 React 的 this.refs 用法">
-<meta name="twitter:description" content="this.refs 用法详细介绍。">
 
-<link rel="canonical" href="http://hushiking.github.io/2017/10/04/React/关于this.refs/">
+<link rel="canonical" href="http://hushiking.github.io/2017/10/04/React/%E5%85%B3%E4%BA%8Ethis.refs/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/10/04/React/关于this.refs/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/10/04/React/%E5%85%B3%E4%BA%8Ethis.refs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,13 +209,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/前端框架/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
                     <span itemprop="name">前端框架</span>
                   </a>
                 </span>
@@ -236,16 +236,20 @@
         <h1 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h1><p>ref 是 reference 的简称，在 React 中表示父组件引用子组件。</p>
 <p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM。只有当它插入文档以后，才会变成真实的 DOM。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM 上，这种算法叫做 DOM diff，它可以极大提高网页的性能表现。但是，我们有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性。</p>
 <h2 id="this-refs-refName"><a href="#this-refs-refName" class="headerlink" title="this.refs[refName]"></a>this.refs[refName]</h2><p>this.refs.[refName] 返回真实的 DOM 节点。需要注意的是，由于 this.refs.[refName] 属性获取的是真实 DOM，所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性，否则会报错。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    handleClick(event)&#123;</span><br><span class="line">        <span class="keyword">this</span>.refs.myInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;input type=<span class="string">"text"</span> ref=<span class="string">"myInput"</span> /&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;Focus on me&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">React.render(<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>,<span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    <span class="title function_">handleClick</span>(<span class="params">event</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">refs</span>.<span class="property">myInput</span>.<span class="title function_">focus</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;myInput&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Focus on me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">React</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>,<span class="variable language_">document</span>.<span class="property">body</span>)</span><br></pre></td></tr></table></figure>
+
 <h2 id="ref-是函数"><a href="#ref-是函数" class="headerlink" title="ref 是函数"></a>ref 是函数</h2><p>ref 属性可以是一个回调函数，而不是一个名字。这个回调函数在组件挂载后立即执行。被引用的组件作为一个参数传递，且回调函数可以立即使用这个组件，或保存供以后使用(或实现这两种行为)。比如下面这段代码，ref 回调储存 DOM 节点的引用。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomTextInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.focus = <span class="keyword">this</span>.focus.bind(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">focus() &#123;</span><br><span class="line">    <span class="comment">// Explicitly focus the text input using the raw DOM API</span></span><br><span class="line">    <span class="keyword">this</span>.textInput.focus();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="comment">// Use the `ref` callback to store a reference to the text input DOM</span></span><br><span class="line">    <span class="comment">// element in this.textInput.</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"text"</span></span><br><span class="line">          ref=&#123;(input) =&gt; &#123; <span class="keyword">this</span>.textInput = input; &#125;&#125; /&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"button"</span></span><br><span class="line">          value=<span class="string">"Focus the text input"</span></span><br><span class="line">          onClick=&#123;<span class="keyword">this</span>.focus&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CustomTextInput</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">focus</span> = <span class="variable language_">this</span>.<span class="property">focus</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">focus</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Explicitly focus the text input using the raw DOM API</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">textInput</span>.<span class="title function_">focus</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Use the `ref` callback to store a reference to the text input DOM</span></span><br><span class="line">    <span class="comment">// element in this.textInput.</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">ref</span>=<span class="string">&#123;(input)</span> =&gt;</span> &#123; this.textInput = input; &#125;&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">type</span>=<span class="string">&quot;button&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">value</span>=<span class="string">&quot;Focus the text input&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;this.focus&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>React 将在组件 mount 时调用 ref 回调，输入 DOM 元素；在组件 unmount 时调用 ref 回调，输入 null。一种常见的模式是利用 ref 回调来访问 DOM 元素。如果你现在使用的是 this.refs.refName 来访问 ref，建议采用上面这种回调函数的形式。</p>
 <p>当 ref 属性用在一个自定义组件上，ref 回调接受这个组件的 mounted 实例作为参数。比如，如果我们想包裹上面的 CustomTextInput 组件来模拟它 mount 后立即被单击。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoFocusTextInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.textInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;CustomTextInput</span><br><span class="line">            ref=&#123;(input) =&gt; &#123; <span class="keyword">this</span>.textInput = input; &#125;&#125; /&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AutoFocusTextInput</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">textInput</span>.<span class="title function_">focus</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">CustomTextInput</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">ref</span>=<span class="string">&#123;(input)</span> =&gt;</span> &#123; this.textInput = input; &#125;&#125; /&gt;</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>你可能不会在函数组件上使用 ref 属性，因为函数组件没有实例，然而你可以在函数组件的 render 函数中使用ref属性。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CustomTextInput</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// textInput must be declared here so the ref callback can refer to it</span></span><br><span class="line">    <span class="keyword">let</span> textInput = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        textInput.focus();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">            type=<span class="string">"text"</span></span><br><span class="line">            ref=&#123;(input) =&gt; &#123; textInput = input; &#125;&#125; /&gt;</span><br><span class="line">            &lt;input</span><br><span class="line">            type=<span class="string">"button"</span></span><br><span class="line">            value=<span class="string">"Focus the text input"</span></span><br><span class="line">            onClick=&#123;handleClick&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">CustomTextInput</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="comment">// textInput must be declared here so the ref callback can refer to it</span></span><br><span class="line">    <span class="keyword">let</span> textInput = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">        textInput.<span class="title function_">focus</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">ref</span>=<span class="string">&#123;(input)</span> =&gt;</span> &#123; textInput = input; &#125;&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&quot;button&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">value</span>=<span class="string">&quot;Focus the text input&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="不要滥用-refs"><a href="#不要滥用-refs" class="headerlink" title="不要滥用 refs"></a>不要滥用 refs</h2><p>当你想使用 refs 时，想想是否可以用 state 代替。最适合设置 state 的地方是在层级中较高的位置设置</p>
-<p><a href="http://www.cnblogs.com/YangqinCao/p/6142498.html" target="_blank" rel="noopener">原文地址</a></p>
+<p><a href="http://www.cnblogs.com/YangqinCao/p/6142498.html">原文地址</a></p>
 
     </div>
 
@@ -264,11 +268,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/09/02/HTML/visibilitychange事件/" rel="prev" title="visibilitychange —— HTML5 事件">
+    <a href="/2017/09/02/HTML/visibilitychange%E4%BA%8B%E4%BB%B6/" rel="prev" title="visibilitychange —— HTML5 事件">
       <i class="fa fa-chevron-left"></i> visibilitychange —— HTML5 事件
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/11/08/React/React小知识点/" rel="next" title="关于 React 需要注意的小知识点">
+    <a href="/2017/11/08/React/React%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="next" title="关于 React 需要注意的小知识点">
       关于 React 需要注意的小知识点 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -330,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Refs"><span class="nav-number">1.</span> <span class="nav-text">Refs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#this-refs-refName"><span class="nav-number">1.1.</span> <span class="nav-text">this.refs[refName]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref-是函数"><span class="nav-number">1.2.</span> <span class="nav-text">ref 是函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要滥用-refs"><span class="nav-number">1.3.</span> <span class="nav-text">不要滥用 refs</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Refs"><span class="nav-number">1.</span> <span class="nav-text">Refs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#this-refs-refName"><span class="nav-number">1.1.</span> <span class="nav-text">this.refs[refName]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref-%E6%98%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">ref 是函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E6%BB%A5%E7%94%A8-refs"><span class="nav-number">1.3.</span> <span class="nav-text">不要滥用 refs</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -380,16 +384,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -409,9 +413,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

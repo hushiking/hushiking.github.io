@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,21 @@
 </script>
 
   <meta name="description" content="JS本身就支持 Unicode转 String 功能，本文章向大家详细介绍其实现方法。">
-<meta name="keywords" content="JavaScript,Unicode,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中Unicode编码与String互相转换">
-<meta property="og:url" content="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript中Unicode编码与String互相转换/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript%E4%B8%ADUnicode%E7%BC%96%E7%A0%81%E4%B8%8EString%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="JS本身就支持 Unicode转 String 功能，本文章向大家详细介绍其实现方法。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-11-05T10:48:39.936Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-01-08T13:39:21.000Z">
+<meta property="article:modified_time" content="2021-11-05T10:48:39.936Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Unicode">
+<meta property="article:tag" content="String">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中Unicode编码与String互相转换">
-<meta name="twitter:description" content="JS本身就支持 Unicode转 String 功能，本文章向大家详细介绍其实现方法。">
 
-<link rel="canonical" href="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript中Unicode编码与String互相转换/">
+<link rel="canonical" href="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript%E4%B8%ADUnicode%E7%BC%96%E7%A0%81%E4%B8%8EString%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2/">
 
 
 <script id="page-configurations">
@@ -171,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript中Unicode编码与String互相转换/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2020/01/08/JavaScript/JavaScript%E4%B8%ADUnicode%E7%BC%96%E7%A0%81%E4%B8%8EString%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +211,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -227,8 +229,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Unicode转String</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">"'"</span> + str + <span class="string">"'"</span>); <span class="comment">// 当str中有带分号'或者"时，会报错，此时改成eval('"' + str + '"')即可</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"return '"</span> + str + <span class="string">"'"</span>))();</span><br><span class="line"></span><br><span class="line"><span class="built_in">unescape</span>(str.replace(<span class="regexp">/\u/g</span>, <span class="string">"%u"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// String转Unicode （str字符的第i个）</span></span><br><span class="line"><span class="string">"\\u"</span> + str.charCodeAt(i).toString(<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Unicode转String</span></span><br><span class="line"><span class="keyword">var</span> str_u = <span class="string">'\u6211\u662f\u4e2d\u56fd\u4ebaChina'</span>;</span><br><span class="line"><span class="keyword">var</span> ret1 = <span class="built_in">eval</span>(<span class="string">"'"</span> + str + <span class="string">"'"</span>); <span class="comment">// 我是中国人China</span></span><br><span class="line"><span class="keyword">var</span> ret2 = (<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"return '"</span> + str + <span class="string">"'"</span>))(); <span class="comment">// 我是中国人China</span></span><br><span class="line"><span class="keyword">var</span> ret3 = <span class="built_in">unescape</span>(str.replace(<span class="regexp">/\u/g</span>, <span class="string">"%u"</span>)); <span class="comment">// 我是中国人China</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String转Unicode</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"我是中国人"</span>;</span><br><span class="line"><span class="keyword">var</span> str_u = string2unicode(str); <span class="comment">// \u6211\u662f\u4e2d\u56fd\u4eba</span></span><br><span class="line"><span class="keyword">var</span> str_s = unicode2string(str_u); <span class="comment">// 我是中国人</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">string2unicode</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> ret = <span class="string">""</span>;</span><br><span class="line">　　<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">　　　　<span class="comment">// var code = str.charCodeAt(i);</span></span><br><span class="line">　　　　<span class="comment">// var code16 = code.toString(16);</span></span><br><span class="line">       <span class="comment">// var ustr = "\\u" + code16;</span></span><br><span class="line">       <span class="comment">// ret += ustr;</span></span><br><span class="line">       ret += <span class="string">"\\u"</span> + str.charCodeAt(i).toString(<span class="number">16</span>);</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unicode2string</span>(<span class="params">unicode</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">"'"</span> + unicode + <span class="string">"'"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Unicode转String</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">&quot;&#x27;&quot;</span> + str + <span class="string">&quot;&#x27;&quot;</span>); <span class="comment">// 当str中有带分号&#x27;或者&quot;时，会报错，此时改成eval(&#x27;&quot;&#x27; + str + &#x27;&quot;&#x27;)即可</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&quot;return &#x27;&quot;</span> + str + <span class="string">&quot;&#x27;&quot;</span>))();</span><br><span class="line"></span><br><span class="line"><span class="built_in">unescape</span>(str.<span class="title function_">replace</span>(<span class="regexp">/\u/g</span>, <span class="string">&quot;%u&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// String转Unicode （str字符的第i个）</span></span><br><span class="line"><span class="string">&quot;\\u&quot;</span> + str.<span class="title function_">charCodeAt</span>(i).<span class="title function_">toString</span>(<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Unicode转String</span></span><br><span class="line"><span class="keyword">var</span> str_u = <span class="string">&#x27;\u6211\u662f\u4e2d\u56fd\u4ebaChina&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> ret1 = <span class="built_in">eval</span>(<span class="string">&quot;&#x27;&quot;</span> + str + <span class="string">&quot;&#x27;&quot;</span>); <span class="comment">// 我是中国人China</span></span><br><span class="line"><span class="keyword">var</span> ret2 = (<span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&quot;return &#x27;&quot;</span> + str + <span class="string">&quot;&#x27;&quot;</span>))(); <span class="comment">// 我是中国人China</span></span><br><span class="line"><span class="keyword">var</span> ret3 = <span class="built_in">unescape</span>(str.<span class="title function_">replace</span>(<span class="regexp">/\u/g</span>, <span class="string">&quot;%u&quot;</span>)); <span class="comment">// 我是中国人China</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String转Unicode</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;我是中国人&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str_u = <span class="title function_">string2unicode</span>(str); <span class="comment">// \u6211\u662f\u4e2d\u56fd\u4eba</span></span><br><span class="line"><span class="keyword">var</span> str_s = <span class="title function_">unicode2string</span>(str_u); <span class="comment">// 我是中国人</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">string2unicode</span>(<span class="params">str</span>) &#123;</span><br><span class="line">　　<span class="keyword">var</span> ret = <span class="string">&quot;&quot;</span>;</span><br><span class="line">　　<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.<span class="property">length</span>; i++) &#123;</span><br><span class="line">　　　　<span class="comment">// var code = str.charCodeAt(i);</span></span><br><span class="line">　　　　<span class="comment">// var code16 = code.toString(16);</span></span><br><span class="line">       <span class="comment">// var ustr = &quot;\\u&quot; + code16;</span></span><br><span class="line">       <span class="comment">// ret += ustr;</span></span><br><span class="line">       ret += <span class="string">&quot;\\u&quot;</span> + str.<span class="title function_">charCodeAt</span>(i).<span class="title function_">toString</span>(<span class="number">16</span>);</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">unicode2string</span>(<span class="params">unicode</span>) &#123;</span><br><span class="line">　　<span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">&quot;&#x27;&quot;</span> + unicode + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -249,11 +252,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/28/HTML/HTML元素遍历/" rel="prev" title="深度优先遍历与广度优先遍历">
+    <a href="/2019/12/28/HTML/HTML%E5%85%83%E7%B4%A0%E9%81%8D%E5%8E%86/" rel="prev" title="深度优先遍历与广度优先遍历">
       <i class="fa fa-chevron-left"></i> 深度优先遍历与广度优先遍历
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/01/15/MiniProgram/wx小程序全局变量的设置、修改和使用/" rel="next" title="微信小程序全局变量的设置、修改和使用">
+    <a href="/2020/01/15/MiniProgram/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%E3%80%81%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BD%BF%E7%94%A8/" rel="next" title="微信小程序全局变量的设置、修改和使用">
       微信小程序全局变量的设置、修改和使用 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -315,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -365,16 +368,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -394,9 +397,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

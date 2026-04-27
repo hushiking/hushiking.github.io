@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="计算机发展已经步入大前端时代，最大的特点在于一次开发，同时适用所有平台。因此，前端工具就显得尤为重要了。">
-<meta name="keywords" content="随笔,ECMAScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大前端工具介绍">
-<meta property="og:url" content="http://hushiking.github.io/2016/06/22/Front-end/大前端介绍/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2016/06/22/Front-end/%E5%A4%A7%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="计算机发展已经步入大前端时代，最大的特点在于一次开发，同时适用所有平台。因此，前端工具就显得尤为重要了。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.203Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-06-22T14:18:33.000Z">
+<meta property="article:modified_time" content="2019-05-13T06:58:05.203Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="ECMAScript">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大前端工具介绍">
-<meta name="twitter:description" content="计算机发展已经步入大前端时代，最大的特点在于一次开发，同时适用所有平台。因此，前端工具就显得尤为重要了。">
 
-<link rel="canonical" href="http://hushiking.github.io/2016/06/22/Front-end/大前端介绍/">
+<link rel="canonical" href="http://hushiking.github.io/2016/06/22/Front-end/%E5%A4%A7%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/06/22/Front-end/大前端介绍/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/06/22/Front-end/%E5%A4%A7%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -302,44 +303,32 @@
 </li>
 </ul>
 <h2 id="模块化加载"><a href="#模块化加载" class="headerlink" title="模块化加载"></a>模块化加载</h2><ul>
-<li><p>CommonJS 规范</p>
-<ul>
-<li><p>核心思想</p>
-<ul>
-<li>允许模块通过 <code>require</code> 方法来同步加载所要依赖的其他模块，然后通过 <code>exports</code> 或 <code>module.exports</code> 导出需要暴露的借口  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"module"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../file.js"</span>);</span><br><span class="line">exports.doStuff = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="built_in">module</span>.exports = someValue;</span><br></pre></td></tr></table></figure>
-</li>
+<li>CommonJS 规范<ul>
+<li>核心思想<ul>
+<li>允许模块通过 <code>require</code> 方法来同步加载所要依赖的其他模块，然后通过 <code>exports</code> 或 <code>module.exports</code> 导出需要暴露的借口  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;module&quot;</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;../file.js&quot;</span>);</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">doStuff</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;&#125;;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = someValue;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>具体实现</p>
-<ul>
+<li>具体实现<ul>
 <li>服务器端的 Node.js</li>
 <li>Browserify</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>AMD <code>Asynchronous Module Definition</code> 规范</p>
-<ul>
-<li><p>核心思想</p>
-<ul>
-<li>只有一个主要接口<code>define(id?， dependencies?， factory)</code>，它要在声明模块的时候指定所有的依赖 dependencies，并且还要当做形参传到 factory 中，对于依赖的模块提前执行，依赖前置  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">"module"</span>， [<span class="string">"dep1"</span>， <span class="string">"dep2"</span>]， <span class="function"><span class="keyword">function</span>(<span class="params">d1， d2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> someExportedValue;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">require</span>([<span class="string">"module"</span>， <span class="string">"../file"</span>]， <span class="function"><span class="keyword">function</span>(<span class="params">module， file</span>) </span>&#123; <span class="comment">/* ... */</span> &#125;);</span><br></pre></td></tr></table></figure>
-</li>
+<li>AMD <code>Asynchronous Module Definition</code> 规范<ul>
+<li>核心思想<ul>
+<li>只有一个主要接口<code>define(id?， dependencies?， factory)</code>，它要在声明模块的时候指定所有的依赖 dependencies，并且还要当做形参传到 factory 中，对于依赖的模块提前执行，依赖前置  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">define</span>(<span class="string">&quot;module&quot;</span>， [<span class="string">&quot;dep1&quot;</span>， <span class="string">&quot;dep2&quot;</span>]， <span class="keyword">function</span>(<span class="params">d1， d2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> someExportedValue;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">require</span>([<span class="string">&quot;module&quot;</span>， <span class="string">&quot;../file&quot;</span>]， <span class="keyword">function</span>(<span class="params"><span class="variable language_">module</span>， file</span>) &#123; <span class="comment">/* ... */</span> &#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>具体实现</p>
-<ul>
+<li>具体实现<ul>
 <li>requireJS</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>CMD <code>Common Module Definition</code> 规范</p>
-<ul>
-<li><p>和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require， exports， module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line">    <span class="keyword">var</span> Spinning = <span class="built_in">require</span>(<span class="string">'./spinning'</span>);</span><br><span class="line">    exports.doSomething = ...</span><br><span class="line">    <span class="built_in">module</span>.exports = ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>具体实现</p>
-<ul>
+<li>CMD <code>Common Module Definition</code> 规范<ul>
+<li>和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>， <span class="built_in">exports</span>， <span class="variable language_">module</span></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">&#x27;jquery&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">Spinning</span> = <span class="built_in">require</span>(<span class="string">&#x27;./spinning&#x27;</span>);</span><br><span class="line">    <span class="built_in">exports</span>.<span class="property">doSomething</span> = ...</span><br><span class="line">    <span class="variable language_">module</span>.<span class="property">exports</span> = ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>具体实现<ul>
 <li>Sea.js</li>
 </ul>
 </li>
@@ -362,7 +351,8 @@
 <h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><ul>
 <li>webpack 正确配置 <code>process.env.NODE_ENV</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">    <span class="string">'process.env'</span>：&#123;</span><br><span class="line">        <span class="string">'NODE_ENV'</span>：<span class="built_in">JSON</span>.stringify(<span class="string">'production'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.<span class="title class_">DefinePlugin</span>(&#123;</span><br><span class="line">    <span class="string">&#x27;process.env&#x27;</span>：&#123;</span><br><span class="line">        <span class="string">&#x27;NODE_ENV&#x27;</span>：<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="string">&#x27;production&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p><strong>调用时按如下命令：</strong> 表示生产环境下如何使用 webpack 打包 (Linux环境)</p>
 <p><code>NODE_ENV=production webpack --progress --colors</code></p>
 
@@ -374,8 +364,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/随笔/" rel="tag"># 随笔</a>
               <a href="/tags/ECMAScript/" rel="tag"># ECMAScript</a>
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
           </div>
 
         
@@ -384,11 +374,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/05/13/JavaScript/JS可枚举与不可枚举/" rel="prev" title="JS 可枚举与不可枚举">
+    <a href="/2016/05/13/JavaScript/JS%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE/" rel="prev" title="JS 可枚举与不可枚举">
       <i class="fa fa-chevron-left"></i> JS 可枚举与不可枚举
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/07/21/Java/Java中equals()和hashCode()的方法详解/" rel="next" title="Java 中 equals() 和 hashCode() 的方法详解">
+    <a href="/2016/07/21/Java/Java%E4%B8%ADequals()%E5%92%8ChashCode()%E7%9A%84%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="next" title="Java 中 equals() 和 hashCode() 的方法详解">
       Java 中 equals() 和 hashCode() 的方法详解 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -450,7 +440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#大前端介绍"><span class="nav-number">1.</span> <span class="nav-text">大前端介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于ES6项目构建"><span class="nav-number">1.1.</span> <span class="nav-text">关于ES6项目构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流行框架"><span class="nav-number">1.2.</span> <span class="nav-text">流行框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JQuery"><span class="nav-number">1.3.</span> <span class="nav-text">JQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化加载"><span class="nav-number">1.4.</span> <span class="nav-text">模块化加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webpack"><span class="nav-number">1.5.</span> <span class="nav-text">Webpack</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">大前端介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EES6%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA"><span class="nav-number">1.1.</span> <span class="nav-text">关于ES6项目构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E8%A1%8C%E6%A1%86%E6%9E%B6"><span class="nav-number">1.2.</span> <span class="nav-text">流行框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JQuery"><span class="nav-number">1.3.</span> <span class="nav-text">JQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.4.</span> <span class="nav-text">模块化加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webpack"><span class="nav-number">1.5.</span> <span class="nav-text">Webpack</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -500,16 +490,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -529,9 +519,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

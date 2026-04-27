@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
-<meta name="keywords" content="JavaScript,form表单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="form 表单 name 属性与 submit() 默认事件">
-<meta property="og:url" content="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2016/04/10/JavaScript/form%E8%A1%A8%E5%8D%95name%E5%B1%9E%E6%80%A7%E4%B8%8Esubmit()%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-04T11:32:43.150Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-04-10T13:57:33.000Z">
+<meta property="article:modified_time" content="2020-01-04T11:32:43.150Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="form表单">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="form 表单 name 属性与 submit() 默认事件">
-<meta name="twitter:description" content="总结 form 表单的一些属性以及 submit() 默认事件。">
 
-<link rel="canonical" href="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/">
+<link rel="canonical" href="http://hushiking.github.io/2016/04/10/JavaScript/form%E8%A1%A8%E5%8D%95name%E5%B1%9E%E6%80%A7%E4%B8%8Esubmit()%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/04/10/JavaScript/form表单name属性与submit()默认事件/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/04/10/JavaScript/form%E8%A1%A8%E5%8D%95name%E5%B1%9E%E6%80%A7%E4%B8%8Esubmit()%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -229,19 +230,21 @@
       
         <h2 id="name-属性用途"><a href="#name-属性用途" class="headerlink" title="name 属性用途"></a>name 属性用途</h2><ol>
 <li>作为可与服务器交互数据的 HTML 元素的服务器端标识，比如 input、select、textarea和 button 等。我们可以在服务器端根据其 Name 通过 Request.Params 取得元素提交的值。</li>
-<li>HTML 元素 Input type=’radio’ 分组，我们知道 radio button 控件在同一个分组类，check 操作是mutex(互斥) 的，同一时间只能选中一个 radio，这个分组就是根据相同的 Name 属性来实现的。</li>
+<li>HTML 元素 Input type&#x3D;’radio’ 分组，我们知道 radio button 控件在同一个分组类，check 操作是mutex(互斥) 的，同一时间只能选中一个 radio，这个分组就是根据相同的 Name 属性来实现的。</li>
 <li>建立页面中的锚点，我们知道 <code>&lt;a href=&quot;URL&quot;&gt;link&lt;/a&gt;</code> 是获得一个页面超级链接，如果不用href属性，而改用Name，如：<code>&lt;a name=&quot;PageBottom&quot;&gt;&lt;/a&gt;</code>，我们就获得了一个页面锚点。</li>
 </ol>
 <h2 id="name-属性与-id-属性的区别"><a href="#name-属性与-id-属性的区别" class="headerlink" title="name 属性与 id 属性的区别"></a>name 属性与 id 属性的区别</h2><ol>
 <li>names属性：下面代码中 <strong>必须name相同才能成为一组单选按钮</strong>，而id属性没有这个功能</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"1 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"2 "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">"xx "</span>   <span class="attr">type</span>= <span class="string">"radio "</span>   <span class="attr">value</span>= <span class="string">"3 "</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">&quot;xx &quot;</span>   <span class="attr">type</span>= <span class="string">&quot;radio &quot;</span>   <span class="attr">value</span>= <span class="string">&quot;1 &quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">&quot;xx &quot;</span>   <span class="attr">type</span>= <span class="string">&quot;radio &quot;</span>   <span class="attr">value</span>= <span class="string">&quot;2 &quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">name</span>= <span class="string">&quot;xx &quot;</span>   <span class="attr">type</span>= <span class="string">&quot;radio &quot;</span>   <span class="attr">value</span>= <span class="string">&quot;3 &quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ol>
 <li>id属性：下面代码中 <strong>for属性必须指向一个id</strong>，否则没效果</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">id</span>= <span class="string">"xx "</span>   <span class="attr">name</span>= <span class="string">"yy "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>   <span class="attr">for</span>= <span class="string">"xx "</span>&gt;</span> Label <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span>   <span class="attr">id</span>= <span class="string">&quot;xx &quot;</span>   <span class="attr">name</span>= <span class="string">&quot;yy &quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>   <span class="attr">for</span>= <span class="string">&quot;xx &quot;</span>&gt;</span> Label <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="submit-默认事件"><a href="#submit-默认事件" class="headerlink" title="submit()默认事件"></a>submit()默认事件</h2><ul>
-<li>var collection = document.forms;<ul>
+<li>var collection &#x3D; document.forms;<ul>
 <li>该属性返回一个 (HTMLCollection) 数组集合，包含了文档中的所有 form 元素</li>
 <li>因此 document.forms[“myForm”] 代表选择 name 属性为 myForm 的表单</li>
 <li>单个表单的选择也可以使用 document.forms[0] 等等</li>
@@ -250,7 +253,8 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> thisForm = <span class="built_in">document</span>.forms[<span class="string">'form1'</span>]; <span class="comment">//获取name为form1的form表单</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//或者</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//var thisForm = document.forms[0]; //获取第一个form表单</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.username.value); <span class="comment">//输出表单name属性值为form1的 username 的值</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.info(thisForm.address.value);</span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.forms[<span class="number">0</span>].submit(); <span class="comment">//表单提交</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 以下为三个简单的form表单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form1"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"zhangsan"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">value</span>=<span class="string">"beijing"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form2"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"x"</span> <span class="attr">name</span>=<span class="string">"form3"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">$(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> thisForm = <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="string">&#x27;form1&#x27;</span>]; <span class="comment">//获取name为form1的form表单</span></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//或者</span></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//var thisForm = document.forms[0]; //获取第一个form表单</span></span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">console</span>.<span class="title function_">info</span>(thisForm.<span class="property">username</span>.<span class="property">value</span>); <span class="comment">//输出表单name属性值为form1的 username 的值</span></span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">console</span>.<span class="title function_">info</span>(thisForm.<span class="property">address</span>.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">document</span>.<span class="property">forms</span>[<span class="number">0</span>].<span class="title function_">submit</span>(); <span class="comment">//表单提交</span></span></span><br><span class="line"><span class="language-javascript">&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 以下为三个简单的form表单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;x&quot;</span> <span class="attr">name</span>=<span class="string">&quot;form1&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;zhangsan&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;address&quot;</span> <span class="attr">value</span>=<span class="string">&quot;beijing&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;x&quot;</span> <span class="attr">name</span>=<span class="string">&quot;form2&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;x&quot;</span> <span class="attr">name</span>=<span class="string">&quot;form3&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>submit()<ul>
 <li>默认表单提交事件,早于 <code>Input type=&#39;submit&#39;</code> 按钮</li>
@@ -258,10 +262,11 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">submitFun</span>(<span class="params">obj</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(obj.category.value==<span class="string">''</span>)&#123;</span></span><br><span class="line"><span class="javascript">          alert(<span class="string">"请输入"</span>);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">"return submitFun(this);"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"category"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">submitFun</span>(<span class="params">obj</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(obj.<span class="property">category</span>.<span class="property">value</span>==<span class="string">&#x27;&#x27;</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">alert</span>(<span class="string">&quot;请输入&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onsubmit</span>=<span class="string">&quot;return submitFun(this);&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;category&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提交&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>当”提交”按钮被点击时，依然会执行submitFun()函数，在submitFun()函数中，我们对表单输入框进行了空验证，如果为空，提示输入并 return false,这样表单就不会提交（上面已经说到：当该事件触发的函数中返回 false 时，表单就不会被提交）。</li>
-<li>同时，这里要注意 onsubmit=”return submitFun(this);”，不能掉了 return，否则表单永远会提交。</li>
+<li>同时，这里要注意 onsubmit&#x3D;”return submitFun(this);”，不能掉了 return，否则表单永远会提交。</li>
 </ul>
 
     </div>
@@ -273,7 +278,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/form表单/" rel="tag"># form表单</a>
+              <a href="/tags/form%E8%A1%A8%E5%8D%95/" rel="tag"># form表单</a>
           </div>
 
         
@@ -282,11 +287,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/03/22/Essay/程序员学习方法/" rel="prev" title="程序员学习方法">
+    <a href="/2016/03/22/Essay/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" rel="prev" title="程序员学习方法">
       <i class="fa fa-chevron-left"></i> 程序员学习方法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/05/13/JavaScript/JS可枚举与不可枚举/" rel="next" title="JS 可枚举与不可枚举">
+    <a href="/2016/05/13/JavaScript/JS%E5%8F%AF%E6%9E%9A%E4%B8%BE%E4%B8%8E%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE/" rel="next" title="JS 可枚举与不可枚举">
       JS 可枚举与不可枚举 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -348,7 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#name-属性用途"><span class="nav-number">1.</span> <span class="nav-text">name 属性用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#name-属性与-id-属性的区别"><span class="nav-number">2.</span> <span class="nav-text">name 属性与 id 属性的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#submit-默认事件"><span class="nav-number">3.</span> <span class="nav-text">submit()默认事件</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#name-%E5%B1%9E%E6%80%A7%E7%94%A8%E9%80%94"><span class="nav-number">1.</span> <span class="nav-text">name 属性用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#name-%E5%B1%9E%E6%80%A7%E4%B8%8E-id-%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">name 属性与 id 属性的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#submit-%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">submit()默认事件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -398,16 +403,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -427,9 +432,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="HTML5 新事件 visibilitychange ，监听标签的可见性，即用户是否正在看当前标签。">
-<meta name="keywords" content="HTML,DOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="visibilitychange —— HTML5 事件">
-<meta property="og:url" content="http://hushiking.github.io/2017/09/02/HTML/visibilitychange事件/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2017/09/02/HTML/visibilitychange%E4%BA%8B%E4%BB%B6/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="HTML5 新事件 visibilitychange ，监听标签的可见性，即用户是否正在看当前标签。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:03:59.545Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-02T00:19:11.000Z">
+<meta property="article:modified_time" content="2019-05-13T07:03:59.545Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="DOM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="visibilitychange —— HTML5 事件">
-<meta name="twitter:description" content="HTML5 新事件 visibilitychange ，监听标签的可见性，即用户是否正在看当前标签。">
 
-<link rel="canonical" href="http://hushiking.github.io/2017/09/02/HTML/visibilitychange事件/">
+<link rel="canonical" href="http://hushiking.github.io/2017/09/02/HTML/visibilitychange%E4%BA%8B%E4%BB%B6/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/09/02/HTML/visibilitychange事件/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/09/02/HTML/visibilitychange%E4%BA%8B%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,13 +210,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/H5/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/H5/" itemprop="url" rel="index">
                     <span itemprop="name">H5</span>
                   </a>
                 </span>
@@ -237,7 +238,7 @@
 <p>比如用户正在看新闻，看到一半切去看视频了，这个时候新闻端就能通过 visibilitychange 发现用户没有在看自己了，进而根据实际需要暂停请求或者一些别的操作，等用户切回来的时候再继续加载。</p>
 <h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>通过 <code>document.hidden</code> 属性判断网页标签是否可见，true 表示不可见。</p>
 <p>此事件时候在标签不可见的时候减少网络请求、缓解服务器压力，也可以进行一些比较有意思的操作，比如改变网页标题的文字。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"visibilitychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.title = <span class="built_in">document</span>.hidden ? <span class="string">"(つェ⊂) 我藏好了哦~"</span> : <span class="string">"(*´∇｀*) 被你发现啦~"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;visibilitychange&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> = <span class="variable language_">document</span>.<span class="property">hidden</span> ? <span class="string">&quot;(つェ⊂) 我藏好了哦~&quot;</span> : <span class="string">&quot;(*´∇｀*) 被你发现啦~&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -256,11 +257,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/08/14/Python/Django学习/" rel="prev" title="Django 学习">
+    <a href="/2017/08/14/Python/Django%E5%AD%A6%E4%B9%A0/" rel="prev" title="Django 学习">
       <i class="fa fa-chevron-left"></i> Django 学习
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/10/04/React/关于this.refs/" rel="next" title="关于 React 的 this.refs 用法">
+    <a href="/2017/10/04/React/%E5%85%B3%E4%BA%8Ethis.refs/" rel="next" title="关于 React 的 this.refs 用法">
       关于 React 的 this.refs 用法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -322,7 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#visibilitychange"><span class="nav-number">1.</span> <span class="nav-text">visibilitychange</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#具体操作"><span class="nav-number">1.1.</span> <span class="nav-text">具体操作</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#visibilitychange"><span class="nav-number">1.</span> <span class="nav-text">visibilitychange</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">具体操作</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -372,16 +373,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -401,9 +402,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="JS 是单线程语言，但是也不乏一些异步操作，比如定时器、浏览器事件、Ajax 异步操作和回调等，还有耳熟能详的 Promise。">
-<meta name="keywords" content="JS,异步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 单线程与异步">
-<meta property="og:url" content="http://hushiking.github.io/2019/07/26/JavaScript/单线程与异步/JS单线程与异步/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2019/07/26/JavaScript/%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/JS%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="JS 是单线程语言，但是也不乏一些异步操作，比如定时器、浏览器事件、Ajax 异步操作和回调等，还有耳熟能详的 Promise。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-05T02:49:30.736Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-07-25T17:09:24.000Z">
+<meta property="article:modified_time" content="2019-12-05T02:49:30.736Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="异步">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS 单线程与异步">
-<meta name="twitter:description" content="JS 是单线程语言，但是也不乏一些异步操作，比如定时器、浏览器事件、Ajax 异步操作和回调等，还有耳熟能详的 Promise。">
 
-<link rel="canonical" href="http://hushiking.github.io/2019/07/26/JavaScript/单线程与异步/JS单线程与异步/">
+<link rel="canonical" href="http://hushiking.github.io/2019/07/26/JavaScript/%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/JS%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/07/26/JavaScript/单线程与异步/JS单线程与异步/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/07/26/JavaScript/%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/JS%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -229,7 +230,7 @@
       
         <h2 id="JS-单线程与异步"><a href="#JS-单线程与异步" class="headerlink" title="JS 单线程与异步"></a>JS 单线程与异步</h2><ul>
 <li>JS 是单线程语言(可以提高效率，作为浏览器脚本语言，JS 主要用途就是操作 DOM，与用户互动。所以它只能是单线程，否则会造成执行混乱)。例如，有要删除节点的函数，有要操作节点的函数，万一多线程执行顺序乱了就坏了。</li>
-<li>浏览器只分配一个<strong>主线程(JS 引擎线程，在 JS 引擎中负责解释和执行JavaScript代码的唯一线程)</strong>来执行任务(函数)，而且一次只能执行一个任务，这些任务必须形成一个任务队列排队等候执行。但前端某些任务非常耗时，比如网络请求、定时器和事件监听，如果让它们和别的任务一样，都老老实实排队等待执行的话，执行效率会非常低，甚至导致页面假死。所以，浏览器为这些耗时任务开辟了另外的线程(我们暂且称之为工作线程)，主要包括<strong>http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的</strong>。</li>
+<li>浏览器只分配一个<strong>主线程(JS 引擎线程，在 JS 引擎中负责解释和执行JavaScript代码的唯一线程)<strong>来执行任务(函数)，而且一次只能执行一个任务，这些任务必须形成一个任务队列排队等候执行。但前端某些任务非常耗时，比如网络请求、定时器和事件监听，如果让它们和别的任务一样，都老老实实排队等待执行的话，执行效率会非常低，甚至导致页面假死。所以，浏览器为这些耗时任务开辟了另外的线程(我们暂且称之为工作线程)，主要包括</strong>http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的</strong>。</li>
 <li>JS 是单线程语言，但 JS 的宿主环境（比如浏览器，Node）是多线程的，宿主环境通过某种方式（事件驱动）使得 JS 具备了异步的属性。</li>
 </ul>
 <p>JS 异步实现机制可以理解为，当主线程的异步函数在被调用的时候，会请求工作线程的帮助。工作线程接收这个任务并执行，主线程可以继续运行后面的函数，而不必阻塞在这。</p>
@@ -262,7 +263,7 @@
 <li>timer 模块会对 setTimeout 等计时器进行延时处理，当时间到达的时候，才会将回调函数添加到任务队列中(定时器触发线程)</li>
 </ul>
 <p>例如任务队列里放的是 ajax 这类的任务，会交给浏览器发起 HTTP 请求去执行的，当有了返回结果就会在任务队列中增加一个事件，表示该 ajax 请求已经返回了结果，任务队列里的任务和 JS 主线程是同时执行的。不影响 JS 是单线程的这个结论，只能说浏览器还会提供工作线程来供 JS 异步执行。</p>
-<p><a href="https://blog.csdn.net/qq_22855325/article/details/72958345" target="_blank" rel="noopener">参考文章</a><br><a href="https://www.cnblogs.com/dadaxindeyuanzi/p/11186068.html" target="_blank" rel="noopener">参考文章</a><br><a href="https://www.cnblogs.com/sunidol/p/11301808.html" target="_blank" rel="noopener">参考文章</a></p>
+<p><a href="https://blog.csdn.net/qq_22855325/article/details/72958345">参考文章</a><br><a href="https://www.cnblogs.com/dadaxindeyuanzi/p/11186068.html">参考文章</a><br><a href="https://www.cnblogs.com/sunidol/p/11301808.html">参考文章</a></p>
 
     </div>
 
@@ -273,7 +274,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JS/" rel="tag"># JS</a>
-              <a href="/tags/异步/" rel="tag"># 异步</a>
+              <a href="/tags/%E5%BC%82%E6%AD%A5/" rel="tag"># 异步</a>
           </div>
 
         
@@ -282,11 +283,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/07/17/CSS/flex布局左侧固定右侧内容不超过容器/" rel="prev" title="flex 布局左侧固定，右侧内容不超过容器解决方案">
+    <a href="/2019/07/17/CSS/flex%E5%B8%83%E5%B1%80%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%E5%8F%B3%E4%BE%A7%E5%86%85%E5%AE%B9%E4%B8%8D%E8%B6%85%E8%BF%87%E5%AE%B9%E5%99%A8/" rel="prev" title="flex 布局左侧固定，右侧内容不超过容器解决方案">
       <i class="fa fa-chevron-left"></i> flex 布局左侧固定，右侧内容不超过容器解决方案
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/08/18/JavaScript/单线程与异步/JS异步执行的几点困惑/" rel="next" title="JS 异步执行几个容易困惑的问题">
+    <a href="/2019/08/18/JavaScript/%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5/JS%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E5%87%A0%E7%82%B9%E5%9B%B0%E6%83%91/" rel="next" title="JS 异步执行几个容易困惑的问题">
       JS 异步执行几个容易困惑的问题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -348,7 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-单线程与异步"><span class="nav-number">1.</span> <span class="nav-text">JS 单线程与异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列-task-queue-和事件循环-event-loop"><span class="nav-number">1.1.</span> <span class="nav-text">任务队列(task queue)和事件循环(event loop)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#任务队列"><span class="nav-number">1.1.1.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步操作的执行"><span class="nav-number">1.1.2.</span> <span class="nav-text">异步操作的执行</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%BC%82%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">JS 单线程与异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97-task-queue-%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-event-loop"><span class="nav-number">1.1.</span> <span class="nav-text">任务队列(task queue)和事件循环(event loop)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="nav-number">1.1.1.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">1.1.2.</span> <span class="nav-text">异步操作的执行</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -398,16 +399,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -427,9 +428,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

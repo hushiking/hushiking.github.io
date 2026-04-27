@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="简要介绍一下 Java 匿名内部类。">
-<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 匿名内部类">
-<meta property="og:url" content="http://hushiking.github.io/2014/08/18/Java/匿名内部类/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2014/08/18/Java/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="简要介绍一下 Java 匿名内部类。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T16:14:16.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-08-18T03:34:00.000Z">
+<meta property="article:modified_time" content="2017-10-17T16:14:16.000Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 匿名内部类">
-<meta name="twitter:description" content="简要介绍一下 Java 匿名内部类。">
 
-<link rel="canonical" href="http://hushiking.github.io/2014/08/18/Java/匿名内部类/">
+<link rel="canonical" href="http://hushiking.github.io/2014/08/18/Java/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/08/18/Java/匿名内部类/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/08/18/Java/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">后端</span>
                   </a>
                 </span>
@@ -229,20 +229,25 @@
       
         <h1 id="匿名内部类访问外部类中的局部变量必须是final属性"><a href="#匿名内部类访问外部类中的局部变量必须是final属性" class="headerlink" title="匿名内部类访问外部类中的局部变量必须是final属性"></a>匿名内部类访问外部类中的局部变量必须是final属性</h1><p>如果定义一个匿名内部类，并且希望它使用一个在其外部定的对象，那么编译器会要求其参数引用是final的。</p>
 <ol>
-<li>匿名内部类肯定是局部内部类(在一个方法里面定义的内部类)，因为在java中，语句必须写在方法里，而匿名内部类其实就是一条特殊的语句；</li>
-<li>外部给定的对象就是所有外来的对象：外部方法的形参、局部变量、基本类型或自定义类型等。</li>
-<li>内部类很微妙，它可以直接访问外部类的private field，这打破了类的封装。但是内部类又有它自身的好处，比如简洁，可见性等，于是就把它定位成“只读”，也就是final。不过这个保护也非常脆弱！</li>
-<li>local inner class访问local var时，那个var必须是final的。因为可以通过enclosing class访问那个local var，也可以通过inner class访问，可能造成问题，所以就必须是final的</li>
+<li><p>匿名内部类肯定是局部内部类(在一个方法里面定义的内部类)，因为在java中，语句必须写在方法里，而匿名内部类其实就是一条特殊的语句；</p>
+</li>
+<li><p>外部给定的对象就是所有外来的对象：外部方法的形参、局部变量、基本类型或自定义类型等。</p>
+</li>
+<li><p>内部类很微妙，它可以直接访问外部类的private field，这打破了类的封装。但是内部类又有它自身的好处，比如简洁，可见性等，于是就把它定位成“只读”，也就是final。不过这个保护也非常脆弱！</p>
+</li>
+<li><p>local inner class访问local var时，那个var必须是final的。因为可以通过enclosing class访问那个local var，也可以通过inner class访问，可能造成问题，所以就必须是final的</p>
+</li>
 <li><p>匿名内部类为什么只能用final.是变量的作用域的问题，因为匿名内部类是出现在一个方法的内部的，如果它要访问这个方法的参数或者方法中定义的变量，则这些参数和变量必须被修饰为final。因为虽然匿名内部类在方法的内部，但实际编译的时候，内部类编译成Outer.Inner,这说明内部类所处的位置和外部类中的方法处在同一个等级上，外部类中的方法中的变量或参数只是方法的局部变量，这些变量或参数的作用域只在这个方法内部有效。因为编译的时候内部类和方法在同一级别上，所以方法中的变量或参数只有为final，内部类才可以引用。</p>
 </li>
 <li><p>例子</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalInnerClassTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Outer obj=<span class="keyword">new</span> Outer();       <span class="comment">//生成一个外部类对象</span></span><br><span class="line">        <span class="comment">//调用外部类中的outer()方法，返回一个SuperInner类型对象赋值给si</span></span><br><span class="line">        SuperInner si=obj.outer();</span><br><span class="line">        si.m1();                     <span class="comment">//调用被覆盖的方法m1(),输出：Inner's m1() 20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个接口SuperInner，内部定义一个抽象方法m1(),无返回类型</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SuperInner</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个类Outer，内部只定义一个方法outer()，返回类型为SuperInner</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SuperInner <span class="title">outer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">10</span>;                <span class="comment">//方法中定义一个局部变量a，并赋值为10</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> b=<span class="number">20</span>;          <span class="comment">//再定义一个final局部变量b，初始化为20</span></span><br><span class="line">        <span class="comment">//在outer()方法中定义一个局部内部类Inner,实现接口SuperInner</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> <span class="keyword">implements</span> <span class="title">SuperInner</span></span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="comment">//类中只有一个覆盖接口SuperInner的方法m1()</span></span><br><span class="line">                System.out.println(<span class="string">"Inner's m1()"</span>+a);    <span class="comment">//编译报错</span></span><br><span class="line">                <span class="comment">//编译通过，输出：Inner's m1() 20</span></span><br><span class="line">                System.out.println(<span class="string">"Inner's m1() "</span>+b);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LocalInnerClassTest</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Outer obj=<span class="keyword">new</span> <span class="title class_">Outer</span>();       <span class="comment">//生成一个外部类对象</span></span><br><span class="line">        <span class="comment">//调用外部类中的outer()方法，返回一个SuperInner类型对象赋值给si</span></span><br><span class="line">        SuperInner si=obj.outer();</span><br><span class="line">        si.m1();                     <span class="comment">//调用被覆盖的方法m1(),输出：Inner&#x27;s m1() 20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个接口SuperInner，内部定义一个抽象方法m1(),无返回类型</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">SuperInner</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">m1</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*定义一个类Outer，内部只定义一个方法outer()，返回类型为SuperInner</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Outer</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> SuperInner <span class="title function_">outer</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> a=<span class="number">10</span>;                <span class="comment">//方法中定义一个局部变量a，并赋值为10</span></span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> b=<span class="number">20</span>;          <span class="comment">//再定义一个final局部变量b，初始化为20</span></span><br><span class="line">        <span class="comment">//在outer()方法中定义一个局部内部类Inner,实现接口SuperInner</span></span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">Inner</span> <span class="keyword">implements</span> <span class="title class_">SuperInner</span>&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">m1</span><span class="params">()</span>&#123;</span><br><span class="line">                <span class="comment">//类中只有一个覆盖接口SuperInner的方法m1()</span></span><br><span class="line">                System.out.println(<span class="string">&quot;Inner&#x27;s m1()&quot;</span>+a);    <span class="comment">//编译报错</span></span><br><span class="line">                <span class="comment">//编译通过，输出：Inner&#x27;s m1() 20</span></span><br><span class="line">                System.out.println(<span class="string">&quot;Inner&#x27;s m1() &quot;</span>+b);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Inner</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>我们先从主方法开始看代码的执行顺序，先生成一个Outer类对象obj，obj调用本类中方法outer()；程序开始跳到outer()方法内执行程序语句，先后生成局部变量a和b,再定义一个局部内部类Inner，返回一个SuperInner类型的对象。将返回的SuperInner类型对象地址传给SuperInner类型对象si。si再调用m1()方法，因为已经在局部内部类中覆盖了接口中的m1()方法，所以将调用局部内部类中的m1() 方法，程序跳到局部内部类中m1()方法内执行程序语句，先输出一段字符串和a，结果编译报错，先 将这条程序语句隐藏，执行下面的语句，你会发现编译通过而且输出Inner’s m1() 20！</p>
 <p>为什么会这样呢？大家都知道局部变量仅仅在一个范围内有效，在方法调用完就被内存释放，在Outer类对象obj调用outer()方法时，a和b才产生，调用结束后被内存释放，那么b这个值也就不复存在了，为什么还会输出20呢？难道局部变量被final修饰就不会被内存释放而保留？</p>
-<p>其实有部分操作对于程序员是透明的，那是JAVA语言开发者的小把戏，在定义a和b 时JVM(JAVA虚拟机)做了程序员看不到的操作，他将b拷贝了一份给局部内部类，也就是说JVM在局部内部类中定义了一个final int b=20；这个操作程序员是不知道的！当调用m1()方法时输出的20并不是原来outer()方法中定义的b，而仅仅是JVM拷贝的一个副本。那么为什么a没被打印出呢？那是因为JVM并没有拷贝它，因为没有final修饰，说明它可以被修改，如果把a 改为 a++，此时JVM就不知道拷贝a还是a++了，所以对于无final修饰的局部变量JVM是不会拷贝传给局部内部类的，自然无法打输出！</p>
-<p><a href="http://ldzyz007.iteye.com/blog/844380" target="_blank" rel="noopener">原文地址</a></p>
+<p>其实有部分操作对于程序员是透明的，那是JAVA语言开发者的小把戏，在定义a和b 时JVM(JAVA虚拟机)做了程序员看不到的操作，他将b拷贝了一份给局部内部类，也就是说JVM在局部内部类中定义了一个final int b&#x3D;20；这个操作程序员是不知道的！当调用m1()方法时输出的20并不是原来outer()方法中定义的b，而仅仅是JVM拷贝的一个副本。那么为什么a没被打印出呢？那是因为JVM并没有拷贝它，因为没有final修饰，说明它可以被修改，如果把a 改为 a++，此时JVM就不知道拷贝a还是a++了，所以对于无final修饰的局部变量JVM是不会拷贝传给局部内部类的，自然无法打输出！</p>
+<p><a href="http://ldzyz007.iteye.com/blog/844380">原文地址</a></p>
 
     </div>
 
@@ -261,11 +266,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2014/08/02/Java/Java内部类/" rel="prev" title="Java 内部类">
+    <a href="/2014/08/02/Java/Java%E5%86%85%E9%83%A8%E7%B1%BB/" rel="prev" title="Java 内部类">
       <i class="fa fa-chevron-left"></i> Java 内部类
     </a></div>
       <div class="post-nav-item">
-    <a href="/2014/09/18/Java/java对cookie的操作/" rel="next" title="Java对 Cookie 的操作">
+    <a href="/2014/09/18/Java/java%E5%AF%B9cookie%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="next" title="Java对 Cookie 的操作">
       Java对 Cookie 的操作 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -327,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#匿名内部类访问外部类中的局部变量必须是final属性"><span class="nav-number">1.</span> <span class="nav-text">匿名内部类访问外部类中的局部变量必须是final属性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E8%AE%BF%E9%97%AE%E5%A4%96%E9%83%A8%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%BF%85%E9%A1%BB%E6%98%AFfinal%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">匿名内部类访问外部类中的局部变量必须是final属性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -377,16 +382,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -406,9 +411,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

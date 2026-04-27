@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="git clean 命令用来从你的工作目录中删除所有没有 tracked 过的文件。">
-<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git clean 用法详解">
-<meta property="og:url" content="http://hushiking.github.io/2018/12/31/Git/git clean用法/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2018/12/31/Git/git%20clean%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="git clean 命令用来从你的工作目录中删除所有没有 tracked 过的文件。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-03T07:24:39.288Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-12-31T01:52:23.000Z">
+<meta property="article:modified_time" content="2020-01-03T07:24:39.288Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git clean 用法详解">
-<meta name="twitter:description" content="git clean 命令用来从你的工作目录中删除所有没有 tracked 过的文件。">
 
-<link rel="canonical" href="http://hushiking.github.io/2018/12/31/Git/git clean用法/">
+<link rel="canonical" href="http://hushiking.github.io/2018/12/31/Git/git%20clean%E7%94%A8%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/12/31/Git/git clean用法/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/12/31/Git/git%20clean%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -251,9 +251,10 @@
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><code>git reset --hard</code> 和 <code>git clean -f</code> 是一对好基友，结合使用他们能让你的工作目录完全回退到最近一次 <code>commit</code> 的时候。</p>
 <p><strong><code>git clean</code> 对于刚编译过的项目也非常有用，它能轻易删除掉编译后生成的 <code>.o</code> 和 <code>.exe</code> 等文件。</strong>这个在打包要发布一个 <code>release</code> 的时候非常有用。</p>
 <h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>下面的例子要删除所有工作目录下面的修改，包括新添加的文件。假设你已经提交了一些快照了，而且做了一些新的开发。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git clean -df</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git clean -<span class="built_in">df</span></span><br></pre></td></tr></table></figure>
+
 <p>运行后，工作目录和缓存区回到最近一次 <code>commit</code> 时候一摸一样的状态，<code>git status</code> 会告诉你这是一个干净的工作目录，又是一个新的开始了！</p>
-<p><a href="https://blog.csdn.net/leon1741/article/details/54314565" target="_blank" rel="noopener">参考文章</a></p>
+<p><a href="https://blog.csdn.net/leon1741/article/details/54314565">参考文章</a></p>
 
     </div>
 
@@ -272,11 +273,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/12/16/CSS/使用box-shadow代替border/" rel="prev" title="使用 box-shadow 来代替 border">
+    <a href="/2018/12/16/CSS/%E4%BD%BF%E7%94%A8box-shadow%E4%BB%A3%E6%9B%BFborder/" rel="prev" title="使用 box-shadow 来代替 border">
       <i class="fa fa-chevron-left"></i> 使用 box-shadow 来代替 border
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/01/12/Webpack/webpack提取异步组件内部css/" rel="next" title="webpack 提取异步组件内部 css">
+    <a href="/2019/01/12/Webpack/webpack%E6%8F%90%E5%8F%96%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6%E5%86%85%E9%83%A8css/" rel="next" title="webpack 提取异步组件内部 css">
       webpack 提取异步组件内部 css <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -338,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-clean-用途"><span class="nav-number">1.</span> <span class="nav-text">git clean 用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">2.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举个例子"><span class="nav-number">2.2.</span> <span class="nav-text">举个例子</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-clean-%E7%94%A8%E9%80%94"><span class="nav-number">1.</span> <span class="nav-text">git clean 用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="nav-number">2.2.</span> <span class="nav-text">举个例子</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -388,16 +389,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -417,9 +418,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

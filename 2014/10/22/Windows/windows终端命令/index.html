@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="自己总结了一些 Windows 中常用的 cmd 命令，不定时更新……">
-<meta name="keywords" content="cmd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows 端口号查看与 mstc 远程连接">
-<meta property="og:url" content="http://hushiking.github.io/2014/10/22/Windows/windows终端命令/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2014/10/22/Windows/windows%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="自己总结了一些 Windows 中常用的 cmd 命令，不定时更新……">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-08T03:42:04.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2014-10-22T14:18:33.000Z">
+<meta property="article:modified_time" content="2017-11-08T03:42:04.000Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="cmd">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows 端口号查看与 mstc 远程连接">
-<meta name="twitter:description" content="自己总结了一些 Windows 中常用的 cmd 命令，不定时更新……">
 
-<link rel="canonical" href="http://hushiking.github.io/2014/10/22/Windows/windows终端命令/">
+<link rel="canonical" href="http://hushiking.github.io/2014/10/22/Windows/windows%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/10/22/Windows/windows终端命令/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2014/10/22/Windows/windows%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维与Linux/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E4%B8%8ELinux/" itemprop="url" rel="index">
                     <span itemprop="name">运维与Linux</span>
                   </a>
                 </span>
@@ -248,7 +248,7 @@
 <p> C:\Users\Administrator&gt;tasklist|findstr “6704”</p>
 </li>
 <li><p>结束该进程</p>
-<p> C:\Users\Administrator&gt;taskkill /f /t /im node.exe</p>
+<p> C:\Users\Administrator&gt;taskkill &#x2F;f &#x2F;t &#x2F;im node.exe</p>
 <p> <code>/f</code>表示强制终止进程</p>
 <p> <code>/t</code>表示终止指定的进程和任何由此启动的子进程</p>
 <p> <code>/im name</code>表示要终止的进程的映像名称，可以使用通配符<code>*</code></p>
@@ -256,7 +256,8 @@
 </li>
 </ol>
 <h2 id="windows-复制粘贴"><a href="#windows-复制粘贴" class="headerlink" title="windows 复制粘贴"></a>windows 复制粘贴</h2><p>windows 的 git 操作中复制 SSH 公有 key ：<code>clip &lt; ~/.ssh/id_rsa.pub</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo Hello | clip</span><br><span class="line"><span class="comment"># 将字符串Hello放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">dir | clip</span><br><span class="line"><span class="comment"># 将dir命令输出（当前目录列表）放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">clip &lt; README.TXT</span><br><span class="line"><span class="comment"># 将readme.txt的文本放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">echo | clip</span><br><span class="line"><span class="comment"># 将一个空行放入Windows剪贴板，即清空Windows剪贴板</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo Hello | clip</span><br><span class="line"><span class="comment"># 将字符串Hello放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dir</span> | clip</span><br><span class="line"><span class="comment"># 将dir命令输出（当前目录列表）放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">clip &lt; README.TXT</span><br><span class="line"><span class="comment"># 将readme.txt的文本放入Windows剪贴板</span></span><br><span class="line"></span><br><span class="line">echo | clip</span><br><span class="line"><span class="comment"># 将一个空行放入Windows剪贴板，即清空Windows剪贴板</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="Mstsc-Microsoft-terminal-services-client"><a href="#Mstsc-Microsoft-terminal-services-client" class="headerlink" title="Mstsc (Microsoft terminal services client)"></a>Mstsc (Microsoft terminal services client)</h2><p>创建与终端服务器或其他远程计算机的连接</p>
 <p>Mstsc还有一种说法，<code>Microsoft Telnet Screen Control</code>，即“微软远程桌面控制”。</p>
 <blockquote>
@@ -280,11 +281,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2014/09/18/Java/java对cookie的操作/" rel="prev" title="Java对 Cookie 的操作">
+    <a href="/2014/09/18/Java/java%E5%AF%B9cookie%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="prev" title="Java对 Cookie 的操作">
       <i class="fa fa-chevron-left"></i> Java对 Cookie 的操作
     </a></div>
       <div class="post-nav-item">
-    <a href="/2014/11/05/HTML/HTML知识点/" rel="next" title="HTML 知识点">
+    <a href="/2014/11/05/HTML/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="next" title="HTML 知识点">
       HTML 知识点 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -346,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cmd-命令"><span class="nav-number">1.</span> <span class="nav-text">cmd 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器与端口号"><span class="nav-number">1.1.</span> <span class="nav-text">服务器与端口号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口占用"><span class="nav-number">1.2.</span> <span class="nav-text">查看端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-复制粘贴"><span class="nav-number">1.3.</span> <span class="nav-text">windows 复制粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mstsc-Microsoft-terminal-services-client"><span class="nav-number">1.4.</span> <span class="nav-text">Mstsc (Microsoft terminal services client)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cmd-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">cmd 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">服务器与端口号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">查看端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4"><span class="nav-number">1.3.</span> <span class="nav-text">windows 复制粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mstsc-Microsoft-terminal-services-client"><span class="nav-number">1.4.</span> <span class="nav-text">Mstsc (Microsoft terminal services client)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -396,16 +397,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -425,9 +426,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

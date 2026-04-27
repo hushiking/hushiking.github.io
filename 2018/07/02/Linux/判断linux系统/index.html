@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="通过 linux 命令判断系统是 Ubuntu 还是 Redhat 或者其它类型。">
-<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断 linux 系统类别">
-<meta property="og:url" content="http://hushiking.github.io/2018/07/02/Linux/判断linux系统/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2018/07/02/Linux/%E5%88%A4%E6%96%ADlinux%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="通过 linux 命令判断系统是 Ubuntu 还是 Redhat 或者其它类型。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-01T03:33:29.078Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-07-02T01:08:00.000Z">
+<meta property="article:modified_time" content="2019-01-01T03:33:29.078Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断 linux 系统类别">
-<meta name="twitter:description" content="通过 linux 命令判断系统是 Ubuntu 还是 Redhat 或者其它类型。">
 
-<link rel="canonical" href="http://hushiking.github.io/2018/07/02/Linux/判断linux系统/">
+<link rel="canonical" href="http://hushiking.github.io/2018/07/02/Linux/%E5%88%A4%E6%96%ADlinux%E7%B3%BB%E7%BB%9F/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/07/02/Linux/判断linux系统/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2018/07/02/Linux/%E5%88%A4%E6%96%ADlinux%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维与Linux/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E4%B8%8ELinux/" itemprop="url" rel="index">
                     <span itemprop="name">运维与Linux</span>
                   </a>
                 </span>
@@ -231,8 +231,9 @@
 <h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><code># lsb_release -a</code></p>
 <p>该命令适用于所有遵守 LSB 规范的 linux，包括Redhat、SuSE、Debian、Ubuntu、Centos等发行版。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:    :core-4.1-amd64:core-4.1-noarch</span><br><span class="line">Distributor ID: CentOS</span><br><span class="line">Description:    CentOS Linux release 7.4.1708 (Core)</span><br><span class="line">Release:        7.4.1708</span><br><span class="line">Codename:       Core</span><br></pre></td></tr></table></figure>
+
 <p>接下来的命令虽然不能查看当前系统名和版本，但是可以显示系统核心信息.</p>
-<p><code># uname</code>       linux<br><code># uname -r</code>    3.10.0-693.2.2.el7.x86_64<br><code># uname -a</code>    Linux iz2zeehaoxba5ca8lcw79yz 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:13 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p><code># uname</code>       linux<br><code># uname -r</code>    3.10.0-693.2.2.el7.x86_64<br><code># uname -a</code>    Linux iz2zeehaoxba5ca8lcw79yz 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:13 UTC 2017 x86_64 x86_64 x86_64 GNU&#x2F;Linux</p>
 <h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>适用于 Redhat CentOS</p>
 <p><code># cat /etc/redhat-release</code> CentOS Linux release 7.4.1708 (Core)</p>
 <p>登录到 linux 执行</p>
@@ -240,11 +241,12 @@
 <p>登录到 CentOS 执行</p>
 <p><code># rpm -q centos-release</code>   centos-release-7-4.1708.el7.centos.x86_64</p>
 <h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>当前 CentOS 版本与 Redhat 对应的版本的命令，这个命令在 CentOS 下并不准确，显示的系统和版本也是Redhat</p>
-<p><code># cat /proc/version</code>   Linux version 3.10.0-693.2.2.el7.x86_64 (<a href="mailto:builder@kbuilder.dev.centos.org" target="_blank" rel="noopener">builder@kbuilder.dev.centos.org</a>) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC) ) #1 SMP Tue Sep 12 22:26:13 UTC 2017</p>
+<p><code># cat /proc/version</code>   Linux version 3.10.0-693.2.2.el7.x86_64 (<a href="mailto:&#x62;&#x75;&#105;&#x6c;&#100;&#x65;&#114;&#x40;&#107;&#x62;&#117;&#x69;&#108;&#100;&#101;&#114;&#46;&#100;&#x65;&#118;&#46;&#x63;&#x65;&#110;&#x74;&#111;&#115;&#x2e;&#x6f;&#x72;&#103;">&#x62;&#x75;&#105;&#x6c;&#100;&#x65;&#114;&#x40;&#107;&#x62;&#117;&#x69;&#108;&#100;&#101;&#114;&#46;&#100;&#x65;&#118;&#46;&#x63;&#x65;&#110;&#x74;&#111;&#115;&#x2e;&#x6f;&#x72;&#103;</a>) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC) ) #1 SMP Tue Sep 12 22:26:13 UTC 2017</p>
 <p>在 Ubuntu 上使用能看出是 Ubuntu 系统，但看不出版本</p>
 <h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><p><code>#cat /etc/issue</code></p>
 <p>在 CentOS 下执行显示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\S</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+
 <p>在 Ubuntu 下执行显示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu 11.04 \n \l</span><br></pre></td></tr></table></figure>
     </div>
@@ -264,11 +266,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/06/08/Vue/Vue添加全局函数/" rel="prev" title="Vue 添加全局函数">
+    <a href="/2018/06/08/Vue/Vue%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0/" rel="prev" title="Vue 添加全局函数">
       <i class="fa fa-chevron-left"></i> Vue 添加全局函数
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/07/26/Docker/Docker命令说明/" rel="next" title="Docker 命令说明">
+    <a href="/2018/07/26/Docker/Docker%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E/" rel="next" title="Docker 命令说明">
       Docker 命令说明 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -330,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三"><span class="nav-number">1.3.</span> <span class="nav-text">方法三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法四"><span class="nav-number">1.4.</span> <span class="nav-text">方法四</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89"><span class="nav-number">1.3.</span> <span class="nav-text">方法三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9B"><span class="nav-number">1.4.</span> <span class="nav-text">方法四</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -380,16 +382,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -409,9 +411,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="重点总结了何为跨域， jsonp 跨域是如何实现的。">
-<meta name="keywords" content="JavaScript,跨域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsonp 跨域访问原理">
-<meta property="og:url" content="http://hushiking.github.io/2015/06/13/Ajax/jsonp跨域访问原理/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2015/06/13/Ajax/jsonp%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="重点总结了何为跨域， jsonp 跨域是如何实现的。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.574Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-06-12T22:15:22.000Z">
+<meta property="article:modified_time" content="2019-05-13T06:58:05.574Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="跨域">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsonp 跨域访问原理">
-<meta name="twitter:description" content="重点总结了何为跨域， jsonp 跨域是如何实现的。">
 
-<link rel="canonical" href="http://hushiking.github.io/2015/06/13/Ajax/jsonp跨域访问原理/">
+<link rel="canonical" href="http://hushiking.github.io/2015/06/13/Ajax/jsonp%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E5%8E%9F%E7%90%86/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/06/13/Ajax/jsonp跨域访问原理/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/06/13/Ajax/jsonp%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -243,7 +244,8 @@
 </li>
 </ol>
 <h2 id="何为跨域"><a href="#何为跨域" class="headerlink" title="何为跨域"></a>何为跨域</h2><p>不同源则为跨域，假设当前域名是 <code>http://www.example.com/detail.html</code> ,其中 <code>com</code> 是顶级域名， <code>example</code> 是一级域名， <code>www</code> 是特殊的二级域名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http://api.example.com/detail.html         不同源   域名不同</span><br><span class="line">https//www.example.com/detail.html         不同源   协议不同</span><br><span class="line">http://www.example.com:8080/detail.html    不同源   端口不同</span><br><span class="line">http://api.example.com:8080/detail.html    不同源   域名、端口不同</span><br><span class="line">https://api.example.com/detail.html        不同源   协议、域名不同</span><br><span class="line">https://www.example.com:8080/detail.html   不同源   端口、协议不同</span><br><span class="line">http://www.example.com/detail/index.html   同源     只是目录不同</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http://api.example.com/detail.html         不同源   域名不同</span><br><span class="line">https//www.example.com/detail.html         不同源   协议不同</span><br><span class="line">http://www.example.com:8080/detail.html    不同源   端口不同</span><br><span class="line">http://api.example.com:8080/detail.html    不同源   域名、端口不同</span><br><span class="line">https://api.example.com/detail.html        不同源   协议、域名不同</span><br><span class="line">https://www.example.com:8080/detail.html   不同源   端口、协议不同</span><br><span class="line">http://www.example.com/detail/index.html   同源     只是目录不同</span><br></pre></td></tr></table></figure>
+
 <h3 id="为什么不能跨域？"><a href="#为什么不能跨域？" class="headerlink" title="为什么不能跨域？"></a>为什么不能跨域？</h3><p>出于安全考虑，浏览器禁止跨域访问。</p>
 <h2 id="跨域的方式"><a href="#跨域的方式" class="headerlink" title="跨域的方式"></a>跨域的方式</h2><p>目前主流跨域方式有以下几种：</p>
 <ol>
@@ -256,12 +258,14 @@
 <h3 id="jsonp-跨域访问了，还安全吗？"><a href="#jsonp-跨域访问了，还安全吗？" class="headerlink" title="jsonp 跨域访问了，还安全吗？"></a>jsonp 跨域访问了，还安全吗？</h3><p>安全不安全是对于服务器而言，你发送了 <code>callback</code> 参数，服务器不返回也就没有了作用， <code>jsonp</code> 是浏览器与服务器双方配合才能实现。所以是安全的。</p>
 <h2 id="jsonp-跨域原理"><a href="#jsonp-跨域原理" class="headerlink" title="jsonp 跨域原理"></a>jsonp 跨域原理</h2><p>在 js 中，我们直接用 <code>XMLHttpRequest</code> 请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的 js 脚本文件却是可以的， <code>jsonp</code> 正是利用这个特性来实现的。</p>
 <p>比如，我们有个 index.html 页面，它内部需要通过 <code>Ajax</code> 获取不同域上的 json 数据，假设这个 json 数据的服务器地址是 <code>http://example.com/json.php</code> ，那么 <code>index.html</code> 中的代码可以这样写：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(data)</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> script =<span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</span></span><br><span class="line"><span class="javascript">    <span class="comment">//调用来自example.com下的接口</span></span></span><br><span class="line"><span class="javascript">    script.src=<span class="string">"http://example.com/json.php?callback=getData"</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.head.appendChild(script);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.head.removeChild(script);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params">data</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> script =<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//调用来自example.com下的接口</span></span></span><br><span class="line"><span class="language-javascript">    script.<span class="property">src</span>=<span class="string">&quot;http://example.com/json.php?callback=getData&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(script);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">removeChild</span>(script);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>我们可以看到获取数据的地址后面有一个 <code>callback</code> 参数，这个参数可以修改，但是必须保证与请求服务器接口的 <code>callback</code> 参数一致，以便服务器正确解析。如果获取数据的服务器接口不是你自己控制的，就必须按照提供数据的那一方的规定格式来操作，一般习惯都是 <code>callback</code> 。</p>
 <p>因为获取数据的地址被当做一个 js 文件引入，所以必须返回一个能执行的 js 文件，所以 json.php 代码可能是这样的：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$callback = $_GET[<span class="string">'callback'</span>];  <span class="comment">// 得到回调函数名称</span></span><br><span class="line">$arr = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"xiaoming"</span>, <span class="string">"age"</span>=&gt;<span class="number">18</span>);  <span class="comment">// 需要返回的数据</span></span><br><span class="line">$result = json_encode($arr);  <span class="comment">// 将数组转为json格式 &#123;"name": "xiaoming", "age": 10&#125;</span></span><br><span class="line"><span class="keyword">echo</span> $callback.<span class="string">'('</span>.$result.<span class="string">')'</span>;  <span class="comment">// 返回数据</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$callback</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;callback&#x27;</span>];  <span class="comment">// 得到回调函数名称</span></span><br><span class="line"><span class="variable">$arr</span> = <span class="keyword">array</span>(<span class="string">&quot;name&quot;</span>=&gt;<span class="string">&quot;xiaoming&quot;</span>, <span class="string">&quot;age&quot;</span>=&gt;<span class="number">18</span>);  <span class="comment">// 需要返回的数据</span></span><br><span class="line"><span class="variable">$result</span> = <span class="title function_ invoke__">json_encode</span>(<span class="variable">$arr</span>);  <span class="comment">// 将数组转为json格式 &#123;&quot;name&quot;: &quot;xiaoming&quot;, &quot;age&quot;: 10&#125;</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$callback</span>.<span class="string">&#x27;(&#x27;</span>.<span class="variable">$result</span>.<span class="string">&#x27;)&#x27;</span>;  <span class="comment">// 返回数据</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
 <p>最终 index.html 页面输出结果为：</p>
-<p><code>getData({&quot;name&quot;: &quot;xiaoming&quot;, &quot;age&quot;: 10})</code></p>
+<p><code>getData(&#123;&quot;name&quot;: &quot;xiaoming&quot;, &quot;age&quot;: 10&#125;)</code></p>
 <p>所以通过 <code>http://example.com/json.php?callback=getData</code> 得到的 js 文件，就是我们之前定义的 getData 函数，并且它的参数就是我们需要的 json 数据，这样我们就跨域获得了我们需要的数据。</p>
 <p><strong>简单来说， jsonp 的原理</strong>就是通过 script 标签引入一个 js 文件，这个 js 文件载入成功后会执行我们在 url 参数中指定的函数，并且会把我们需要的 json 数据作为参数传入。所以 <code>jsonp</code> 是需要服务器端的页面进行相应的配合的。</p>
 
@@ -274,7 +278,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/跨域/" rel="tag"># 跨域</a>
+              <a href="/tags/%E8%B7%A8%E5%9F%9F/" rel="tag"># 跨域</a>
           </div>
 
         
@@ -283,11 +287,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/05/17/Ajax/Ajax提交与form表单提交区别/" rel="prev" title="Ajax 提交与 form 表单提交区别">
+    <a href="/2015/05/17/Ajax/Ajax%E6%8F%90%E4%BA%A4%E4%B8%8Eform%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4%E5%8C%BA%E5%88%AB/" rel="prev" title="Ajax 提交与 form 表单提交区别">
       <i class="fa fa-chevron-left"></i> Ajax 提交与 form 表单提交区别
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/07/07/JavaScript/JSON对象与JSON字符串转化/" rel="next" title="JSON 对象与 JSON 字符串相互转化">
+    <a href="/2015/07/07/JavaScript/JSON%E5%AF%B9%E8%B1%A1%E4%B8%8EJSON%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96/" rel="next" title="JSON 对象与 JSON 字符串相互转化">
       JSON 对象与 JSON 字符串相互转化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -349,7 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-跨域"><span class="nav-number">1.</span> <span class="nav-text">JS 跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源策略"><span class="nav-number">1.1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何为跨域"><span class="nav-number">1.2.</span> <span class="nav-text">何为跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么不能跨域？"><span class="nav-number">1.2.1.</span> <span class="nav-text">为什么不能跨域？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域的方式"><span class="nav-number">1.3.</span> <span class="nav-text">跨域的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp-跨域访问了，还安全吗？"><span class="nav-number">1.3.1.</span> <span class="nav-text">jsonp 跨域访问了，还安全吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp-跨域原理"><span class="nav-number">1.4.</span> <span class="nav-text">jsonp 跨域原理</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.</span> <span class="nav-text">JS 跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.2.</span> <span class="nav-text">何为跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%B7%A8%E5%9F%9F%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">为什么不能跨域？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">跨域的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp-%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E4%BA%86%EF%BC%8C%E8%BF%98%E5%AE%89%E5%85%A8%E5%90%97%EF%BC%9F"><span class="nav-number">1.3.1.</span> <span class="nav-text">jsonp 跨域访问了，还安全吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp-%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">jsonp 跨域原理</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -399,16 +403,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -428,9 +432,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

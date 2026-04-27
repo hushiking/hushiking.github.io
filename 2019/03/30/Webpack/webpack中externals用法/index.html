@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。">
-<meta name="keywords" content="Webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack externals 的用法">
-<meta property="og:url" content="http://hushiking.github.io/2019/03/30/Webpack/webpack中externals用法/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2019/03/30/Webpack/webpack%E4%B8%ADexternals%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:08:43.009Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-03-30T04:12:13.000Z">
+<meta property="article:modified_time" content="2019-05-13T07:08:43.009Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Webpack">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack externals 的用法">
-<meta name="twitter:description" content="externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。">
 
-<link rel="canonical" href="http://hushiking.github.io/2019/03/30/Webpack/webpack中externals用法/">
+<link rel="canonical" href="http://hushiking.github.io/2019/03/30/Webpack/webpack%E4%B8%ADexternals%E7%94%A8%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/03/30/Webpack/webpack中externals用法/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/03/30/Webpack/webpack%E4%B8%ADexternals%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,13 +209,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/打包工具/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
                     <span itemprop="name">打包工具</span>
                   </a>
                 </span>
@@ -238,21 +238,27 @@
 <ul>
 <li><strong>index.html</strong></li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/vue/2.5.22/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/vue/2.5.22/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><strong>webpack.config.js</strong></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: &#123;</span><br><span class="line">    vue: <span class="string">'Vue'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="attr">externals</span>: &#123;</span><br><span class="line">    <span class="attr">vue</span>: <span class="string">&#x27;Vue&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这样就剥离了那些不需要改动的依赖模块，换句话，下面展示的代码还可以正常运行：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueClipboard)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueClipboard</span>)</span><br></pre></td></tr></table></figure>
+
 <h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>类似于上面的例子，属性名是 <code>vue</code>，表示排除了 <code>import Vue from &#39;vue&#39;</code> 中的 <code>vue</code> 模块。为了替换这个模块，<code>Vue</code> 的值将被用来检索一个全局的 <code>Vue</code> 变量。</p>
-<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: &#123;</span><br><span class="line">    subtract: [<span class="string">'./math'</span>, <span class="string">'subtract'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="attr">externals</span>: &#123;</span><br><span class="line">    <span class="attr">subtract</span>: [<span class="string">&#x27;./math&#x27;</span>, <span class="string">&#x27;subtract&#x27;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>subtract: [&#39;./math&#39;, &#39;subtract&#39;]</code> 转换为父子结构，其中 <code>./math</code> 是父模块，而 <code>bundle</code> 只引用 <code>subtract</code> 变量下的子集。</p>
-<h2 id="object"><a href="#object" class="headerlink" title="object"></a>object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  externals : &#123;</span><br><span class="line">    lodash : &#123;</span><br><span class="line">      commonjs: <span class="string">'lodash'</span>,</span><br><span class="line">      amd: <span class="string">'lodash'</span>,</span><br><span class="line">      root: <span class="string">'_'</span> <span class="comment">// 指向全局变量</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line"></span><br><span class="line">  externals : &#123;</span><br><span class="line">    subtract : &#123;</span><br><span class="line">      root: [<span class="string">'math'</span>, <span class="string">'subtract'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="object"><a href="#object" class="headerlink" title="object"></a>object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  externals : &#123;</span><br><span class="line">    lodash : &#123;</span><br><span class="line">      <span class="attr">commonjs</span>: <span class="string">&#x27;lodash&#x27;</span>,</span><br><span class="line">      <span class="attr">amd</span>: <span class="string">&#x27;lodash&#x27;</span>,</span><br><span class="line">      <span class="attr">root</span>: <span class="string">&#x27;_&#x27;</span> <span class="comment">// 指向全局变量</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line"></span><br><span class="line">  externals : &#123;</span><br><span class="line">    subtract : &#123;</span><br><span class="line">      <span class="attr">root</span>: [<span class="string">&#x27;math&#x27;</span>, <span class="string">&#x27;subtract&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>此语法用于描述外部 <code>library</code> 所有可用的访问方式。这里 <code>lodash</code> 这个外部 <code>library</code> 可以在 <code>AMD</code> 和 <code>CommonJS</code> 模块系统中通过 <code>lodash</code> 访问，但在全局变量形式下用 <code>_</code> 访问。<code>subtract</code> 可以通过全局 <code>math</code> 对象下的属性 <code>subtract</code> 访问（例如 <code>window[&#39;math&#39;][&#39;subtract&#39;]</code>）。</p>
-<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>参照官网<a href="https://webpack.docschina.org/configuration/externals/#externals" target="_blank" rel="noopener">externals function</a></p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>参照官网<a href="https://webpack.docschina.org/configuration/externals/#externals">externals function</a></p>
 <h2 id="regex"><a href="#regex" class="headerlink" title="regex"></a>regex</h2><p>匹配给定正则表达式的每个依赖，都将从输出 bundle 中排除。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  externals: <span class="regexp">/^mint-ui$/i</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="attr">externals</span>: <span class="regexp">/^mint-ui$/i</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这个示例中，所有名为 <code>mint-ui</code> 的依赖（忽略大小写）都会被外部化。</p>
 
     </div>
@@ -272,11 +278,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/03/28/Vue/Vue微信网页刷新问题/" rel="prev" title="Vue 微信网页刷新问题">
+    <a href="/2019/03/28/Vue/Vue%E5%BE%AE%E4%BF%A1%E7%BD%91%E9%A1%B5%E5%88%B7%E6%96%B0%E9%97%AE%E9%A2%98/" rel="prev" title="Vue 微信网页刷新问题">
       <i class="fa fa-chevron-left"></i> Vue 微信网页刷新问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/04/22/HTML/HTML5 Audio兼容问题/" rel="next" title="HTML5 Audio兼容问题">
+    <a href="/2019/04/22/HTML/HTML5%20Audio%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" rel="next" title="HTML5 Audio兼容问题">
       HTML5 Audio兼容问题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -338,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#外部扩展"><span class="nav-number">1.</span> <span class="nav-text">外部扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">1.1.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array"><span class="nav-number">1.2.</span> <span class="nav-text">array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object"><span class="nav-number">1.3.</span> <span class="nav-text">object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">1.4.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regex"><span class="nav-number">1.5.</span> <span class="nav-text">regex</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E6%89%A9%E5%B1%95"><span class="nav-number">1.</span> <span class="nav-text">外部扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">1.1.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array"><span class="nav-number">1.2.</span> <span class="nav-text">array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object"><span class="nav-number">1.3.</span> <span class="nav-text">object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">1.4.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regex"><span class="nav-number">1.5.</span> <span class="nav-text">regex</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -388,16 +394,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -417,9 +423,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

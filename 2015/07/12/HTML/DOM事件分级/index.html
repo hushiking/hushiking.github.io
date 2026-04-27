@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="W3C 标准可以分为 DOM0, DOM2, DOM3 三个版本，所有浏览器都支持 DOM0 级事件处理程序，且使用该方式时，事件处理程序是在元素的作用域中运行，因此程序中的 this 都指向元素。">
-<meta name="keywords" content="HTML,DOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM 事件分级">
-<meta property="og:url" content="http://hushiking.github.io/2015/07/12/HTML/DOM事件分级/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2015/07/12/HTML/DOM%E4%BA%8B%E4%BB%B6%E5%88%86%E7%BA%A7/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="W3C 标准可以分为 DOM0, DOM2, DOM3 三个版本，所有浏览器都支持 DOM0 级事件处理程序，且使用该方式时，事件处理程序是在元素的作用域中运行，因此程序中的 this 都指向元素。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T06:58:05.201Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-07-12T06:21:08.000Z">
+<meta property="article:modified_time" content="2019-05-13T06:58:05.201Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="DOM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM 事件分级">
-<meta name="twitter:description" content="W3C 标准可以分为 DOM0, DOM2, DOM3 三个版本，所有浏览器都支持 DOM0 级事件处理程序，且使用该方式时，事件处理程序是在元素的作用域中运行，因此程序中的 this 都指向元素。">
 
-<link rel="canonical" href="http://hushiking.github.io/2015/07/12/HTML/DOM事件分级/">
+<link rel="canonical" href="http://hushiking.github.io/2015/07/12/HTML/DOM%E4%BA%8B%E4%BB%B6%E5%88%86%E7%BA%A7/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/07/12/HTML/DOM事件分级/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/07/12/HTML/DOM%E4%BA%8B%E4%BB%B6%E5%88%86%E7%BA%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -233,21 +234,21 @@
 <ul>
 <li><p>事件绑定分为两种方式（<strong>内联事件</strong>）：</p>
 <ol>
-<li><p>在标签内写onclick事件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"myButton"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Press Me"</span> <span class="attr">onclick</span>=<span class="string">"alert('thanks');"</span> &gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 JS 中写 onclick=function() {} 函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'thanks'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>在标签内写onclick事件</li>
 </ol>
-</li>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;myButton&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Press Me&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;thanks&#x27;);&quot;</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在 JS 中写 onclick&#x3D;function() {} 函数</li>
+</ol>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;thanks&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <p>只支持冒泡，不支持捕获；事件函数不能使用闭包或者匿名函数</p>
 </blockquote>
 <ul>
 <li>0级 DOM 多次添加事件，后面添加的事件会覆盖前面的</li>
-<li>0级 DOM 取消事件绑定，采用 element.onclick = null</li>
+<li>0级 DOM 取消事件绑定，采用 element.onclick &#x3D; null</li>
 <li>0级 DOM 在事件监听函数中返回 false 可以阻止浏览器执行默认行为</li>
 </ul>
 <h2 id="DOM2-级"><a href="#DOM2-级" class="headerlink" title="DOM2 级"></a>DOM2 级</h2><p>只用一个监听方法：<code>addEventListener()</code> 和 <code>removeEventListener()</code></p>
@@ -270,20 +271,21 @@
 </blockquote>
 <p><strong>注意</strong>：冒泡可以被阻止，捕获不能被阻止。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>点击a后capturing(捕捉)阶段事件传播会从document-&gt;span-&gt;a，然后发生在a，最后bubbling(冒泡)阶段事件传播会从a-&gt;span-&gt;document</em></strong></p>
+
+<p><em><strong>点击a后capturing(捕捉)阶段事件传播会从document-&gt;span-&gt;a，然后发生在a，最后bubbling(冒泡)阶段事件传播会从a-&gt;span-&gt;document</strong></em></p>
 <ul>
-<li>2级 DOM 使用 <code>e.stopPropagation()</code> 阻止事件从当前正在处理它的节点传播（冒泡），IE：e.cacelBubble = true</li>
-<li>2级 DOM 使用 <code>e.preventDefault()</code> 阻止浏览器默认行为，IE：e.returnValue = true</li>
+<li>2级 DOM 使用 <code>e.stopPropagation()</code> 阻止事件从当前正在处理它的节点传播（冒泡），IE：e.cacelBubble &#x3D; true</li>
+<li>2级 DOM 使用 <code>e.preventDefault()</code> 阻止浏览器默认行为，IE：e.returnValue &#x3D; true</li>
 <li>2级 DOM 事件绑定中 this 有可能不是指向触发事件的元素，使用 <code>e.currentTarget</code> 表示正在处理事件的节点。如果在 capturing 阶段和冒泡阶段处理事件，这个属性就与 <code>target</code> 属性不同。在事件监听函数中应该用这个属性而不是this。IE：<code>e.srcElement</code>。</li>
 </ul>
 <h2 id="DOM事件分级比较"><a href="#DOM事件分级比较" class="headerlink" title="DOM事件分级比较"></a>DOM事件分级比较</h2><ol>
-<li>DOM0级事件<code>&lt;input type=“button” onclick=“hello()” /&gt;</code>，html 与 js 代码耦合在一起，不利于维护，可以添加多个事件处理程序，如果不想要该事件处理程序，必须从 html 代码在删除事件处理代码。<code>element.onclick=function(){}</code> 属于DOM0级事件，不能添加多个事件处理程序，后面添加的会覆盖前面的。如果不想要了，可以在下面写成 <code>element.onclick=null</code>。</li>
+<li>DOM0级事件<code>&lt;input type=“button” onclick=“hello()” /&gt;</code>，html 与 js 代码耦合在一起，不利于维护，可以添加多个事件处理程序，如果不想要该事件处理程序，必须从 html 代码在删除事件处理代码。<code>element.onclick=function()&#123;&#125;</code> 属于DOM0级事件，不能添加多个事件处理程序，后面添加的会覆盖前面的。如果不想要了，可以在下面写成 <code>element.onclick=null</code>。</li>
 <li>DOM1级主要隐射文档结构，没有事件</li>
-<li>DOM2级事件，<code>element.addEventListener(‘click’,fuction(){},false)</code>以及<code>element.removeEventListener(&#39;click&#39;,function(){},false)</code>。注意：DOM2级事件处理程序，函数里面也可以直接用this，this代表的是点击的按钮，比如里面可以写this.value等。</li>
+<li>DOM2级事件，<code>element.addEventListener(‘click’,fuction()&#123;&#125;,false)</code>以及<code>element.removeEventListener(&#39;click&#39;,function()&#123;&#125;,false)</code>。注意：DOM2级事件处理程序，函数里面也可以直接用this，this代表的是点击的按钮，比如里面可以写this.value等。</li>
 <li>DOM3级事件主要增加了一些事件类型，包括鼠标事件，键盘事件。</li>
 </ol>
 <h2 id="document-querySelectorAll"><a href="#document-querySelectorAll" class="headerlink" title="document.querySelectorAll"></a>document.querySelectorAll</h2><p><code>document.querySelectorAll(&#39;.classname&#39;)</code>返回的是 NodeList 对象，是静态的，不随文档的更新而变化。但是使用<code>getElementsByName</code>方法返回的也是NodeList对象，但是这个对象的确是动态的。</p>
-<p><a href="http://www.cnblogs.com/childsplay/p/5527999.html" target="_blank" rel="noopener">为什么getElementsByTagName()要比querySelectorAll()快很多？</a></p>
+<p><a href="http://www.cnblogs.com/childsplay/p/5527999.html">为什么getElementsByTagName()要比querySelectorAll()快很多？</a></p>
 
     </div>
 
@@ -303,11 +305,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/07/07/JavaScript/JSON对象与JSON字符串转化/" rel="prev" title="JSON 对象与 JSON 字符串相互转化">
+    <a href="/2015/07/07/JavaScript/JSON%E5%AF%B9%E8%B1%A1%E4%B8%8EJSON%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96/" rel="prev" title="JSON 对象与 JSON 字符串相互转化">
       <i class="fa fa-chevron-left"></i> JSON 对象与 JSON 字符串相互转化
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/07/14/JavaScript/JS获取元素计算后属性/" rel="next" title="JS 获取元素计算后的属性值">
+    <a href="/2015/07/14/JavaScript/JS%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E8%AE%A1%E7%AE%97%E5%90%8E%E5%B1%9E%E6%80%A7/" rel="next" title="JS 获取元素计算后的属性值">
       JS 获取元素计算后的属性值 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -369,7 +371,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM0-级"><span class="nav-number">2.</span> <span class="nav-text">DOM0 级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM2-级"><span class="nav-number">3.</span> <span class="nav-text">DOM2 级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM事件分级比较"><span class="nav-number">4.</span> <span class="nav-text">DOM事件分级比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document-querySelectorAll"><span class="nav-number">5.</span> <span class="nav-text">document.querySelectorAll</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM0-%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">DOM0 级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM2-%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">DOM2 级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM%E4%BA%8B%E4%BB%B6%E5%88%86%E7%BA%A7%E6%AF%94%E8%BE%83"><span class="nav-number">4.</span> <span class="nav-text">DOM事件分级比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document-querySelectorAll"><span class="nav-number">5.</span> <span class="nav-text">document.querySelectorAll</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -419,16 +421,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -448,9 +450,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

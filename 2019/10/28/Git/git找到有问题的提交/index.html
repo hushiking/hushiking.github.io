@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="找到一个好版本和一个坏版本的 commit_id ，一般当前版本是坏的，然后通过 git bisect 二分法往上查找。">
-<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git版本回溯，找到有问题的提交">
-<meta property="og:url" content="http://hushiking.github.io/2019/10/28/Git/git找到有问题的提交/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2019/10/28/Git/git%E6%89%BE%E5%88%B0%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E6%8F%90%E4%BA%A4/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="找到一个好版本和一个坏版本的 commit_id ，一般当前版本是坏的，然后通过 git bisect 二分法往上查找。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-09T09:42:19.769Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-10-28T08:44:09.000Z">
+<meta property="article:modified_time" content="2020-01-09T09:42:19.769Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git版本回溯，找到有问题的提交">
-<meta name="twitter:description" content="找到一个好版本和一个坏版本的 commit_id ，一般当前版本是坏的，然后通过 git bisect 二分法往上查找。">
 
-<link rel="canonical" href="http://hushiking.github.io/2019/10/28/Git/git找到有问题的提交/">
+<link rel="canonical" href="http://hushiking.github.io/2019/10/28/Git/git%E6%89%BE%E5%88%B0%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E6%8F%90%E4%BA%A4/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/10/28/Git/git找到有问题的提交/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/10/28/Git/git%E6%89%BE%E5%88%B0%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E6%8F%90%E4%BA%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -228,17 +228,18 @@
 
       
         <h2 id="让-git-自己来记录，就不用看-git-提交树自己去找"><a href="#让-git-自己来记录，就不用看-git-提交树自己去找" class="headerlink" title="让 git 自己来记录，就不用看 git 提交树自己去找"></a>让 git 自己来记录，就不用看 git 提交树自己去找</h2><ol>
-<li><code>git bisect start</code> // 开始二分法查找</li>
-<li><code>git bisect bad</code> // 将当前版本标记为坏的，要保证当前取的是最新的坏版本，或有问题的坏版本</li>
-<li><code>git bisect good &lt;commit_id&gt;</code> // 把前面没问题的 commit_id 标记为好的，要测试下保证确实是好的</li>
-<li><code>git describe</code> // 取好的和坏的中间版本，会提示一个 <code>id</code></li>
-<li><code>git checkout id</code> // id为 4 中提示的 id, 然后编译测试</li>
+<li><code>git bisect start</code> &#x2F;&#x2F; 开始二分法查找</li>
+<li><code>git bisect bad</code> &#x2F;&#x2F; 将当前版本标记为坏的，要保证当前取的是最新的坏版本，或有问题的坏版本</li>
+<li><code>git bisect good &lt;commit_id&gt;</code> &#x2F;&#x2F; 把前面没问题的 commit_id 标记为好的，要测试下保证确实是好的</li>
+<li><code>git describe</code> &#x2F;&#x2F; 取好的和坏的中间版本，会提示一个 <code>id</code></li>
+<li><code>git checkout id</code> &#x2F;&#x2F; id为 4 中提示的 id, 然后编译测试</li>
 <li>如果为好的，用 <code>git bisect good</code>, 否则用 <code>git bisect bad</code> 标记为坏的</li>
 <li>重复进行 4、5、6 的动作。注意某一次标记为 <code>good</code> 的时候会提示 <code>&lt;commit_id&gt; is the first bad commit</code>, 这时就找到了有问题的提交</li>
-<li><code>git bisect reset</code> // 二分法复位</li>
+<li><code>git bisect reset</code> &#x2F;&#x2F; 二分法复位</li>
 </ol>
 <p>如果标记为 <code>bad</code> 或 <code>good</code> 时不小心标错了，可以用 <code>git bisect log &gt; logfile</code> 修改 logfile, 然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git bisect reset</span><br><span class="line">git bisect replay logfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git bisect reset</span><br><span class="line">git bisect replay logfile</span><br></pre></td></tr></table></figure>
+
 <p>重置标记，最后跳到 4 步骤继续</p>
 
     </div>
@@ -258,11 +259,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/10/19/Git/去掉已经托管在git上的文件/" rel="prev" title="git rm -r --cached 去掉已经托管在 git 上的文件">
+    <a href="/2019/10/19/Git/%E5%8E%BB%E6%8E%89%E5%B7%B2%E7%BB%8F%E6%89%98%E7%AE%A1%E5%9C%A8git%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6/" rel="prev" title="git rm -r --cached 去掉已经托管在 git 上的文件">
       <i class="fa fa-chevron-left"></i> git rm -r --cached 去掉已经托管在 git 上的文件
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/11/11/Mac/Mac查看C++及各种环境的命令/" rel="next" title="Mac查看C++及各种环境的命令">
+    <a href="/2019/11/11/Mac/Mac%E6%9F%A5%E7%9C%8BC++%E5%8F%8A%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E7%9A%84%E5%91%BD%E4%BB%A4/" rel="next" title="Mac查看C++及各种环境的命令">
       Mac查看C++及各种环境的命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -324,7 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#让-git-自己来记录，就不用看-git-提交树自己去找"><span class="nav-number">1.</span> <span class="nav-text">让 git 自己来记录，就不用看 git 提交树自己去找</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9-git-%E8%87%AA%E5%B7%B1%E6%9D%A5%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%B0%B1%E4%B8%8D%E7%94%A8%E7%9C%8B-git-%E6%8F%90%E4%BA%A4%E6%A0%91%E8%87%AA%E5%B7%B1%E5%8E%BB%E6%89%BE"><span class="nav-number">1.</span> <span class="nav-text">让 git 自己来记录，就不用看 git 提交树自己去找</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -374,16 +375,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -403,9 +404,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

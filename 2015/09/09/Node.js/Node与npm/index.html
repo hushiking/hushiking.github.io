@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="简要介绍 Node.js 与 npm 的一些常用命令。">
-<meta name="keywords" content="Node.js,npm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js 与 npm">
-<meta property="og:url" content="http://hushiking.github.io/2015/09/09/Node.js/Node与npm/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2015/09/09/Node.js/Node%E4%B8%8Enpm/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="简要介绍 Node.js 与 npm 的一些常用命令。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-01T18:34:52.935Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-09-09T11:23:11.000Z">
+<meta property="article:modified_time" content="2020-01-01T18:34:52.935Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="npm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js 与 npm">
-<meta name="twitter:description" content="简要介绍 Node.js 与 npm 的一些常用命令。">
 
-<link rel="canonical" href="http://hushiking.github.io/2015/09/09/Node.js/Node与npm/">
+<link rel="canonical" href="http://hushiking.github.io/2015/09/09/Node.js/Node%E4%B8%8Enpm/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/09/09/Node.js/Node与npm/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2015/09/09/Node.js/Node%E4%B8%8Enpm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -279,13 +280,13 @@
 <li>监听请求事件，设置请求处理函数<ul>
 <li>Server 端的请求入口，所有的请求都会触发 request 请求事件</li>
 <li>然后执行对应的请求处理函数</li>
-<li><code>server.on(&#39;request&#39;, function (req, res) { handleCode }</code></li>
+<li><code>server.on(&#39;request&#39;, function (req, res) &#123; handleCode &#125;</code></li>
 <li>或者所有请求都先进入 router 中进行匹配分发处理处理函数</li>
-<li><code>server.on(&#39;request&#39;, function (req, res) { router(req, res)})</code></li>
+<li><code>server.on(&#39;request&#39;, function (req, res) &#123; router(req, res)&#125;)</code></li>
 </ul>
 </li>
 <li>绑定端口，启动服务器<ul>
-<li><code>server.listen(3000, function () {console.log(&#39;Server is running at port 3000...&#39;)})</code></li>
+<li><code>server.listen(3000, function () &#123;console.log(&#39;Server is running at port 3000...&#39;)&#125;)</code></li>
 </ul>
 </li>
 </ol>
@@ -295,34 +296,33 @@
 <li>url 模块中的 parse 方法可以将一个路径解析为一个对象</li>
 <li>得到一个路径中的请求路径部分、查询字符串部分、端口号、协议等信息</li>
 <li>通过指定第二个参数为 true，<strong>自动</strong>将解析到的 <em>查询字符串解析为一个对象</em></li>
-<li><p>通过指定第三个参数为 true，将<code>//foo/bar</code>解析为<code>{ host: &#39;foo&#39;, pathname: &#39;/bar&#39; }</code>，而不是解析为<code>{ pathname: &#39;//foo/bar&#39; }</code>，默认为false</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> urlObj = url.parse(req.url, <span class="literal">true</span>)</span><br><span class="line"><span class="comment">// 拿到请求路径中的查询字符串对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> queryObj = urlObj.query</span><br><span class="line"><span class="comment">// 只拿到请求路径中的路径部分（不包含查询字符串）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pathname = urlObj.pathname</span><br></pre></td></tr></table></figure>
-</li>
+<li>通过指定第三个参数为 true，将<code>//foo/bar</code>解析为<code>&#123; host: &#39;foo&#39;, pathname: &#39;/bar&#39; &#125;</code>，而不是解析为<code>&#123; pathname: &#39;//foo/bar&#39; &#125;</code>，默认为false</li>
 </ol>
-</li>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> urlObj = url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>)</span><br><span class="line"><span class="comment">// 拿到请求路径中的查询字符串对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> queryObj = urlObj.<span class="property">query</span></span><br><span class="line"><span class="comment">// 只拿到请求路径中的路径部分（不包含查询字符串）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pathname = urlObj.<span class="property">pathname</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="NODE-ENV-设置"><a href="#NODE-ENV-设置" class="headerlink" title="NODE_ENV 设置"></a>NODE_ENV 设置</h3><ul>
 <li><p>cmd模式（Windows）</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> NODE_ENV = production</span><br><span class="line">node app.js</span><br><span class="line"></span><br><span class="line">// app.js</span><br><span class="line">console.log(process.env.NODE_ENV)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set <span class="variable constant_">NODE_ENV</span> = production</span><br><span class="line">node app.<span class="property">js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">NODE_ENV</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>shell模式（Linux）</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV = production node app.js</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NODE_ENV</span> = production node app.<span class="property">js</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用cross-env包</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i cross-env --save-dev</span><br><span class="line">cross-env NODE_ENV=blablabla</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i cross-env --save-dev</span><br><span class="line">cross-env <span class="variable constant_">NODE_ENV</span>=blablabla</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>package.json中script命令</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run xxx --production</span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="built_in">console</span>.log(process.env.NODE_ENV) <span class="comment">//production</span></span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run xxx --production</span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">NODE_ENV</span>) <span class="comment">//production</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="npm-全局配置"><a href="#npm-全局配置" class="headerlink" title="npm 全局配置"></a>npm 全局配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">npm config <span class="built_in">set</span> disturl https://npm.taobao.org/dist</span><br><span class="line">npm config <span class="built_in">set</span> electron_mirror https://npm.taobao.org/mirrors/electron/</span><br><span class="line">npm config <span class="built_in">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line">npm config <span class="built_in">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/</span><br></pre></td></tr></table></figure>
+
 <h2 id="yarn-全局配置"><a href="#yarn-全局配置" class="headerlink" title="yarn 全局配置"></a>yarn 全局配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org -g</span><br><span class="line">yarn config <span class="built_in">set</span> disturl https://npm.taobao.org/dist -g</span><br><span class="line">yarn config <span class="built_in">set</span> electron_mirror https://npm.taobao.org/mirrors/electron/ -g</span><br><span class="line">yarn config <span class="built_in">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g</span><br><span class="line">yarn config <span class="built_in">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/ -g</span><br><span class="line">yarn config <span class="built_in">set</span> chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver -g</span><br><span class="line">yarn config <span class="built_in">set</span> operadriver_cdnurl https://cdn.npm.taobao.org/dist/operadriver -g</span><br><span class="line">yarn config <span class="built_in">set</span> fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g</span><br></pre></td></tr></table></figure>
-<h2 id="npm-切换-设置-源"><a href="#npm-切换-设置-源" class="headerlink" title="npm 切换/设置 源"></a>npm 切换/设置 源</h2><ol>
+
+<h2 id="npm-切换-设置-源"><a href="#npm-切换-设置-源" class="headerlink" title="npm 切换&#x2F;设置 源"></a>npm 切换&#x2F;设置 源</h2><ol>
 <li>查看当前源: <code>npm get registry</code></li>
 <li>切换淘宝源: <code>npm config set registry https://registry.npm.taobao.org</code></li>
 <li>切换回自带源: <code>npm config set registry http://registry.npmjs.org</code></li>
 </ol>
-<h2 id="yarn-切换-设置-源"><a href="#yarn-切换-设置-源" class="headerlink" title="yarn 切换/设置 源"></a>yarn 切换/设置 源</h2><ol>
+<h2 id="yarn-切换-设置-源"><a href="#yarn-切换-设置-源" class="headerlink" title="yarn 切换&#x2F;设置 源"></a>yarn 切换&#x2F;设置 源</h2><ol>
 <li>查看当前源: <code>yarn config get registry</code></li>
 <li>切换淘宝源: <code>yarn config set registry https://registry.npm.taobao.org</code></li>
 <li>切换回自带源: <code>yarn config set registry https://registry.yarnpkg.com</code></li>
@@ -346,11 +346,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/09/08/JavaScript/原型与原型链/" rel="prev" title="原型与原型链">
+    <a href="/2015/09/08/JavaScript/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="prev" title="原型与原型链">
       <i class="fa fa-chevron-left"></i> 原型与原型链
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/10/23/Node.js/生成URI中的查询字符串/" rel="next" title="生成 URI 中的查询字符串">
+    <a href="/2015/10/23/Node.js/%E7%94%9F%E6%88%90URI%E4%B8%AD%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="生成 URI 中的查询字符串">
       生成 URI 中的查询字符串 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -412,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-与-npm-常用命令"><span class="nav-number">1.</span> <span class="nav-text">Node.js 与 npm 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm命令"><span class="nav-number">2.</span> <span class="nav-text">npm命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvm"><span class="nav-number">3.</span> <span class="nav-text">nvm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restful"><span class="nav-number">4.</span> <span class="nav-text">Restful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js命令"><span class="nav-number">5.</span> <span class="nav-text">Node.js命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NODE-ENV-设置"><span class="nav-number">5.1.</span> <span class="nav-text">NODE_ENV 设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-全局配置"><span class="nav-number">6.</span> <span class="nav-text">npm 全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-全局配置"><span class="nav-number">7.</span> <span class="nav-text">yarn 全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-切换-设置-源"><span class="nav-number">8.</span> <span class="nav-text">npm 切换/设置 源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-切换-设置-源"><span class="nav-number">9.</span> <span class="nav-text">yarn 切换/设置 源</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-%E4%B8%8E-npm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Node.js 与 npm 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">npm命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvm"><span class="nav-number">3.</span> <span class="nav-text">nvm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restful"><span class="nav-number">4.</span> <span class="nav-text">Restful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Node.js命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NODE-ENV-%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.1.</span> <span class="nav-text">NODE_ENV 设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">npm 全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">7.</span> <span class="nav-text">yarn 全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-%E5%88%87%E6%8D%A2-%E8%AE%BE%E7%BD%AE-%E6%BA%90"><span class="nav-number">8.</span> <span class="nav-text">npm 切换&#x2F;设置 源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-%E5%88%87%E6%8D%A2-%E8%AE%BE%E7%BD%AE-%E6%BA%90"><span class="nav-number">9.</span> <span class="nav-text">yarn 切换&#x2F;设置 源</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -462,16 +462,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -491,9 +491,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

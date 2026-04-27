@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,19 @@
 </script>
 
   <meta name="description" content="前端框架 Vue 的基本用法介绍。">
-<meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue 基本用法">
-<meta property="og:url" content="http://hushiking.github.io/2016/11/22/Vue/Vue基本用法/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2016/11/22/Vue/Vue%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="前端框架 Vue 的基本用法介绍。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T07:07:12.782Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-11-22T11:45:24.000Z">
+<meta property="article:modified_time" content="2019-05-13T07:07:12.782Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue 基本用法">
-<meta name="twitter:description" content="前端框架 Vue 的基本用法介绍。">
 
-<link rel="canonical" href="http://hushiking.github.io/2016/11/22/Vue/Vue基本用法/">
+<link rel="canonical" href="http://hushiking.github.io/2016/11/22/Vue/Vue%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/11/22/Vue/Vue基本用法/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2016/11/22/Vue/Vue%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,13 +209,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/前端框架/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
                     <span itemprop="name">前端框架</span>
                   </a>
                 </span>
@@ -233,7 +233,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Vue-基础"><a href="#Vue-基础" class="headerlink" title="Vue 基础"></a>Vue 基础</h1><p>本文介绍了 Vue 一些基本用法，详情访问 <a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">Vue 官方文档</a>。</p>
+        <h1 id="Vue-基础"><a href="#Vue-基础" class="headerlink" title="Vue 基础"></a>Vue 基础</h1><p>本文介绍了 Vue 一些基本用法，详情访问 <a href="https://cn.vuejs.org/v2/guide/">Vue 官方文档</a>。</p>
 <h2 id="创建-vue-实例"><a href="#创建-vue-实例" class="headerlink" title="创建 vue 实例"></a>创建 vue 实例</h2><ul>
 <li>绑定元素<ul>
 <li>data 的属性值绑定在全局变量 app 上，可任意修改</li>
@@ -241,7 +241,8 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>，</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'hello vue!'</span>，</span><br><span class="line">    seen: <span class="literal">true</span>，</span><br><span class="line">    todos: [</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'js'</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'vue'</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">'css3'</span>&#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>，</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;hello vue!&#x27;</span>，</span><br><span class="line">    <span class="attr">seen</span>: <span class="literal">true</span>，</span><br><span class="line">    <span class="attr">todos</span>: [</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">&#x27;js&#x27;</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">&#x27;vue&#x27;</span>&#125;，</span><br><span class="line">      &#123;<span class="attr">text</span>: <span class="string">&#x27;css3&#x27;</span>&#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>html 内容使用 mustache 语法<ul>
 <li> 语法</li>
@@ -265,7 +266,7 @@
 <li>最后也可以采用半角句号添加修饰符</li>
 <li>v-bind 缩写<ul>
 <li><code>&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</code>缩写为<code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</code></li>
-<li><code>&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</code>缩写为`</li>
+<li><code>&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</code>缩写为&#96;</li>
 </ul>
 </li>
 <li>过滤器<ul>
@@ -317,28 +318,31 @@
 </ul>
 </li>
 <li>用户刷新是看到花括号标记<ul>
-<li><strong><em>v-cloak</em></strong><ul>
+<li><em><strong>v-cloak</strong></em><ul>
 <li>防止闪烁，用于大段落</li>
 </ul>
 </li>
-<li><strong><em>v-text</em></strong>和<strong><em>v-html</em></strong></li>
+<li><em><strong>v-text</strong></em>和<em><strong>v-html</strong></em></li>
 </ul>
 </li>
 </ul>
 <h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><ul>
-<li><strong>计算属性后面不加小括号</strong>，一经运行立即计算</li>
+<li><p><strong>计算属性后面不加小括号</strong>，一经运行立即计算</p>
+</li>
 <li><p>完整的computed属性形式</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    a: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">computed: &#123;</span><br><span class="line">    b: &#123;</span><br><span class="line">        <span class="keyword">get</span>: function() &#123;</span><br><span class="line">            <span class="keyword">return</span> a + <span class="number">1</span></span><br><span class="line">        &#125;，</span><br><span class="line">        <span class="keyword">set</span>: function(val) &#123;</span><br><span class="line">            <span class="keyword">this</span>.a = val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vm.b = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="attr">b</span>: &#123;</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> a + <span class="number">1</span></span><br><span class="line">        &#125;，</span><br><span class="line">        <span class="attr">set</span>: <span class="keyword">function</span>(<span class="params">val</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">a</span> = val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vm.<span class="property">b</span> = <span class="number">20</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>computed里面放置一些业务逻辑代码，一定要<strong><em>记得return</em></strong></p>
+<li><p>computed里面放置一些业务逻辑代码，一定要<em><strong>记得return</strong></em></p>
 </li>
-<li>计算属性是基于它的<strong>依赖缓存</strong>，只有在它的相关依赖发生改变时才会重新取值</li>
+<li><p>计算属性是基于它的<strong>依赖缓存</strong>，只有在它的相关依赖发生改变时才会重新取值</p>
+</li>
 <li><p>例如 Date.now()不是响应式依赖:</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    now: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Date</span>.now()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="attr">now</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果你不希望有缓存，<strong>请使用 method 代替 computed</strong></p>
 </li>
-<li>watch 是监测实例的属性值是否发生变化而执行的，允许执行异步操作</li>
+<li><p>watch 是监测实例的属性值是否发生变化而执行的，允许执行异步操作</p>
+</li>
 </ul>
 <h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
 <li>组件创建和注册<ol>
@@ -356,7 +360,7 @@
 <li>Child组件是在Parent组件中注册的，它只能在Parent组件中使用，确切地说：子组件只能在父组件的<code>template</code>中使用</li>
 </ul>
 </li>
-<li>使用script(需要设置type=”text/template”)或template标签</li>
+<li>使用script(需要设置type&#x3D;”text&#x2F;template”)或template标签</li>
 <li>传入Vue构造器的多数选项也可以用在 <code>Vue.extend()</code> 或<code>Vue.component()</code>中，不过有两个特例： <strong>data</strong> 和 <strong>el</strong>。<ul>
 <li><em>Vue.js规定：在定义组件的选项时，data和el选项必须使用函数，函数的返回值必须是对象。</em></li>
 </ul>
@@ -381,11 +385,11 @@
 </ul>
 <h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><ul>
 <li>路由实例方法<ul>
-<li><code>router.push({path: &#39;/home&#39;)</code><ul>
+<li><code>router.push(&#123;path: &#39;/home&#39;)</code><ul>
 <li>直接添加一个路由，表现为切换路由，本质是向历史记录中添加一条记录，相当于html5的history的api添加路由方法</li>
 </ul>
 </li>
-<li><code>router.replace({path: &#39;/home&#39;)</code><ul>
+<li><code>router.replace(&#123;path: &#39;/home&#39;)</code><ul>
 <li>替换路由，不会向历史记录中添加，相当于HTML5的history的API替换路由方法</li>
 </ul>
 </li>
@@ -410,11 +414,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/11/13/React/React.Children用法/" rel="prev" title="React.Children 用法">
+    <a href="/2016/11/13/React/React.Children%E7%94%A8%E6%B3%95/" rel="prev" title="React.Children 用法">
       <i class="fa fa-chevron-left"></i> React.Children 用法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/12/13/JavaScript/for...in与for...of区别/" rel="next" title="for...in 与 for...of 遍历的区别">
+    <a href="/2016/12/13/JavaScript/for...in%E4%B8%8Efor...of%E5%8C%BA%E5%88%AB/" rel="next" title="for...in 与 for...of 遍历的区别">
       for...in 与 for...of 遍历的区别 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -476,7 +480,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-基础"><span class="nav-number">1.</span> <span class="nav-text">Vue 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-vue-实例"><span class="nav-number">1.1.</span> <span class="nav-text">创建 vue 实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板语法"><span class="nav-number">1.2.</span> <span class="nav-text">模板语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期函数-vue2-0"><span class="nav-number">1.3.</span> <span class="nav-text">生命周期函数(vue2.0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算属性"><span class="nav-number">1.4.</span> <span class="nav-text">计算属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件"><span class="nav-number">1.5.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router"><span class="nav-number">1.6.</span> <span class="nav-text">vue-router</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Vue 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-vue-%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">创建 vue 实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">模板语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0-vue2-0"><span class="nav-number">1.3.</span> <span class="nav-text">生命周期函数(vue2.0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">计算属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router"><span class="nav-number">1.6.</span> <span class="nav-text">vue-router</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -526,16 +530,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -555,9 +559,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

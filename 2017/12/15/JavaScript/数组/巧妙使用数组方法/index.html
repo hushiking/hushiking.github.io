@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,21 @@
 </script>
 
   <meta name="description" content="一道考察数组方法的经典面试题。">
-<meta name="keywords" content="JavaScript,Array,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="巧妙使用数组方法创建一个长度为100的数组，并且每个元素的值等于它的下标（不使用 loop 循环）">
-<meta property="og:url" content="http://hushiking.github.io/2017/12/15/JavaScript/数组/巧妙使用数组方法/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2017/12/15/JavaScript/%E6%95%B0%E7%BB%84/%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="一道考察数组方法的经典面试题。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-06T02:51:19.125Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-12-15T14:15:27.000Z">
+<meta property="article:modified_time" content="2019-12-06T02:51:19.125Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="巧妙使用数组方法创建一个长度为100的数组，并且每个元素的值等于它的下标（不使用 loop 循环）">
-<meta name="twitter:description" content="一道考察数组方法的经典面试题。">
 
-<link rel="canonical" href="http://hushiking.github.io/2017/12/15/JavaScript/数组/巧妙使用数组方法/">
+<link rel="canonical" href="http://hushiking.github.io/2017/12/15/JavaScript/%E6%95%B0%E7%BB%84/%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -171,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/12/15/JavaScript/数组/巧妙使用数组方法/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2017/12/15/JavaScript/%E6%95%B0%E7%BB%84/%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +211,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
                     <span itemprop="name">web前端</span>
                   </a>
                 </span>
@@ -228,20 +230,21 @@
 
       
         <h2 id="生成密集数组-内部值为-undefined"><a href="#生成密集数组-内部值为-undefined" class="headerlink" title="生成密集数组(内部值为 undefined)"></a>生成密集数组(内部值为 undefined)</h2><ol>
-<li><code>Array.from({length: 100})</code></li>
-<li><code>Array.apply(null, {length: 100})</code></li>
+<li><code>Array.from(&#123;length: 100&#125;)</code></li>
+<li><code>Array.apply(null, &#123;length: 100&#125;)</code></li>
 <li>ES6 spread 拓展运算符：<code>[...Array(100)]</code></li>
 </ol>
 <h2 id="生成每个元素的值等于它的下标的数组"><a href="#生成每个元素的值等于它的下标的数组" class="headerlink" title="生成每个元素的值等于它的下标的数组"></a>生成每个元素的值等于它的下标的数组</h2><ol>
-<li>ES5 版本：<code>Object.keys(Array.apply(null,{length:100}));</code></li>
+<li>ES5 版本：<code>Object.keys(Array.apply(null,&#123;length:100&#125;));</code></li>
 <li>ES6 版本：<code>Array.from(Array(100).keys())</code>或者<code>[...Array(100).keys()]</code></li>
-<li><code>Array.from({length:100},(v, k) =&gt; k)</code></li>
+<li><code>Array.from(&#123;length:100&#125;,(v, k) =&gt; k)</code></li>
 </ol>
 <h2 id="最朴素的写法"><a href="#最朴素的写法" class="headerlink" title="最朴素的写法"></a>最朴素的写法</h2><p>用所谓的函数式语言，递归实现循环的思路，如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params">prev, curr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (curr &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">  &#125;</span><br><span class="line">  prev.push(curr)</span><br><span class="line">  <span class="keyword">return</span> reduce(prev, curr + <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = reduce([], <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reduce</span>(<span class="params">prev, curr</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (curr &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">  &#125;</span><br><span class="line">  prev.<span class="title function_">push</span>(curr)</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">reduce</span>(prev, curr + <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="title function_">reduce</span>([], <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>作者：Jim Liu</li>
-<li>链接：<a href="https://www.zhihu.com/question/41493194/answer/91299155" target="_blank" rel="noopener">原文地址</a></li>
+<li>链接：<a href="https://www.zhihu.com/question/41493194/answer/91299155">原文地址</a></li>
 <li>来源：知乎</li>
 <li>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</li>
 </ul>
@@ -256,7 +259,7 @@
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
               <a href="/tags/Array/" rel="tag"># Array</a>
-              <a href="/tags/面试/" rel="tag"># 面试</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
           </div>
 
         
@@ -265,11 +268,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/12/11/JavaScript/数组/JS数组reduce方法详解/" rel="prev" title="JS数组 reduce 方法详解">
+    <a href="/2017/12/11/JavaScript/%E6%95%B0%E7%BB%84/JS%E6%95%B0%E7%BB%84reduce%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="prev" title="JS数组 reduce 方法详解">
       <i class="fa fa-chevron-left"></i> JS数组 reduce 方法详解
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/01/08/JavaScript/总结一些常用的面试题/" rel="next" title="一些常用的面试题总结">
+    <a href="/2018/01/08/JavaScript/%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="一些常用的面试题总结">
       一些常用的面试题总结 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -331,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成密集数组-内部值为-undefined"><span class="nav-number">1.</span> <span class="nav-text">生成密集数组(内部值为 undefined)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成每个元素的值等于它的下标的数组"><span class="nav-number">2.</span> <span class="nav-text">生成每个元素的值等于它的下标的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最朴素的写法"><span class="nav-number">3.</span> <span class="nav-text">最朴素的写法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%9B%86%E6%95%B0%E7%BB%84-%E5%86%85%E9%83%A8%E5%80%BC%E4%B8%BA-undefined"><span class="nav-number">1.</span> <span class="nav-text">生成密集数组(内部值为 undefined)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%80%BC%E7%AD%89%E4%BA%8E%E5%AE%83%E7%9A%84%E4%B8%8B%E6%A0%87%E7%9A%84%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">生成每个元素的值等于它的下标的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E6%9C%B4%E7%B4%A0%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">最朴素的写法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -381,16 +384,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -410,9 +413,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

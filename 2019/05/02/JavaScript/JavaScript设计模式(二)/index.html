@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -47,19 +47,20 @@
 </script>
 
   <meta name="description" content="本文以图片预加载为案例， 在加载大图片之前预先显示一个 loading.gif, 避免让用户看到白屏， 产生等待焦虑。">
-<meta name="keywords" content="JavaScript,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript设计模式实践之代理模式">
-<meta property="og:url" content="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript设计模式(二)/index.html">
+<meta property="og:url" content="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C)/index.html">
 <meta property="og:site_name" content="化简为凡的小站">
 <meta property="og:description" content="本文以图片预加载为案例， 在加载大图片之前预先显示一个 loading.gif, 避免让用户看到白屏， 产生等待焦虑。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T09:16:24.384Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-05-02T09:11:20.000Z">
+<meta property="article:modified_time" content="2019-11-29T09:16:24.384Z">
+<meta property="article:author" content="化简为凡">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript设计模式实践之代理模式">
-<meta name="twitter:description" content="本文以图片预加载为案例， 在加载大图片之前预先显示一个 loading.gif, 避免让用户看到白屏， 产生等待焦虑。">
 
-<link rel="canonical" href="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript设计模式(二)/">
+<link rel="canonical" href="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C)/">
 
 
 <script id="page-configurations">
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript设计模式(二)/">
+    <link itemprop="mainEntityOfPage" href="http://hushiking.github.io/2019/05/02/JavaScript/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
                     <span itemprop="name">读书笔记</span>
                   </a>
                 </span>
@@ -228,7 +229,8 @@
 
       
         <p>下面代码是图片预加载的一个简单实现， 先不考虑加载图片时 <code>onError</code> ， <code>onAbort</code> ， 超时等问题。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'btnLoadImg'</span>&gt;</span>加载图片<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'imgContainer'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span> <span class="attr">src</span>=<span class="string">"../script/jquery-1.9.1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span></span><br><span class="line"><span class="javascript">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      $(<span class="string">'#btnLoadImg'</span>).bind(<span class="string">'click'</span>, doLoadImg);</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">doLoadImg</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> eleImg = createImgElement();</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.getElementById(<span class="string">'imgContainer'</span>).appendChild(eleImg);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      loadImg(eleImg, <span class="string">'https://i.postimg.cc/tRMNsqnJ/Yukee4.png'</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">//创建img标签</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">//这里用自执行函数加一个闭包，是为了可以创建多个id不同的img标签。</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> createImgElement = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> index = <span class="number">0</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> eleImg = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span></span><br><span class="line"><span class="javascript">        eleImg.setAttribute(<span class="string">'width'</span>, <span class="string">'200'</span>);</span></span><br><span class="line"><span class="javascript">        eleImg.setAttribute(<span class="string">'heght'</span>, <span class="string">'150'</span>);</span></span><br><span class="line"><span class="javascript">        eleImg.setAttribute(<span class="string">'id'</span>, <span class="string">'img'</span> + index++);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> eleImg;</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;)();</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">//预加载图片</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">//给img标签设一个加载图片，通过Image对象预先加载实际图片加载完成后设到img标签上</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">img, src</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> imgCache = <span class="keyword">new</span> Image();</span></span><br><span class="line"><span class="javascript">      imgCache.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        img.src = <span class="keyword">this</span>.src;</span></span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      img.src = <span class="string">'loading.gif'</span>;</span></span><br><span class="line">      imgCache.src = src;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="comment">//上述函数调整后可使用代理函数进行加载</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">//如果某一天不需要预加载了，就把loadImgProxy换成loadImg即可</span></span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&#x27;btnLoadImg&#x27;</span>&gt;</span>加载图片<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&#x27;imgContainer&#x27;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&#x27;text/javascript&#x27;</span> <span class="attr">src</span>=<span class="string">&quot;../script/jquery-1.9.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $(<span class="string">&#x27;#btnLoadImg&#x27;</span>).<span class="title function_">bind</span>(<span class="string">&#x27;click&#x27;</span>, doLoadImg);</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">doLoadImg</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> eleImg = <span class="title function_">createImgElement</span>();</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;imgContainer&#x27;</span>).<span class="title function_">appendChild</span>(eleImg);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">loadImg</span>(eleImg, <span class="string">&#x27;https://i.postimg.cc/tRMNsqnJ/Yukee4.png&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//创建img标签</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//这里用自执行函数加一个闭包，是为了可以创建多个id不同的img标签。</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> createImgElement = (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> index = <span class="number">0</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> eleImg = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;img&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        eleImg.<span class="title function_">setAttribute</span>(<span class="string">&#x27;width&#x27;</span>, <span class="string">&#x27;200&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        eleImg.<span class="title function_">setAttribute</span>(<span class="string">&#x27;heght&#x27;</span>, <span class="string">&#x27;150&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        eleImg.<span class="title function_">setAttribute</span>(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;img&#x27;</span> + index++);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> eleImg;</span></span><br><span class="line"><span class="language-javascript">      &#125;;</span></span><br><span class="line"><span class="language-javascript">    &#125;)();</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//预加载图片</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//给img标签设一个加载图片，通过Image对象预先加载实际图片加载完成后设到img标签上</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">loadImg</span>(<span class="params">img, src</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> imgCache = <span class="keyword">new</span> <span class="title class_">Image</span>();</span></span><br><span class="line"><span class="language-javascript">      imgCache.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        img.<span class="property">src</span> = <span class="variable language_">this</span>.<span class="property">src</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">src</span> = <span class="string">&#x27;loading.gif&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">      imgCache.<span class="property">src</span> = src;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//上述函数调整后可使用代理函数进行加载</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//如果某一天不需要预加载了，就把loadImgProxy换成loadImg即可</span></span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>上述代码在功能上实现了图片预加载，但是它包含了预加载和加载两项职责，违反了 <strong>“单一职责原则”</strong>。所谓的职责就是“会发生的变化”，如果网速不再是问题或者加载图片的分辨率被控制在很小的时候等，需要去掉预加载的功能，这时候就要修改<code>loadImg</code>的代码，就要重新跑所有相关的测试，即违反了 <strong>“开闭原则”</strong>，又增加测试工作。</p>
 <p>设计模式有如下原则：</p>
 <ol>
@@ -236,28 +238,28 @@
 <li>里氏转换原则：子类继承父类，单独调用完全可以运行</li>
 <li>依赖倒转原则：引用一个对象，如果这个对象有底层类型，直接引用底层</li>
 <li>接口隔离原则：每个接口应该是一个角色</li>
-<li>合成/聚合复用原则：新对象应该使用一些已有的对象，使之成为新对象的一部分</li>
+<li>合成&#x2F;聚合复用原则：新对象应该使用一些已有的对象，使之成为新对象的一部分</li>
 <li>迪米特原则：一个对象应该对其它对象有尽可能少的了解</li>
 </ol>
 <p>加载和预加载其实就是代理模式的一种，代理模式可以理解为你想给MM送东西，但是不知道MM喜欢什么，就找她的闺蜜帮你买她喜欢的东西交给你，然后你再送给她。</p>
 <p>将预加载功能改为代理模式可以理解为：<code>本体先显示个门面，让代理去帮忙加载大图，加载完了，告诉本体，本体直接把图片贴上去就行了</code>。</p>
 <ul>
 <li><p>加载本体函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">img, src</span>) </span>&#123;</span><br><span class="line">    img.src = src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">loadImg</span>(<span class="params">img, src</span>) &#123;</span><br><span class="line">    img.<span class="property">src</span> = src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>写一个预加载代理函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImgProxy</span>(<span class="params">img, src</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgCache = <span class="keyword">new</span> Image();</span><br><span class="line">    imgCache.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        loadImg(img, <span class="keyword">this</span>.src);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    loadImg(img, <span class="string">'loading.gif'</span>);</span><br><span class="line">    imgCache.src = src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">loadImgProxy</span>(<span class="params">img, src</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> imgCache = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">    imgCache.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">loadImg</span>(img, <span class="variable language_">this</span>.<span class="property">src</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">loadImg</span>(img, <span class="string">&#x27;loading.gif&#x27;</span>);</span><br><span class="line">    imgCache.<span class="property">src</span> = src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>在代理函数中，先让本体加载 <code>loading.gif</code>，等大图加载完了再让本体加载实际图片。代理函数与本体函数接口参数一致，职责分的很清楚，如果将来需要去掉预加载也不需要重新修改本体和代理的代码，只需要在调用的地方把代理函数名字换成本体函数名字即可。</p>
 <p>将上面的代理函数修改一下,让其适应加载多个图片的场景,其实就是做一个闭包,将缓存image对象变为私有,不必每次都new一个新的image对象，如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadImgProxy = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgCache = <span class="keyword">new</span> Image();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">img, src</span>)</span>&#123;</span><br><span class="line">        imgCache.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            loadImg(img, <span class="keyword">this</span>.src);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        loadImg(img, <span class="string">'loading.gif'</span>);</span><br><span class="line">        imgCache.src = src;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadImgProxy = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> imgCache = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">img, src</span>)&#123;</span><br><span class="line">        imgCache.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="title function_">loadImg</span>(img, <span class="variable language_">this</span>.<span class="property">src</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">loadImg</span>(img, <span class="string">&#x27;loading.gif&#x27;</span>);</span><br><span class="line">        imgCache.<span class="property">src</span> = src;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
 <li>通过代理对象，添加了新的行为，符合<code>开放－封闭</code>原则</li>
 <li>图片预加载和给 img 设置 src 这两个功能被分隔到两个方法中，它们各自变化不影响另外一个</li>
 <li>如果以后不需要预加载了，只需要修改函数名即可</li>
 </ol>
-<p><a href="https://www.cnblogs.com/kongxianghai/p/4938945.html" target="_blank" rel="noopener">参考文章</a></p>
+<p><a href="https://www.cnblogs.com/kongxianghai/p/4938945.html">参考文章</a></p>
 
     </div>
 
@@ -268,7 +270,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
           </div>
 
         
@@ -277,11 +279,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/05/02/JavaScript/JavaScript设计模式(三)/" rel="prev" title="JavaScript设计模式实践之策略模式">
+    <a href="/2019/05/02/JavaScript/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B8%89)/" rel="prev" title="JavaScript设计模式实践之策略模式">
       <i class="fa fa-chevron-left"></i> JavaScript设计模式实践之策略模式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/05/21/JavaScript/Promise实践之连续加载图片/" rel="next" title="Promise实践之连续加载图片">
+    <a href="/2019/05/21/JavaScript/Promise%E5%AE%9E%E8%B7%B5%E4%B9%8B%E8%BF%9E%E7%BB%AD%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87/" rel="next" title="Promise实践之连续加载图片">
       Promise实践之连续加载图片 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -343,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -393,16 +395,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">化简为凡</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v7.3.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -422,9 +424,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
